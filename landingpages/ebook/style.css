@@ -1,0 +1,406 @@
+/* Nova Paleta de Cores */
+:root {
+    --primary-color: #6C63FF; /* Roxo suave */
+    --accent-color: #FF6584; /* Rosa vibrante para destaque */
+    --light-bg: #F4F4F9; /* Fundo claro principal */
+    --dark-text: #333; /* Cor padrão do texto escuro */
+    
+    /* Cores adicionais para o tema */
+    --text-on-primary: #ffffff; /* Texto em cima da cor primária */
+    --text-on-dark: #e0e0e0; /* Texto em seções escuras */
+    --card-bg: #ffffff; /* Fundo dos cards padrão */
+    --footer-bg: #2a2a2a; /* Fundo do rodapé */
+    --whatsapp-btn-bg: #25D366; /* Verde WhatsApp */
+}
+
+/* Base Styling */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+.section-title {
+    color: var(--primary-color);
+}
+
+/* Navbar Customization */
+.navbar {
+    background-color: var(--primary-color) !important; /* Navbar com a cor primária */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--text-on-primary) !important; /* Texto branco no navbar */
+}
+.nav-link {
+    font-weight: 500;
+    margin: 0 10px;
+    color: rgba(255, 255, 255, 0.8) !important; /* Texto branco no navbar */
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+    color: var(--accent-color) !important; /* Hover com a cor de destaque */
+}
+.btn-primary.text-white { /* Botão de comprar agora no navbar */
+    background-color: var(--accent-color) !important; /* Cor de destaque */
+    border-color: var(--accent-color) !important;
+}
+.btn-primary.text-white:hover {
+    background-color: #e65575 !important; /* Tom mais escuro no hover */
+    border-color: #e65575 !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/1920x1080/?productivity,freelance') no-repeat center center/cover;
+    background-attachment: fixed; /* Efeito parallax */
+    height: 100vh;
+    padding-top: 80px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+.hero-section h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+.hero-section p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+.hero-image {
+    max-height: 550px;
+    object-fit: contain;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.btn-primary { /* Botão principal na Hero */
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+}
+.btn-outline-light { /* Botão secundário na Hero */
+    color: var(--text-on-primary) !important; /* Texto branco */
+    border-color: var(--text-on-primary) !important;
+}
+.btn-outline-light:hover {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+
+/* Benefits Section */
+#benefits {
+    background-color: var(--light-bg);
+}
+.benefit-card {
+    border: none;
+    background-color: var(--card-bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+/* Imagem no topo do card */
+.benefit-card .card-img-top {
+    object-fit: cover;
+    height: 250px; /* Altura padrão para as imagens dos cards */
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+/* Flexbox para o card-body */
+.benefit-card .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Distribui o espaço entre os itens */
+    min-height: 250px; /* Altura mínima para o corpo do card */
+    padding: 20px;
+}
+.benefit-icon {
+    font-size: 3rem;
+    color: var(--primary-color); /* Ícone com a cor primária */
+    margin-bottom: 15px;
+}
+.benefit-card .card-title {
+    color: var(--dark-text);
+}
+.benefit-card .card-text {
+    color: var(--dark-text);
+}
+
+
+/* Content Section */
+#content {
+    background-color: var(--light-bg);
+}
+.feature-item {
+    background-color: var(--card-bg);
+    border-left: 5px solid var(--primary-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.feature-item:hover {
+    transform: scale(1.01);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08) !important;
+}
+.feature-item img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100px; /* Tamanho fixo para as imagens das features */
+    height: 100px; /* Tamanho fixo para as imagens das features */
+}
+.feature-item h4 {
+    color: var(--dark-text);
+}
+.feature-item p {
+    color: var(--dark-text);
+}
+.btn-info { /* Botão de "Ver Conteúdo Completo" */
+    background-color: var(--accent-color) !important; /* Usando a cor de destaque */
+    border-color: var(--accent-color) !important;
+    color: white !important;
+    font-weight: 600;
+}
+.btn-info:hover {
+    background-color: #e65575 !important;
+    border-color: #e65575 !important;
+}
+
+/* Testimonials Section */
+#testimonials {
+    background-color: var(--light-bg);
+}
+.testimonial-card {
+    max-width: 700px;
+    background-color: var(--card-bg);
+    color: var(--dark-text);
+    border: none;
+    padding: 30px !important;
+}
+.testimonial-card p {
+    color: var(--dark-text);
+    font-size: 1.1rem;
+}
+.testimonial-card h5 {
+    color: var(--primary-color);
+}
+.testimonial-card img {
+    border: 3px solid var(--primary-color);
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(20%); /* Mais escuro para contraste no fundo claro */
+}
+.carousel-indicators [data-bs-target] {
+    background-color: var(--primary-color);
+}
+
+
+/* Call to Action & Pricing Section */
+#buy-now {
+    background-color: var(--primary-color) !important; /* Cor primária */
+    color: white;
+}
+#buy-now h2 {
+    color: white;
+}
+#buy-now p {
+    color: rgba(255, 255, 255, 0.9);
+}
+.price-box {
+    max-width: 450px;
+    background-color: var(--card-bg); /* Fundo branco para contraste */
+    color: var(--dark-text); /* Texto escuro no box */
+    border: 3px solid var(--accent-color); /* Borda com a cor de destaque */
+}
+.price-box h3 {
+    color: var(--accent-color) !important; /* Preço em destaque */
+}
+.price-box p.text-muted {
+    color: var(--dark-text) !important; /* Texto em cinza escuro */
+}
+.btn-light { /* Botão de "COMPRAR AGORA" */
+    background-color: var(--accent-color) !important; /* Cor de destaque */
+    border-color: var(--accent-color) !important;
+    color: white !important;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-light:hover {
+    background-color: #e65575 !important;
+    border-color: #e65575 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* WhatsApp Contact Form Section */
+#whatsapp-contact {
+    background-color: var(--light-bg); /* Volta para o fundo claro */
+    color: var(--dark-text);
+}
+#whatsapp-contact h2 {
+    color: var(--primary-color); /* Título com a cor primária */
+}
+#whatsapp-contact .card {
+    background-color: var(--card-bg); /* Card com fundo branco */
+    color: var(--dark-text);
+    border: 1px solid rgba(0,0,0,0.1); /* Borda suave */
+}
+#whatsapp-contact .form-label {
+    color: var(--dark-text);
+}
+#whatsapp-contact .form-control {
+    background-color: #f8f9fa; /* Fundo mais claro para os inputs */
+    border-color: #dee2e6;
+    color: var(--dark-text);
+}
+#whatsapp-contact .form-control::placeholder {
+    color: #6c757d;
+}
+#whatsapp-contact .form-control:focus {
+    background-color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(108, 99, 255, 0.25);
+}
+
+.btn-whatsapp {
+    background-color: var(--whatsapp-btn-bg) !important; /* Verde WhatsApp */
+    border-color: var(--whatsapp-btn-bg) !important;
+    color: white;
+    font-weight: bold;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-whatsapp:hover {
+    background-color: #1DA851 !important; /* Verde mais escuro no hover */
+    border-color: #1DA851 !important;
+    transform: translateY(-2px);
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--footer-bg) !important; /* Fundo do rodapé */
+    color: var(--text-on-dark) !important; /* Texto claro */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+footer p {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+footer a {
+    color: var(--text-on-dark) !important;
+    transition: color 0.3s ease;
+}
+footer a:hover {
+    color: var(--accent-color) !important;
+}
+.social-links a {
+    font-size: 1.8rem;
+    margin: 0 10px;
+    color: var(--text-on-dark) !important;
+}
+.social-links a:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+    .hero-image {
+        max-height: 400px;
+    }
+    .card-img-top {
+        height: 200px; /* Ajuste para tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: auto;
+        padding-top: 100px;
+        padding-bottom: 50px;
+        text-align: center !important;
+    }
+    .hero-section .text-md-start {
+        text-align: center !important;
+    }
+    .hero-section .col-md-6.order-md-2 {
+        order: 1 !important;
+    }
+    .hero-section .col-md-6.order-md-1 {
+        order: 2 !important;
+    }
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+    .hero-section .btn {
+        width: 100%;
+        margin-bottom: 15px;
+        margin-right: 0 !important;
+    }
+
+    .benefit-card .card-body {
+        min-height: auto; /* Remove min-height em telas menores para melhor fluxo */
+    }
+    .card-img-top {
+        height: 180px; /* Ajuste para celulares */
+    }
+    .testimonial-card {
+        padding: 20px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+    .nav-link {
+        margin: 5px 0;
+    }
+    .price-box {
+        padding: 20px;
+        font-size: 0.9rem;
+    }
+    .price-box h3 {
+        font-size: 2.5rem;
+    }
+    .feature-item img {
+        width: 80px;
+        height: 80px;
+        margin-right: 10px !important; /* Ajusta espaçamento */
+    }
+    .feature-item h4 {
+        font-size: 1.1rem;
+    }
+    .feature-item p {
+        font-size: 0.9rem;
+    }
+}

@@ -61,57 +61,5 @@ document.addEventListener('DOMContentLoaded', () => {
             this.reset(); // Clear the form
         });
     }
-
-    // --- Lógica para o Carrossel Personalizado ---
-    const carouselTrack = document.getElementById('testimonialCarouselTrack');
-    const carouselItems = Array.from(carouselTrack.getElementsByClassName('custom-carousel-item'));
-    const prevBtn = document.getElementById('carouselPrevBtn');
-    const nextBtn = document.getElementById('carouselNextBtn');
-
-    let currentIndex = 0;
-    let autoSlideInterval;
-
-    function showSlide(index) {
-        // Remove 'active' de todos os itens
-        carouselItems.forEach(item => item.classList.remove('active'));
-
-        // Adiciona 'active' ao item atual
-        carouselItems[index].classList.add('active');
-    }
-
-    function goToNextSlide() {
-        currentIndex = (currentIndex + 1) % carouselItems.length;
-        showSlide(currentIndex);
-        resetAutoSlide();
-    }
-
-    function goToPrevSlide() {
-        currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
-        showSlide(currentIndex);
-        resetAutoSlide();
-    }
-
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(goToNextSlide, 7000); // Muda a cada 7 segundos
-    }
-
-    function resetAutoSlide() {
-        clearInterval(autoSlideInterval);
-        startAutoSlide();
-    }
-
-    // Event Listeners para os botões
-    if (nextBtn) {
-        nextBtn.addEventListener('click', goToNextSlide);
-    }
-    if (prevBtn) {
-        prevBtn.addEventListener('click', goToPrevSlide);
-    }
-
-    // Inicia o carrossel na primeira carga
-    if (carouselItems.length > 0) {
-        showSlide(currentIndex); // Mostra o primeiro slide
-        startAutoSlide(); // Inicia o slide automático
-    }
-    // --- Fim da Lógica do Carrossel Personalizado ---
+    // A lógica do carrossel foi removida daqui
 });

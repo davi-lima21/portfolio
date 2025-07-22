@@ -1,0 +1,99 @@
+/* Definição das variáveis de cores e fontes */
+:root {
+    --cor-verde: #008D2D; 
+    --cor-azul: #005A9C; 
+    --cor-preto: #333;
+    --cor-branco: #FFFFFF;
+    --cor-cinza-claro: #f8f9fa;
+    --font-principal: 'Helvetica', 'Arial', sans-serif;
+}
+
+body {
+    font-family: var(--font-principal);
+    scroll-behavior: smooth;
+}
+
+/* ======================================================= */
+/* ================= HEADER & LOGO ======================= */
+/* ======================================================= */
+.logo { font-weight: bold; font-size: 1.5rem; }
+.logo-brasil { color: var(--cor-verde); }
+.logo-work { color: var(--cor-azul); }
+.logo-sub { display: block; font-size: 0.7rem; font-weight: normal; color: var(--cor-preto); margin-top: -5px; }
+.logo-footer { font-size: 1.8rem; font-weight: bold; }
+.navbar-nav .nav-link { font-weight: 500; transition: color 0.3s ease; }
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--cor-azul); }
+
+
+/* ======================================================= */
+/* =================== HERO SECTION ====================== */
+/* ======================================================= */
+
+/* Estilo Hero para Celular */
+.hero-section-mobile {
+    background: linear-gradient(rgba(0, 90, 156, 0.8), rgba(0, 141, 45, 0.7)), url('https://via.placeholder.com/800x600/cccccc/ffffff?text=Fundo+Texturizado') no-repeat center center;
+    background-size: cover;
+    min-height: 70vh;
+    padding: 2rem 0;
+}
+.hero-section-mobile h1 { text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+
+/* Estilo Hero para Tablet/Desktop */
+.hero-section-desktop {
+    background-color: var(--cor-branco);
+    min-height: 70vh;
+    padding: 2rem 0;
+}
+.hero-section-desktop h1 { color: var(--cor-preto); }
+
+
+/* ======================================================= */
+/* ===================== BOTÕES (CTA) ==================== */
+/* ======================================================= */
+.btn-cta-green { background-color: var(--cor-verde); color: var(--cor-branco); border: 2px solid var(--cor-verde); transition: all 0.3s ease; }
+.btn-cta-green:hover { background-color: var(--cor-branco); color: var(--cor-verde); border: 2px solid var(--cor-verde); }
+.btn-cta-blue { background-color: var(--cor-azul); color: var(--cor-branco); border: 2px solid var(--cor-azul); transition: all 0.3s ease; }
+.btn-cta-blue:hover { background-color: var(--cor-branco); color: var(--cor-azul); border: 2px solid var(--cor-azul); }
+
+/* ======================================================= */
+/* =============== SEÇÃO GALERIA DE IMAGENS ============== */
+/* ======================================================= */
+
+/* Estilo para as imagens da grade (Tablet/Desktop) */
+.gallery-img {
+    width: 100%;
+    height: 500px;           /* Altura fixa para todas as imagens. Você pode ajustar este valor. */
+    object-fit: cover;       /* Faz a imagem preencher o espaço, cortando o excesso sem distorcer. */
+}
+
+/* Estilo para as imagens do carrossel (Celular) */
+.carousel-item img {
+               /* Altura para as imagens no celular. Pode ser diferente da grade. */
+    object-fit: cover;
+}
+
+/* ======================================================= */
+/* ============== SEÇÃO NOSSOS CLIENTES ================== */
+/* ======================================================= */
+.client-logo img {
+    width: 100%;             /* Faz a imagem ocupar a largura da coluna, respeitando o limite abaixo */
+    max-width: 160px;        /* Define uma largura máxima para os logos maiores */
+    height: 80px;            /* Define uma altura fixa para o espaço de cada logo */
+    object-fit: contain;     /* Essencial: Redimensiona a imagem para caber no espaço sem cortar ou distorcer */
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease-in-out;
+}
+
+.client-logo:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+
+/* ======================================================= */
+/* ====================== FOOTER ========================= */
+/* ======================================================= */
+.social-icons a { text-decoration: none; transition: opacity 0.3s ease; }
+.social-icons a:hover { opacity: 0.8; }

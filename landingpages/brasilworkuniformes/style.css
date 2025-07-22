@@ -5,7 +5,7 @@
     --cor-preto: #333;
     --cor-branco: #FFFFFF;
     --cor-cinza-claro: #f8f9fa;
-    --font-principal: 'Helvetica', 'Arial', sans-serif;
+    --font-principal: 'Montserrat', sans-serif; /* <-- FONTE ALTERADA */
 }
 
 body {
@@ -46,6 +46,16 @@ body {
 }
 .hero-section-desktop h1 { color: var(--cor-preto); }
 
+.img-inicial {
+    width: 100%;
+    
+    /* Altura Responsiva com Limites */
+    height: 80vh;           /* Tenta ter 75% da altura da tela */
+    min-height: 400px;      /* Mas NUNCA será menor que 400px */
+    max-height: 650px;      /* E NUNCA será maior que 650px */
+
+    object-fit: cover;      /* Preenche o espaço de forma inteligente sem distorcer */
+}
 
 /* ======================================================= */
 /* ===================== BOTÕES (CTA) ==================== */

@@ -1,0 +1,302 @@
+/* Definição das variáveis de cores e fontes */
+:root {
+    --cor-preto: #121212;
+    --cor-preto-card: #1C1C1C;
+    --cor-branco: #FFFFFF;
+    --cor-cinza-borda: #444;
+    --cor-cinza-texto: #adb5bd;
+    --font-principal: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--font-principal);
+    scroll-behavior: smooth;
+    background-color: var(--cor-preto);
+    color: var(--cor-branco);
+}
+
+/* ======================================================= */
+/* ================= HEADER & LOGO ======================= */
+/* ======================================================= */
+.logo { font-weight: bold; font-size: 1.5rem; }
+.img-logoprincipal {
+    height: auto; 
+    max-height: 48px; 
+    width: auto;  
+}
+.logo-footer { 
+    height: auto; 
+    max-width: 95%; 
+    width: auto; 
+}
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: var(--cor-cinza-texto);
+    transition: color 0.3s ease;
+}
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+    color: var(--cor-branco);
+}
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ======================================================= */
+/* =========== ESTILOS DO MENU PARA CELULAR ============== */
+/* ======================================================= */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+    }
+    .navbar-nav .nav-item:not(:last-child) {
+        border-bottom: 1px solid var(--cor-cinza-borda);
+    }
+}
+
+/* ======================================================= */
+/* =================== HERO SECTION ====================== */
+/* ======================================================= */
+.hero-section {
+    background: var(--cor-preto);
+    min-height: 80vh;
+    padding: 2rem 0;
+}
+.img-inicial {
+    width: 100%;
+    height: 70vh;
+    min-height: 400px;
+    max-height: 600px;
+    object-fit: cover;
+}
+
+
+
+/* ======================================================= */
+/* ===================== BOTÕES (CTA) ==================== */
+/* ======================================================= */
+.btn-cta-light {
+    background-color: var(--cor-branco);
+    color: var(--cor-preto);
+    border: 2px solid var(--cor-branco);
+    transition: all 0.3s ease;
+}
+.btn-cta-light:hover {
+    background-color: transparent;
+    color: var(--cor-branco);
+    border: 2px solid var(--cor-branco);
+}
+
+/* ======================================================= */
+/* =============== SEÇÃO SOBRE (CARDS) =================== */
+/* ======================================================= */
+.bg-dark-subtle {
+    background-color: #161616 !important;
+}
+.card.bg-dark {
+    background-color: var(--cor-preto-card) !important;
+}
+
+/* ======================================================= */
+/* =============== SEÇÃO GALERIA DE IMAGENS ============== */
+/* ======================================================= */
+.gallery-img {
+    width: 100%;
+    height: 350px;     
+    object-fit: cover; 
+}
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* ======================================================= */
+/* ============== SEÇÃO NOSSOS CLIENTES ================== */
+/* ======================================================= */
+.client-logo img {
+    width: 100%;
+    max-width: 160px;
+    height: 80px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(1.5); /* Ajuste para melhor visibilidade no fundo escuro */
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+}
+.client-logo:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco no hover para logos escuros */
+    border-radius: 8px;
+    padding: 5px;
+}
+
+/* ======================================================= */
+/* ================= FORMULÁRIO DE CONTATO =============== */
+/* ======================================================= */
+#contato .form-control {
+    background-color: #2a2a2a;
+    border-color: var(--cor-cinza-borda);
+    color: var(--cor-branco);
+}
+#contato .form-control:focus {
+    background-color: #2a2a2a;
+    border-color: var(--cor-branco);
+    color: var(--cor-branco);
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+}
+#contato .form-control::placeholder {
+    color: var(--cor-cinza-texto);
+}
+
+/* ======================================================= */
+/* ====== CORREÇÃO PARA SCROLL COM MENU FIXO (STICKY) ==== */
+/* ======================================================= */
+[id] {
+  scroll-margin-top: 80px; /* Valor para o menu DESKTOP */
+}
+@media (max-width: 991.98px) {
+  [id] {
+    scroll-margin-top: 300px; /* Ajustado para menu mobile */
+  }
+}
+
+/* ======================================================= */
+/* ============== BOTÃO FLUTUANTE WHATSAPP =============== */
+/* ======================================================= */
+
+.whatsapp-flutuante {
+  /* Posição Fixa */
+  position: fixed;
+  bottom: 25px; /* Distância do fundo */
+  right: 25px;  /* Distância da direita */
+  z-index: 1000; /* Garante que ele fique acima de tudo */
+  
+  /* Aparência */
+  background-color: #25D366; /* Cor oficial do WhatsApp */
+  color: #FFFFFF; /* Cor do ícone (branco) */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Deixa o botão redondo */
+  text-decoration: none; /* Remove o sublinhado do link */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  
+  /* Alinhamento do Ícone no Centro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Estilo do Ícone */
+  font-size: 32px; /* Tamanho do ícone */
+  
+  /* Animação suave */
+  transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse por cima */
+.whatsapp-flutuante:hover {
+  transform: scale(1.1); /* Aumenta um pouco o tamanho */
+  background-color: #1EBE57; /* Um tom de verde um pouco mais escuro */
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ======================================================= */
+/* ============= ESTILOS DA JORNADA DO PEDIDO (TIMELINE) ===== */
+/* ======================================================= */
+
+.timeline-container {
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* A linha vertical central */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 18px; /* Posição da linha no mobile */
+    width: 3px;
+    height: 100%;
+    background-color: var(--cor-cinza-borda);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    padding-left: 50px; /* Espaço para o texto no mobile */
+}
+
+/* O marcador (círculo) na linha */
+.timeline-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background-color: var(--cor-preto-card);
+    border: 3px solid var(--cor-cinza-borda);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cor-branco);
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+.timeline-content {
+    background-color: var(--cor-preto-card);
+    padding: 20px 25px;
+    border-radius: 8px;
+    border: 1px solid var(--cor-cinza-borda);
+}
+
+.timeline-year {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--cor-branco);
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Media Query para telas de computador (desktop) */
+@media (min-width: 768px) {
+    .timeline-container::before {
+        left: 50%; /* Centraliza a linha no desktop */
+        margin-left: -1.5px;
+    }
+
+    .timeline-item {
+        width: 50%;
+        padding-left: 0; /* Reseta o padding do mobile */
+    }
+
+    /* Alinha itens à esquerda */
+    .timeline-item:nth-child(odd) {
+        left: 0;
+        padding-right: 50px;
+        text-align: right;
+    }
+    
+    /* Alinha itens à direita */
+    .timeline-item:nth-child(even) {
+        left: 50%;
+        padding-left: 50px;
+    }
+
+    /* Posiciona os marcadores no centro para todos os itens */
+    .timeline-item:nth-child(odd) .timeline-marker,
+    .timeline-item:nth-child(even) .timeline-marker {
+        left: 50%;
+        margin-left: -20px;
+    }
+}

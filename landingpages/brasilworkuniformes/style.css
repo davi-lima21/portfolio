@@ -17,13 +17,45 @@ body {
 /* ================= HEADER & LOGO ======================= */
 /* ======================================================= */
 .logo { font-weight: bold; font-size: 1.5rem; }
-.logo-brasil { color: var(--cor-verde); }
-.logo-work { color: var(--cor-azul); }
-.logo-sub { display: block; font-size: 0.7rem; font-weight: normal; color: var(--cor-preto); margin-top: -5px; }
-.logo-footer { font-size: 1.8rem; font-weight: bold; }
+/* Estilos para a imagem do logo principal na navbar */
+.img-logoprincipal {
+    height: auto; 
+    max-height: 42px; 
+    width: auto;  
+}
+.logo-footer { 
+        height: auto; 
+    max-width: 95%; 
+    width: auto; 
+}
 .navbar-nav .nav-link { font-weight: 500; transition: color 0.3s ease; }
 .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--cor-azul); }
 
+
+
+/* ======================================================= */
+/* =========== ESTILOS DO MENU PARA CELULAR ============== */
+/* ======================================================= */
+
+/* As regras abaixo só se aplicam em telas menores que 992px (quando o menu colapsa) */
+@media (max-width: 991.98px) {
+    
+    /* Centraliza o texto de todos os itens do menu */
+    .navbar-nav {
+        text-align: center;
+        margin-top: 1rem; /* Adiciona um espaço no topo do menu aberto */
+    }
+
+    /* Adiciona um preenchimento para os links terem mais área de clique */
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+    }
+
+    /* Adiciona a linha separadora em todos os itens, exceto no último */
+    .navbar-nav .nav-item:not(:last-child) {
+        border-bottom: 1px solid var(--cor-cinza-claro);
+    }
+}
 
 /* ======================================================= */
 /* =================== HERO SECTION ====================== */
@@ -72,14 +104,15 @@ body {
 /* Estilo para as imagens da grade (Tablet/Desktop) */
 .gallery-img {
     width: 100%;
-    height: 500px;           /* Altura fixa para todas as imagens. Você pode ajustar este valor. */
-    object-fit: cover;       /* Faz a imagem preencher o espaço, cortando o excesso sem distorcer. */
+    height: 500px;       
+    object-fit: cover; 
 }
 
 /* Estilo para as imagens do carrossel (Celular) */
 .carousel-item img {
-               /* Altura para as imagens no celular. Pode ser diferente da grade. */
-    object-fit: cover;
+    height: 500px;       /* <-- ALTURA FIXA ADICIONADA AQUI */
+    object-fit: cover;   /* Essencial: Faz a imagem preencher o espaço sem distorcer. */
+    width: 100%;
 }
 
 /* ======================================================= */

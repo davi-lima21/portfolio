@@ -140,3 +140,23 @@ body {
 /* ======================================================= */
 .social-icons a { text-decoration: none; transition: opacity 0.3s ease; }
 .social-icons a:hover { opacity: 0.8; }
+
+/* ======================================================= */
+/* ====== CORREÇÃO PARA SCROLL COM MENU FIXO (STICKY) ==== */
+/* ======================================================= */
+
+/* * Define um valor PADRÃO de margem de rolagem para telas 
+ * maiores (desktop), baseado na altura do menu horizontal.
+*/
+[id] {
+  scroll-margin-top: 70px; /* Valor para o menu DESKTOP */
+}
+
+/* * Define um valor ESPECÍFICO de margem de rolagem para telas 
+ * menores (celular/tablet), onde o menu colapsa e é mais baixo.
+*/
+@media (max-width: 991.98px) {
+  [id] {
+    scroll-margin-top: 320px; /* Valor para o menu MOBILE */
+  }
+}

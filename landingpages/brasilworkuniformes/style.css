@@ -160,3 +160,42 @@ body {
     scroll-margin-top: 320px; /* Valor para o menu MOBILE */
   }
 }
+
+/* ======================================================= */
+/* ============== BOTÃO FLUTUANTE WHATSAPP =============== */
+/* ======================================================= */
+
+.whatsapp-flutuante {
+  /* Posição Fixa */
+  position: fixed;
+  bottom: 25px; /* Distância do fundo */
+  right: 25px;  /* Distância da direita */
+  z-index: 1000; /* Garante que ele fique acima de tudo */
+  
+  /* Aparência */
+  background-color: #25D366; /* Cor oficial do WhatsApp */
+  color: #FFFFFF; /* Cor do ícone (branco) */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Deixa o botão redondo */
+  text-decoration: none; /* Remove o sublinhado do link */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  
+  /* Alinhamento do Ícone no Centro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Estilo do Ícone */
+  font-size: 32px; /* Tamanho do ícone */
+  
+  /* Animação suave */
+  transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse por cima */
+.whatsapp-flutuante:hover {
+  transform: scale(1.1); /* Aumenta um pouco o tamanho */
+  background-color: #1EBE57; /* Um tom de verde um pouco mais escuro */
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+}

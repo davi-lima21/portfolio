@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // 2. Monta a mensagem que será enviada para o WhatsApp
-            let messageText = `*Novo Contato do Site*\n\n` +
+            let messageText = `*Novo Contato do Site (Brasil Work)*\n\n` +
                               `*Nome:* ${nome}\n` +
                               `*E-mail:* ${email}\n` +
                               `*Telefone:* ${telefone}\n`;

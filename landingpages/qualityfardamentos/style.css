@@ -268,35 +268,55 @@ body {
     display: block;
 }
 
-/* Media Query para telas de computador (desktop) */
+/* ======================================================= */
+/* ====== CSS PARA O DESKTOP (TIMELINE CENTRALIZADA) ===== */
+/* ======================================================= */
+
 @media (min-width: 768px) {
+    /* Centraliza a linha no desktop */
     .timeline-container::before {
-        left: 50%; /* Centraliza a linha no desktop */
-        margin-left: -1.5px;
+        left: 50%;
+        margin-left: -1.5px; /* Metade da largura da linha para centralizar perfeitamente */
     }
 
     .timeline-item {
         width: 50%;
-        padding-left: 0; /* Reseta o padding do mobile */
+        padding-left: 0;
+        text-align: left; /* Reseta o alinhamento de texto */
     }
 
-    /* Alinha itens à esquerda */
+    /* Alinha os itens ÍMPARES (1, 3, 5) para a ESQUERDA da linha */
     .timeline-item:nth-child(odd) {
         left: 0;
-        padding-right: 50px;
-        text-align: right;
+        padding-right: 50px; /* Espaço entre o texto e a linha central */
+        text-align: right;   /* Alinha o texto para a direita, em direção à linha */
     }
     
-    /* Alinha itens à direita */
+    /* Alinha os itens PARES (2, 4) para a DIREITA da linha */
     .timeline-item:nth-child(even) {
         left: 50%;
-        padding-left: 50px;
+        padding-left: 50px; /* Espaço entre a linha central e o texto */
     }
 
-    /* Posiciona os marcadores no centro para todos os itens */
-    .timeline-item:nth-child(odd) .timeline-marker,
+    /* ======================================================= */
+    /* ========= CORREÇÃO PARA OS ÍCONES NO DESKTOP ========== */
+    /* ======================================================= */
+
+    /* Posiciona o ícone dos itens da ESQUERDA (ímpares) na sua borda direita */
+    .timeline-item:nth-child(odd) .timeline-marker {
+        left: auto; /* Remove a propriedade 'left' do mobile */
+        right: -20px; /* Puxa o ícone para a direita pela metade de seu tamanho (40px) para centralizá-lo na linha */
+    }
+
+    /* Posiciona o ícone dos itens da DIREITA (pares) na sua borda esquerda */
     .timeline-item:nth-child(even) .timeline-marker {
-        left: 50%;
-        margin-left: -20px;
+        left: -20px; /* Puxa o ícone para a esquerda pela metade de seu tamanho (40px) para centralizá-lo na linha */
+    }
+    
+    /* Remove qualquer regra de padding extra que possa ter ficado */
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        padding-left: 25px;
+        padding-right: 25px;
     }
 }

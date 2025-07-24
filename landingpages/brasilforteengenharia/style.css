@@ -1,0 +1,454 @@
+/*--------------------------------------------------------------
+# Configurações Gerais e Variáveis
+--------------------------------------------------------------*/
+:root {
+    --primary-color: #002279;
+    /* Azul escuro */
+    --accent-green: #009c3b;
+    /* Verde Brasil */
+    --accent-yellow: #ffdf00;
+    /* Amarelo Brasil */
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    background-color: #ffffff;
+    line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.btn-brand {
+    background: linear-gradient(90deg, var(--accent-green), #007a2e);
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-brand:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/*--------------------------------------------------------------
+# Navbar (ATUALIZADO)
+--------------------------------------------------------------*/
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--primary-color) !important;
+}
+
+.navbar-brand .logo-icon {
+    color: var(--primary-color);
+    margin-right: 5px;
+    vertical-align: -2px;
+}
+
+.navbar .nav-link {
+    font-weight: 600;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--accent-green);
+}
+
+/*--------------------------------------------------------------
+# Estilos da Logo no Navbar
+--------------------------------------------------------------*/
+
+/* Ajusta a imagem da logo dentro da barra de navegação */
+.logo-navbar {
+    /* Define uma altura fixa para a logo. 
+    Valores entre 35px e 45px são ideais para navbars.
+    A largura será ajustada automaticamente para manter a proporção da imagem.
+  */
+    height: 40px;
+    width: auto;
+
+    /* Adiciona uma transição suave para qualquer efeito (como hover) */
+    transition: all 0.3s ease;
+}
+
+/* Opcional: Efeito sutil ao passar o mouse sobre a logo */
+.navbar-brand:hover .logo-navbar {
+    opacity: 0.9;
+}
+
+/*--------------------------------------------------------------
+# Navbar para Celular (NOVO)
+--------------------------------------------------------------*/
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        /* Adiciona um padding para o menu não ficar colado nas bordas */
+        padding: 15px;
+    }
+
+    .navbar-collapse .nav-item {
+        /* Cria a linha divisória na parte de baixo de cada item */
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    /* Remove a linha do último item para um acabamento melhor */
+    .navbar-collapse .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .navbar-collapse .nav-link {
+        /* Adiciona mais espaço vertical nos links para facilitar o toque */
+        padding: 12px 5px;
+    }
+
+    /* Adiciona um espaço entre a lista de links e o botão */
+    .navbar-collapse .btn-brand {
+        margin-top: 15px;
+        width: 100%;
+        /* Faz o botão ocupar a largura toda */
+        text-align: center;
+    }
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+    background: linear-gradient(rgba(0, 34, 121, 0.85), rgba(0, 34, 121, 0.85)), url('img/img_principal.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding-top: 100px;
+    /* Compensa a altura do navbar */
+}
+
+#hero h1 {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+#hero .lead {
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+/*--------------------------------------------------------------
+# Títulos de Seção
+--------------------------------------------------------------*/
+.section-title {
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2.8rem;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-yellow));
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#sobre .section-title h2::after {
+    left: 0;
+    transform: translateX(0);
+}
+
+#contato .section-title h2::after {
+    background: white;
+}
+
+
+/*--------------------------------------------------------------
+# Seções Sobre e Serviços (sem alterações)
+--------------------------------------------------------------*/
+#sobre .list-unstyled i {
+    color: var(--accent-green);
+    font-size: 1.2rem;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.service-card {
+    background: white;
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-card .icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px auto;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .icon {
+    background: linear-gradient(45deg, var(--accent-green), var(--accent-yellow));
+    color: var(--dark-color);
+}
+
+.service-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+/*--------------------------------------------------------------
+# Contato Section (ATUALIZADO)
+--------------------------------------------------------------*/
+
+.form-title {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Linha de destaque colorida abaixo do título */
+.title-accent {
+    height: 4px;
+    width: 100px;
+    background: linear-gradient(90deg, var(--accent-yellow), var(--accent-green));
+    border-radius: 2px;
+    margin-top: 10px;
+}
+
+/* Caixa de alerta personalizada */
+.alert-whatsapp-info {
+    display: flex;
+    align-items: center;
+    background-color: #E6F3EB;
+    /* Verde bem claro */
+    border-left: 5px solid var(--accent-green);
+    border-radius: 4px;
+    color: var(--dark-color);
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.alert-whatsapp-info i {
+    color: var(--accent-green);
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+/* Estilo dos campos do formulário */
+#contactForm .form-control,
+#contactForm .form-select {
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+    padding-left: 0;
+    background-color: transparent;
+}
+
+#contactForm .form-control:focus,
+#contactForm .form-select:focus {
+    box-shadow: none;
+    border-color: var(--primary-color);
+    background-color: transparent;
+}
+
+#contactForm .form-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Estilo do checkbox */
+#contactForm .form-check-input {
+    border-color: #b0b0b0;
+}
+
+#contactForm .form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+#contactForm .form-check-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* Estilo do novo botão do formulário */
+.btn-primary-solid {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-solid:hover {
+    background-color: #001c64;
+    /* Um tom de azul um pouco mais escuro */
+    transform: translateY(-2px);
+}
+
+
+/*--------------------------------------------------------------
+# Rodapé (sem alterações)
+--------------------------------------------------------------*/
+footer {
+    background-color: var(--dark-color);
+}
+
+footer .footer-logo {
+    font-weight: 400;
+    color: white;
+    font-size: 1.8rem;
+    text-decoration: none;
+}
+
+footer .footer-contact-info a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .footer-contact-info a:hover {
+    color: white !important;
+}
+
+footer .social-icons i {
+    font-size: 1.2rem;
+    margin-right: 8px;
+    vertical-align: -2px;
+}
+
+.img-footer {
+    max-height: 100px;
+    width: auto;
+
+    /* Adiciona uma transição suave para qualquer efeito (como hover) */
+    transition: all 0.3s ease;
+}
+
+/*--------------------------------------------------------------
+# Ícone Flutuante do WhatsApp (NOVO)
+--------------------------------------------------------------*/
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+
+/*--------------------------------------------------------------
+# Responsividade
+--------------------------------------------------------------*/
+@media (max-width: 992px) {
+    .section-padding {
+        padding: 80px 0;
+    }
+
+    .section-title h2 {
+        font-size: 2.2rem;
+    }
+
+    #hero {
+        min-height: 60vh;
+    }
+
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav .btn-brand {
+        margin-top: 15px;
+    }
+
+    .footer-contact-info a {
+        display: block;
+        margin: 10px 0 !important;
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .contact-form-card {
+        padding: 30px 20px;
+    }
+}

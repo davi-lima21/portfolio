@@ -1,0 +1,1641 @@
+/* --- Reset e Variáveis Globais --- */
+:root {
+    --dark-blue-bg: #070c14;
+    --light-blue: #4090f7;
+    --text-primary: #f2f9fe;
+    --text-secondary: #c8d3e3;
+    --text-tertiary: #828e9d;
+    --card-bg: #101014;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color-light: rgba(255, 255, 255, 0.05);
+    --glow-color: rgba(64, 144, 247, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--dark-blue-bg);
+    color: var(--text-primary);
+    font-family: 'Sora', sans-serif;
+    /* <-- Nova fonte aplicada */
+    overflow-x: hidden;
+}
+
+[data-sr] {
+    visibility: hidden;
+}
+
+/* --- Efeito de Brilho de Fundo --- */
+.case-study,
+.testimonials-section {
+    position: relative;
+}
+
+.case-study::before,
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.7;
+}
+
+.case-study.reverse::before {
+    left: 40%;
+}
+
+/* --- Componentes --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+.secondary-heading {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.text-body {
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+.text-body strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-tertiary);
+    margin-bottom: 30px;
+}
+
+.section-tag {
+    color: var(--light-blue);
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+
+/* ====================================================== */
+/* --- Barra de Navegação (Navbar) --- */
+/* ====================================================== */
+
+/* ====================================================== */
+/* --- Barra de Navegação (Navbar) - Versão Ajustada --- */
+/* ====================================================== */
+
+/* O posicionamento fixo do botão foi removido permanentemente. */
+.sticky-button-wrapper {
+    position: relative;
+    z-index: 1;
+    /* Apenas para garantir a ordem de empilhamento */
+}
+
+/* A barra principal, agora parte do fluxo da página */
+.main-navbar {
+    width: 100%;
+    /* A propriedade 'position: fixed' foi REMOVIDA */
+
+    /* Efeito de vidro (mantido) */
+    background-color: rgba(12, 15, 26, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    /* Borda inferior sutil (mantida) */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* Padding controla a altura e o alinhamento esquerdo/direito */
+    padding: 4px 20px;
+    /* ALTURA DIMINUÍDA e padding lateral aumentado */
+}
+
+/* O container interno que alinha o conteúdo */
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* O max-width e margin foram removidos para que o conteúdo se alinhe às bordas do container principal */
+}
+
+/* Estilo para a marca "IAgente" */
+.navbar-brand {
+    font-size: 1rem;
+    /* 24px */
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+/* ====================================================== */
+/* --- Botão Navbar - Estilo Azul com Borda Sempre Ativa --- */
+/* ====================================================== */
+
+/* O container exterior que segura a animação de gradiente */
+.navbar-button-animated {
+    position: relative;
+    padding: 1.5px;
+    /* Define a espessura da borda animada */
+    border-radius: 999px;
+    overflow: hidden;
+    display: inline-block;
+    text-decoration: none;
+    z-index: 1;
+}
+
+/* O gradiente giratório que forma a borda */
+.navbar-button-animated::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    width: calc(100% + 50px);
+    height: calc(100% + 50px);
+
+    /* GRADIENTE ALTERADO: Tons de azul e preto */
+    background: conic-gradient(from 0deg at 50% 50%, #0ea5e9, #2563eb, #001f3f, #0ea5e9);
+
+    animation: rotate-gradient 4s linear infinite;
+}
+
+/* O conteúdo interno do botão, com o fundo azul */
+.navbar-button-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+
+    /* COR ALTERADA: Fundo em tom de azul forte */
+    background-color: var(--dark-blue-bg);
+
+    /* COR ALTERADA: Texto branco para contraste */
+    color: var(--text-primary);
+
+    font-size: 0.875rem;
+    /* 14px */
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* Efeito de Hover */
+.navbar-button-animated:hover .navbar-button-content {
+    /* Fica um pouco mais claro no hover */
+    background-color: #070c14;
+    ;
+    transform: scale(1.02);
+    /* Leve efeito de zoom */
+}
+
+/* Estilo do ícone dentro do botão */
+.navbar-button-icon {
+    width: 18px;
+    /* Tamanho um pouco maior para o novo ícone */
+    height: 18px;
+
+    /* A mágica para a cor do ícone acompanhar a cor do texto */
+    fill: currentColor;
+
+    /* Garante que o ícone não encolha */
+    flex-shrink: 0;
+}
+
+/* Animação do gradiente (a mesma do outro botão) */
+@keyframes rotate-gradient {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* --- Botão Fixo Animado --- */
+.sticky-button-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.animated-gradient-button {
+    position: relative;
+    padding: 1.5px;
+    border-radius: 999px;
+    overflow: hidden;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.animated-gradient-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250%;
+    height: 250%;
+    background: conic-gradient(from 0deg at 50% 50%, #4090f7, #ae38ff, #f22969, #4090f7);
+    animation: rotate-gradient 4s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+.animated-gradient-button .button-content {
+    display: block;
+    padding: 12px 28px;
+    background-color: #07080d;
+    color: var(--text-primary);
+    border-radius: 999px;
+    position: relative;
+    z-index: 2;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.animated-gradient-button:hover .button-content {
+    background-color: #1a1b20;
+}
+
+@keyframes rotate-gradient {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* ====================================================== */
+/* --- Cabeçalho (Hero Section) Interativo --- */
+/* ====================================================== */
+
+.hero-section {
+    text-align: center;
+    padding: 10px 10px 100px;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(13, 17, 24, 0.9), var(--dark-blue-bg) 70%),
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(93, 43, 184, 0.2), var(--dark-blue-bg) 75%);
+}
+
+.hero-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: rgba(30, 35, 48, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    margin-bottom: 40px;
+}
+
+.hero-slides-container {
+    position: relative;
+    min-height: 220px;
+    /* Altura para evitar "pulos" de layout */
+    margin-bottom: 24px;
+}
+
+.hero-slide {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    /* Animação de entrada e saída */
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.hero-slide.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.hero-slide-icon {
+    height: 200px;
+    width: auto;
+    margin-bottom: 16px;
+}
+
+.hero-section .primary-heading {
+    margin: 0;
+    line-height: 1.1;
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    letter-spacing: -3px;
+    font-weight: 300;
+    /* Define a espessura da fonte como "Light" (fina) */
+}
+
+.hero-section .primary-heading strong {
+    color: var(--light-blue);
+    font-weight: 700;
+}
+
+.embaixo {
+    margin-top: 190px;
+}
+
+.hero-section .text-body {
+    max-width: 500px;
+    margin: 0 auto 40px auto;
+    font-size: 18px;
+    color: var(--text-secondary);
+}
+
+.hero-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    background-color: var(--light-blue);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.hero-cta-button:hover {
+    background-color: #5fa1f8;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(64, 144, 247, 0.2);
+}
+
+.hero-cta-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* ====================================================== */
+/* --- Novo Botão Fixo que Aparece com a Rolagem --- */
+/* ====================================================== */
+
+/* O container que fica fixo e controla a visibilidade */
+.botao-fixo {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    /* Centraliza o container */
+    transform: translateX(-50%) translateY(-150%);
+    /* Começa escondido acima da tela */
+
+    width: 90%;
+    /* Ocupa 90% da largura da tela */
+    max-width: 600px;
+    /* Largura máxima para telas grandes */
+    z-index: 1001;
+    /* Fica acima de outros elementos fixos */
+    padding: 12px 0;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+}
+
+/* Classe que o JavaScript adiciona para mostrar o botão */
+.botao-fixo.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    /* Desliza para a posição visível */
+}
+
+/* Ajustes para o animated-gradient-button se esticar dentro do novo container */
+.botao-fixo .animated-gradient-button {
+    display: block;
+    /* Permite que ele ocupe a largura total do container */
+    width: 100%;
+}
+
+.botao-fixo .button-content {
+    text-align: center;
+    /* Centraliza o texto dentro do botão esticado */
+}
+
+/* ====================================================== */
+/* --- Carrossel de Players (Híbrido: Automático/Arrastar) --- */
+/* ====================================================== */
+.logo-carousel-section {
+    padding: 60px 0 100px 0;
+}
+
+.logo-carousel-section .section-subtitle {
+    font-size: 22px;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto 50px auto;
+}
+
+.logo-carousel-section .section-subtitle strong {
+    color: var(--text-primary);
+}
+
+.logo-carousel-container {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+/* Estilo padrão para DESKTOP (rolagem automática) */
+
+.logo-carousel {
+    display: flex;
+    gap: 30px;
+    /* AUMENTADO: Mais espaço entre os cards maiores */
+    width: max-content;
+    animation: scroll-players 80s linear infinite;
+    /* ... (outras propriedades como overflow e scroll-snap-type na media query) ... */
+}
+
+.logo-carousel-container:hover .logo-carousel {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-players {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.player-card {
+    position: relative;
+    width: 180px;
+    height: 240px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.player-card:hover {
+    transform: translateY(-5px);
+}
+
+.player-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.player-card:hover img {
+    transform: scale(1.05);
+}
+
+.player-card figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 12px 12px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* --- Media Query para adaptar em CELULARES (telas menores que 768px) --- */
+@media (max-width: 768px) {
+
+    /* Remove o fade nas laterais */
+    .logo-carousel-container {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .logo-carousel {
+        /* Desliga a animação automática */
+        animation: none;
+
+        /* Ativa o scroll por toque */
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+
+        /* Oculta a barra de rolagem */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .logo-carousel::-webkit-scrollbar {
+        display: none;
+    }
+
+    .player-card {
+        /* Adiciona o ponto de "trava" para o scroll */
+        scroll-snap-align: start;
+        /* Adiciona o cursor de "agarrar" para indicar que é arrastável */
+        cursor: grab;
+    }
+
+    .player-card:active {
+        cursor: grabbing;
+    }
+}
+
+/* --- Seção "Afinal, o que é?" --- */
+.what-is-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.what-is-content .secondary-heading,
+.case-content .secondary-heading {
+    text-align: left;
+}
+
+.what-is-content .text-body {
+    max-width: 450px;
+    margin-bottom: 30px;
+}
+
+.flywheel-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: linear-gradient(180deg, rgba(35, 43, 56, 0.6) 0%, rgba(13, 17, 24, 0.4) 100%);
+    border: 1px solid var(--border-color-light);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.flywheel-card-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.flywheel-card h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.flywheel-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* ====================================================== */
+/* --- Diagrama Circular: Solução Responsiva --- */
+/* ====================================================== */
+.diagram-container {
+    --diagram-size: min(90vw, 400px);
+    /* NOVO: Tamanho base dinâmico */
+    --item-size: calc(var(--diagram-size) * 0.22);
+    /* NOVO: Tamanho do item */
+    --radius: calc(var(--diagram-size) * -0.42);
+    /* NOVO: Raio dinâmico */
+
+    position: relative;
+    width: var(--diagram-size);
+    /* ALTERADO */
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center center;
+}
+
+.diagram-glow {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(20, 25, 38, 0.5) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.diagram-path {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: rotate-path 60s linear infinite;
+}
+
+@keyframes rotate-path {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.diagram-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--item-size);
+    /* ALTERADO */
+    height: var(--item-size);
+    /* ALTERADO */
+    margin-left: calc(var(--item-size) / -2);
+    /* ALTERADO */
+    margin-top: calc(var(--item-size) / -2);
+    /* ALTERADO */
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: rotate(var(--angle)) translateY(var(--radius)) rotate(calc(-1 * var(--angle)));
+    /* ALTERADO */
+}
+
+.diagram-icon {
+    width: 70%;
+    /* ALTERADO para ser relativo ao item */
+    height: 70%;
+    /* ALTERADO */
+    margin: 0 auto 8%;
+    /* ALTERADO */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: radial-gradient(circle, #2a2a2e, #1e1e21);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.diagram-icon svg {
+    width: 45%;
+    /* ALTERADO */
+    height: 45%;
+    /* ALTERADO */
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.diagram-text .step {
+    display: block;
+    font-size: clamp(0.65rem, 2.5vw, 0.75rem);
+    /* NOVO: Fonte fluida */
+    color: var(--text-tertiary);
+    margin-bottom: 2px;
+}
+
+.diagram-text .title {
+    display: block;
+    font-size: clamp(0.8rem, 3.5vw, 1rem);
+    /* NOVO: Fonte fluida */
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.diagram-item:hover {
+    --hover-radius: calc(var(--radius) - 8px);
+    /* NOVO: Efeito de hover dinâmico */
+    transform: rotate(var(--angle)) translateY(var(--hover-radius)) rotate(calc(-1 * var(--angle))) scale(1.1);
+    /* ALTERADO */
+}
+
+.diagram-item:hover .diagram-icon {
+    border-color: rgba(64, 144, 247, 0.5);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(64, 144, 247, 0.3);
+}
+
+.diagram-item:hover .diagram-icon svg {
+    color: #fff;
+}
+
+.diagram-item:hover .diagram-text .title {
+    color: var(--light-blue);
+}
+
+
+/* --- Seção Case Study --- */
+.case-study {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 80px 0;
+}
+
+.case-study.reverse {
+    grid-template-columns: 1fr 1fr;
+}
+
+.case-study.reverse .case-image {
+    order: 2;
+}
+
+.case-study.reverse .case-content {
+    order: 1;
+}
+
+.case-image {
+    position: relative;
+}
+
+.case-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.case-content .secondary-heading {
+    margin-bottom: 16px;
+}
+
+.case-stats {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.case-stats p {
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.case-stats p::before {
+    content: '✓';
+    color: var(--light-blue);
+    margin-right: 12px;
+    font-weight: bold;
+}
+
+/* Border Animation */
+.case-image::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, var(--gradient-color-start), var(--light-blue), var(--gradient-color-end), var(--light-blue));
+    border-radius: 23px;
+    z-index: -1;
+    background-size: 300%;
+    animation: border-glow 5s linear infinite;
+    opacity: 1;
+    /* Initially visible for this design */
+}
+
+@keyframes border-glow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .case-study {
+        grid-template-columns: 1fr;
+        /* Stack elements vertically */
+        gap: 40px;
+        /* Adjust vertical gap */
+        text-align: center;
+        /* Center content */
+        padding: 60px 20px;
+    }
+
+    .case-study.reverse .case-image {
+        order: -1;
+        /* Image comes before content in reverse layout */
+    }
+
+    .case-study.reverse .case-content {
+        order: 1;
+        /* Content comes after image in reverse layout */
+    }
+
+    .case-stats {
+        align-items: center;
+        /* Center stats */
+    }
+
+    .case-stats p {
+        text-align: left;
+        /* Align text left within centered container */
+    }
+
+    /* Ensure border animation is visible on mobile as well */
+    .case-image::before {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .case-study {
+        padding: 40px 20px;
+    }
+
+    .case-content .secondary-heading {
+        font-size: 2rem;
+    }
+
+    .case-stats p {
+        font-size: 1rem;
+    }
+}
+
+:root {
+    --gradient-color-start: #222;
+    /* Adjust these colors to match your design */
+    --gradient-color-end: #111;
+}
+
+/* ====================================================== */
+/* --- Estilo ATUALIZADO da Tag "Quem Usa" --- */
+/* ====================================================== */
+/* ====================================================== */
+/* --- Estilo da Tag "Quem Usa" (com correção de largura) --- */
+/* ====================================================== */
+.section-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+
+    /* === CORREÇÃO DEFINITIVA PARA A LARGURA === */
+    width: -moz-fit-content;
+    /* Para compatibilidade com Firefox */
+    width: fit-content;
+    /* Força a largura a se ajustar ao conteúdo */
+    /* ======================================== */
+
+    background: linear-gradient(to right, rgba(0, 85, 255, 0.08), rgba(153, 153, 153, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+
+    margin-bottom: 24px;
+}
+
+/* ====================================================== */
+/* --- Posicionamento Responsivo da Tag "Quem Usa" --- */
+/* ====================================================== */
+
+/* Por padrão (DESKTOP): */
+/* -------------------- */
+
+/* A tag de celular fica escondida. */
+.section-tag-mobile {
+    display: none;
+    max-width: 150px;
+    margin-bottom: -25px;
+}
+
+.section-tag-mobile-h2 {
+    display: none;
+    margin-bottom: -25px;
+}
+
+/* A tag de desktop fica visível. */
+.section-tag-desktop {
+    display: block;
+    /* Garante que ela apareça */
+}
+
+
+/* Em telas pequenas (CELULAR): */
+/* ----------------------------- */
+@media (max-width: 768px) {
+
+    /* A tag de desktop some. */
+    .section-tag-desktop {
+        display: none;
+    }
+
+    /* A tag de celular aparece... */
+    .section-tag-mobile {
+        display: block;
+
+
+    }
+
+    /* A tag de celular aparece... */
+    .section-tag-mobile-h2 {
+        display: block;
+
+
+    }
+}
+
+/* ====================================================== */
+/* --- Seção de Depoimentos (Responsivo) --- */
+/* ====================================================== */
+
+.testimonials-section .secondary-heading {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Wrapper para o carrossel em DESKTOP */
+.scroller-wrapper {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.testimonials-scroller {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: scroll-testimonials 60s linear infinite;
+}
+
+@keyframes scroll-testimonials {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.testimonials-scroller:hover {
+    animation-play-state: paused;
+}
+
+.testimonial-card {
+    width: 380px;
+    flex-shrink: 0;
+    padding: 30px;
+    border-radius: 20px;
+    background: #101419;
+    border: 1px solid var(--border-color-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonial-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.testimonial-author img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-name {
+    display: block;
+    font-weight: 600;
+}
+
+.author-title {
+    font-size: 14px;
+    color: var(--text-tertiary);
+}
+
+
+/* ====================================================== */
+/* --- Media Query para Celulares (telas menores que 768px) --- */
+/* ====================================================== */
+@media (max-width: 768px) {
+
+    /* Remove o efeito de fade lateral */
+    .scroller-wrapper {
+        -webkit-mask-image: none;
+        mask-image: none;
+        overflow: visible;
+        /* Garante que as sombras não sejam cortadas */
+    }
+
+    .testimonials-scroller {
+        /* Desliga a animação de rolagem horizontal */
+        animation: none;
+
+        /* Empilha os cards verticalmente */
+        flex-direction: column;
+
+        /* Ajustes de layout para a vertical */
+        width: 100%;
+        align-items: center;
+        transform: none !important;
+        /* Garante que a posição seja resetada */
+    }
+
+    .testimonial-card {
+        /* Ajusta a largura para ocupar quase toda a tela */
+        width: 95%;
+        max-width: 400px;
+    }
+}
+
+/* --- Seção Configuração --- */
+.config-section {
+    text-align: center;
+}
+
+.config-section .secondary-heading {
+    text-align: center;
+}
+
+.config-section .section-subtitle {
+    margin: 16px auto 60px auto;
+    /* Ajuste na margem */
+    max-width: 500px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.integrations-grid {
+    display: flex;
+    /* Usando flex para centralizar as fileiras */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    /* Espaço entre as fileiras */
+}
+
+.integrations-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* Espaço entre os ícones */
+    flex-wrap: wrap;
+    /* Permite que os ícones quebrem a linha em telas menores */
+}
+
+.integration-item {
+    width: 90px;
+    /* Largura fixa para os cards */
+    height: 90px;
+    /* Altura fixa para os cards */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #2a2a2e, #1e1e21);
+    /* Gradiente sutil no fundo */
+    border-radius: 16px;
+    /* Bordas mais arredondadas */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Borda muito sutil */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    /* Sombra para profundidade */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.integration-item:hover {
+    transform: translateY(-5px);
+    /* Efeito de elevação no hover */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.integration-item img {
+    height: 36px;
+    /* Tamanho dos ícones ajustado */
+    width: 36px;
+    object-fit: contain;
+    /* Força todos os ícones a serem brancos, como na imagem */
+    filter: brightness(0) invert(1);
+}
+
+/* --- Banner Meta --- */
+/* --- Banner Meta com Gradiente CSS --- */
+.meta-banner {
+    padding: 60px 40px;
+    /* Aumentei o padding vertical para mais espaço */
+    margin: 80px 20px;
+    border-radius: 24px;
+    /* Bordas um pouco mais arredondadas */
+    text-align: center;
+    position: relative;
+    /* Necessário para conter os gradientes */
+    overflow: hidden;
+    /* Garante que o gradiente não vaze para fora das bordas */
+
+    /* A MÁGICA ACONTECE AQUI:
+      1. O primeiro radial-gradient cria a mancha de luz azul à esquerda.
+      2. O segundo radial-gradient cria a mancha de luz roxa à direita.
+      3. A cor sólida #f0f2f5 é a camada de fundo final.
+    */
+    background:
+        radial-gradient(circle at 15% 40%, rgba(0, 122, 255, 0.12), transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(200, 100, 255, 0.12), transparent 40%),
+        #f0f2f5;
+}
+
+.meta-banner img {
+    max-width: 600px;
+    width: 100%;
+}
+
+.meta-banner p {
+    /* Cor: Um cinza-escuro sofisticado, que é mais suave que o preto puro */
+    color: #4a5568;
+
+    /* Fonte e Espaçamento: Para máxima legibilidade */
+    font-size: 16px;
+    line-height: 1.65;
+
+    /* Largura e Alinhamento: Para que o texto não fique muito largo */
+    max-width: 750px;
+    margin-left: auto;
+    /* Centraliza o bloco de texto */
+    margin-right: auto;
+    /* Centraliza o bloco de texto */
+
+    /* Margem: Adiciona um espaço entre o logo da Meta e o parágrafo */
+    margin-top: 24px;
+}
+
+
+/* --- Seção CTA Final (Versão Corrigida) --- */
+.final-cta {
+    text-align: center;
+    padding: 100px 20px 180px;
+    /* Padding ajustado para dar espaço às curvas */
+    position: relative;
+    /* Necessário para posicionar as curvas */
+    overflow: hidden;
+    /* Esconde as partes das curvas que saem da seção */
+    background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(93, 43, 184, 0.25), var(--dark-blue-bg) 75%);
+    /* --- LINHAS ADICIONADAS PARA ANIMAÇÃO --- */
+    background-size: 200% 200%;
+    /* Deixa o fundo 2x maior que a seção */
+    animation: moveGradient 10s ease-in-out infinite;
+    /* Aplica a animação */
+}
+
+.final-cta .primary-heading {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2;
+}
+
+/* Essa regra garante o espaço entre o título e o seu botão original */
+.final-cta .animated-gradient-button {
+    margin-top: 40px;
+}
+
+/* Curva de fundo superior */
+.final-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 120%;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(64, 144, 247, 0.15) 0%, transparent 70%);
+    opacity: 0.8;
+}
+
+/* Curva de fundo inferior */
+.final-cta::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(50%);
+    width: 140%;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(64, 144, 247, 0.1) 0%, transparent 70%);
+    opacity: 0.7;
+}
+
+/* --- Adicione este bloco ao final do seu CSS --- */
+@keyframes moveGradient {
+    0% {
+        background-position: 50% 0%;
+    }
+
+    50% {
+        background-position: 50% 100%;
+    }
+
+    100% {
+        background-position: 50% 0%;
+    }
+}
+
+/* --- Rodapé --- */
+/* ====================================================== */
+/* --- Rodapé (Footer) - Versão Final Centralizada --- */
+/* ====================================================== */
+
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.footer-container-v2 {
+    max-width: 800px;
+    /* Limita a largura do conteúdo central */
+    margin: 0 auto;
+}
+
+.footer-title {
+
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+}
+
+.footer-legal-text {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text-tertiary);
+    margin-bottom: 40px;
+}
+
+.footer-links-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    /* Espaço entre as fileiras de "botões" */
+}
+
+.footer-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que os botões quebrem a linha em telas menores */
+    justify-content: center;
+    gap: 12px;
+}
+
+.footer-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #101419;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.footer-badge:hover {
+    background-color: #1c2129;
+    color: var(--text-primary);
+}
+
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+    .what-is-section {
+        grid-template-columns: 1fr;
+        gap: 80px;
+        text-align: center;
+    }
+
+    .what-is-content .secondary-heading {
+        text-align: center;
+    }
+
+    .what-is-content .text-body {
+        margin: 0 auto 30px auto;
+    }
+
+    .flywheel-card {
+        text-align: left;
+    }
+
+    .case-study,
+    .case-study.reverse {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .case-study.reverse .case-image,
+    .case-study.reverse .case-content {
+        order: initial;
+    }
+
+    .case-content {
+        text-align: center;
+    }
+
+    .case-content .secondary-heading {
+        text-align: center;
+    }
+
+    .case-stats {
+        align-items: center;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .primary-heading {
+        font-size: 2.2rem;
+    }
+
+    .hero-headline-container {
+        padding: 0 10px;
+    }
+
+    .hero-headline-container .primary-heading {
+        line-height: 1.2;
+    }
+
+    .text-body {
+        font-size: 16px;
+    }
+
+    .container {
+        padding: 60px 20px;
+    }
+
+    .case-stats {
+        align-items: start;
+    }
+
+    .sticky-button-wrapper {
+        top: auto;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .integrations-grid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* ====================================================== */
+/* --- Seção de Casos de Uso (Interativa) --- */
+/* ====================================================== */
+
+.container-fluid {
+    width: 100%;
+    padding: 100px 0;
+}
+
+.use-cases-section {
+    background: radial-gradient(ellipse at 50% 100%, rgba(20, 25, 38, 0.5) 0%, transparent 70%);
+}
+
+.use-cases-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.use-cases-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.use-cases-header h2 {
+
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 600;
+    letter-spacing: -2px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.use-cases-content {
+    display: grid;
+    grid-template-columns: 250px 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.use-cases-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-self: flex-start;
+}
+
+.use-case-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: var(--text-secondary);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.use-case-button svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+}
+
+.use-case-button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.use-case-button.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.use-case-button.active svg {
+    color: var(--light-blue);
+}
+
+.use-case-panel {
+    grid-column: 2 / 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    min-height: 400px;
+}
+
+.use-case-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.use-case-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 400px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.use-case-image.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.use-case-text-wrapper {
+    position: relative;
+}
+
+.use-case-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
+}
+
+.use-case-text.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.use-case-text h3 {
+
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    font-weight: 600;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    margin: 12px 0 16px 0;
+}
+
+.use-case-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 450px;
+}
+
+/* LAYOUT PARA DESKTOP */
+.use-cases-nav-mobile {
+    display: none; /* Esconde o menu de celular no desktop */
+}
+.use-cases-content {
+    display: grid;
+    grid-template-columns: 250px 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+.use-cases-nav-desktop {
+    display: flex; /* Garante que o menu de desktop esteja visível */
+    flex-direction: column;
+    gap: 12px;
+    align-self: flex-start;
+}
+
+/* LAYOUT PARA CELULAR (telas menores que 992px) */
+@media (max-width: 992px) {
+    .use-cases-nav-desktop {
+        display: none; /* Esconde o menu de desktop no celular */
+    }
+    .use-cases-nav-mobile {
+        display: flex; /* Mostra o menu de celular */
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        overflow-x: hidden;
+        margin-bottom: 180px; /* Espaço abaixo do menu mobile */
+    }
+
+    /* Ajusta o grid do conteúdo principal para uma única coluna no celular */
+    .use-cases-content {
+        grid-template-columns: 1fr;
+    }
+    .use-case-panel {
+        grid-column: 1 / -1;
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .use-case-text p {
+        margin: 0 auto;
+    }
+}

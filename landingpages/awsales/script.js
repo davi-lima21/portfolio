@@ -1,5 +1,4 @@
 // Aguarda o conteúdo da página ser totalmente carregado para executar qualquer script.
-// Este é o único "ouvinte" de DOMContentLoaded que precisamos.
 document.addEventListener("DOMContentLoaded", function () {
 
     // ======================================================
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setInterval(() => {
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
-        }, 4000); // 4000ms = 4 segundos
+        }, 4000);
     }
 
     // --- LÓGICA HÍBRIDA PARA CARROSSEL DE PLAYERS ---
@@ -70,29 +69,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // --- LÓGICA PARA O BOTÃO FIXO QUE APARECE COM A ROLAGEM ---
     function setupStickyButton() {
-    const stickyBtnWrapper = document.querySelector('.botao-fixo');
-    const heroSection = document.querySelector('.hero-section'); // A seção que precisa ser rolada para o botão aparecer
-
-    // Se os elementos não existirem, a função para.
-    if (!stickyBtnWrapper || !heroSection) return;
-
-    // Função que verifica a posição da rolagem
-    function checkScroll() {
-        // Pega a altura da seção hero
-        const heroHeight = heroSection.offsetHeight;
-
-        // Se a rolagem passar da metade da altura da seção hero, mostra o botão
-        if (window.scrollY > heroHeight / 2) {
-            stickyBtnWrapper.classList.add('is-visible');
-        } else {
-            stickyBtnWrapper.classList.remove('is-visible');
+        const stickyBtnWrapper = document.querySelector('.botao-fixo');
+        const heroSection = document.querySelector('.hero-section');
+        if (!stickyBtnWrapper || !heroSection) return;
+        function checkScroll() {
+            const heroHeight = heroSection.offsetHeight;
+            if (window.scrollY > heroHeight / 2) {
+                stickyBtnWrapper.classList.add('is-visible');
+            } else {
+                stickyBtnWrapper.classList.remove('is-visible');
+            }
         }
+        window.addEventListener('scroll', checkScroll);
     }
-
-    // "Ouve" o evento de rolagem da página para executar a verificação
-    window.addEventListener('scroll', checkScroll);
-}
 
     // --- LÓGICA PARA A SEÇÃO DE CASOS DE USO ---
     function setupUseCases() {
@@ -147,11 +138,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // 2. INICIALIZAÇÃO E CHAMADAS DAS FUNÇÕES
     // ======================================================
 
-    setupHeroSlider(); // NOVA função para o cabeçalho
+    setupHeroSlider();
     setupPlayerCarousel();
+    setupStickyButton();
     setupUseCases();
     setupTestimonials();
-    setupStickyButton();
 
     // ScrollReveal geral para os outros elementos
     ScrollReveal().reveal('[data-sr]', {
@@ -162,17 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
         interval: 100,
         reset: false
     });
+
 });
 
-// ======================================================
-// 3. EVENT LISTENERS GLOBAIS
-// ======================================================
-
-// Recarrega a página ao redimensionar para garantir a lógica correta (desktop vs. mobile)
-let resizeTimer;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        window.location.reload();
-    }, 250);
-});
+// O bloco de código de "resize" que causava o problema foi completamente removido.

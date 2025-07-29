@@ -25,35 +25,35 @@ document.addEventListener("DOMContentLoaded", function () {
     // —————————————————————————————————————————————
     // setupPlayerCarousel: Auto‑slide móvel de 3s + arraste
     // —————————————————————————————————————————————
-function setupPlayerCarousel() {
-  const carousel = document.querySelector('.logo-carousel');
-  if (!carousel) return;
+    function setupPlayerCarousel() {
+        const carousel = document.querySelector('.logo-carousel');
+        if (!carousel) return;
 
-  // 1) duplica uma vez para loop infinito (desktop e mobile)
-  if (!carousel.hasAttribute('data-cloned')) {
-    Array.from(carousel.children).forEach(card => {
-      const clone = card.cloneNode(true);
-      clone.setAttribute('aria-hidden', true);
-      carousel.appendChild(clone);
-    });
-    carousel.setAttribute('data-cloned','true');
-  }
+        // 1) duplica uma vez para loop infinito (desktop e mobile)
+        if (!carousel.hasAttribute('data-cloned')) {
+            Array.from(carousel.children).forEach(card => {
+                const clone = card.cloneNode(true);
+                clone.setAttribute('aria-hidden', true);
+                carousel.appendChild(clone);
+            });
+            carousel.setAttribute('data-cloned', 'true');
+        }
 
-  // 2) (opcional) drag–toque — só se quiser manter o swipe manual
-  // … seu código de startDrag/onDrag/endDrag aqui …
+        // 2) (opcional) drag–toque — só se quiser manter o swipe manual
+        // … seu código de startDrag/onDrag/endDrag aqui …
 
-  // 3) auto‑slide a cada 3s, em qualquer largura
-  const gap = parseInt(getComputedStyle(carousel).gap)||0;
-  const cardW = carousel.querySelector('.player-card').getBoundingClientRect().width + gap;
-  setInterval(()=>{
-    // se quiser pausar o auto‑slide ao arrastar:
-    // if (isDown) return;
-    carousel.scrollBy({ left: cardW, behavior:'smooth' });
-    if (carousel.scrollLeft + cardW >= carousel.scrollWidth/2) {
-      carousel.scrollLeft = 0;
+        // 3) auto‑slide a cada 3s, em qualquer largura
+        const gap = parseInt(getComputedStyle(carousel).gap) || 0;
+        const cardW = carousel.querySelector('.player-card').getBoundingClientRect().width + gap;
+        setInterval(() => {
+            // se quiser pausar o auto‑slide ao arrastar:
+            // if (isDown) return;
+            carousel.scrollBy({ left: cardW, behavior: 'smooth' });
+            if (carousel.scrollLeft + cardW >= carousel.scrollWidth / 2) {
+                carousel.scrollLeft = 0;
+            }
+        }, 3000);
     }
-  }, 3000);
-}
 
 
     function setupFloatingButton() {

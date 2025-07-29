@@ -87,28 +87,57 @@ function setupFloatingButton() {
 }
 
 
-    // --- LÓGICA PARA A SEÇÃO DE CASOS DE USO ---
-    function setupUseCases() {
-        const navButtons = document.querySelectorAll('.use-case-button');
-        if (!navButtons.length) return;
-        const imageSlides = document.querySelectorAll('.use-case-image');
-        const textSlides = document.querySelectorAll('.use-case-text');
-        navButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const activeCase = button.dataset.case;
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                imageSlides.forEach(image => image.classList.toggle('active', image.dataset.case === activeCase));
-                textSlides.forEach(text => text.classList.toggle('active', text.dataset.case === activeCase));
-            });
+// ====================================================== //
+// --- Lógica para a Seção de Casos de Uso (Híbrida) --- //
+// ====================================================== //
+
+function setupUseCases() {
+    const allNavButtons = document.querySelectorAll('.use-case-button');
+    if (!allNavButtons.length) return;
+
+    const imageSlides = document.querySelectorAll('.use-case-image');
+    const textSlides = document.querySelectorAll('.use-case-text');
+    let useCaseInterval; // Variável para controlar o autoplay
+
+    // Função centralizada que troca o conteúdo
+    function switchContentTo(caseName) {
+        allNavButtons.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.case === caseName);
         });
-        const initialButton = document.querySelector('.use-case-button[data-case="atendimento"]');
-        if (initialButton) {
-            initialButton.click();
-        } else {
-            navButtons[0].click();
-        }
+        imageSlides.forEach(image => image.classList.toggle('active', image.dataset.case === caseName));
+        textSlides.forEach(text => text.classList.toggle('active', text.dataset.case === caseName));
     }
+
+    // Adiciona o evento de clique para TODOS os botões
+    allNavButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            // AQUI ESTÁ A MÁGICA: O autoplay é parado em qualquer clique manual
+            clearInterval(useCaseInterval); 
+            switchContentTo(button.dataset.case);
+        });
+    });
+
+    // --- Lógica Responsiva ---
+    if (window.innerWidth <= 992) {
+        // CELULAR: Inicia com autoplay
+        const mobileNavButtons = Array.from(document.querySelectorAll('.use-cases-nav-mobile .use-case-button'));
+        let currentIndex = 0;
+
+        if (mobileNavButtons.length > 0) {
+            switchContentTo(mobileNavButtons[currentIndex].dataset.case);
+        }
+
+        useCaseInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % mobileNavButtons.length;
+            switchContentTo(mobileNavButtons[currentIndex].dataset.case);
+        }, 4000); // Troca a cada 4 segundos
+
+    } else {
+        // DESKTOP: Apenas define o slide inicial (controle manual)
+        switchContentTo('vendas');
+    }
+}
 
     // --- LÓGICA RESPONSIVA PARA DEPOIMENTOS ---
     function setupTestimonials() {

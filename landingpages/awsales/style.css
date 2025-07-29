@@ -26,7 +26,8 @@ body {
     color: var(--text-primary);
     font-family: 'Sora', sans-serif;
     /* <-- Nova fonte aplicada */
-    overflow-x: hidden;
+
+    overflow-x: clip;
 }
 
 [data-sr] {
@@ -99,6 +100,32 @@ body {
     font-size: 14px;
 }
 
+/* ====================================================== */
+/* --- Botão Flutuante (Solução Final e Estável) --- */
+/* ====================================================== */
+
+/* O container que controla a posição e visibilidade */
+.botao-flutuante {
+    position: fixed;
+    z-index: 1001;
+    
+    /* Posição: Canto inferior direito */
+    bottom: 20px;
+    left: 20px;
+    
+    /* Animação de entrada/saída */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px);
+    transition: all 0.5s ease-in-out;
+}
+
+/* Classe que o JavaScript adiciona para mostrar o botão */
+.botao-flutuante.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Desliza para a posição visível */
+}
 
 /* ====================================================== */
 /* --- Barra de Navegação (Navbar) --- */
@@ -129,26 +156,24 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
     /* Padding controla a altura e o alinhamento esquerdo/direito */
-    padding: 4px 5px;
+    padding: px 5px;
     /* ALTURA DIMINUÍDA e padding lateral aumentado */
 }
-
-/* O container interno que alinha o conteúdo */
 .navbar-content {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; -- REMOVIDO */
     align-items: center;
-
-    /* O max-width e margin foram removidos para que o conteúdo se alinhe às bordas do container principal */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 24px;
 }
 
-/* Estilo para a marca "IAgente" */
 .navbar-brand {
-    font-size: 1rem;
-    /* 24px */
+    font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-primary);
     text-decoration: none;
+    flex-grow: 1; /* FAZ A LOGO OCUPAR TODO O ESPAÇO, EMPURRANDO O BOTÃO */
 }
 
 .navbar-brand img {
@@ -471,26 +496,32 @@ body {
 /* --- Novo Botão Fixo que Aparece com a Rolagem --- */
 /* ====================================================== */
 
-/* O container que fica fixo e controla a visibilidade */
+/* Dentro da sua @media (max-width: 768px) */
+
 .botao-fixo {
+    display: block;
     position: fixed;
-    top: 0;
-    left: 50%;
-    /* Centraliza o container */
-    transform: translateX(-50%) translateY(-150%);
-    /* Começa escondido acima da tela */
-
-    width: 90%;
-    /* Ocupa 90% da largura da tela */
-    max-width: 600px;
-    /* Largura máxima para telas grandes */
     z-index: 1001;
-    /* Fica acima de outros elementos fixos */
-    padding: 12px 0;
+    bottom: 20px; /* Distância da base */
 
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s ease-in-out;
+    /* ===== TÉCNICA FINAL E CORRETA ===== */
+    /* Define uma margem fixa de 20px de cada lado */
+    left: 20px;
+    right: 20px;
+    
+    /* A largura (width) agora é calculada automaticamente pelo navegador */
+    width: auto;
+
+    /* REMOVEMOS as regras que causavam o conflito */
+    /* transform: translateX(-50%); -- REMOVIDO */
+    /* max-width: 500px; -- REMOVIDO */
+}
+
+/* Classe que o JavaScript adiciona para mostrar o botão */
+.botao-fixo.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Desliza para a posição visível */
 }
 
 /* Classe que o JavaScript adiciona para mostrar o botão */
@@ -506,6 +537,25 @@ body {
     display: block;
     /* Permite que ele ocupe a largura total do container */
     width: 100%;
+}
+
+@media (max-width: 768px) {
+.botao-fixo {
+display: flex; /* Usamos flexbox para centralizar o conteúdo */
+justify-content: center; 
+position: fixed;
+z-index: 1001;
+bottom: 20px;
+left: 20px;
+right: 20px;
+width: auto;
+}
+
+.botao-fixo > a {
+    display: block; /* Garante que o link ocupe a largura do pai */
+    width: 100%; /* O link ocupa a largura disponível */
+}
+
 }
 
 .botao-fixo .button-content {
@@ -592,6 +642,16 @@ body {
     font-size: 14px;
     font-weight: 500;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    /* ... outras regras como .primary-heading, .container, etc. ... */
+
+    .logo-carousel-section {
+        overflow-x: hidden;
+    }
+
+    /* ... resto das suas regras ... */
 }
 
 /* --- Seção "Afinal, o que é?" --- */
@@ -1403,6 +1463,35 @@ footer {
     max-width: 200px;
 }
 
+/* ====================================================== */
+/* --- Ícones de Redes Sociais do Rodapé --- */
+/* ====================================================== */
+
+.footer-social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px; /* Espaço entre os ícones */
+    margin-top: 30px;
+    margin: 30px
+}
+
+.footer-social-icons a {
+    color: var(--text-tertiary);
+    transition: all 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+    color: var(--light-blue);
+    transform: translateY(-3px); /* Efeito de elevação no hover */
+}
+
+.footer-social-icons svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor; /* Faz o ícone herdar a cor do link <a> */
+}
+
 /* --- Responsividade --- */
 @media (max-width: 992px) {
     .what-is-section {
@@ -1680,7 +1769,7 @@ footer {
     justify-content: center; /* Centraliza os botões */
     flex-wrap: wrap;         /* PERMITE a quebra de linha */
     gap: 12px;               /* Espaçamento entre os botões */
-    margin-bottom: 120px;     /* Espaço abaixo do menu */
+    margin-bottom: 160px;     /* Espaço abaixo do menu */
 }
 
 /* Estilo para os botões do menu mobile */

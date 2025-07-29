@@ -22,122 +22,133 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 4000);
     }
 
-    // --- LÓGICA HÍBRIDA PARA CARROSSEL DE PLAYERS ---
-    function setupPlayerCarousel() {
-        const carousel = document.querySelector('.logo-carousel');
-        if (!carousel) return;
-        if (window.innerWidth > 768) { // Desktop: Rolagem automática
-            const originalCards = Array.from(carousel.children);
-            if (originalCards.length > 0 && !carousel.hasAttribute('data-cloned')) {
-                originalCards.forEach(card => {
-                    const clone = card.cloneNode(true);
-                    clone.setAttribute('aria-hidden', true);
-                    carousel.appendChild(clone);
-                });
-                carousel.setAttribute('data-cloned', 'true');
+// —————————————————————————————————————————————
+// setupPlayerCarousel: Auto‑slide móvel de 3s + arraste
+// —————————————————————————————————————————————
+function setupPlayerCarousel() {
+  const carousel = document.querySelector('.logo-carousel');
+  if (!carousel) return;
+
+  // Desktop: mantém duplicação + CSS autoplay
+  if (window.innerWidth > 768) {
+    if (!carousel.hasAttribute('data-cloned')) {
+      Array.from(carousel.children).forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', true);
+        carousel.appendChild(clone);
+      });
+      carousel.setAttribute('data-cloned', 'true');
+    }
+    return;
+  }
+
+  // — mobile: touch-drag —
+  let isDown = false, startX = 0, scrollLeft = 0;
+  const startDrag = e => {
+    isDown = true;
+    startX = (e.touches ? e.touches[0].pageX : e.pageX) - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  };
+  const endDrag = () => { isDown = false; };
+  const onDrag = e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = (e.touches ? e.touches[0].pageX : e.pageX) - carousel.offsetLeft;
+    carousel.scrollLeft = scrollLeft - (x - startX);
+  };
+  ['mousedown','touchstart'].forEach(evt => 
+    carousel.addEventListener(evt, startDrag, { passive: evt === 'touchstart' })
+  );
+  ['mouseup','mouseleave','touchend'].forEach(evt => 
+    carousel.addEventListener(evt, endDrag)
+  );
+  ['mousemove','touchmove'].forEach(evt =>
+    carousel.addEventListener(evt, onDrag, { passive: false })
+  );
+
+  // — mobile: auto‑slide discreto a cada 3s —
+  const gap = parseInt(getComputedStyle(carousel).gap) || 0;
+  const cardWidth = carousel.querySelector('.player-card').getBoundingClientRect().width + gap;
+  setInterval(() => {
+    if (!isDown) {
+      carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      // loop infinito quando chegar em metade
+      if (carousel.scrollLeft + cardWidth >= carousel.scrollWidth / 2) {
+        carousel.scrollLeft = 0;
+      }
+    }
+  }, 3000);
+}
+
+    function setupFloatingButton() {
+        const floatingButton = document.querySelector('.botao-flutuante');
+        // Aparece depois que o usuário rolar 400 pixels para baixo
+        const scrollThreshold = 400;
+
+        if (!floatingButton) return;
+
+        function checkScroll() {
+            if (window.scrollY > scrollThreshold) {
+                floatingButton.classList.add('is-visible');
+            } else {
+                floatingButton.classList.remove('is-visible');
             }
-        } else { // Celular: Arrastar com o dedo
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-            carousel.addEventListener('mousedown', (e) => {
-                isDown = true;
-                startX = e.pageX - carousel.offsetLeft;
-                scrollLeft = carousel.scrollLeft;
+        }
+        window.addEventListener('scroll', checkScroll);
+    }
+
+
+    // ====================================================== //
+    // --- Lógica para a Seção de Casos de Uso (Híbrida) --- //
+    // ====================================================== //
+
+    function setupUseCases() {
+        const allNavButtons = document.querySelectorAll('.use-case-button');
+        if (!allNavButtons.length) return;
+
+        const imageSlides = document.querySelectorAll('.use-case-image');
+        const textSlides = document.querySelectorAll('.use-case-text');
+        let useCaseInterval; // Variável para controlar o autoplay
+
+        // Função centralizada que troca o conteúdo
+        function switchContentTo(caseName) {
+            allNavButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.case === caseName);
             });
-            carousel.addEventListener('mouseleave', () => { isDown = false; });
-            carousel.addEventListener('mouseup', () => { isDown = false; });
-            carousel.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
+            imageSlides.forEach(image => image.classList.toggle('active', image.dataset.case === caseName));
+            textSlides.forEach(text => text.classList.toggle('active', text.dataset.case === caseName));
+        }
+
+        // Adiciona o evento de clique para TODOS os botões
+        allNavButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
                 e.preventDefault();
-                const x = e.pageX - carousel.offsetLeft;
-                const walk = (x - startX) * 2;
-                carousel.scrollLeft = scrollLeft - walk;
+                // AQUI ESTÁ A MÁGICA: O autoplay é parado em qualquer clique manual
+                clearInterval(useCaseInterval);
+                switchContentTo(button.dataset.case);
             });
-            carousel.addEventListener('touchstart', (e) => {
-                isDown = true;
-                startX = e.touches[0].pageX - carousel.offsetLeft;
-                scrollLeft = carousel.scrollLeft;
-            }, { passive: true });
-            carousel.addEventListener('touchend', () => { isDown = false; });
-            carousel.addEventListener('touchmove', (e) => {
-                if (!isDown) return;
-                const x = e.touches[0].pageX - carousel.offsetLeft;
-                const walk = (x - startX) * 2;
-                carousel.scrollLeft = scrollLeft - walk;
-            }, { passive: true });
-        }
-    }
+        });
 
-function setupFloatingButton() {
-    const floatingButton = document.querySelector('.botao-flutuante');
-    // Aparece depois que o usuário rolar 400 pixels para baixo
-    const scrollThreshold = 400; 
+        // --- Lógica Responsiva ---
+        if (window.innerWidth <= 992) {
+            // CELULAR: Inicia com autoplay
+            const mobileNavButtons = Array.from(document.querySelectorAll('.use-cases-nav-mobile .use-case-button'));
+            let currentIndex = 0;
 
-    if (!floatingButton) return;
+            if (mobileNavButtons.length > 0) {
+                switchContentTo(mobileNavButtons[currentIndex].dataset.case);
+            }
 
-    function checkScroll() {
-        if (window.scrollY > scrollThreshold) {
-            floatingButton.classList.add('is-visible');
+            useCaseInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % mobileNavButtons.length;
+                switchContentTo(mobileNavButtons[currentIndex].dataset.case);
+            }, 4000); // Troca a cada 4 segundos
+
         } else {
-            floatingButton.classList.remove('is-visible');
+            // DESKTOP: Apenas define o slide inicial (controle manual)
+            switchContentTo('vendas');
         }
     }
-    window.addEventListener('scroll', checkScroll);
-}
-
-
-// ====================================================== //
-// --- Lógica para a Seção de Casos de Uso (Híbrida) --- //
-// ====================================================== //
-
-function setupUseCases() {
-    const allNavButtons = document.querySelectorAll('.use-case-button');
-    if (!allNavButtons.length) return;
-
-    const imageSlides = document.querySelectorAll('.use-case-image');
-    const textSlides = document.querySelectorAll('.use-case-text');
-    let useCaseInterval; // Variável para controlar o autoplay
-
-    // Função centralizada que troca o conteúdo
-    function switchContentTo(caseName) {
-        allNavButtons.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.case === caseName);
-        });
-        imageSlides.forEach(image => image.classList.toggle('active', image.dataset.case === caseName));
-        textSlides.forEach(text => text.classList.toggle('active', text.dataset.case === caseName));
-    }
-
-    // Adiciona o evento de clique para TODOS os botões
-    allNavButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            // AQUI ESTÁ A MÁGICA: O autoplay é parado em qualquer clique manual
-            clearInterval(useCaseInterval); 
-            switchContentTo(button.dataset.case);
-        });
-    });
-
-    // --- Lógica Responsiva ---
-    if (window.innerWidth <= 992) {
-        // CELULAR: Inicia com autoplay
-        const mobileNavButtons = Array.from(document.querySelectorAll('.use-cases-nav-mobile .use-case-button'));
-        let currentIndex = 0;
-
-        if (mobileNavButtons.length > 0) {
-            switchContentTo(mobileNavButtons[currentIndex].dataset.case);
-        }
-
-        useCaseInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % mobileNavButtons.length;
-            switchContentTo(mobileNavButtons[currentIndex].dataset.case);
-        }, 4000); // Troca a cada 4 segundos
-
-    } else {
-        // DESKTOP: Apenas define o slide inicial (controle manual)
-        switchContentTo('vendas');
-    }
-}
 
     // --- LÓGICA RESPONSIVA PARA DEPOIMENTOS ---
     function setupTestimonials() {

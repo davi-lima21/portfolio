@@ -22,37 +22,70 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 4000);
     }
 
-// --- LÓGICA PARA CARROSSEL DE PLAYERS (SEMPRE AUTOMÁTICO) ---
-function setupPlayerCarousel() {
-    const carousel = document.querySelector('.logo-carousel');
-    if (!carousel) return;
-
-    // A lógica agora é a mesma para todos os dispositivos: duplicar os cards.
-    const originalCards = Array.from(carousel.children);
-    if (originalCards.length > 0 && !carousel.hasAttribute('data-cloned')) {
-        originalCards.forEach(card => {
-            const clone = card.cloneNode(true);
-            clone.setAttribute('aria-hidden', true);
-            carousel.appendChild(clone);
-        });
-        carousel.setAttribute('data-cloned', 'true');
-    }
-}
-    // --- LÓGICA PARA O BOTÃO FIXO QUE APARECE COM A ROLAGEM ---
-    function setupStickyButton() {
-        const stickyBtnWrapper = document.querySelector('.botao-fixo');
-        const heroSection = document.querySelector('.hero-section');
-        if (!stickyBtnWrapper || !heroSection) return;
-        function checkScroll() {
-            const heroHeight = heroSection.offsetHeight;
-            if (window.scrollY > heroHeight / 2) {
-                stickyBtnWrapper.classList.add('is-visible');
-            } else {
-                stickyBtnWrapper.classList.remove('is-visible');
+    // --- LÓGICA HÍBRIDA PARA CARROSSEL DE PLAYERS ---
+    function setupPlayerCarousel() {
+        const carousel = document.querySelector('.logo-carousel');
+        if (!carousel) return;
+        if (window.innerWidth > 768) { // Desktop: Rolagem automática
+            const originalCards = Array.from(carousel.children);
+            if (originalCards.length > 0 && !carousel.hasAttribute('data-cloned')) {
+                originalCards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    clone.setAttribute('aria-hidden', true);
+                    carousel.appendChild(clone);
+                });
+                carousel.setAttribute('data-cloned', 'true');
             }
+        } else { // Celular: Arrastar com o dedo
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            carousel.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - carousel.offsetLeft;
+                scrollLeft = carousel.scrollLeft;
+            });
+            carousel.addEventListener('mouseleave', () => { isDown = false; });
+            carousel.addEventListener('mouseup', () => { isDown = false; });
+            carousel.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - carousel.offsetLeft;
+                const walk = (x - startX) * 2;
+                carousel.scrollLeft = scrollLeft - walk;
+            });
+            carousel.addEventListener('touchstart', (e) => {
+                isDown = true;
+                startX = e.touches[0].pageX - carousel.offsetLeft;
+                scrollLeft = carousel.scrollLeft;
+            }, { passive: true });
+            carousel.addEventListener('touchend', () => { isDown = false; });
+            carousel.addEventListener('touchmove', (e) => {
+                if (!isDown) return;
+                const x = e.touches[0].pageX - carousel.offsetLeft;
+                const walk = (x - startX) * 2;
+                carousel.scrollLeft = scrollLeft - walk;
+            }, { passive: true });
         }
-        window.addEventListener('scroll', checkScroll);
     }
+
+function setupFloatingButton() {
+    const floatingButton = document.querySelector('.botao-flutuante');
+    // Aparece depois que o usuário rolar 400 pixels para baixo
+    const scrollThreshold = 400; 
+
+    if (!floatingButton) return;
+
+    function checkScroll() {
+        if (window.scrollY > scrollThreshold) {
+            floatingButton.classList.add('is-visible');
+        } else {
+            floatingButton.classList.remove('is-visible');
+        }
+    }
+    window.addEventListener('scroll', checkScroll);
+}
+
 
     // --- LÓGICA PARA A SEÇÃO DE CASOS DE USO ---
     function setupUseCases() {
@@ -109,7 +142,7 @@ function setupPlayerCarousel() {
 
     setupHeroSlider();
     setupPlayerCarousel();
-    setupStickyButton();
+    setupFloatingButton();
     setupUseCases();
     setupTestimonials();
 

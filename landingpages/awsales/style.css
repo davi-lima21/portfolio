@@ -545,8 +545,7 @@ body {
 
 /* ====================================================== */
 /* --- Mobile: auto-slide discreto + touch-swipe ------- */
-/* ====================================================== */
-@media (max-width: 768px) {
+/* ====================================================== */@media (max-width: 768px) {
   .logo-carousel-container {
     overflow-x: auto;
     overflow-y: hidden;
@@ -561,7 +560,7 @@ body {
   }
 
   .logo-carousel {
-    animation: none;
+
     gap: 15px;
     padding: 0 20px;
     scroll-snap-type: x mandatory;

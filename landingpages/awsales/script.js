@@ -22,63 +22,39 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 4000);
     }
 
-// —————————————————————————————————————————————
-// setupPlayerCarousel: Auto‑slide móvel de 3s + arraste
-// —————————————————————————————————————————————
+    // —————————————————————————————————————————————
+    // setupPlayerCarousel: Auto‑slide móvel de 3s + arraste
+    // —————————————————————————————————————————————
 function setupPlayerCarousel() {
   const carousel = document.querySelector('.logo-carousel');
   if (!carousel) return;
 
-  // Desktop: mantém duplicação + CSS autoplay
-  if (window.innerWidth > 768) {
-    if (!carousel.hasAttribute('data-cloned')) {
-      Array.from(carousel.children).forEach(card => {
-        const clone = card.cloneNode(true);
-        clone.setAttribute('aria-hidden', true);
-        carousel.appendChild(clone);
-      });
-      carousel.setAttribute('data-cloned', 'true');
-    }
-    return;
+  // 1) duplica uma vez para loop infinito (desktop e mobile)
+  if (!carousel.hasAttribute('data-cloned')) {
+    Array.from(carousel.children).forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', true);
+      carousel.appendChild(clone);
+    });
+    carousel.setAttribute('data-cloned','true');
   }
 
-  // — mobile: touch-drag —
-  let isDown = false, startX = 0, scrollLeft = 0;
-  const startDrag = e => {
-    isDown = true;
-    startX = (e.touches ? e.touches[0].pageX : e.pageX) - carousel.offsetLeft;
-    scrollLeft = carousel.scrollLeft;
-  };
-  const endDrag = () => { isDown = false; };
-  const onDrag = e => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = (e.touches ? e.touches[0].pageX : e.pageX) - carousel.offsetLeft;
-    carousel.scrollLeft = scrollLeft - (x - startX);
-  };
-  ['mousedown','touchstart'].forEach(evt => 
-    carousel.addEventListener(evt, startDrag, { passive: evt === 'touchstart' })
-  );
-  ['mouseup','mouseleave','touchend'].forEach(evt => 
-    carousel.addEventListener(evt, endDrag)
-  );
-  ['mousemove','touchmove'].forEach(evt =>
-    carousel.addEventListener(evt, onDrag, { passive: false })
-  );
+  // 2) (opcional) drag–toque — só se quiser manter o swipe manual
+  // … seu código de startDrag/onDrag/endDrag aqui …
 
-  // — mobile: auto‑slide discreto a cada 3s —
-  const gap = parseInt(getComputedStyle(carousel).gap) || 0;
-  const cardWidth = carousel.querySelector('.player-card').getBoundingClientRect().width + gap;
-  setInterval(() => {
-    if (!isDown) {
-      carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-      // loop infinito quando chegar em metade
-      if (carousel.scrollLeft + cardWidth >= carousel.scrollWidth / 2) {
-        carousel.scrollLeft = 0;
-      }
+  // 3) auto‑slide a cada 3s, em qualquer largura
+  const gap = parseInt(getComputedStyle(carousel).gap)||0;
+  const cardW = carousel.querySelector('.player-card').getBoundingClientRect().width + gap;
+  setInterval(()=>{
+    // se quiser pausar o auto‑slide ao arrastar:
+    // if (isDown) return;
+    carousel.scrollBy({ left: cardW, behavior:'smooth' });
+    if (carousel.scrollLeft + cardW >= carousel.scrollWidth/2) {
+      carousel.scrollLeft = 0;
     }
   }, 3000);
 }
+
 
     function setupFloatingButton() {
         const floatingButton = document.querySelector('.botao-flutuante');

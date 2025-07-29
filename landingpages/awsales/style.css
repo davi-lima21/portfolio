@@ -428,13 +428,24 @@ body {
     margin-bottom: 16px;
 }
 
-.hero-section .primary-heading {
+.primary-heading {
     margin: 0;
     line-height: 1.1;
     font-size: clamp(3rem, 7vw, 4.5rem);
     letter-spacing: -3px;
     font-weight: 300;
     /* Define a espessura da fonte como "Light" (fina) */
+}
+
+
+.secondary-heading {
+    margin: 0;
+    line-height: 1.1;
+/* Tamanho da fonte diminuído */
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    letter-spacing: -3px;
+    font-weight: 300;
+    text-align: left;
 }
 
 .embaixo {
@@ -545,7 +556,8 @@ body {
 
 /* ====================================================== */
 /* --- Mobile: auto-slide discreto + touch-swipe ------- */
-/* ====================================================== */@media (max-width: 768px) {
+/* ====================================================== */
+@media (max-width: 768px) {
   .logo-carousel-container {
     overflow-x: auto;
     overflow-y: hidden;

@@ -30,6 +30,12 @@ body {
     overflow-x: clip;
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
+
 [data-sr] {
     visibility: hidden;
 }
@@ -104,27 +110,37 @@ body {
 /* --- Botão Flutuante (Solução Final e Estável) --- */
 /* ====================================================== */
 
+/* ====================================================== */
+/* --- Botão Flutuante (Solução Final e Estável) --- */
+/* ====================================================== */
+
 /* O container que controla a posição e visibilidade */
 .botao-flutuante {
     position: fixed;
     z-index: 1001;
-    
-    /* Posição: Canto inferior direito */
+
+    /* Posição: Canto inferior, mas centralizado na largura */
     bottom: 20px;
-    left: 20px;
-    
-    /* Animação de entrada/saída */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(100px);
+    left: 50%;
+
+    /* Desce 100px e já centraliza no eixo X */
+    transform: translate(-50%, 100px);
+
     transition: all 0.5s ease-in-out;
 }
 
-/* Classe que o JavaScript adiciona para mostrar o botão */
+/* Quando ficar visível, só anima o Y de volta a 0 */
 .botao-flutuante.is-visible {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0); /* Desliza para a posição visível */
+    transform: translate(-50%, 0);
+}
+
+/* O posicionamento fixo do botão foi removido permanentemente. */
+.sticky-button-wrapper {
+    position: relative;
+    z-index: 1;
+    /* Apenas para garantir a ordem de empilhamento */
 }
 
 /* ====================================================== */
@@ -357,15 +373,16 @@ body {
 
 .hero-tag {
     display: inline-block;
-    padding: 6px 14px;
-    border-radius: 8px;
+    padding: 3px 14px;
+    border-radius: 999px;
     font-size: 12px;
     font-weight: 500;
-    color: var(--text-secondary);
-    background: rgba(30, 35, 48, 0.5);
+    color: #90a2af;
+    background: #181e26;
     border: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(5px);
     margin-bottom: 40px;
+    letter-spacing: 0.08em;
 }
 
 .hero-slides-container {
@@ -457,7 +474,42 @@ font-size: clamp(2.5rem, 5vw, 3.8rem);
 }
 
 .embaixo {
-    margin-top: 195px;
+    margin-top: 100px;
+    display: flex;
+    /* Adiciona flexbox para controlar o alinhamento dos itens */
+    flex-direction: column;
+    /* Garante que os itens fiquem em coluna */
+    align-items: center;
+    /* Alinha os itens à esquerda */
+}
+
+.embaixo h1 {
+    margin: 0;
+    line-height: 1.1;
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    letter-spacing: -3px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+.embaixo h1 strong:first-child {
+    /* Estiliza o primeiro  (o "com") */
+    color: #7b8e9d;
+    display: block;
+
+
+}
+
+.embaixo .titulo {
+    background: linear-gradient(90deg, #a855f7, #3b82f6, #0ea5e9, #3b82f6, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: text-gradient-shine 5s linear infinite;
+    text-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
+
 }
 .botao-hero{
     margin-top: -20px;
@@ -568,6 +620,47 @@ width: auto;
 /* ====================================================== */
 /* --- Carrossel de Players (Rolagem Automática Sempre Ativa) --- */
 /* ====================================================== */
+@media (max-width: 768px) {
+  .logo-carousel-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-mask-image: none;
+    mask-image: none;
+    /* oculta barras em todos navegadores */
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* IE10+ */
+  }
+  .logo-carousel-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .logo-carousel {
+
+    gap: 15px;
+    padding: 0 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    user-select: none;
+    cursor: grab;
+  }
+  .logo-carousel:active {
+    cursor: grabbing;
+  }
+
+  .player-card {
+    flex-shrink: 0;
+    width: 180px;
+    height: 240px;
+    scroll-snap-align: center;
+  }
+}
+
+
+
+/* ====================================================== */
+/* --- Carrossel de Players (Rolagem Automática Sempre Ativa) --- */
+/* ====================================================== */
 .logo-carousel-section {
     padding: 60px 0 100px 0;
 }
@@ -589,23 +682,58 @@ width: auto;
     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
-.logo-carousel {
-    display: flex;
-    gap: 30px;
-    width: max-content;
-    animation: scroll-players 80s linear infinite;
-}
 
 .logo-carousel-container:hover .logo-carousel {
     animation-play-state: paused;
 }
 
+.logo-carousel {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: scroll-players 40s linear infinite;
+}
+
 @keyframes scroll-players {
-    from {
-        transform: translateX(0);
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* ====================================================== */
+/* --- Mobile: auto‑scroll + arrastar com o dedo ------- */
+/* ====================================================== */
+@media (max-width: 768px) {
+    /* container passa a ser rolável */
+    .logo-carousel-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-mask-image: none;
+        mask-image: none;
+        padding: 0; /* remove fades e paddings fixos */
     }
-    to {
-        transform: translateX(-50%);
+
+    /* desliga animação CSS (usaremos JS) e ativa scroll nativo */
+    .logo-carousel {
+        animation: none;
+        display: flex;
+        gap: 15px;
+        padding: 0 20px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        user-select: none;
+        cursor: grab;
+    }
+    .logo-carousel:active {
+        cursor: grabbing;
+    }
+
+    /* cada card “encaixa” no centro */
+    .player-card {
+        flex-shrink: 0;
+        width: 180px;
+        height: 240px;
+        scroll-snap-align: center;
     }
 }
 
@@ -647,15 +775,8 @@ width: auto;
     text-align: center;
 }
 
-@media (max-width: 768px) {
-    /* ... outras regras como .primary-heading, .container, etc. ... */
 
-    .logo-carousel-section {
-        overflow-x: hidden;
-    }
 
-    /* ... resto das suas regras ... */
-}
 
 /* --- Seção "Afinal, o que é?" --- */
 .what-is-section {
@@ -1797,7 +1918,7 @@ footer {
     display: none; /* Esconde o menu de desktop no celular */
 }
 .use-case-text-wrapper{
-    margin-top: 100px;
+    margin-top: 120px;
 }
 
 /* Container do menu mobile */

@@ -77,7 +77,7 @@ body {
 
 .text-body {
     color: var(--text-secondary);
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.7;
     max-width: 650px;
 }
@@ -264,9 +264,9 @@ body {
 
 /* Estilo do ícone dentro do botão */
 .navbar-button-icon {
-    width: 18px;
+    width: 16px;
     /* Tamanho um pouco maior para o novo ícone */
-    height: 18px;
+    height: 16px;
 
     /* A mágica para a cor do ícone acompanhar a cor do texto */
     fill: currentColor;
@@ -406,7 +406,8 @@ body {
 .hero-section .primary-heading {
     margin: 0;
     line-height: 1.1;
-    font-size: clamp(3rem, 7vw, 4.5rem);
+/* Tamanho da fonte diminuído */
+font-size: clamp(2.5rem, 5vw, 3.8rem);
     letter-spacing: -3px;
     font-weight: 300;
     /* Define a espessura da fonte como "Light" (fina) */
@@ -456,13 +457,15 @@ body {
 }
 
 .embaixo {
-    margin-top: 190px;
+    margin-top: 195px;
 }
-
+.botao-hero{
+    margin-top: -20px;
+}
 .hero-section .text-body {
     max-width: 500px;
     margin: 0 auto 40px auto;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--text-secondary);
 }
 
@@ -1145,7 +1148,7 @@ width: auto;
 }
 
 .testimonial-text {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.7;
     color: var(--text-secondary);
     margin-bottom: 24px;
@@ -1386,7 +1389,7 @@ width: auto;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.2;
+    line-height: 1;
 }
 
 /* Essa regra garante o espaço entre o título e o seu botão original */
@@ -1720,7 +1723,7 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -1763,7 +1766,7 @@ footer {
 }
 
 .use-case-text p {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.7;
     color: var(--text-secondary);
     max-width: 450px;
@@ -1803,7 +1806,7 @@ footer {
     justify-content: center; /* Centraliza os botões */
     flex-wrap: wrap;         /* PERMITE a quebra de linha */
     gap: 12px;               /* Espaçamento entre os botões */
-    margin-bottom: 160px;     /* Espaço abaixo do menu */
+    margin-bottom: 180px;     /* Espaço abaixo do menu */
 }
 
 /* Estilo para os botões do menu mobile */

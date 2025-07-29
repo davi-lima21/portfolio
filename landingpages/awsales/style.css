@@ -233,6 +233,19 @@ body {
         height: 16px;
     }
 }
+
+@media (max-width: 368px){
+    .navbar-button-icon{
+                width: 10px;
+        height: 10px;
+    }
+        /* Diminui o tamanho do conteúdo do botão */
+    .navbar-button-content {
+        padding: 4px 10px;      /* Reduz o espaçamento interno */
+        font-size: 0.7rem;   /* Diminui a fonte (equivalente a 13px) */
+        gap: 6px;               /* Diminui o espaço entre o ícone e o texto */
+    }
+}
 /* O conteúdo interno do botão, com o fundo azul */
 .navbar-button-content {
     display: flex;
@@ -1686,7 +1699,7 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease, visibility 0.5s ease;

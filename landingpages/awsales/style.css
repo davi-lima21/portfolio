@@ -62,7 +62,7 @@ body {
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 100px 20px;
+    padding: 100px 0px;
 }
 
 .secondary-heading {
@@ -121,7 +121,7 @@ body {
     /* A propriedade 'position: fixed' foi REMOVIDA */
 
     /* Efeito de vidro (mantido) */
-    background-color: rgba(12, 15, 26, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
@@ -129,7 +129,7 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
     /* Padding controla a altura e o alinhamento esquerdo/direito */
-    padding: 4px 20px;
+    padding: 4px 5px;
     /* ALTURA DIMINUÍDA e padding lateral aumentado */
 }
 
@@ -149,6 +149,12 @@ body {
     font-weight: 600;
     color: var(--text-primary);
     text-decoration: none;
+}
+
+.navbar-brand img {
+    height: 25px; /* Altura ideal para a logo na navbar */
+    width: auto;  /* A largura se ajusta automaticamente */
+    display: block; /* Remove qualquer espaçamento extra abaixo da imagem */
 }
 
 /* ====================================================== */
@@ -184,6 +190,24 @@ body {
     animation: rotate-gradient 4s linear infinite;
 }
 
+/* ====================================================== */
+/* --- Responsivo para o Botão da Navbar (Celular) --- */
+/* ====================================================== */
+
+@media (max-width: 768px) {
+    /* Diminui o tamanho do conteúdo do botão */
+    .navbar-button-content {
+        padding: 6px 12px;      /* Reduz o espaçamento interno */
+        font-size: 0.8125rem;   /* Diminui a fonte (equivalente a 13px) */
+        gap: 6px;               /* Diminui o espaço entre o ícone e o texto */
+    }
+
+    /* Diminui o tamanho do ícone */
+    .navbar-button-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
 /* O conteúdo interno do botão, com o fundo azul */
 .navbar-button-content {
     display: flex;
@@ -193,7 +217,7 @@ body {
     border-radius: 999px;
 
     /* COR ALTERADA: Fundo em tom de azul forte */
-    background-color: var(--dark-blue-bg);
+    background-color: #000;
 
     /* COR ALTERADA: Texto branco para contraste */
     color: var(--text-primary);
@@ -300,8 +324,10 @@ body {
 .hero-section {
     text-align: center;
     padding: 10px 10px 100px;
-    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(13, 17, 24, 0.9), var(--dark-blue-bg) 70%),
-        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(93, 43, 184, 0.2), var(--dark-blue-bg) 75%);
+    /* FUNDO: Base preta com o brilho azul #0d1b34 vindo de baixo */
+    background: 
+        radial-gradient(ellipse 80% 60% at 50% 100%, #0d1b34, transparent),
+        #000000;
 }
 
 .hero-tag {
@@ -361,9 +387,47 @@ body {
     /* Define a espessura da fonte como "Light" (fina) */
 }
 
+/* ====================================================== */
+/* --- Estilo do Texto com Gradiente Animado --- */
+/* ====================================================== */
+
 .hero-section .primary-heading strong {
-    color: var(--light-blue);
-    font-weight: 700;
+    /* 1. O Gradiente */
+    /* Criamos um fundo com um gradiente de cores azuis e roxos. */
+    background: linear-gradient(90deg, #a855f7, #3b82f6, #0ea5e9, #3b82f6, #a855f7);
+    
+    /* 2. A Mágica do Recorte */
+    /* Recortamos o fundo para que ele só apareça no formato do texto. */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* 3. A Revelação */
+    /* Deixamos a cor do texto transparente para que o fundo gradiente apareça. */
+    color: transparent;
+    
+    /* 4. A Animação */
+    /* Definimos um tamanho de fundo maior que o texto e aplicamos a animação. */
+    background-size: 200% auto;
+    animation: text-gradient-shine 5s linear infinite;
+
+    /* Efeito de brilho sutil para destacar */
+    text-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
+}
+
+/* ====================================================== */
+/* --- Animação do Gradiente do Texto --- */
+/* ====================================================== */
+/* (Adicione este bloco ao final do seu arquivo CSS) */
+
+@keyframes text-gradient-shine {
+    from {
+        /* A animação começa com o gradiente totalmente à direita */
+        background-position: 200% center;
+    }
+    to {
+        /* E termina com o gradiente totalmente à esquerda, criando o efeito de deslize */
+        background-position: 0% center;
+    }
 }
 
 .embaixo {
@@ -448,9 +512,8 @@ body {
     text-align: center;
     /* Centraliza o texto dentro do botão esticado */
 }
-
 /* ====================================================== */
-/* --- Carrossel de Players (Híbrido: Automático/Arrastar) --- */
+/* --- Carrossel de Players (Rolagem Automática Sempre Ativa) --- */
 /* ====================================================== */
 .logo-carousel-section {
     padding: 60px 0 100px 0;
@@ -473,15 +536,11 @@ body {
     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
-/* Estilo padrão para DESKTOP (rolagem automática) */
-
 .logo-carousel {
     display: flex;
     gap: 30px;
-    /* AUMENTADO: Mais espaço entre os cards maiores */
     width: max-content;
     animation: scroll-players 80s linear infinite;
-    /* ... (outras propriedades como overflow e scroll-snap-type na media query) ... */
 }
 
 .logo-carousel-container:hover .logo-carousel {
@@ -492,7 +551,6 @@ body {
     from {
         transform: translateX(0);
     }
-
     to {
         transform: translateX(-50%);
     }
@@ -534,44 +592,6 @@ body {
     font-size: 14px;
     font-weight: 500;
     text-align: center;
-}
-
-/* --- Media Query para adaptar em CELULARES (telas menores que 768px) --- */
-@media (max-width: 768px) {
-
-    /* Remove o fade nas laterais */
-    .logo-carousel-container {
-        -webkit-mask-image: none;
-        mask-image: none;
-    }
-
-    .logo-carousel {
-        /* Desliga a animação automática */
-        animation: none;
-
-        /* Ativa o scroll por toque */
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-
-        /* Oculta a barra de rolagem */
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    .logo-carousel::-webkit-scrollbar {
-        display: none;
-    }
-
-    .player-card {
-        /* Adiciona o ponto de "trava" para o scroll */
-        scroll-snap-align: start;
-        /* Adiciona o cursor de "agarrar" para indicar que é arrastável */
-        cursor: grab;
-    }
-
-    .player-card:active {
-        cursor: grabbing;
-    }
 }
 
 /* --- Seção "Afinal, o que é?" --- */
@@ -1166,6 +1186,41 @@ body {
     filter: brightness(0) invert(1);
 }
 
+/* ====================================================== */
+/* --- Responsivo para a Seção de Integrações (Celular) --- */
+/* ====================================================== */
+
+@media (max-width: 768px) {
+    /* Transforma o container principal em um grid */
+    .integrations-grid {
+        display: grid;
+        /* Cria exatamente 4 colunas de largura igual */
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px; /* Um espaçamento um pouco menor para celular */
+        width: 100%;
+    }
+
+    /* Este é o truque principal:
+      Faz com que as divs de "fileira" sejam ignoradas pelo layout do grid,
+      promovendo seus "filhos" (os ícones) para o grid principal.
+    */
+    .integrations-row {
+        display: contents;
+    }
+
+    .sumir-desktop{
+        display: none;
+    }
+
+    /* Ajusta os itens para se adaptarem ao novo grid */
+    .integration-item {
+        width: auto; /* Deixa o grid controlar a largura */
+        height: auto;
+        /* A forma mais moderna de garantir que os cards sejam quadrados */
+        aspect-ratio: 1 / 1;
+    }
+}
+
 /* --- Banner Meta --- */
 /* --- Banner Meta com Gradiente CSS --- */
 .meta-banner {
@@ -1245,19 +1300,7 @@ body {
     margin-top: 40px;
 }
 
-/* Curva de fundo superior */
-.final-cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    width: 120%;
-    height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at 50% 50%, rgba(64, 144, 247, 0.15) 0%, transparent 70%);
-    opacity: 0.8;
-}
+
 
 /* Curva de fundo inferior */
 .final-cta::after {
@@ -1318,6 +1361,7 @@ footer {
     line-height: 1.8;
     color: var(--text-tertiary);
     margin-bottom: 40px;
+    margin-top: 30px;
 }
 
 .footer-links-container {
@@ -1350,6 +1394,13 @@ footer {
 .footer-badge:hover {
     background-color: #1c2129;
     color: var(--text-primary);
+}
+.link-logo{
+    margin-bottom: 40px;
+}
+
+.logo-footer{
+    max-width: 200px;
 }
 
 /* --- Responsividade --- */
@@ -1614,28 +1665,52 @@ footer {
 
 /* LAYOUT PARA CELULAR (telas menores que 992px) */
 @media (max-width: 992px) {
-    .use-cases-nav-desktop {
-        display: none; /* Esconde o menu de desktop no celular */
-    }
-    .use-cases-nav-mobile {
-        display: flex; /* Mostra o menu de celular */
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: center;
-        overflow-x: hidden;
-        margin-bottom: 180px; /* Espaço abaixo do menu mobile */
-    }
+/* Dentro da sua @media (max-width: 992px) */
 
-    /* Ajusta o grid do conteúdo principal para uma única coluna no celular */
-    .use-cases-content {
-        grid-template-columns: 1fr;
-    }
-    .use-case-panel {
-        grid-column: 1 / -1;
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .use-case-text p {
-        margin: 0 auto;
-    }
+.use-cases-nav-desktop {
+    display: none; /* Esconde o menu de desktop no celular */
+}
+.use-case-text-wrapper{
+    margin-top: 100px;
+}
+
+/* Container do menu mobile */
+.use-cases-nav-mobile {
+    display: flex;
+    justify-content: center; /* Centraliza os botões */
+    flex-wrap: wrap;         /* PERMITE a quebra de linha */
+    gap: 12px;               /* Espaçamento entre os botões */
+    margin-bottom: 120px;     /* Espaço abaixo do menu */
+}
+
+/* Estilo para os botões do menu mobile */
+.use-cases-nav-mobile .use-case-button {
+    transition: all 0.4s ease;
+    transform: scale(1); /* Tamanho normal por padrão */
+    opacity: 0.7;        /* Opacidade para botões inativos */
+}
+
+/* Estilo para o botão ATIVO, com um pouco mais de destaque */
+.use-cases-nav-mobile .use-case-button.active {
+    transform: scale(1.05); /* Destaque sutil */
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+}
+
+/* Ajusta o layout do conteúdo principal para uma única coluna */
+.use-cases-content {
+    grid-template-columns: 1fr;
+}
+
+.use-case-panel {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.use-case-text p {
+    margin: 0 auto;
+}
 }

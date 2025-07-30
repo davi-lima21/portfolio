@@ -432,7 +432,7 @@ body {
     margin: 0;
     line-height: 1.1;
     font-size: clamp(3rem, 7vw, 4.5rem);
-    letter-spacing: -3px;
+    letter-spacing: -1px;
     font-weight: 300;
     /* Define a espessura da fonte como "Light" (fina) */
 }
@@ -443,7 +443,7 @@ body {
     line-height: 1.1;
 /* Tamanho da fonte diminuído */
     font-size: clamp(2.5rem, 5vw, 3.8rem);
-    letter-spacing: -3px;
+    letter-spacing: -1px;
     font-weight: 300;
     text-align: left;
 }
@@ -462,7 +462,7 @@ body {
     margin: 0;
     line-height: 1.1;
     font-size: clamp(3rem, 7vw, 4.5rem);
-    letter-spacing: -3px;
+    letter-spacing: -1px;
     font-weight: 300;
     margin-bottom: 20px;
     margin-top: 15px;
@@ -557,46 +557,8 @@ body {
 /* ====================================================== */
 /* --- Mobile: auto-slide discreto + touch-swipe ------- */
 /* ====================================================== */
-@media (max-width: 768px) {
-  .logo-carousel-container {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-mask-image: none;
-    mask-image: none;
-    /* oculta barras em todos navegadores */
-    scrollbar-width: none;        /* Firefox */
-    -ms-overflow-style: none;     /* IE10+ */
-  }
-  .logo-carousel-container::-webkit-scrollbar {
-    display: none;
-  }
-
-  .logo-carousel {
-
-    gap: 15px;
-    padding: 0 20px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
-    user-select: none;
-    cursor: grab;
-  }
-  .logo-carousel:active {
-    cursor: grabbing;
-  }
-
-  .player-card {
-    flex-shrink: 0;
-    width: 180px;
-    height: 240px;
-    scroll-snap-align: center;
-  }
-}
-
-
-
 /* ====================================================== */
-/* --- Carrossel de Players (Rolagem Automática Sempre Ativa) --- */
+/* --- Carrossel de Players (Slide Automático Inteligente) --- */
 /* ====================================================== */
 .logo-carousel-section {
     padding: 60px 0 100px 0;
@@ -613,65 +575,34 @@ body {
     color: var(--text-primary);
 }
 
+/* O container que esconde o excesso e permite o scroll */
 .logo-carousel-container {
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-}
-
-
-.logo-carousel-container:hover .logo-carousel {
-    animation-play-state: paused;
+    /* A máscara de fade nas laterais é opcional, pode remover se preferir */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .logo-carousel {
     display: flex;
-    gap: 30px;
-    width: max-content;
-    animation: scroll-players 40s linear infinite;
+    gap: 20px;
+    padding: 10px 20px; /* Espaçamento para o conteúdo não colar nas bordas */
+    
+    /* Habilita o scroll horizontal */
+    overflow-x: auto;
+    
+    /* Efeito de "ímã" para os itens centralizarem */
+    scroll-snap-type: x mandatory;
+
+    /* Propriedade chave para a animação de scroll do JS ser suave */
+    scroll-behavior: smooth;
+
+    /* Oculta a barra de rolagem para um visual limpo */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
-
-@keyframes scroll-players {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-}
-
-/* ====================================================== */
-/* --- Mobile: auto‑scroll + arrastar com o dedo ------- */
-/* ====================================================== */
-@media (max-width: 768px) {
-    /* container passa a ser rolável */
-    .logo-carousel-container {
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-mask-image: none;
-        mask-image: none;
-        padding: 0; /* remove fades e paddings fixos */
-    }
-
-    /* desliga animação CSS (usaremos JS) e ativa scroll nativo */
-    .logo-carousel {
-        animation: none;
-        display: flex;
-        gap: 15px;
-        padding: 0 20px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        touch-action: pan-x;
-        user-select: none;
-        cursor: grab;
-    }
-    .logo-carousel:active {
-        cursor: grabbing;
-    }
-
-    /* cada card “encaixa” no centro */
-    .player-card {
-        flex-shrink: 0;
-        width: 180px;
-        height: 240px;
-        scroll-snap-align: center;
-    }
+.logo-carousel::-webkit-scrollbar {
+    display: none;
 }
 
 .player-card {
@@ -682,23 +613,23 @@ body {
     border-radius: 16px;
     overflow: hidden;
     transition: transform 0.3s ease;
+    
+    /* Ponto de "ímã" do scroll */
+    scroll-snap-align: center;
 }
 
 .player-card:hover {
     transform: translateY(-5px);
 }
-
 .player-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
 }
-
 .player-card:hover img {
     transform: scale(1.05);
 }
-
 .player-card figcaption {
     position: absolute;
     bottom: 0;
@@ -1602,9 +1533,7 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .primary-heading {
-        font-size: 2.2rem;
-    }
+
 
     .hero-headline-container {
         padding: 0 10px;

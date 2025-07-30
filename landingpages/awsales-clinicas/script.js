@@ -25,36 +25,62 @@ document.addEventListener("DOMContentLoaded", function () {
     // —————————————————————————————————————————————
     // setupPlayerCarousel: Auto‑slide móvel de 3s + arraste
     // —————————————————————————————————————————————
+// ====================================================== //
+// --- Lógica para o Carrossel de Players (Slide Automático Inteligente) --- //
+// ====================================================== //
+
 function setupPlayerCarousel() {
-  const carousel = document.querySelector('.logo-carousel');
-  if (!carousel) return;
+    const carousel = document.querySelector('.logo-carousel');
+    if (!carousel) return;
 
-  // 1) duplica uma vez para loop infinito (desktop e mobile)
-  if (!carousel.hasAttribute('data-cloned')) {
-    Array.from(carousel.children).forEach(card => {
-      const clone = card.cloneNode(true);
-      clone.setAttribute('aria-hidden', true);
-      carousel.appendChild(clone);
-    });
-    carousel.setAttribute('data-cloned','true');
-  }
+    let autoSlideInterval; // Variável para controlar o intervalo
 
-  // 2) (opcional) drag–toque — só se quiser manter o swipe manual
-  // … seu código de startDrag/onDrag/endDrag aqui …
-
-  // 3) auto‑slide a cada 3s, em qualquer largura
-  const gap = parseInt(getComputedStyle(carousel).gap)||0;
-  const cardW = carousel.querySelector('.player-card').getBoundingClientRect().width + gap;
-  setInterval(()=>{
-    // se quiser pausar o auto‑slide ao arrastar:
-    // if (isDown) return;
-    carousel.scrollBy({ left: cardW, behavior:'smooth' });
-    if (carousel.scrollLeft + cardW >= carousel.scrollWidth/2) {
-      carousel.scrollLeft = 0;
+    // 1. Duplica os cards para criar um loop infinito e contínuo
+    function cloneCards() {
+        if (!carousel.hasAttribute('data-cloned')) {
+            const cards = Array.from(carousel.children);
+            cards.forEach(card => {
+                const clone = card.cloneNode(true);
+                clone.setAttribute('aria-hidden', true);
+                carousel.appendChild(clone);
+            });
+            carousel.setAttribute('data-cloned', 'true');
+        }
     }
-  }, 3000);
-}
 
+    // 2. Lógica do slide automático
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            const firstCard = carousel.querySelector('.player-card');
+            if (!firstCard) return;
+
+            const gap = parseInt(getComputedStyle(carousel).gap) || 0;
+            const cardWidth = firstCard.offsetWidth + gap;
+
+            // Move o scroll para a direita pelo tamanho de um card
+            carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+
+            // Se o scroll estiver perto do final (na metade da área clonada),
+            // reseta para o início sem animação para criar o loop
+            if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
+                setTimeout(() => {
+                    carousel.scrollTo({ left: 0, behavior: 'auto' });
+                }, 500); // Espera a animação de scroll terminar
+            }
+        }, 2000); // Troca a cada 3 segundos (3000ms)
+    }
+
+    // 3. Pausa a animação com o mouse
+    const carouselContainer = document.querySelector('.logo-carousel-container');
+    if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+        carouselContainer.addEventListener('mouseleave', () => startAutoSlide());
+    }
+
+    // Inicia tudo
+    cloneCards();
+    startAutoSlide();
+}
 
     function setupFloatingButton() {
         const floatingButton = document.querySelector('.botao-flutuante');

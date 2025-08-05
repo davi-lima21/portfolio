@@ -1,0 +1,143 @@
+/* css/style.css */
+
+/* --- Variáveis de Cor e Fontes --- */
+:root {
+    --primary-color: #3d342e; /* Marrom escuro */
+    --secondary-color: #c5a47e; /* Dourado/Ocre */
+    --light-gray: #f8f9fa;
+    --dark-color: #212529;
+    --whatsapp-green: #25D366;
+    --font-primary: 'Playfair Display', serif;
+    --font-secondary: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-secondary);
+    color: var(--primary-color);
+    line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: var(--font-primary);
+    font-weight: 700;
+}
+
+/* --- Navbar --- */
+.navbar { background-color: rgba(61, 52, 46, 0.9); transition: background-color 0.3s; }
+.navbar.scrolled { background-color: var(--primary-color); }
+.navbar-brand { color: var(--secondary-color) !important; font-size: 1.75rem; }
+.nav-link { color: #ffffff !important; transition: color 0.3s; }
+.nav-link:hover { color: var(--secondary-color) !important; }
+
+/* --- Botões --- */
+.btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 12px 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #b38e5d;
+    border-color: #b38e5d;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    padding: 180px 0;
+    color: white;
+    background: linear-gradient(rgba(40, 30, 25, 0.7), rgba(40, 30, 25, 0.7)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2516&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+}
+.text-secondary-color { color: var(--secondary-color); font-weight: 600; letter-spacing: 1px; }
+.hero-subtitle { font-size: 1.25rem; max-width: 600px; margin: 1rem auto 0; color: rgba(255,255,255,0.9); }
+
+/* --- Seção Instrutora --- */
+.text-signature {
+    font-family: 'Playfair Display', cursive;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-top: 1.5rem;
+}
+
+/* --- Accordion (Currículo & FAQ) --- */
+.accordion-button { font-family: var(--font-secondary); font-weight: 600; font-size: 1.1rem; }
+.accordion-button:not(.collapsed) { background-color: var(--primary-color); color: white; }
+.accordion-button:focus { box-shadow: 0 0 0 0.25rem rgba(197, 164, 126, 0.25); }
+.accordion-item { border: 1px solid #ddd; }
+
+/* --- Seção Benefícios --- */
+.icon-feature { font-size: 3rem; color: var(--secondary-color); }
+
+/* --- Depoimentos --- */
+.testimonial-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    border-top: 4px solid var(--secondary-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    height: 100%;
+}
+.testimonial-author { margin-top: 1rem; font-style: italic; color: #555; }
+
+/* --- Seção Preço --- */
+.pricing-box {
+    background-color: var(--light-gray);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+.price-tag {
+    font-family: var(--font-primary);
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+.price-cents { font-size: 1.5rem; }
+
+/* --- Seção Consultoria (WhatsApp) --- */
+#consultoria {
+    background-color: var(--light-gray);
+}
+.icon-feature-alt {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.btn-whatsapp {
+    background-color: var(--whatsapp-green);
+    border-color: var(--whatsapp-green);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+.btn-whatsapp:hover {
+    background-color: #1EBE55;
+    border-color: #1EBE55;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* --- Footer --- */
+footer { background-color: var(--primary-color); }
+/* --- CORREÇÃO DEFINITIVA PARA O MENU HAMBÚRGUER --- */
+/* Força o ícone do menu a usar a cor dourada da marca para garantir o contraste inicial */
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c5a47e' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-toggler {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 1050; /* Garante que o botão esteja acima de outros elementos do navbar */
+}

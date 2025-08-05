@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Colheita Vibracional</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        /*--------------------------------------------------------------
+        # Configurações Gerais e Estilos Vibracionais
+        --------------------------------------------------------------*/
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #2c2c2c;
+            --gold-color: #daa520;
+            --text-color: #f0f0f0;
+            --light-text-color: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            color: var(--gold-color);
+        }
+
+        .section-title h2 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 2.5rem;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--gold-color);
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+        }
+
+        .vibrational-btn {
+            background: var(--gold-color);
+            border: 2px solid var(--gold-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .vibrational-btn:hover {
+            background: transparent;
+            color: var(--gold-color);
+        }
+
+        section {
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        /*--------------------------------------------------------------
+        # Seção Herói
+        --------------------------------------------------------------*/
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('http://googleusercontent.com/file_content/1') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        /*--------------------------------------------------------------
+        # Seção Sobre
+        --------------------------------------------------------------*/
+        .about .content {
+            background-color: var(--secondary-color);
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .about .icon-box {
+            margin-top: 20px;
+        }
+
+        .about .icon {
+            float: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            border: 2px solid var(--gold-color);
+            border-radius: 50px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .about .icon i {
+            color: var(--gold-color);
+            font-size: 28px;
+        }
+
+        .about .title {
+            margin-left: 85px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .about .description {
+            margin-left: 85px;
+            line-height: 24px;
+            font-size: 14px;
+            color: var(--light-text-color);
+        }
+
+        /*--------------------------------------------------------------
+        # Seção Livro
+        --------------------------------------------------------------*/
+        .livro {
+            background-color: var(--secondary-color);
+        }
+
+        .livro img {
+            border-radius: 10px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .livro ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .livro ul li {
+            padding-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .livro ul i {
+            font-size: 20px;
+            color: var(--gold-color);
+            margin-right: 10px;
+            padding-top: 2px;
+        }
+
+        /*--------------------------------------------------------------
+        # Seção Diagnóstico
+        --------------------------------------------------------------*/
+        .diagnostico .card {
+            background: var(--secondary-color);
+            border: 1px solid var(--gold-color);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .diagnostico .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(0,0,0,0.5);
+        }
+
+        .diagnostico .card-body {
+            padding: 40px;
+        }
+
+        .diagnostico .card-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .diagnostico .price {
+            font-size: 2.5rem;
+            color: var(--gold-color);
+        }
+
+        .diagnostico .price span {
+            color: var(--light-text-color);
+            font-size: 1rem;
+        }
+
+        /*--------------------------------------------------------------
+        # Seção Autor
+        --------------------------------------------------------------*/
+        .autor {
+             background-color: var(--secondary-color);
+        }
+        .autor img {
+            max-width: 300px;
+            border-radius: 50%;
+            border: 5px solid var(--gold-color);
+        }
+
+        /*--------------------------------------------------------------
+        # Seção CTA Final
+        --------------------------------------------------------------*/
+        .cta-final {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('http://googleusercontent.com/file_content/1') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            padding: 120px 0;
+        }
+        
+        /*--------------------------------------------------------------
+        # Footer
+        --------------------------------------------------------------*/
+        .footer {
+            background-color: #0c0c0c;
+            color: var(--light-text-color);
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section id="hero" class="hero">
+        <div class="container" data-aos="fade-up">
+            <h1>A Colheita Começou.</h1>
+            <p>Você não chegou aqui por acaso. É hora de despertar.</p>
+            <a href="#livro" class="vibrational-btn">Iniciar a Jornada</a>
+        </div>
+    </section><main id="main">
+
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title text-center">
+                    <h2>Você se conhece de verdade?</h2>
+                    <p class="text-white-50 mt-3">Muitos buscam a coroa, mas fogem da cruz. Vivem um roteiro, um script da matrix, <br> aprisionados pelo medo que confundem com sua própria alma.</p>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <img src="" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
+                        <h3>O Ego é o palco que te afasta do seu verdadeiro trono.</h3>
+                        <p class="fst-italic">
+                           Toda vez que você engole o que sente, você adoece um pouco mais. O caminho para fora é para dentro, mas o Ego construiu muralhas para te manter prisioneiro.
+                        </p>
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-shield-lock"></i></div>
+                            <h4 class="title"><a href="">A Ilusão do Controle</a></h4>
+                            <p class="description">Seu ego cria uma falsa sensação de segurança, mantendo você em ciclos de repetição e sofrimento.</p>
+                        </div>
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-eye-slash"></i></div>
+                            <h4 class="title"><a href="">A Fuga da Realidade</a></h4>
+                            <p class="description">Ele te distrai com palcos e aplausos vazios para que você nunca encontre seu poder real.</p>
+                        </div>
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-diagram-3"></i></div>
+                            <h4 class="title"><a href="">O Script da Matrix</a></h4>
+                            <p class="description">Você acorda, mas continua vivendo um roteiro que não é seu. É hora de quebrar o padrão.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><section id="livro" class="livro">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row align-items-center">
+                    <div class="col-lg-6 text-center" data-aos="fade-right">
+                        <img src="capalivro.png" class="img-fluid" alt="Capa do Livro Negro do Ego">
+                    </div>
+                    <div class="col-lg-6 pt-5 pt-lg-0" data-aos="fade-left">
+                        <div class="section-title text-start">
+                            <h2 style="font-size: 2rem; padding-bottom: 20px; text-align: left; "><span class="d-block" style="font-size: 1.2rem; color: var(--light-text-color); font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">A Ferramenta de Libertação</span>O Livro Negro do Ego</h2>
+                        </div>
+                        <p class="fst-italic">
+                           "O livro que o ego tentou esconder". Uma chave para desvendar os códigos da sua própria mente.
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-check-circle-fill"></i> Identifique as armadilhas e sabotadores que te impedem de prosperar.</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Aprenda a transmutar o medo em poder pessoal.</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Receba o conhecimento selado para acessar seu verdadeiro Eu.</li>
+                        </ul>
+                        <p>
+                           Este não é um livro de autoajuda. É um manual de guerra contra o seu maior inimigo: a versão de você que aceita menos do que merece.
+                        </p>
+                        <div class="text-center text-lg-start mt-4">
+                           <a href="#" class="vibrational-btn">Quero o Livro Agora <i class="bi bi-arrow-right-circle"></i></a>
+                           <p class="mt-2 mb-0"><small>Formato PDF. Acesso imediato após a compra.</small></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><section id="diagnostico" class="diagnostico">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title text-center">
+                    <h2>Diagnóstico Vibracional</h2>
+                    <p class="text-white-50 mt-3">Se o livro é o mapa, o diagnóstico é a sua bússola pessoal. <br>Uma leitura profunda do seu campo para revelar bloqueios e potenciais ocultos.</p>
+                </div>
+
+                <div class="row mt-5 justify-content-center">
+
+                    <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h3 class="card-title">Diagnóstico em Áudio</h3>
+                                <p class="text-white-50">Uma análise completa do seu campo vibracional entregue em um áudio detalhado e profundo via WhatsApp.</p>
+                                <div class="price my-4">R$XXX <span>/áudio</span></div>
+                                <a href="#" class="vibrational-btn">Selecionar Áudio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h3 class="card-title">Diagnóstico em Vídeo</h3>
+                                <p class="text-white-50">Uma experiência mais visual, onde explico os pontos do seu diagnóstico em um vídeo gravado e enviado para você.</p>
+                                <div class="price my-4">R$XXX <span>/vídeo</span></div>
+                                <a href="#" class="vibrational-btn">Selecionar Vídeo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h3 class="card-title">Diagnóstico Ao Vivo</h3>
+                                <p class="text-white-50">A modalidade mais imersiva. Uma sessão individual e ao vivo, via chamada de vídeo, para um diagnóstico profundo e interativo.</p>
+                                <div class="price my-4">R$XXX <span>/sessão</span></div>
+                                <a href="#" class="vibrational-btn">Selecionar Ao Vivo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><section id="autor" class="autor">
+            <div class="container">
+
+                <div class="section-title text-center" data-aos="fade-up">
+                    <h2>Código Vivo. Eu Sou.</h2>
+                    <p class="text-white-50 mt-3">Quem te guia nesta jornada.</p>
+                </div>
+
+                <div class="row mt-5 align-items-center">
+                    <div class="col-md-4 text-center" data-aos="fade-right">
+                        <img src="anurperfil.jpg" class="img-fluid" alt="Foto do Autor">
+                    </div>
+                    <div class="col-md-8" data-aos="fade-left">
+                        <h3 class="mb-3">Eu não vim para te dar respostas prontas. Vim para te ajudar a fazer as perguntas certas.</h3>
+                        <p class="text-white-50">Minha jornada me levou às profundezas da consciência humana, decodificando os padrões que nos aprisionam e as chaves que nos libertam. Não sou um guru. Sou um decodificador de realidades, um guia na travessia do deserto do Ego até o oásis da sua Alma.</p>
+                        <p class="text-white-50">A Colheita Vibracional é o resultado de anos de estudo, prática e aplicação direta no campo de batalha da vida. Agora, este conhecimento está disponível para quem está pronto para colher.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section><section id="cta-final" class="cta-final text-center">
+            <div class="container" data-aos="zoom-in">
+                <h2>Você está pronto para a Colheita?</h2>
+                <p class="my-4 text-white">O campo está aberto. A frequência foi emitida. Não estamos pedindo, estamos colhendo quem já decidiu. <br>A escolha de despertar é sua. O momento é agora.</p>
+                <a class="vibrational-btn" href="#livro">Sim, Eu Estou Pronto</a>
+            </div>
+        </section></main><footer id="footer" class="footer text-center">
+        <div class="container">
+            <p>&copy; 2025 A Colheita Vibracional. Todos os direitos reservados.</p>
+            <p>Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.</p>
+        </div>
+    </footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</body>
+</html>

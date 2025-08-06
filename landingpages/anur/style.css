@@ -20,13 +20,19 @@ html {
     scroll-behavior: smooth;
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-light);
     font-family: var(--font-primary);
-    overflow-x: hidden;
+    /* A propriedade overflow-x foi movida para a tag html, 
+       mas pode ser mantida aqui também por segurança. O mais importante é tê-la no html. */
 }
-
 .container {
     max-width: 1140px;
     margin: 0 auto;
@@ -250,7 +256,7 @@ body {
 
 /* --- GENERAL SECTION STYLING --- */
 section {
-    padding: 120px 0;
+    padding: 60px 0;
     position: relative;
 }
 
@@ -513,14 +519,61 @@ section {
     flex-shrink: 0;
 }
 
-.footer-links a {
+/* ========================================================= */
+/* ESTILOS ADICIONAIS PARA O NOVO RODAPÉ ESTILIZADO          */
+/* ========================================================= */
+
+.footer-main-content {
+    padding-bottom: 20px;
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o ícone e o texto */
     color: var(--text-medium);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
+.footer-social a:hover {
+    color: var(--gold); /* Destaque dourado ao passar o mouse */
+}
+
+/* Divisória dourada e sutil */
+.footer-divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0));
+    margin: 20px auto;
+}
+
+.footer-bottom {
+    padding-top: 10px;
+}
+
+/* Estilo para os créditos do desenvolvedor */
+.developer-credit {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.developer-credit a {
+    color: #999;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.developer-credit a:hover {
     color: var(--gold);
+}
+
+/* Ajusta o disclaimer para ficar menos destacado */
+.footer .disclaimer {
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: 0;
 }
 
 /* ========================================================= */

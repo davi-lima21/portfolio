@@ -560,13 +560,13 @@ section {
 }
 
 .developer-credit a {
-    color: #999;
+    color: var(--gold);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .developer-credit a:hover {
-    color: var(--gold);
+    color: var(--gold-dark);
 }
 
 /* Ajusta o disclaimer para ficar menos destacado */

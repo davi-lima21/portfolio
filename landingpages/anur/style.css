@@ -76,7 +76,7 @@ body {
 
 .section-title {
     font-family: var(--font-secondary);
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1.2;
@@ -105,7 +105,7 @@ body {
 
 
 .logo img {
-    height: 70px;
+    height: 60px;
     transition: height 0.3s ease;
 }
 
@@ -130,19 +130,22 @@ body {
     color: var(--text-medium);
     font-weight: 400;
     transition: color 0.3s ease;
-    text-align: center; /* Centraliza texto no mobile */
+    text-align: center;
+    /* Centraliza texto no mobile */
     padding: 10px 0;
 }
 
 .navbar .nav-link:hover,
-.navbar .nav-link.active { /* Estilo para link ativo */
+.navbar .nav-link.active {
+    /* Estilo para link ativo */
     color: var(--text-light);
 }
 
 
 /* Customização do botão 'hambúrguer' para usar a cor --gold */
 .navbar-toggler {
-    border: 1px solid var(--gold); /* Borda do botão dourada */
+    border: 1px solid var(--gold);
+    /* Borda do botão dourada */
     transition: box-shadow 0.2s ease-in-out;
 }
 
@@ -166,9 +169,11 @@ body {
         background-color: rgba(20, 20, 20, 0.9);
         backdrop-filter: blur(5px);
         border-radius: 10px;
-        padding: 0; /* Remove padding para a borda ir de ponta a ponta */
+        padding: 0;
+        /* Remove padding para a borda ir de ponta a ponta */
         border-bottom: 1px solid #2a2a2a;
-        overflow: hidden; /* Garante que os cantos fiquem arredondados */
+        overflow: hidden;
+        /* Garante que os cantos fiquem arredondados */
     }
 
     /* Adiciona uma borda na parte de baixo de cada item, menos o último */
@@ -193,7 +198,7 @@ body {
 
 .hero-content h1 {
     font-family: var(--font-secondary);
-    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-size: clamp(2rem, 6vw, 3.5rem);
     font-weight: 700;
     margin-bottom: 1rem;
 }
@@ -201,7 +206,7 @@ body {
 .hero-content p {
     font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     color: var(--text-medium);
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto 40px;
     line-height: 1.6;
 }
@@ -227,9 +232,20 @@ body {
 }
 
 @keyframes aurora-pulse {
-    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
 }
 
 /* --- GENERAL SECTION STYLING --- */
@@ -244,27 +260,35 @@ section {
     gap: 60px;
 }
 
-.text-container { flex: 1; }
-.image-container { flex: 1; text-align: center; }
+.text-container {
+    flex: 1;
+}
+
+.image-container {
+    flex: 1;
+    text-align: center;
+}
 
 @media (max-width: 768px) {
     .content-section {
         flex-direction: column;
     }
+
     .content-section.autor {
         flex-direction: column-reverse;
     }
 }
 
 /* --- LIVRO & AUTOR SECTIONS --- */
-.livro, .autor {
+.livro,
+.autor {
     background-color: var(--bg-dark);
 }
 
 .image-container img {
     max-width: 100%;
     height: auto;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 .autor-img {
@@ -278,7 +302,7 @@ section {
 .autor-img-mobile {
     border-radius: 999px;
     border: 5px solid var(--gold);
-    max-height: px;
+    max-height: 200px;
 
 }
 
@@ -359,7 +383,7 @@ section {
 .card:hover {
     transform: translateY(-10px);
     border-color: var(--gold);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 .card h3 {
@@ -437,6 +461,10 @@ section {
     font-size: 1.2rem;
 }
 
+.valor {
+    color: #b0b0b0;
+}
+
 .cta-buttons {
     display: flex;
     justify-content: center;
@@ -459,4 +487,86 @@ section {
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Adicione estas classes ao final do seu arquivo style.css */
+
+.livro-lista-beneficios {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.livro-lista-beneficios li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.livro-lista-beneficios li svg {
+    color: var(--gold);
+    flex-shrink: 0;
+}
+
+.footer-links a {
+    color: var(--text-medium);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+}
+
+/* ========================================================= */
+/* AJUSTES RESPONSIVOS PARA O CARD DE OFERTA EM DISPOSITIVOS MÓVEIS */
+/* ========================================================= */
+@media (max-width: 767.98px) {
+
+    /* Diminui o espaçamento da seção em telas pequenas para dar mais foco ao card */
+    section#oferta {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    /* Ajusta o card principal para mobile */
+    .card.featured {
+        /* Remove o efeito de 'zoom' que consome espaço precioso no celular */
+        transform: scale(1);
+
+        /* Diminui drasticamente o padding interno para o conteúdo respirar */
+        padding: 30px 20px;
+    }
+
+    /* Reduz o tamanho da fonte do título do card */
+    .card h3 {
+        font-size: 1.7rem;
+    }
+
+    /* Reduz o tamanho da fonte do preço para melhor encaixe */
+    .card .valor {
+        font-size: 2rem;
+    }
+
+    /* Faz o botão de ação ocupar 100% da largura do card, 
+       facilitando o clique e criando um visual mais moderno no mobile */
+    .card .btn {
+        width: 100%;
+        padding: 16px;
+        font-size: 1rem;
+    }
+
+    /* Diminui um pouco o tamanho da fonte na lista de benefícios */
+    .features li {
+        font-size: 1rem;
+    }
+
+    ul {
+        padding-left: 0;
+    }
 }

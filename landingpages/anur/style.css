@@ -623,3 +623,34 @@ section {
         padding-left: 0;
     }
 }
+
+/* ========================================================= */
+/* ESTILOS PARA AJUSTES DE CONVERSÃO NA HERO SECTION         */
+/* ========================================================= */
+
+/* Estilo para a prova social (frase de autoridade) */
+.social-proof {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Novo estilo para o botão secundário, para que pareça um link sutil */
+.btn.btn-link-subtle {
+    background: transparent;
+    border-color: transparent;
+    color: var(--text-medium);
+    text-decoration: none;
+    text-transform: none; /* Remove o uppercase padrão da classe .btn */
+    font-weight: 400; /* Deixa a fonte mais leve */
+    letter-spacing: normal;
+    box-shadow: none;
+}
+
+.btn.btn-link-subtle:hover {
+    color: var(--gold); /* Destaque dourado ao passar o mouse */
+    background: transparent;
+    transform: none; /* Remove o efeito de levantar do .btn:hover */
+    box-shadow: none;
+}

@@ -12,6 +12,10 @@
     --font-signature: 'Great Vibes', cursive;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     font-family: var(--font-secondary);
     color: var(--primary-color);

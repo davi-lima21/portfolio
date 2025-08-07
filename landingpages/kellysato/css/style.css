@@ -9,6 +9,7 @@
     --whatsapp-green: #25D366;
     --font-primary: 'Playfair Display', serif;
     --font-secondary: 'Poppins', sans-serif;
+    --font-signature: 'Great Vibes', cursive;
 }
 
 body {
@@ -28,7 +29,9 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .navbar-brand { color: var(--secondary-color) !important; font-size: 1.75rem; }
 .nav-link { color: #ffffff !important; transition: color 0.3s; }
 .nav-link:hover { color: var(--secondary-color) !important; }
-
+.logo-navbar{
+    max-height: 50px;
+}
 /* --- Botões --- */
 .btn-primary {
     background-color: var(--secondary-color);
@@ -60,10 +63,11 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 
 /* --- Seção Instrutora --- */
 .text-signature {
-    font-family: 'Playfair Display', cursive;
-    font-size: 1.5rem;
+    font-family: var(--font-signature);
+    font-size: 3rem;
     color: var(--secondary-color);
     margin-top: 1.5rem;
+    font-weight: normal;
 }
 
 /* --- Accordion (Currículo & FAQ) --- */
@@ -129,7 +133,56 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 }
 
 /* --- Footer --- */
-footer { background-color: var(--primary-color); }
+footer {
+    background-color: var(--primary-color);
+    line-height: 1.8;
+}
+
+.footer-brand-name {
+    font-family: var(--font-signature);
+    color: var(--secondary-color);
+    font-size: 2.2rem;
+    vertical-align: middle;
+}
+
+.footer-heading {
+    font-family: var(--font-primary);
+    color: white;
+    letter-spacing: 1px;
+}
+
+.footer-nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-nav-link:hover {
+    color: var(--secondary-color);
+    padding-left: 5px;
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--secondary-color);
+}
+
+.social-icons .social-link {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons .social-link:hover {
+    color: var(--secondary-color);
+}
+
 /* --- CORREÇÃO DEFINITIVA PARA O MENU HAMBÚRGUER --- */
 /* Força o ícone do menu a usar a cor dourada da marca para garantir o contraste inicial */
 .navbar-dark .navbar-toggler-icon {
@@ -140,4 +193,9 @@ footer { background-color: var(--primary-color); }
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     z-index: 1050; /* Garante que o botão esteja acima de outros elementos do navbar */
+    border-color: rgba(197, 164, 126, 0.5);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(197, 164, 126, 0.25);
 }

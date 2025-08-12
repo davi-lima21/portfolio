@@ -222,57 +222,161 @@ body, html {
 .navbar-toggler:not(.collapsed) .bottom-bar {
   transform: rotate(-45deg);
   transform-origin: 15% 95%;
-}
-
-/*--------------------------------------------------------------
-# Ajustes no Slider do Rafael
+}/*--------------------------------------------------------------
+# Seção Sobre v2 - Estilo Moderno (VERSÃO ATUALIZADA)
 --------------------------------------------------------------*/
-#rafaelCarousel .carousel-item {
-  height: 480px; /* Altura fixa para o slide */
+.about-section-v2 {
+    padding: 140px 0; /* Mais espaçamento vertical na seção */
+    position: relative;
+    overflow: hidden;
+    background-color: #080808;
 }
 
-#rafaelCarousel .carousel-item img {
-  height: 100%; /* Imagem ocupa 100% da altura do slide */
-  object-fit: cover; /* Evita que a imagem seja distorcida */
-  object-position: center; /* Tenta centralizar o foco da imagem */
+.about-block {
+    margin-bottom: 120px;
+}
+.about-block:last-child {
+    margin-bottom: 0;
 }
 
-/* Linha horizontal estilizada para separar seções */
-.styled-hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+.about-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2.5rem; /* Aumenta o padding interno do card */
+    position: relative;
+    z-index: 2;
 }
 
-/*--------------------------------------------------------------
-# Seção de Serviços Parallax
+.about-card .section-title,
+.about-card .rafael-title {
+    color: #fff;
+    font-weight: 700;
+}
+
+.about-card p, .about-card .lead {
+    color: #c5c5c5;
+}
+.about-card .lead {
+    color: #e0e0e0;
+    font-weight: 400;
+}
+
+.about-image-wrapper,
+.about-carousel-wrapper {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Lógica Responsiva --- */
+
+/* ESTILOS APENAS PARA DESKTOP (Telas a partir de 992px) */
+@media (min-width: 992px) {
+    /* 1. Efeito de sobreposição mais sutil */
+    .about-block:first-of-type .about-image-wrapper {
+        
+    }
+    .about-block:last-of-type .about-carousel-wrapper {
+        
+    }
+
+    /* 2. Força o texto completo a aparecer no desktop */
+    #rafaelTextCollapse {
+        display: block;
+    }
+    
+    .about-card {
+        padding: 3rem; /* Aumenta ainda mais o padding no desktop */
+    }
+}
+
+/* ESTILOS APENAS PARA MOBILE (Telas até 991.98px) */
+@media (max-width: 991.98px) {
+    /* Gradiente que some com o texto para indicar que há mais conteúdo */
+    .collapsible-text:not(.expanded)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(to bottom, transparent, #080808);
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+}
+
+/* Botão "Ver Mais" (agora escondido no desktop via HTML) */
+.btn-ver-mais {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #c5a47e;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.btn-ver-mais:hover {
+    color: #fff;
+}
+
+.btn-ver-mais .bi {
+    font-size: 1rem;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-ver-mais[aria-expanded="true"] .bi {
+    transform: rotate(180deg);
+}
+
+/* Animações de entrada */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.row .animate-on-scroll:nth-child(2) {
+    transition-delay: 0.2s;
+}/*--------------------------------------------------------------
+# Seção de Serviços Parallax (VERSÃO CORRIGIDA)
 --------------------------------------------------------------*/
 #parallax-services {
     position: relative;
-    min-height: 100vh;
+    min-height: 150vh;
     width: 100%;
     display: flex;
     align-items: center;
     padding: 100px 0;
-    overflow: hidden; /* Essencial para o parallax */
+    overflow: hidden;
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
 }
 
 #parallax-services .parallax-bg {
     position: absolute;
-    top: -50%; /* Permite movimento vertical */
+    top: 40%; 
     left: 0;
     width: 100%;
-    height: 200%; /* Altura maior que a seção para permitir o scroll */
-    /* NOTA: Substitua pela sua imagem de fundo em alta resolução */
-    background-image: url('src/img/parallax.png');
+    /* CORRIGIDO: Altura maior que a seção para permitir o efeito */
+    height: 50%; 
+    /* CORRIGIDO: Use a imagem correta para desktop */
+    background-image: url('src/img/parallax-mobile.jpg'); 
     background-size: cover;
-    background-position: center;
-    z-index: -2; /* Fica atrás de tudo */
+    /* Ajuste o foco vertical da imagem conforme necessário */
+    background-position: center 50%;
+    z-index: -2;
 }
 
-/* Overlay escuro para garantir legibilidade */
 #parallax-services::after {
     content: '';
     position: absolute;
@@ -297,11 +401,10 @@ body, html {
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
 }
 
-/* Card com efeito de vidro (Glassmorphism) */
 .glass-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 2rem;
@@ -309,68 +412,33 @@ body, html {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-.glass-card-title {
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
+/* ... (as classes do glass-card não precisam mudar) ... */
+.glass-card-title { font-weight: 700; font-size: 1.8rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+.glass-card-list { list-style: none; padding: 0; text-align: left; }
+.glass-card-list li { padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.glass-card-list li:last-child { border-bottom: none; }
+.formation-name { display: block; font-weight: 700; color: #ffffff; font-size: 1.1rem; }
+.formation-description { font-weight: 300; color: #e0e0e0; font-size: 0.9rem; margin-top: 5px; margin-bottom: 0; line-height: 1.5; }
 
-.glass-card-list {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-}
-
-.glass-card-list li {
-    padding: 0.75rem 0;
-    /* Adiciona uma linha sutil para separar os itens, exceto o último */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.glass-card-list li:last-child {
-    border-bottom: none;
-}
-
-.formation-name {
-    display: block;
-    font-weight: 700;
-    color: #ffffff;
-    font-size: 1.1rem;
-}
-
-.formation-description {
-    font-weight: 300;
-    color: #e0e0e0;
-    font-size: 0.9rem;
-    margin-top: 5px;
-    margin-bottom: 0;
-    line-height: 1.5;
-}
-
-/* Animação de entrada (fade e slide) */
-.reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Adiciona um atraso sutil na animação do segundo card */
-.reveal-on-scroll:nth-child(2) {
-    transition-delay: 0.2s;
-}
-
-/* Responsividade */
+/* --------------------------------------------------- */
+/* Responsividade - AJUSTES PARA CELULAR (CORRIGIDO) */
+/* --------------------------------------------------- */
 @media (max-width: 767.98px) {
     #parallax-services {
-        min-height: auto; /* Altura automática no mobile */
+        min-height: auto;
         padding: 80px 0;
+    }
+
+    #parallax-services .parallax-bg {
+        /* Use a imagem correta para mobile */
+        background-image: url('src/img/parallax3.jpg'); 
+        
+        /* CORRIGIDO: Resetando a geometria para o mobile */
+        height: 50%; 
+        top: 30%;
+        opacity: 0.7;
+        /* ADICIONADO DE VOLTA: Efeito mais simples e performático para mobile */
+        background-attachment: fixed;
     }
     
     .parallax-main-title {
@@ -381,95 +449,228 @@ body, html {
         font-size: 1.1rem;
     }
 
-    /* O card da direita terá uma margem no topo no mobile */
-    .col-md-6:last-child {
+    .col-md-6:last-child .glass-card {
         margin-top: 2rem;
     }
 }
-
-/*--------------------------------------------------------------
-# Seção Depoimentos (CSS FINAL CORRIGIDO)
---------------------------------------------------------------*/
+/* --- DEPOIMENTOS CARROSSEL (VERSÃO CORRIGIDA) --- */
 #depoimentos {
-    background-color: #ffffff !important; /* Fundo branco garantido */
-    padding: 80px 0;
-    min-height: 100vh;
-    color: #212529;
-    display: flex; /* Adicionado para centralização vertical */
+    background-color: #000000;
+    color: #f8f9fa;
+    position: relative;
+    height: 90vh;
+    display: flex; /* Adicionado para ajudar na centralização vertical */
+    align-items: center; /* Adicionado para ajudar na centralização vertical */
+}
+
+#depoimentos .lead {
+    color: #aaa;
+}
+
+/* NOVO: Aplique o padding aqui para afastar o conteúdo dos botões */
+#depoimentos .carousel-inner {
+    padding: 0 100px;
+}
+
+.testimonial-icon {
+    font-size: 3.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+}
+
+.testimonial-card {
+    background-color: transparent;
+    border: none;
+    /* REMOVIDO: padding: 0 15%; */
+    text-align: center;
+    min-height: 250px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-/* Títulos para seções de fundo claro */
-.section-title-dark {
+.testimonial-card p {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-card cite {
     font-weight: 700;
+    font-style: normal;
+    font-size: 1rem;
+    color: #fff;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #000000;
+    letter-spacing: 1px;
+}
+
+/* Estilos para os controles do carrossel */
+.carousel-control-prev, .carousel-control-next {
+    width: 10%; /* Aumentei um pouco para facilitar o clique */
+    z-index: 10; /* Garante que os botões fiquem na frente */
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: transparent;
+    background-size: 100%, 100%;
+}
+
+/* Estilos para os indicadores (bolinhas) */
+.carousel-indicators {
+    bottom: -60px;
+}
+
+.carousel-indicators [data-bs-target] {
+    box-sizing: content-box;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.5;
+    transition: opacity .2s ease;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+
+@media (max-width: 767.98px)  {
+      #depoimentos .carousel-inner {
+    padding: 0 20px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Seção de Imagem Pré-Rodapé
+--------------------------------------------------------------*/
+.pre-footer-section {
+    padding: 0;
+    line-height: 0; /* Remove qualquer espaço extra da linha */
+}
+
+.pre-footer-img {
+    width: 100%;
+    height: auto;
+    max-height: 500px; /* Define uma altura máxima para a imagem */
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+    object-position: center;
+}
+
+/*--------------------------------------------------------------
+# Rodapé (Versão Minimalista P&B)
+--------------------------------------------------------------*/
+.site-footer {
+    background-color: #080808;
+    padding: 80px 0 40px 0;
+    color: #a0a0a0;
+    font-size: 0.9rem;
+}
+
+.footer-widget {
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    max-height: 150px;
+    opacity: 0.8;
+}
+
+.footer-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
     position: relative;
     padding-bottom: 10px;
 }
 
-.section-title-dark::after {
+/* Linha de destaque sob o título */
+.footer-title::after {
     content: '';
     position: absolute;
-    display: block;
-    width: 50px;
-    height: 3px;
-    background: #000000;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    width: 30px;
+    height: 2px;
+    /* COR MUDOU: Acento dourado removido, agora é branco */
+    background-color: rgba(255, 255, 255, 0.5); 
 }
 
-.section-subtitle-dark {
-    color: #6c757d;
+.footer-links,
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li,
+.footer-contact li {
+    margin-bottom: 10px;
+}
+
+.footer-links a,
+.footer-contact a {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+.footer-contact i {
+    /* COR MUDOU: Acento dourado removido, agora é branco */
+    color: #ffffff;
+    margin-right: 10px;
     font-size: 1.1rem;
-    font-weight: 300;
 }
 
-.testimonial-content-simple {
-    position: relative;
-    max-width: 700px; /* Limita a largura do texto em telas grandes */
-    margin: 0 auto; /* Centraliza o bloco de texto */
-    padding: 2rem;
-}
-
-.quote-icon-simple {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 8rem;
-    color: #f1f1f1; /* Cor cinza bem clara para o fundo */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1;
-    z-index: 1; /* Fica atrás do texto */
-}
-
-.testimonial-text-simple {
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 2; /* Fica na frente do ícone de aspas */
-}
-
-.testimonial-author-simple {
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
     font-size: 1.2rem;
-    font-weight: 700;
-    font-style: italic;
-    position: relative;
-    z-index: 2;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Estilizando os controles do carrossel para o fundo branco */
-#depoimentos .carousel-control-prev,
-#depoimentos .carousel-control-next {
-    z-index: 10;
+/* EFEITO MUDOU: Fundo branco e ícone preto ao passar o mouse */
+.social-icons a:hover {
+    background-color: #ffffff;
+    color: #080808;
 }
 
-#depoimentos .carousel-control-prev-icon,
-#depoimentos .carousel-control-next-icon {
-    filter: invert(1); 
+.footer-bottom {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.footer-hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.footer-bottom .credits {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    color: #a0a0a0; /* Mantém a cor cinza para os créditos */
 }

@@ -1,0 +1,334 @@
+/*--------------------------------------------------------------
+# Configurações Gerais e Tipografia
+--------------------------------------------------------------*/
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/*--------------------------------------------------------------
+# Navbar (Estilo Preto Original)
+--------------------------------------------------------------*/
+.navbar {
+    background: transparent;
+    transition: background-color 0.5s ease;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.navbar-scrolled {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.navbar-brand img {
+    max-height: 45px;
+}
+.navbar .nav-link {
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin: 0 15px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #e0e0e0;
+}
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+    width: 100%;
+}
+
+
+/*--------------------------------------------------------------
+# Menu Hambúrguer Animado (Estilo Original Preferido)
+--------------------------------------------------------------*/
+/* Remove o estilo padrão do botão do Bootstrap */
+.navbar-toggler {
+  border: none;
+  background: transparent !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Estilo base para cada linha do ícone */
+.toggler-icon {
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff;
+  display: block;
+  transition: all 0.3s cubic-bezier(.86, 0, .07, 1);
+  position: relative;
+}
+
+/* Espaçamento entre as linhas (este era o estilo original) */
+.toggler-icon + .toggler-icon {
+  margin-top: 5px;
+}
+
+/* ANIMAÇÃO PARA O 'X' (Quando o menu está aberto, NÃO tem a classe .collapsed) */
+.navbar-toggler:not(.collapsed) .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 15% 15%;
+}
+
+.navbar-toggler:not(.collapsed) .middle-bar {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.navbar-toggler:not(.collapsed) .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 15% 95%;
+}
+
+/* ... cole o CSS do seu menu hamburguer animado aqui ... */
+
+/*--------------------------------------------------------------
+# Página de Repertório (Fundo Claro com Lista Detalhada)
+--------------------------------------------------------------*/
+.repertorio-body-light {
+    background-color: #ffffff;
+    color: #212529;
+}
+
+.repertorio-main {
+    padding-top: 120px;
+    padding-bottom: 80px;
+}
+.repertorio-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/*--------------------------------------------------------------
+# Lista de Links da Introdução (Estilo Moderno)
+--------------------------------------------------------------*/
+.moment-list-intro {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1.5rem;
+}
+
+.moment-list-intro li {
+    margin-bottom: 0.5rem;
+}
+
+.moment-list-intro a {
+    color: #212529; /* Cor preta para o texto */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    display: flex; /* Alinha o ícone e o texto */
+    align-items: center;
+    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.moment-list-intro a:hover {
+    background-color: #f8f9fa; /* Fundo cinza claro no hover */
+    color: #000000;
+}
+
+/* Ícone de Seta (usando pseudo-elemento) */
+.moment-list-intro a::before {
+    content: '→'; /* Seta elegante */
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-right: 15px;
+    color: #000000;
+    transition: transform 0.3s ease;
+}
+
+.moment-list-intro a:hover::before {
+    transform: translateX(5px); /* Efeito de movimento no hover */
+}
+.music-moment {
+    margin-bottom: 2.5rem;
+}
+.moment-title-light {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 1rem;
+    color: #000000;
+}
+.song-list-detailed {
+    list-style: none;
+    padding-left: 0;
+}
+.song-item-selectable {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.song-item-selectable:hover {
+    background-color: #f8f9fa;
+    border-color: #ced4da;
+}
+.song-item-selectable.selected {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+.song-item-selectable span {
+    font-weight: 500;
+}
+.youtube-play-icon {
+    font-size: 1.5rem;
+    color: #ced4da;
+    transition: color 0.2s ease-in-out;
+}
+.song-item-selectable:hover .youtube-play-icon {
+    color: #000000;
+}
+.song-item-selectable.selected .youtube-play-icon {
+    color: #ffffff;
+}
+.custom-song-input-light {
+    display: none;
+    margin-top: 1rem;
+}
+
+/*--------------------------------------------------------------
+# Rodapé (Versão Minimalista P&B)
+--------------------------------------------------------------*/
+.site-footer {
+    background-color: #080808;
+    padding: 80px 0 40px 0;
+    color: #a0a0a0;
+    font-size: 0.9rem;
+}
+
+.footer-widget {
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    max-height: 150px;
+    opacity: 0.8;
+}
+
+.footer-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Linha de destaque sob o título */
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    /* COR MUDOU: Acento dourado removido, agora é branco */
+    background-color: rgba(255, 255, 255, 0.5); 
+}
+
+.footer-links,
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li,
+.footer-contact li {
+    margin-bottom: 10px;
+}
+
+.footer-links a,
+.footer-contact a {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+.footer-contact i {
+    /* COR MUDOU: Acento dourado removido, agora é branco */
+    color: #ffffff;
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* EFEITO MUDOU: Fundo branco e ícone preto ao passar o mouse */
+.social-icons a:hover {
+    background-color: #ffffff;
+    color: #080808;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.footer-hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.footer-bottom .credits {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    color: #a0a0a0; /* Mantém a cor cinza para os créditos */
+}

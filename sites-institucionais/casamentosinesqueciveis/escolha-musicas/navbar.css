@@ -1,0 +1,91 @@
+
+/*--------------------------------------------------------------
+# Navbar (Estilo Preto Original)
+--------------------------------------------------------------*/
+.navbar {
+    background: transparent;
+    transition: background-color 0.5s ease;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.navbar-scrolled {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.navbar-brand img {
+    max-height: 45px;
+}
+.navbar .nav-link {
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin: 0 15px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #e0e0e0;
+}
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+    width: 100%;
+}
+
+
+/*--------------------------------------------------------------
+# Menu Hambúrguer Animado (Estilo Original Preferido)
+--------------------------------------------------------------*/
+/* Remove o estilo padrão do botão do Bootstrap */
+.navbar-toggler {
+  border: none;
+  background: transparent !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Estilo base para cada linha do ícone */
+.toggler-icon {
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff;
+  display: block;
+  transition: all 0.3s cubic-bezier(.86, 0, .07, 1);
+  position: relative;
+}
+
+/* Espaçamento entre as linhas (este era o estilo original) */
+.toggler-icon + .toggler-icon {
+  margin-top: 5px;
+}
+
+/* ANIMAÇÃO PARA O 'X' (Quando o menu está aberto, NÃO tem a classe .collapsed) */
+.navbar-toggler:not(.collapsed) .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 15% 15%;
+}
+
+.navbar-toggler:not(.collapsed) .middle-bar {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.navbar-toggler:not(.collapsed) .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 15% 95%;
+}

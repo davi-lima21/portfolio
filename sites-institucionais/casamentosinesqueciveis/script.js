@@ -1,20 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    // ======================================================
-    // EFEITO DE SCROLL NA NAVBAR
-    // ======================================================
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        function handleScroll() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('navbar-scrolled');
-            } else {
-                navbar.classList.remove('navbar-scrolled');
-            }
-        }
-        window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Verifica no carregamento da página
-    }
+
 
     // ======================================================
     // EFEITO PARALLAX (VERSÃO CORRIGIDA E EFICIENTE)
@@ -100,4 +86,10 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     }
+
+
+        
+
+
+    
 });

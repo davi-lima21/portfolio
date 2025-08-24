@@ -541,9 +541,9 @@ html {
     margin-top: -20px;
 }
 .hero-section .text-body {
-    max-width: 500px;
+    max-width: 650px;
     margin: 0 auto 25px auto;
-    font-size: 16px;
+    font-size: 20px;
     color: var(--text-secondary);
 }
 

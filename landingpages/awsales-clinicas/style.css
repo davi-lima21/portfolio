@@ -689,7 +689,15 @@ width: auto;
     padding: 10px 0;
     
     /* Aplica a animação de slide. A duração será definida pelo JS */
-    animation: slide 40s linear infinite;
+    
+}
+
+/* Ajuste a duração da animação para telas maiores */
+@media (min-width: 768px) {
+    .logo-carousel {
+        /* Aumenta a duração para que a animação pareça mais lenta em telas maiores */
+        
+    }
 }
 
 /* Pausa a animação quando o mouse está sobre o carrossel */

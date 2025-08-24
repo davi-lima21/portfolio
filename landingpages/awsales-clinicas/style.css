@@ -30,8 +30,7 @@ body {
     overflow-x: clip;
 }
 
-html,
-body {
+html {
     overflow-x: hidden;
 }
 
@@ -241,6 +240,21 @@ body {
         width: 16px;
         height: 16px;
     }
+
+    .navbar-brand img {
+    height: 16px; /* Altura ideal para a logo na navbar */
+    width: auto;  /* A largura se ajusta automaticamente */
+    display: block; /* Remove qualquer espaçamento extra abaixo da imagem */
+}
+}
+
+@media (min-width: 800px) and (max-width: 986px) {
+    /* Adicione aqui os estilos CSS que você quer aplicar apenas neste intervalo */
+    
+.embaixo-tablet {
+    margin-top: 160px !important;
+}
+
 }
 /* O conteúdo interno do botão, com o fundo azul */
 .navbar-button-content {
@@ -422,6 +436,17 @@ body {
     /* Define a espessura da fonte como "Light" (fina) */
 }
 
+@media (min-width: 768px) {
+    .primary-heading {
+        /* Aumenta o tamanho máximo da fonte para desktop */
+        font-size: clamp(4rem, 6vw, 5.5rem);
+    }
+}
+
+@media (max-width: 768px) {
+    
+}
+
 
 .secondary-heading {
     margin: 0;
@@ -495,13 +520,12 @@ font-size: clamp(2.5rem, 5vw, 3.8rem);
     margin-top: 15px;
 }
 
-.embaixo h1 strong:first-child {
-    /* Estiliza o primeiro  (o "com") */
-    color: #7b8e9d;
-    display: block;
+/* .embaixo h1 strong:first-child {
+    Estiliza o primeiro  (o "com")
 
 
-}
+
+} */
 
 .embaixo .titulo {
     background: linear-gradient(90deg, #a855f7, #3b82f6, #0ea5e9, #3b82f6, #a855f7);
@@ -513,12 +537,14 @@ font-size: clamp(2.5rem, 5vw, 3.8rem);
     text-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
 
 }
+
+
 .botao-hero{
     margin-top: -20px;
 }
 .hero-section .text-body {
     max-width: 500px;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 25px auto;
     font-size: 16px;
     color: var(--text-secondary);
 }
@@ -597,6 +623,15 @@ font-size: clamp(2.5rem, 5vw, 3.8rem);
 }
 
 @media (max-width: 768px) {
+
+.embaixo h1 strong:first-child {
+    /* Estiliza o primeiro  (o "com") */
+    color: #7b8e9d;
+    display: block;
+
+
+}
+
 .botao-fixo {
 display: flex; /* Usamos flexbox para centralizar o conteúdo */
 justify-content: center; 
@@ -625,87 +660,93 @@ width: auto;
 /* ====================================================== */
 /* --- Carrossel de Players (Slide Automático Inteligente) --- */
 /* ====================================================== */
+/* Estilos gerais da seção (sem alterações) */
 .logo-carousel-section {
     padding: 60px 0 100px 0;
 }
-
 .logo-carousel-section .section-subtitle {
     font-size: 22px;
     color: var(--text-secondary);
     max-width: 500px;
     margin: 0 auto 50px auto;
 }
-
 .logo-carousel-section .section-subtitle strong {
     color: var(--text-primary);
 }
 
-/* O container que esconde o excesso e permite o scroll */
+/* O container que esconde o excesso e aplica o fade */
 .logo-carousel-container {
     overflow: hidden;
-    /* A máscara de fade nas laterais é opcional, pode remover se preferir */
     -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
+/* --- ATUALIZADO --- */
+/* O carrossel agora usa uma animação CSS em vez de scroll */
 .logo-carousel {
     display: flex;
     gap: 20px;
-    padding: 10px 20px; /* Espaçamento para o conteúdo não colar nas bordas */
+    padding: 10px 0;
     
-    /* Habilita o scroll horizontal */
-    overflow-x: auto;
-    
-    /* Efeito de "ímã" para os itens centralizarem */
-    scroll-snap-type: x mandatory;
-
-    /* Propriedade chave para a animação de scroll do JS ser suave */
-    scroll-behavior: smooth;
-
-    /* Oculta a barra de rolagem para um visual limpo */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-.logo-carousel::-webkit-scrollbar {
-    display: none;
+    /* Aplica a animação de slide. A duração será definida pelo JS */
+    animation: slide 40s linear infinite;
 }
 
+/* Pausa a animação quando o mouse está sobre o carrossel */
+.logo-carousel-container:hover .logo-carousel {
+    animation-play-state: paused;
+}
+
+/* Keyframes que definem o movimento do slide */
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        /* Move o conjunto de logos em 50% para a esquerda.
+           Como os itens são duplicados, isso cria um loop perfeito. */
+        transform: translateX(-50%);
+    }
+}
+
+/* Estilos dos cards (sem alterações) */
 .player-card {
     position: relative;
-    width: 180px;
-    height: 240px;
+    width: 274px;
+    /* height: 296px; */
     flex-shrink: 0;
     border-radius: 16px;
     overflow: hidden;
     transition: transform 0.3s ease;
-    
-    /* Ponto de "ímã" do scroll */
-    scroll-snap-align: center;
-}
 
+    
+    /* NOVO: Adicione flexbox para organizar a imagem e a legenda */
+    display: flex; 
+    flex-direction: column;
+}
 .player-card:hover {
     transform: translateY(-5px);
 }
 .player-card img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
+    
+    border-radius: 16px;
     transition: transform 0.4s ease;
 }
 .player-card:hover img {
     transform: scale(1.05);
 }
 .player-card figcaption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 24px 12px 12px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+
+    padding: 12px; /* Ajuste o padding para dar espaço ao texto */
+     /* Adicione uma cor de fundo sólida ou gradiente */
     color: var(--text-primary);
     font-size: 14px;
     font-weight: 500;
-    text-align: center;
+    /* NOVO: Garante que a legenda fique no final do container */
+    margin-top: auto; 
 }
 
 

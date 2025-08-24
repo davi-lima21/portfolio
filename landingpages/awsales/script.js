@@ -25,35 +25,153 @@ document.addEventListener("DOMContentLoaded", function () {
     // —————————————————————————————————————————————
     // setupPlayerCarousel: Auto‑slide móvel de 3s + arraste
     // —————————————————————————————————————————————
-    function setupPlayerCarousel() {
-        const carousel = document.querySelector('.logo-carousel');
-        if (!carousel) return;
+// ====================================================== //
+// --- Lógica para o Carrossel de Players (Slide Automático Inteligente) --- //
+// ====================================================== //
+// ====================================================== //
+// --- Carrossel contínuo (ticker) com rAF + arraste --- //
+// ====================================================== //
+function setupCarouselAnimation() {
+    const track = document.querySelector('.logo-carousel');
+    if (!track) return;
 
-        // 1) duplica uma vez para loop infinito (desktop e mobile)
-        if (!carousel.hasAttribute('data-cloned')) {
-            Array.from(carousel.children).forEach(card => {
-                const clone = card.cloneNode(true);
-                clone.setAttribute('aria-hidden', true);
-                carousel.appendChild(clone);
-            });
-            carousel.setAttribute('data-cloned', 'true');
+    const viewport = track.parentElement || track; // wrapper imediato
+    // Garantias de estilo para o efeito
+    viewport.style.overflow = 'hidden';
+    track.style.display = 'flex';
+    track.style.willChange = 'transform';
+    track.style.transform = 'translateX(0px)';
+    track.style.animation = 'none'; // cancela possíveis animações de CSS
+
+    let x = 0;                        // deslocamento atual em px
+    let paused = false;               // pausa automática (hover/drag)
+    let isDragging = false;           // estado de arraste
+    let startX = 0;                   // posição inicial do ponteiro
+    let startOffsetX = 0;             // offset no começo do drag
+    let lastTime = null;              // timestamp do último frame
+    let gap = getGap(track);          // gap entre itens (px)
+    let speed = getSpeed();           // px/s conforme viewport
+
+    // 1) Garantir conteúdo suficiente (>= 2x viewport) clonando itens
+    const originals = Array.from(track.children);
+    ensureFilled();
+
+    // 2) Loop de animação
+    function tick(ts) {
+        if (lastTime == null) lastTime = ts;
+        const dt = (ts - lastTime) / 1000; // em segundos
+        lastTime = ts;
+
+        if (!paused && !isDragging) {
+            x -= speed * dt;
         }
 
-        // 2) (opcional) drag–toque — só se quiser manter o swipe manual
-        // … seu código de startDrag/onDrag/endDrag aqui …
+        // Se o primeiro item saiu inteiro pela esquerda, empurra para o fim
+        let first = track.firstElementChild;
+        while (first && x <= -(first.offsetWidth + gap)) {
+            x += first.offsetWidth + gap;
+            track.appendChild(first);
+            first = track.firstElementChild;
+        }
 
-        // 3) auto‑slide a cada 3s, em qualquer largura
-        const gap = parseInt(getComputedStyle(carousel).gap) || 0;
-        const cardW = carousel.querySelector('.player-card').getBoundingClientRect().width + gap;
-        setInterval(() => {
-            // se quiser pausar o auto‑slide ao arrastar:
-            // if (isDown) return;
-            carousel.scrollBy({ left: cardW, behavior: 'smooth' });
-            if (carousel.scrollLeft + cardW >= carousel.scrollWidth / 2) {
-                carousel.scrollLeft = 0;
-            }
-        }, 3000);
+        // Se arrastando para a direita e x > 0, puxa o último para frente
+        let last = track.lastElementChild;
+        while (last && x > 0) {
+            x -= last.offsetWidth + gap;
+            track.insertBefore(last, track.firstElementChild);
+            last = track.lastElementChild;
+        }
+
+        track.style.transform = `translateX(${x}px)`;
+        requestAnimationFrame(tick);
     }
+    requestAnimationFrame(tick);
+
+    // 3) Interações: pausa no hover (desktop) e arraste (mobile/desktop)
+    track.addEventListener('mouseenter', () => paused = true);
+    track.addEventListener('mouseleave', () => paused = false);
+
+    track.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        paused = true;
+        startX = e.clientX;
+        startOffsetX = x;
+        try { track.setPointerCapture(e.pointerId); } catch {}
+        track.style.cursor = 'grabbing';
+    });
+
+    track.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        x = startOffsetX + dx;
+    });
+
+    function endDrag(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        paused = false;
+        try { track.releasePointerCapture(e.pointerId); } catch {}
+        track.style.cursor = '';
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    track.addEventListener('pointerleave', () => { if (isDragging) { isDragging = false; paused = false; } });
+
+    // 4) Responsividade
+    let resizeTO;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTO);
+        resizeTO = setTimeout(() => {
+            gap = getGap(track);
+            speed = getSpeed();
+            // Repreenche se faltar conteúdo após mudança de layout
+            ensureFilled();
+        }, 150);
+    });
+
+    // ————— Helpers —————
+    function getGap(el) {
+        const cs = getComputedStyle(el);
+        // flex-gap pode vir em 'gap', 'columnGap' dependendo do navegador
+        return parseFloat(cs.gap || cs.columnGap || 0) || 0;
+    }
+
+    function getSpeed() {
+        // Ajuste fino de velocidade: px/s (mais rápido no mobile se quiser)
+        return window.innerWidth <= 768 ? 50 : 70;
+    }
+
+    function calcContentWidth() {
+        const children = Array.from(track.children);
+        if (children.length === 0) return 0;
+        // soma das larguras + gaps intermediários
+        let total = 0;
+        for (let i = 0; i < children.length; i++) {
+            total += children[i].offsetWidth;
+            if (i < children.length - 1) total += gap;
+        }
+        return total;
+    }
+
+    function ensureFilled() {
+        const viewportWidth = viewport.clientWidth || window.innerWidth;
+        let contentWidth = calcContentWidth();
+        let i = 0;
+
+        // garante pelo menos 2x a largura do viewport (para loop suave)
+        while (contentWidth < viewportWidth * 2 && i < 20) {
+            originals.forEach(card => {
+                const clone = card.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                track.appendChild(clone);
+            });
+            contentWidth = calcContentWidth();
+            i++;
+        }
+    }
+}
+
+
 
 
     function setupFloatingButton() {
@@ -157,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ======================================================
 
     setupHeroSlider();
-    setupPlayerCarousel();
+    setupCarouselAnimation();
     setupFloatingButton();
     setupUseCases();
     setupTestimonials();

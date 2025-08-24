@@ -138,7 +138,7 @@ function setupCarouselAnimation() {
 
     function getSpeed() {
         // Ajuste fino de velocidade: px/s (mais rápido no mobile se quiser)
-        return window.innerWidth <= 768 ? 50 : 30;
+        return window.innerWidth <= 768 ? 50 : 70;
     }
 
     function calcContentWidth() {

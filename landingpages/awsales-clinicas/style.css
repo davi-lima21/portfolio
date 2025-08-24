@@ -74,14 +74,14 @@ html {
 
 
 .text-body {
-    color: var(--text-secondary);
+    color: var(--text-tertiary);
     font-size: 16px;
     line-height: 1.7;
     max-width: 650px;
 }
 
 .text-body strong {
-    color: var(--text-primary);
+    color: var(--text-tertiary);
     font-weight: 700;
 }
 
@@ -451,11 +451,9 @@ html {
 .secondary-heading {
     margin: 0;
     line-height: 1.1;
-/* Tamanho da fonte diminuído */
-font-size: clamp(2.5rem, 5vw, 3.8rem);
-    letter-spacing: -1px;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    letter-spacing: -2.5px;
     font-weight: 300;
-    text-align: left;
 }
 /* ====================================================== */
 /* --- Estilo do Texto com Gradiente Animado --- */
@@ -666,13 +664,10 @@ width: auto;
 }
 .logo-carousel-section .section-subtitle {
     font-size: 22px;
-    color: var(--text-secondary);
     max-width: 500px;
     margin: 0 auto 50px auto;
 }
-.logo-carousel-section .section-subtitle strong {
-    color: var(--text-primary);
-}
+
 
 /* O container que esconde o excesso e aplica o fade */
 .logo-carousel-container {
@@ -773,7 +768,8 @@ width: auto;
 }
 
 .what-is-content .text-body {
-    max-width: 450px;
+ 
+    max-width: 550px;
     margin-bottom: 30px;
 }
 
@@ -1325,13 +1321,31 @@ width: auto;
     text-align: center;
 }
 
+/*
+ * O seu CSS atual está assim
+ */
 .config-section .section-subtitle {
     margin: 16px auto 60px auto;
-    /* Ajuste na margem */
     max-width: 500px;
-    color: var(--text-secondary);
     font-size: 1.1rem;
     line-height: 1.6;
+}
+
+/*
+ * O CSS da esquerda que você quer
+ */
+.config-section .section-subtitle {
+    margin: 16px auto 60px auto;
+    max-width: 500px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+
+    /* A principal mudança é esta linha */
+    text-align: left;
+}
+
+.config-section .section-subtitle strong{
+    color: #717d8a !important;
 }
 
 .integrations-grid {
@@ -1488,8 +1502,8 @@ width: auto;
     /* Aplica a animação */
 }
 
-.final-cta .primary-heading {
-    max-width: 700px;
+.final-cta .secondary-heading {
+    max-width: 750px;
     margin-left: auto;
     margin-right: auto;
     line-height: 1;
@@ -1851,9 +1865,10 @@ footer {
 
 .use-case-text h3 {
 
-    font-size: clamp(1.8rem, 4vw, 2.2rem);
-    font-weight: 600;
-    letter-spacing: -1px;
+    line-height: 1.1;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    letter-spacing: -2.5px;
+    font-weight: 300;
     line-height: 1.2;
     margin: 12px 0 16px 0;
 }

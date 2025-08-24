@@ -29,58 +29,47 @@ document.addEventListener("DOMContentLoaded", function () {
 // --- Lógica para o Carrossel de Players (Slide Automático Inteligente) --- //
 // ====================================================== //
 
-function setupPlayerCarousel() {
+function setupCarouselAnimation() {
     const carousel = document.querySelector('.logo-carousel');
     if (!carousel) return;
 
-    let autoSlideInterval; // Variável para controlar o intervalo
-
-    // 1. Duplica os cards para criar um loop infinito e contínuo
-    function cloneCards() {
-        if (!carousel.hasAttribute('data-cloned')) {
-            const cards = Array.from(carousel.children);
-            cards.forEach(card => {
-                const clone = card.cloneNode(true);
-                clone.setAttribute('aria-hidden', true);
-                carousel.appendChild(clone);
-            });
-            carousel.setAttribute('data-cloned', 'true');
-        }
+    // --- 1. Clona os cards para criar o loop infinito ---
+    // Apenas clona se ainda não tiver sido clonado
+    if (!carousel.hasAttribute('data-cloned')) {
+        const originalCards = Array.from(carousel.children);
+        originalCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true'); // Oculta para leitores de tela
+            carousel.appendChild(clone);
+        });
+        carousel.setAttribute('data-cloned', 'true');
     }
 
-    // 2. Lógica do slide automático
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-            const firstCard = carousel.querySelector('.player-card');
-            if (!firstCard) return;
+    // --- 2. Define a duração da animação dinamicamente ---
+    // Isso garante que a velocidade seja a mesma, não importa quantos cards existam.
+    function setAnimationDuration() {
+        const originalCards = carousel.querySelectorAll('.player-card:not([aria-hidden="true"])');
+        if (originalCards.length === 0) return;
 
-            const gap = parseInt(getComputedStyle(carousel).gap) || 0;
-            const cardWidth = firstCard.offsetWidth + gap;
+        const gap = parseInt(getComputedStyle(carousel).gap) || 20;
+        const cardWidth = originalCards[0].offsetWidth;
+        
+        // Largura total dos cards originais (incluindo o espaço entre eles)
+        const totalWidth = (cardWidth + gap) * originalCards.length;
+        
+        // Velocidade desejada em pixels por segundo. Ajuste para mais rápido/lento.
+        const speed = 150; // Ex: 60 pixels por segundo
+        const duration = totalWidth / speed;
 
-            // Move o scroll para a direita pelo tamanho de um card
-            carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-
-            // Se o scroll estiver perto do final (na metade da área clonada),
-            // reseta para o início sem animação para criar o loop
-            if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
-                setTimeout(() => {
-                    carousel.scrollTo({ left: 0, behavior: 'auto' });
-                }, 500); // Espera a animação de scroll terminar
-            }
-        }, 2000); // Troca a cada 3 segundos (3000ms)
+        // Aplica a duração calculada à animação
+        carousel.style.animationDuration = `${duration}s`;
     }
 
-    // 3. Pausa a animação com o mouse
-    const carouselContainer = document.querySelector('.logo-carousel-container');
-    if (carouselContainer) {
-        carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-        carouselContainer.addEventListener('mouseleave', () => startAutoSlide());
-    }
-
-    // Inicia tudo
-    cloneCards();
-    startAutoSlide();
+    // Inicia e recalcula se a janela for redimensionada
+    setAnimationDuration();
+    window.addEventListener('resize', setAnimationDuration);
 }
+
 
     function setupFloatingButton() {
         const floatingButton = document.querySelector('.botao-flutuante');
@@ -183,7 +172,7 @@ function setupPlayerCarousel() {
     // ======================================================
 
     setupHeroSlider();
-    setupPlayerCarousel();
+    setupCarouselAnimation();
     setupFloatingButton();
     setupUseCases();
     setupTestimonials();

@@ -252,9 +252,10 @@ body {
 }
 
 
+
 }
 
-@media (max-width: 368px) {
+@media (max-width: 370px) {
     /* Diminui o tamanho do conteúdo do botão */
     .navbar-button-content {
         padding: 6px 12px;      /* Reduz o espaçamento interno */
@@ -273,6 +274,11 @@ body {
     width: auto;  /* A largura se ajusta automaticamente */
     display: block; /* Remove qualquer espaçamento extra abaixo da imagem */
 }
+
+    .h1-mobile{
+        margin-top: 2px !important;
+    }
+
 }
 
 @media (min-width: 800px) and (max-width: 986px) {

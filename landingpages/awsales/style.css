@@ -471,10 +471,7 @@ body {
 }
 
 @media (min-width: 768px) {
-    .primary-heading {
-        /* Aumenta o tamanho máximo da fonte para desktop */
-        font-size: clamp(4rem, 6vw, 5.5rem);
-    }
+
 }
 
 .secondary-heading {

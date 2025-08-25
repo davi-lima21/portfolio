@@ -255,7 +255,7 @@ body {
 
 }
 
-@media (max-width: 370px) {
+@media (max-width: 382px) {
     /* Diminui o tamanho do conteúdo do botão */
     .navbar-button-content {
         padding: 6px 12px;      /* Reduz o espaçamento interno */
@@ -1093,11 +1093,11 @@ body {
 
     /* A tag de desktop some. */
     .section-tag-desktop {
-        display: none;
+        display: none !important;
     }
 
     .case-actions {
-        display: none !important;
+        
     }
 
     /* A tag de celular aparece... */

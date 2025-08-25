@@ -228,7 +228,24 @@ html {
 /* ====================================================== */
 
 @media (max-width: 768px) {
-    /* Diminui o tamanho do conteúdo do botão */
+
+
+
+    /* Diminui o tamanho do ícone */
+    .navbar-button-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .h1-mobile{
+        margin-top: 50px !important;
+    }
+
+    .hero-slide-icon{
+        height: 235px !important;
+        margin-bottom: -40px !important;
+    }
+
     .navbar-button-content {
         padding: 6px 12px;      /* Reduz o espaçamento interno */
         font-size: 0.8125rem;   /* Diminui a fonte (equivalente a 13px) */
@@ -246,6 +263,32 @@ html {
     width: auto;  /* A largura se ajusta automaticamente */
     display: block; /* Remove qualquer espaçamento extra abaixo da imagem */
 }
+}
+
+@media (max-width: 375px) {
+    /* Diminui o tamanho do conteúdo do botão */
+    .navbar-button-content {
+        padding: 6px 12px;      /* Reduz o espaçamento interno */
+        font-size: 0.8125rem;   /* Diminui a fonte (equivalente a 13px) */
+        gap: 6px;               /* Diminui o espaço entre o ícone e o texto */
+    }
+
+    /* Diminui o tamanho do ícone */
+    .navbar-button-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .navbar-brand img {
+    height: 14px; /* Altura ideal para a logo na navbar */
+    width: auto;  /* A largura se ajusta automaticamente */
+    display: block; /* Remove qualquer espaçamento extra abaixo da imagem */
+}
+
+    .h1-mobile{
+        margin-top: 2px !important;
+    }
+
 }
 
 @media (min-width: 800px) and (max-width: 986px) {

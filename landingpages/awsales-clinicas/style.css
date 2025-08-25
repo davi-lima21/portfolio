@@ -665,11 +665,12 @@ html {
 
 @media (max-width: 768px) {
 
+
 .embaixo h1 strong:first-child {
     /* Estiliza o primeiro  (o "com") */
     color: #7b8e9d;
     display: block;
-
+    font-size: clamp(2.5rem, 6vw, 4rem);
 
 }
 

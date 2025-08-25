@@ -216,7 +216,23 @@ body {
 
 @media (max-width: 768px) {
 
-    /* Diminui o tamanho do conteúdo do botão */
+
+
+    /* Diminui o tamanho do ícone */
+    .navbar-button-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .h1-mobile{
+        margin-top: 50px !important;
+    }
+
+    .hero-slide-icon{
+        height: 235px !important;
+        margin-bottom: -40px !important;
+    }
+
     .navbar-button-content {
         padding: 6px 12px;      /* Reduz o espaçamento interno */
         font-size: 0.8125rem;   /* Diminui a fonte (equivalente a 13px) */
@@ -230,10 +246,12 @@ body {
     }
 
     .navbar-brand img {
-    height: 14px; /* Altura ideal para a logo na navbar */
+    height: 16px; /* Altura ideal para a logo na navbar */
     width: auto;  /* A largura se ajusta automaticamente */
     display: block; /* Remove qualquer espaçamento extra abaixo da imagem */
 }
+
+
 }
 
 @media (max-width: 368px) {
@@ -398,7 +416,7 @@ body {
     background: #181e26;
     border: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(5px);
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     letter-spacing: 0.08em;
 }
 
@@ -501,7 +519,7 @@ body {
 
 .animated-gradient-button {
     /* Seus estilos para o botão */
-    margin-top: 30px;
+
 }
 
 @keyframes text-gradient-shine {
@@ -621,8 +639,17 @@ body {
     /* Estiliza o primeiro  (o "com") */
     color: #7b8e9d;
     display: block;
+    font-size: clamp(2.5rem, 6vw, 4rem);
 
+}
 
+.primary-heading {
+  margin: 0;
+    margin-top: 0px;
+  line-height: 1.1;
+  font-size: clamp(3rem, 6vw, 4rem);
+  letter-spacing: -2.5px;
+  font-weight: 300;
 }
 }
 
@@ -1061,6 +1088,10 @@ body {
     /* A tag de desktop some. */
     .section-tag-desktop {
         display: none;
+    }
+
+    .case-actions {
+        display: none !important;
     }
 
     /* A tag de celular aparece... */

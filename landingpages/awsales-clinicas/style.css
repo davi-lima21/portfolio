@@ -265,7 +265,7 @@ html {
 }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 372px) {
     /* Diminui o tamanho do conteúdo do botão */
     .navbar-button-content {
         padding: 6px 12px;      /* Reduz o espaçamento interno */

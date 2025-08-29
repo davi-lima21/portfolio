@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mão Rápida — Serviços com Curadoria de Profissionais</title>
+  <meta name="description" content="Peça orçamento para manutenção e reformas. A Mão Rápida seleciona o profissional ideal e acompanha a execução.">
+  <link rel="icon" href="src/img/logo/logo-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="src/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAV padrão Bootstrap -->
+<nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
+  <div class="container container-narrow">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#hero">
+      <img src="../src/img/logo/logo-horizontal.png" alt="Mão Rápida" height="40">
+    </a>
+    <!-- Botão hamburguer -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+      aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+        <li class="nav-item"><a class="nav-link" href="#como-funciona">Como funciona</a></li>
+        <li class="nav-item"><a class="nav-link" href="#orcamento">Orçamento</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">Cadastro do Profissional</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="btn btn-cta" href="./cadastro/">Quero me cadastrar</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<header id="hero" class="hero" style="--hero-image: url('src/img/hero-section-desktop.png');">
+  <div class="hero-inner">
+    <div class="kicker">Curadoria que resolve</div>
+    <h1>Peça o serviço. <span class="hl">Nós escolhemos o profissional</span> e acompanhamos tudo.</h1>
+    <p class="hero-lead">Chega de procurar e comparar. Você envia o pedido, nosso time <strong>seleciona o prestador ideal</strong> e garante a <strong>qualidade</strong> — com comissão justa e transparência.</p>
+
+    <div class="hero-actions row justify-content-center gap-3 mt-3">
+      <a class="btn btn-cta col-10 col-md-3" href="#orcamento" data-scroll>Solicitar orçamento</a>
+      <a class="btn hero-cta-secondary col-10 col-md-3" href="#servicos" data-scroll>Ver serviços</a>
+    </div>
+
+    <!-- Mensagem de regra de negócio -->
+    <div class="hero-note">
+      <i class="fa fa-shield-halved me-1"></i> A escolha do profissional é feita pela equipe Mão Rápida. Trabalhamos com comissão sobre o serviço.
+    </div>
+  </div>
+  <div class="hero-blob" aria-hidden="true"></div>
+</header>
+
+<!-- SOBRE -->
+<section id="sobre" class="section">
+  <div class="container container-narrow">
+    <div class="section-heading reveal">
+      <span class="kicker">Sobre nós</span>
+      <h2>Transparência, segurança e qualidade</h2>
+      <p class="muted-sm">Conectamos clientes a <strong>profissionais verificados</strong>, com curadoria e acompanhamento de ponta a ponta.</p>
+    </div>
+
+    <div class="row align-items-center mt-4 gy-4 reveal">
+      <div class="col-lg-6">
+        <img src="src/img/sobre.png" alt="Equipe em obra" class="rounded-3 shadow-lg" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <div class="card p-4 h-100 border-0 glass">
+          <ul class="list-unstyled mb-0">
+            <li class="d-flex align-items-start mb-3">
+              <span class="pill"><i class="fa fa-user-check"></i></span>
+              <div><strong>Curadoria técnica</strong> — seleção por especialidade, reputação e disponibilidade.</div>
+            </li>
+            <li class="d-flex align-items-start mb-3">
+              <span class="pill"><i class="fa fa-clipboard-check"></i></span>
+              <div><strong>Orçamentos claros</strong> — escopo bem definido e sem surpresas.</div>
+            </li>
+            <li class="d-flex align-items-start">
+              <span class="pill"><i class="fa fa-headset"></i></span>
+              <div><strong>Acompanhamento</strong> — suporte antes, durante e depois do serviço.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona" class="section bg-light">
+  <div class="container container-narrow">
+    <div class="section-heading reveal">
+      <span class="kicker">Como funciona</span>
+      <h2>Fluxo simples, resultado profissional</h2>
+    </div>
+
+    <div class="how-grid reveal">
+      <article class="how-card">
+        <div class="how-ic"><i class="fa fa-list-check"></i></div>
+        <h5>1. Envie seu pedido</h5>
+        <p>Preencha o orçamento com local, urgência e breve descrição.</p>
+      </article>
+      <article class="how-card">
+        <div class="how-ic"><i class="fa fa-user-gear"></i></div>
+        <h5>2. Seleção pela Mão Rápida</h5>
+        <p>Nós escolhemos o profissional ideal e enviamos o orçamento.</p>
+      </article>
+      <article class="how-card">
+        <div class="how-ic"><i class="fa fa-calendar-check"></i></div>
+        <h5>3. Agendamento e entrega</h5>
+        <p>Confirmou? Acompanhamos até a conclusão do serviço.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" class="section">
+  <div class="container container-narrow">
+    <div class="section-heading reveal">
+      <span class="kicker">Nossos serviços</span>
+      <h2>Especialistas conforme sua necessidade</h2>
+      <p class="muted-sm">Todos verificados e com avaliação contínua.</p>
+    </div>
+
+    <div class="services-grid reveal">
+      <!-- Eletricista -->
+      <article class="service-card">
+        <div class="d-flex align-items-center gap-3">
+          <div class="service-ic"><i class="fa fa-bolt"></i></div>
+          <div>
+            <h5>Eletricista</h5>
+            <p class="muted-sm mb-2">Instalação, reparo, preventivas e laudos.</p>
+            <div class="service-meta"><span class="chip">Urgência</span><span class="chip">Padrão/Quadro</span></div>
+          </div>
+        </div>
+        <a class="btn btn-ghost-primary mt-3 btn-inline" href="#orcamento" data-scroll>Pedir orçamento</a>
+      </article>
+
+      <!-- Encanador -->
+      <article class="service-card">
+        <div class="d-flex align-items-center gap-3">
+          <div class="service-ic"><i class="fa fa-faucet-drip"></i></div>
+          <div>
+            <h5>Encanador</h5>
+            <p class="muted-sm mb-2">Vazamentos, desentupimentos e novas instalações.</p>
+            <div class="service-meta"><span class="chip">Detecção</span><span class="chip">24h</span></div>
+          </div>
+        </div>
+        <a class="btn btn-ghost-primary mt-3 btn-inline" href="#orcamento" data-scroll>Pedir orçamento</a>
+      </article>
+
+      <!-- Pedreiro -->
+      <article class="service-card">
+        <div class="d-flex align-items-center gap-3">
+          <div class="service-ic"><i class="fa fa-hard-hat"></i></div>
+          <div>
+            <h5>Pedreiro e Reforma</h5>
+            <p class="muted-sm mb-2">Reformas, alvenaria e drywall.</p>
+            <div class="service-meta"><span class="chip">Acabamento</span><span class="chip">Obra</span></div>
+          </div>
+        </div>
+        <a class="btn btn-ghost-primary mt-3 btn-inline" href="#orcamento" data-scroll>Pedir orçamento</a>
+      </article>
+
+      <!-- Pintura -->
+      <article class="service-card">
+        <div class="d-flex align-items-center gap-3">
+          <div class="service-ic"><i class="fa fa-paint-roller"></i></div>
+          <div>
+            <h5>Pintura</h5>
+            <p class="muted-sm mb-2">Interna, externa e acabamento fino.</p>
+            <div class="service-meta"><span class="chip">Textura</span><span class="chip">Grafiato</span></div>
+          </div>
+        </div>
+        <a class="btn btn-ghost-primary mt-3 btn-inline" href="#orcamento" data-scroll>Pedir orçamento</a>
+      </article>
+
+      <!-- Energia Solar -->
+      <article class="service-card">
+        <div class="d-flex align-items-center gap-3">
+          <div class="service-ic"><i class="fa fa-solar-panel"></i></div>
+          <div>
+            <h5>Energia Solar</h5>
+            <p class="muted-sm mb-2">Projeto, instalação e manutenção.</p>
+            <div class="service-meta"><span class="chip">Fotovoltaico</span><span class="chip">Inspeção</span></div>
+          </div>
+        </div>
+        <a class="btn btn-ghost-primary mt-3 btn-inline" href="#orcamento" data-scroll>Pedir orçamento</a>
+      </article>
+
+      <!-- Telhado -->
+      <article class="service-card">
+        <div class="d-flex align-items-center gap-3">
+          <div class="service-ic"><i class="fa fa-ruler-combined"></i></div>
+          <div>
+            <h5>Lavagem de Telhado</h5>
+            <p class="muted-sm mb-2">Limpeza, inspeção e vedação.</p>
+            <div class="service-meta"><span class="chip">Hidrojato</span><span class="chip">Impermeabilização</span></div>
+          </div>
+        </div>
+        <a class="btn btn-ghost-primary mt-3 btn-inline" href="#orcamento" data-scroll>Pedir orçamento</a>
+      </article>
+
+      <!-- Móveis -->
+      <article class="service-card">
+        <div class="d-flex align-items-center gap-3">
+          <div class="service-ic"><i class="fa fa-couch"></i></div>
+          <div>
+            <h5>Montagem de Móveis</h5>
+            <p class="muted-sm mb-2">Residencial e corporativo.</p>
+            <div class="service-meta"><span class="chip">Planejados</span><span class="chip">Rápido</span></div>
+          </div>
+        </div>
+        <a class="btn btn-ghost-primary mt-3 btn-inline" href="#orcamento" data-scroll>Pedir orçamento</a>
+      </article>
+
+      <!-- Diarista -->
+      <article class="service-card">
+        <div class="d-flex align-items-center gap-3">
+          <div class="service-ic"><i class="fa fa-broom"></i></div>
+          <div>
+            <h5>Diarista</h5>
+            <p class="muted-sm mb-2">Limpeza e organização residencial.</p>
+            <div class="service-meta"><span class="chip">Pontual</span><span class="chip">Confiável</span></div>
+          </div>
+        </div>
+        <a class="btn btn-ghost-primary mt-3 btn-inline" href="#orcamento" data-scroll>Pedir orçamento</a>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- ORÇAMENTO (versão simples e profissional) -->
+<section id="orcamento" class="section">
+  <div class="container container-narrow">
+    <div class="section-heading">
+      <span class="kicker">Orçamento</span>
+      <h2>Conte o que você precisa</h2>
+      <p class="muted-sm">Você envia o pedido e <strong>nossa equipe seleciona o profissional</strong>. O orçamento chega no seu WhatsApp.</p>
+    </div>
+
+    <div class="quote-card">
+      <form id="formOrcamentoSimple" class="quote-grid" novalidate>
+        <div class="field">
+          <label for="servico" class="label">Serviço <span aria-hidden="true" class="req">*</span></label>
+          <select id="servico" name="servico" class="control" required>
+            <option value="">Selecione…</option>
+            <option>Eletricista</option>
+            <option>Encanador</option>
+            <option>Pedreiro e Reforma</option>
+            <option>Pintura</option>
+            <option>Energia Solar</option>
+            <option>Lavagem e Manutenção de Telhado</option>
+            <option>Montagem de Móveis</option>
+            <option>Diarista</option>
+          </select>
+          <div class="invalid-feedback">Selecione um serviço.</div>
+        </div>
+
+        <div class="field">
+          <label for="nome" class="label">Seu nome <span aria-hidden="true" class="req">*</span></label>
+          <input id="nome" name="nome" type="text" class="control" placeholder="Nome completo" required>
+          <div class="invalid-feedback">Informe seu nome.</div>
+        </div>
+
+        <div class="field">
+          <label for="whatsapp" class="label">WhatsApp (DDD) <span aria-hidden="true" class="req">*</span></label>
+          <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" class="control" placeholder="(48) 99999-9999" required>
+          <div class="invalid-feedback">Informe um WhatsApp válido.</div>
+        </div>
+
+        <div class="field">
+          <label for="local" class="label">Bairro / Cidade <span aria-hidden="true" class="req">*</span></label>
+          <input id="local" name="local" type="text" class="control" placeholder="Ex.: Ingleses / Florianópolis" required>
+          <div class="invalid-feedback">Informe o local.</div>
+        </div>
+
+        <div class="field">
+          <label for="urgencia" class="label">Urgência <span aria-hidden="true" class="req">*</span></label>
+          <select id="urgencia" name="urgencia" class="control" required>
+            <option value="">Selecione…</option>
+            <option>Urgente (hoje/amanhã)</option>
+            <option>Essa semana</option>
+            <option>Próxima semana</option>
+            <option>Data combinada</option>
+          </select>
+          <div class="invalid-feedback">Informe a urgência.</div>
+        </div>
+
+        <div class="field field--full">
+          <label for="mensagem" class="label">Descreva rapidamente</label>
+          <textarea id="mensagem" name="mensagem" rows="4" class="control" placeholder="Ex.: Tomada sem energia na sala. Quadro no corredor."></textarea>
+          <div class="assist"><span id="count">0</span>/300</div>
+        </div>
+
+        <div class="actions field--full">
+          <label class="check">
+            <input type="checkbox" id="consent" required>
+            <span></span> Concordo em receber retorno pelo WhatsApp.
+          </label>
+          <button type="submit" class="btn-send">Enviar pedido</button>
+        </div>
+
+        <p class="note field--full">
+          <i class="fa fa-shield-halved"></i> A escolha do profissional é feita pela equipe Mão Rápida (modelo com comissão).
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL CONFIRMAÇÃO MINIMAL -->
+<div class="modal fade" id="pedidoOkModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-minimal">
+      <div class="modal-body text-center p-4">
+        <h5 class="mb-2">Abrimos seu WhatsApp</h5>
+        <p class="muted-sm">Se não abriu, clique abaixo para enviar a mensagem.</p>
+        <a id="waBackup" class="btn-send w-100" target="_blank" rel="noopener">Enviar no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- *** SEJA UM PROFISSIONAL (super estilizado) *** -->
+<section id="pro" class="section section-pro">
+  <div class="container container-narrow">
+    <div class="pro-wrap reveal">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-7">
+          <div class="pro-badge"><i class="fa fa-medal me-2"></i> Rede de Profissionais Verificados</div>
+          <h2 class="pro-title">Trabalhe com a Mão Rápida</h2>
+          <p class="pro-sub">Receba serviços selecionados pela nossa equipe, com suporte e reputação da plataforma.</p>
+
+          <ul class="pro-perks">
+            <li><i class="fa fa-check"></i> Sem mensalidade para começar</li>
+            <li><i class="fa fa-check"></i> Pagamentos direto com o cliente</li>
+            <li><i class="fa fa-check"></i> Curadoria e reputação que valorizam seu trabalho</li>
+          </ul>
+
+          <div class="pro-steps">
+            <div class="step">
+              <span class="dot">1</span>
+              <div>
+                <h6>Cadastre seu perfil</h6>
+                <p>Crie sua conta e envie seus dados e comprovações.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="dot">2</span>
+              <div>
+                <h6>Verificação</h6>
+                <p>Checamos documentação e avaliações.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="dot">3</span>
+              <div>
+                <h6>Comece a receber serviços</h6>
+                <p>Atenda na sua região com o nosso suporte.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex gap-2 flex-wrap mt-2">
+            <a href="./cadastro/" class="btn btn-cta">Quero me cadastrar</a>
+            <a href="#faq" class="btn btn-ghost">Dúvidas frequentes</a>
+          </div>
+
+          <div class="trust mt-3">
+            <span><i class="fa fa-star"></i> 4.9/5 média</span>
+            <span><i class="fa fa-shield-heart"></i> Seleção rigorosa</span>
+            <span><i class="fa fa-location-dot"></i> Você escolhe a região</span>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="pro-card">
+            <div class="pro-card-inner">
+              <div class="pro-stats">
+                <div class="stat">
+                  <span class="num">+1.200</span>
+                  <span class="lbl">serviços/mês</span>
+                </div>
+                <div class="stat">
+                  <span class="num">72h</span>
+                  <span class="lbl">média para 1º serviço</span>
+                </div>
+                <div class="stat">
+                  <span class="num">98%</span>
+                  <span class="lbl">clientes satisfeitos</span>
+                </div>
+              </div>
+              <div class="pro-note"><i class="fa fa-circle-info me-1"></i> Cadastro e verificação na página dedicada.</div>
+              <a href="cadastro.html" class="btn btn-ghost-primary w-100">Ir para cadastro</a>
+            </div>
+            <div class="pro-glow" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="container container-narrow">
+    <div class="section-heading reveal">
+      <span class="kicker">FAQ</span>
+      <h2>Dúvidas frequentes</h2>
+    </div>
+
+    <div class="accordion reveal" id="faqAcc">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="q1">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1" aria-expanded="true" aria-controls="a1">
+            Quem escolhe o profissional?
+          </button>
+        </h2>
+        <div id="a1" class="accordion-collapse collapse show" aria-labelledby="q1" data-bs-parent="#faqAcc">
+          <div class="accordion-body">A Mão Rápida faz a seleção considerando especialidade, localização, agenda e reputação. O cliente aprova o orçamento e agenda.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="q2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2" aria-controls="a2">
+            Como recebo o orçamento?
+          </button>
+        </h2>
+        <div id="a2" class="accordion-collapse collapse" aria-labelledby="q2" data-bs-parent="#faqAcc">
+          <div class="accordion-body">Enviamos no seu WhatsApp com escopo claro e condições combinadas.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="q3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3" aria-controls="a3">
+            A plataforma cobra comissão?
+          </button>
+        </h2>
+        <div id="a3" class="accordion-collapse collapse" aria-labelledby="q3" data-bs-parent="#faqAcc">
+          <div class="accordion-body">Sim, trabalhamos com comissão sobre o serviço concluído. A transparência é parte do nosso modelo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container container-narrow">
+    <div class="row gy-4">
+      <!-- coluna brand -->
+      <div class="col-md-4">
+        <div class="footer-brand">
+          <img src="src/img/logo/logo-horizontal.png" alt="Mão Rápida" height="70">
+        </div>
+        <p class="mt-3 footer-text">
+          Conectando quem precisa com quem resolve — com curadoria e segurança.
+        </p>
+
+        <div class="socials mt-3" aria-label="Redes sociais">
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- coluna serviços -->
+      <div class="col-md-4">
+        <h5 class="footer-title">Serviços</h5>
+        <ul class="list-unstyled footer-list">
+          <li><a class="footer-link" data-scroll href="#servicos">Eletricista</a></li>
+          <li><a class="footer-link" data-scroll href="#servicos">Encanador</a></li>
+          <li><a class="footer-link" data-scroll href="#servicos">Pintura</a></li>
+          <li><a class="footer-link" data-scroll href="#servicos">Montagem de Móveis</a></li>
+          <li><a class="footer-link" data-scroll href="#servicos">Pedreiro e Reforma</a></li>
+          <li><a class="footer-link" data-scroll href="#servicos">Lavagem de Telhado</a></li>
+          <li><a class="footer-link" data-scroll href="#servicos">Diarista</a></li>
+        </ul>
+      </div>
+
+      <!-- coluna contato -->
+      <div class="col-md-4">
+        <h5 class="footer-title">Contato e Suporte</h5>
+        <ul class="list-unstyled contact">
+          <li><i class="fa fa-envelope"></i><span>contato@maorapida.com</span></li>
+          <li><i class="fa fa-phone"></i><span>(99) 99999-9999</span></li>
+          <li><i class="fa fa-map-marker-alt"></i><span>Rua Exemplo, 123 — Cidade/UF</span></li>
+          <li><i class="fa fa-clock"></i><span>Seg a Sex, 9h–18h</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="copy">&copy; <span id="ano"></span> Mão Rápida — Todos os direitos reservados.</div>
+      <div class="legal">
+        <a href="#" class="footer-link">Termos de Uso</a>
+        <span class="dot" aria-hidden="true">•</span>
+        <a href="#" class="footer-link">Política de Privacidade</a>
+        <span class="dot d-none d-md-inline" aria-hidden="true">•</span>
+        <a href="#hero" class="footer-link d-none d-md-inline" data-scroll>Voltar ao topo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- FAB WhatsApp (opcional) -->
+<a id="whatsappFab" class="whatsapp-fab" href="https://wa.me/559999999999" target="_blank" aria-label="Abrir WhatsApp">
+  <i class="fab fa-whatsapp fa-lg"></i>
+</a>
+
+<!-- MODAL CONFIRMAÇÃO -->
+<div class="modal fade" id="pedidoOkModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-ok">
+      <div class="modal-body text-center p-4">
+        <div class="ok-ic mb-2"><i class="fa fa-circle-check"></i></div>
+        <h5 class="mb-2">Pedido enviado!</h5>
+        <p class="muted-sm">Já estamos selecionando o melhor profissional para você. Em breve enviamos o orçamento no WhatsApp.</p>
+        <button type="button" class="btn btn-cta mt-2" data-bs-dismiss="modal">Ok, entendi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="src/js/script.js"></script>
+</body>
+</html>

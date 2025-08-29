@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cadastro do Profissional — Mão Rápida</title>
+  <meta name="description" content="Cadastre-se para receber serviços com curadoria da Mão Rápida. Envie seus dados, documentos e preferências de atendimento.">
+  <link rel="icon" href="../src/img/logo/logo-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="../src/css/style.css" rel="stylesheet">
+  <style>
+    /* ===== Ajustes específicos desta página (herda tokens do tema) ===== */
+    .page-head{padding:6rem 1rem 2rem;background:linear-gradient(180deg, rgba(17,80,196,.95) 0%, rgba(17,80,196,.88) 40%, rgba(17,80,196,.82) 100%), url('src/img/hero-section-desktop.png') center/cover no-repeat; color:#fff; text-align:center; position:relative}
+    .page-head .kicker{letter-spacing:1px;font-weight:800;text-transform:uppercase;opacity:.95}
+    .page-head h1{font-weight:800; line-height:1.05; margin:.35rem 0 .5rem; font-size:clamp(1.8rem,1rem + 3.2vw,3rem)}
+    .page-badges{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+    .page-badges .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff}
+
+    .section{padding:3rem 1rem}
+    .container-narrow{max-width:1100px}
+.intro-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  box-shadow:var(--shadow-sm);
+  padding:1.5rem;
+}
+.intro-list li{
+  display:flex;
+  gap:.6rem;
+  align-items:flex-start;
+  margin:.45rem 0;
+}
+.intro-list i{
+  color:#22c66a; /* verde check */
+  margin-top:.15rem;
+}
+
+/* resumo */
+.summary-card{
+  background:#0f1a3a;
+  color:#dbe6ff;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+  padding:1rem 1.2rem;
+}
+.summary-card h6{font-weight:800;color:#fff}
+.summary-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:.4rem 0;
+  font-size:.95rem;
+}
+.summary-row .tag{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:999px;
+  padding:.15rem .55rem;
+  font-size:.82rem;
+  font-weight:700;
+}
+
+/* responsivo */
+@media (max-width: 767.98px){
+  .summary-card{margin-top:1rem}
+}
+
+
+    .form-shell{background:#fff;border:1px solid #e5e7eb;border-radius:16px;box-shadow:var(--shadow-sm);padding:1.1rem}
+    @media(min-width: 992px){.form-shell{padding:1.4rem}}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1rem}
+    .form-grid .full{grid-column:1 / -1}
+    .label{display:block;font-weight:700;font-size:.95rem;margin-bottom:.35rem}
+    .control{width:100%;border:1px solid #d1d5db;border-radius:10px;background:#fff;padding:.7rem .85rem;font-size:1rem;outline:none;transition:border-color .15s ease, box-shadow .15s ease}
+    .control:focus{border-color:var(--primary); box-shadow:0 0 0 3px rgba(17,80,196,.15)}
+    .muted-xs{color:#6b7280;font-size:.86rem}
+    .group-title{font-weight:800;font-size:1rem;margin:1.1rem 0 .4rem; display:flex; align-items:center; gap:.5rem}
+    .group-title i{color:var(--primary)}
+
+    /* chips/checkbox list */
+    .opt-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+    .opt-chips .chip{cursor:pointer; user-select:none; background:#f1f5ff; color:#334155; border:1px solid #e1e8ff; padding:.4rem .7rem; border-radius:999px; font-weight:600}
+    .opt-chips input{display:none}
+    .opt-chips input:checked + span{background:var(--primary); color:#fff; border-color:var(--primary)}
+
+    /* Range */
+    .range-wrap{display:flex;align-items:center;gap:.6rem}
+    .range-wrap output{min-width:64px;text-align:center;font-weight:700}
+
+    /* dias/horários */
+    .days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem}
+    .days-grid label{border:1px solid #d1d5db;border-radius:10px;padding:.5rem .3rem;text-align:center;cursor:pointer;font-weight:700}
+    .days-grid input{display:none}
+    .days-grid input:checked + span{color:#fff;background:var(--primary)}
+    .days-grid span{display:block;border-radius:8px}
+
+    /* upload */
+    .filebox{border:1px dashed #b7c0d5;border-radius:12px;padding:1rem;text-align:center;background:#f8faff}
+    .filebox .hint{color:#64748b}
+
+    .aside{position:sticky; top:92px;}
+    .summary-card{background:#0f1a3a;color:#dbe6ff;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:1rem}
+    .summary-card h6{font-weight:800;color:#fff}
+    .summary-row{display:flex;align-items:center;justify-content:space-between;margin:.35rem 0}
+    .summary-row .tag{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:.15rem .5rem;font-size:.82rem}
+
+    .terms{display:flex;gap:.6rem;align-items:center}
+    .terms input{width:18px;height:18px}
+
+    .btn-cta .spinner{width:16px; height:16px}
+
+    /* responsivo */
+    @media(max-width: 991.98px){
+      .form-grid{grid-template-columns:1fr}
+      .aside{position:static}
+    }
+
+/* ===== TABELA DE PREÇOS (responsiva) ===== */
+.price-table-wrap{border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;background:#fff}
+.price-toolbar{display:flex;gap:.5rem;justify-content:space-between;align-items:center;padding:.75rem 1rem;background:#f8fafc;border-bottom:1px solid #e5e7eb;flex-wrap:wrap}
+.price-toolbar .muted-xs{margin:0}
+
+.price-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.price-table th,.price-table td{padding:.65rem .75rem;border-bottom:1px solid #eef2f7;vertical-align:middle}
+.price-table th{font-weight:800;font-size:.9rem;color:#0b1220;background:#fbfdff}
+.price-table td:last-child,.price-table th:last-child{text-align:right}
+
+.price-table input[type="text"], .price-table input[type="number"], .price-table select{
+  width:100%;border:1px solid #d1d5db;border-radius:10px;padding:.6rem .7rem;font-size:1rem;outline:none;
+  transition:border-color .15s ease, box-shadow .15s ease;background:#fff
+}
+.price-table input:focus, .price-table select:focus{border-color:var(--primary); box-shadow:0 0 0 3px rgba(17,80,196,.12)}
+
+.price-actions{display:flex;gap:.5rem;justify-content:flex-end}
+.btn-icon{border:1px solid #d1d5db;background:#fff;border-radius:10px;padding:.55rem .7rem;line-height:1;font-weight:700}
+.btn-icon i{width:1.1em;text-align:center}
+.btn-icon:hover{filter:brightness(1.03)}
+.badge-soft{background:#f1f5ff;border:1px solid #e1e8ff;color:#334155;padding:.15rem .55rem;border-radius:999px;font-size:.78rem;font-weight:700}
+
+/* SM–MD: garante scroll horizontal caso estoure */
+@media (max-width: 991.98px){
+  .table-responsive{overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+
+/* XS: transforma linhas em “cards” legíveis */
+@media (max-width: 575.98px){
+  .price-table thead{display:none}
+  .price-table, .price-table tbody, .price-table tr, .price-table td{display:block;width:100%}
+  .price-table tr{
+    border:1px solid #eef2f7;
+    border-radius:12px;
+    box-shadow:var(--shadow-sm);
+    padding:.6rem .6rem .5rem;
+    margin:.65rem 0;
+    background:#fff;
+  }
+  .price-table td{
+    border-bottom:none;
+    padding:.45rem .25rem;
+  }
+  .price-table td::before{
+    content:attr(data-th);
+    display:block;
+    font-size:.8rem;
+    color:#64748b;
+    margin-bottom:.2rem;
+    font-weight:700;
+  }
+  /* ações ao fim, em linha */
+  .price-table td.actions{
+    display:flex;justify-content:flex-end;gap:.45rem;margin-top:.25rem
+  }
+  /* inputs mais confortáveis no mobile */
+  .price-table input[type="text"], .price-table input[type="number"], .price-table select{
+    border-radius:12px;padding:.7rem .8rem;font-size:1rem
+  }
+}
+
+/* otimizações extras */
+@media (max-width: 991.98px){
+  /* já escondíamos Descrição no seu CSS; aqui mantemos a coluna, mas ela vira bloco no XS */
+  /* nada a fazer aqui, o modo XS já oculta o thead e usa data-th nos td */
+}
+
+  </style>
+</head>
+<body>
+
+<!-- NAV padrão Bootstrap -->
+<nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
+  <div class="container container-narrow">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <img src="../src/img/logo/logo-horizontal.png" alt="Mão Rápida" height="40">
+    </a>
+    <!-- Botão hamburguer -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+      aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="../index.html#servicos">Serviços</a></li>
+        <li class="nav-item"><a class="nav-link" href="../index.html#como-funciona">Como funciona</a></li>
+        <li class="nav-item"><a class="nav-link" href="../index.html#orcamento">Orçamento</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">Cadastro do Profissional</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="btn btn-cta" href="#cadastro">Quero me cadastrar</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- HEAD -->
+<header class="page-head">
+  <div class="container container-narrow">
+    <div class="kicker">Rede verificada</div>
+    <h1>Cadastre-se para trabalhar com a <span class="hl" style="color:var(--accent)">Mão Rápida</span></h1>
+    <p class="lead" style="opacity:.98;max-width:60ch;margin:0 auto 12px">Envie seus dados, documentos e preferências. Nossa equipe verifica o cadastro e começa a encaminhar serviços na sua região.</p>
+    <div class="page-badges">
+      <span class="chip"><i class="fa fa-shield-halved me-1"></i> Seleção e verificação</span>
+      <span class="chip"><i class="fa fa-wallet me-1"></i> Pagamento direto com o cliente</span>
+      <span class="chip"><i class="fa fa-location-dot me-1"></i> Você escolhe a área de atuação</span>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="section">
+  <div class=" container-narrow">
+    <div class="intro-card">
+      <div class="row g-4 align-items-center">
+        
+        <!-- texto à esquerda -->
+        <div class="col-lg-7">
+          <h2 class="mb-2 fw-bold">Como funciona o cadastro</h2>
+          <ul class="list-unstyled intro-list">
+            <li><i class="fa fa-check"></i> 
+              <strong>Envie seus dados</strong> pessoais, profissionais e documentos.
+            </li>
+            <li><i class="fa fa-check"></i> 
+              <strong>Passa pela verificação</strong> de identidade, experiência e disponibilidade.
+            </li>
+            <li><i class="fa fa-check"></i> 
+              <strong>Defina sua área</strong> de atuação, raio de atendimento e formas de pagamento.
+            </li>
+            <li><i class="fa fa-check"></i> 
+              <strong>Comece a receber serviços</strong> selecionados pelo nosso time.
+            </li>
+          </ul>
+          <div class="muted-xs">
+            Tempo médio de aprovação: <strong>24–72h úteis</strong>.
+          </div>
+        </div>
+
+        <!-- cartão resumo à direita -->
+        <div class="col-lg-5">
+          <div class="summary-card h-100">
+            <h6 class="mb-2 fw-bold">
+              <i class="fa fa-clipboard-check me-1"></i> O que você vai precisar
+            </h6>
+            <div class="summary-row">
+              <span>Documento com foto</span><span class="tag">RG/CNH</span>
+            </div>
+            <div class="summary-row">
+              <span>Dados bancários/PIX</span><span class="tag">opcional</span>
+            </div>
+            <div class="summary-row">
+              <span>Portfólio/Referências</span><span class="tag">links ou fotos</span>
+            </div>
+            <div class="summary-row">
+              <span>MEI/Empresa</span><span class="tag">se aplicável</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section id="cadastro" class="section">
+  <div class="container container-narrow">
+    <div class="mb-3 d-flex align-items-center gap-2">
+      <span class="kicker">Cadastro</span>
+      <h2 class="m-0" style="font-weight:800">Dados do Profissional</h2>
+    </div>
+
+    <form id="cadastroProForm" class="form-shell" novalidate>
+      <!-- bloco 1: dados básicos -->
+      <div class="group-title"><i class="fa fa-id-card"></i> Informações pessoais</div>
+      <div class="form-grid">
+        <div>
+          <label class="label" for="nome">Nome completo *</label>
+          <input id="nome" name="nome" class="control" required placeholder="Ex.: João da Silva" />
+        </div>
+        <div>
+          <label class="label" for="documento">CPF/CNPJ *</label>
+          <input id="documento" name="documento" class="control" required placeholder="Somente números" inputmode="numeric" />
+        </div>
+        <div>
+          <label class="label" for="email">E-mail *</label>
+          <input id="email" type="email" name="email" class="control" required placeholder="seu@email.com" />
+        </div>
+        <div>
+          <label class="label" for="whatsapp">WhatsApp (DDD) *</label>
+          <input id="whatsapp" name="whatsapp" class="control" required placeholder="(48) 99999-9999" inputmode="tel" />
+        </div>
+        <div>
+          <label class="label" for="cidade">Cidade *</label>
+          <input id="cidade" name="cidade" class="control" required placeholder="Ex.: Florianópolis" />
+        </div>
+        <div>
+          <label class="label" for="bairro">Bairro *</label>
+          <input id="bairro" name="bairro" class="control" required placeholder="Ex.: Ingleses" />
+        </div>
+        <div>
+          <label class="label" for="cep">CEP</label>
+          <input id="cep" name="cep" class="control" placeholder="Ex.: 88058-000" />
+        </div>
+        <div>
+          <label class="label" for="nascimento">Data de nascimento</label>
+          <input id="nascimento" name="nascimento" type="date" class="control" />
+        </div>
+      </div>
+
+      <!-- bloco 2: atuação -->
+      <div class="group-title"><i class="fa fa-user-gear"></i> Área de atuação</div>
+      <div class="form-grid">
+        <div>
+          <label class="label" for="categoria">Categoria principal *</label>
+          <select id="categoria" name="categoria" class="control" required>
+            <option value="">Selecione…</option>
+            <option>Eletricista</option>
+            <option>Encanador</option>
+            <option>Pedreiro e Reforma</option>
+            <option>Pintura</option>
+            <option>Energia Solar</option>
+            <option>Lavagem de Telhado</option>
+            <option>Montagem de Móveis</option>
+            <option>Diarista</option>
+          </select>
+        </div>
+        <div>
+          <label class="label" for="experiencia">Tempo de experiência *</label>
+          <select id="experiencia" name="experiencia" class="control" required>
+            <option value="">Selecione…</option>
+            <option>menos de 1 ano</option>
+            <option>1–3 anos</option>
+            <option>3–5 anos</option>
+            <option>5–10 anos</option>
+            <option>10+ anos</option>
+          </select>
+        </div>
+        <div class="full">
+          <label class="label">Serviços que realiza *</label>
+          <div class="opt-chips">
+            <!-- mesmas tags do site -->
+            <label><input type="checkbox" name="servs" value="instalacao"><span class="chip">Instalação</span></label>
+            <label><input type="checkbox" name="servs" value="reparo"><span class="chip">Reparo</span></label>
+            <label><input type="checkbox" name="servs" value="manutencao"><span class="chip">Manutenção</span></label>
+            <label><input type="checkbox" name="servs" value="laudo"><span class="chip">Laudos/Inspeção</span></label>
+            <label><input type="checkbox" name="servs" value="acabamento"><span class="chip">Acabamento</span></label>
+            <label><input type="checkbox" name="servs" value="urgencia"><span class="chip">Atende urgência</span></label>
+          </div>
+        </div>
+        <div class="full">
+          <label class="label" for="sobre">Descrição profissional</label>
+          <textarea id="sobre" name="sobre" class="control" rows="4" placeholder="Conte rapidamente sua experiência, certificações e diferenciais."></textarea>
+          <div class="muted-xs mt-1">Dica: seja objetivo (máx. 400 caracteres).</div>
+        </div>
+      </div>
+
+      <!-- bloco 3: cobertura e horários -->
+      <div class="group-title"><i class="fa fa-location-dot"></i> Cobertura e disponibilidade</div>
+      <div class="form-grid">
+        <div>
+          <label class="label" for="raio">Raio de atendimento</label>
+          <div class="range-wrap">
+            <input type="range" id="raio" name="raio" min="2" max="80" step="1" value="12" class="form-range" />
+            <output id="raioOut">12 km</output>
+          </div>
+        </div>
+        <div>
+          <label class="label" for="urgencia24">Atende urgências 24h?</label>
+          <select id="urgencia24" name="urgencia24" class="control">
+            <option>Não</option>
+            <option>Sim</option>
+          </select>
+        </div>
+        <div class="full">
+          <label class="label">Dias de atendimento</label>
+          <div class="days-grid">
+            <label><input type="checkbox" name="dias" value="dom"><span>Dom</span></label>
+            <label><input type="checkbox" name="dias" value="seg"><span>Seg</span></label>
+            <label><input type="checkbox" name="dias" value="ter"><span>Ter</span></label>
+            <label><input type="checkbox" name="dias" value="qua"><span>Qua</span></label>
+            <label><input type="checkbox" name="dias" value="qui"><span>Qui</span></label>
+            <label><input type="checkbox" name="dias" value="sex"><span>Sex</span></label>
+            <label><input type="checkbox" name="dias" value="sab"><span>Sáb</span></label>
+          </div>
+        </div>
+        <div>
+          <label class="label" for="inicio">Início (hora)</label>
+          <input id="inicio" name="inicio" type="time" class="control" value="08:00" />
+        </div>
+        <div>
+          <label class="label" for="fim">Fim (hora)</label>
+          <input id="fim" name="fim" type="time" class="control" value="18:00" />
+        </div>
+      </div>
+<!-- bloco 4: estrutura e preços -->
+<div class="group-title"><i class="fa fa-screwdriver-wrench"></i> Estrutura e preços</div>
+<div class="form-grid">
+  <div>
+    <label class="label" for="mei">Possui MEI/Empresa?</label>
+    <select id="mei" name="mei" class="control">
+      <option>Não</option>
+      <option>MEI</option>
+      <option>Empresa (LTDA/EIRELI)</option>
+    </select>
+  </div>
+  <div>
+    <label class="label" for="veiculo">Possui veículo?</label>
+    <select id="veiculo" name="veiculo" class="control">
+      <option>Não</option>
+      <option>Moto</option>
+      <option>Carro</option>
+      <option>Utilitário</option>
+    </select>
+  </div>
+  <div>
+    <label class="label" for="visita">Taxa de visita (R$)</label>
+    <input id="visita" name="visita" class="control" placeholder="Ex.: 80,00" inputmode="decimal" />
+  </div>
+  <div>
+    <label class="label" for="hora">Preço/hora padrão (R$)</label>
+    <input id="hora" name="hora" class="control" placeholder="Ex.: 120,00" inputmode="decimal" />
+  </div>
+
+  <div class="full">
+    <label class="label">Tabela de preços por serviço</label>
+    <div class="price-table-wrap">
+      <div class="price-toolbar">
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <span class="badge-soft"><i class="fa fa-circle-info me-1"></i> Dica</span>
+          <p class="muted-xs">Preencha valores fixos quando fizer preço fechado. Se não houver preço fixo, deixe em branco e use o preço/hora.</p>
+        </div>
+        <div class="price-actions">
+          <button type="button" id="btnAddLinha" class="btn-icon"><i class="fa fa-plus"></i> Adicionar linha</button>
+          <button type="button" id="btnSugestoes" class="btn-icon"><i class="fa fa-wand-magic-sparkles"></i> Sugerir pela categoria</button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="price-table" id="priceTable" aria-describedby="Tabela de preços por serviço">
+          <thead>
+            <tr>
+              <th style="width:22%">Serviço</th>
+              <th style="width:28%">Descrição/observação</th>
+              <th style="width:14%">Preço fixo (R$)</th>
+              <th style="width:14%">Preço/h (R$)</th>
+              <th style="width:12%">Urgência (%)</th>
+              <th style="width:10%">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="priceBody">
+            <!-- Linhas inseridas via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="muted-xs mt-2">Obs.: A comissão da plataforma é aplicada sobre o valor total do serviço finalizado.</div>
+  </div>
+</div>
+      <!-- bloco 5: portfólio e documentos -->
+      <div class="group-title"><i class="fa fa-folder-open"></i> Portfólio e documentos</div>
+      <div class="form-grid">
+        <div class="full">
+          <label class="label" for="links">Links de portfólio</label>
+          <input id="links" name="links" class="control" placeholder="Ex.: Instagram, Google Drive, site" />
+          <div class="muted-xs mt-1">Separe múltiplos links por vírgula.</div>
+        </div>
+        <div class="full">
+          <label class="label" for="ref">Referências (nome + contato)</label>
+          <textarea id="ref" name="ref" class="control" rows="3" placeholder="Ex.: Maria (48) 9.... — pintura do apê"></textarea>
+        </div>
+  <div class="full">
+    <div class="filebox mb-3">
+      <div class="mb-1"><i class="fa fa-id-card me-1"></i> RG ou CNH (frente e verso)</div>
+      <input id="docIdentidade" name="docIdentidade" class="form-control" type="file" multiple accept="image/*,application/pdf" required>
+      <div class="hint mt-1">Envie até 2 arquivos (.jpg .png .pdf) — frente e verso.</div>
+    </div>
+  </div>
+  <div class="full">
+    <div class="filebox">
+      <div class="mb-1"><i class="fa fa-user-circle me-1"></i> Foto do rosto</div>
+      <input id="fotoRosto" name="fotoRosto" class="form-control" type="file" accept="image/*" capture="user" required>
+      <div class="hint mt-1">Envie uma foto nítida do rosto (selfie ou tipo 3x4).</div>
+    </div>
+  </div>
+      </div>
+
+      <!-- bloco 6: preferências e LGPD -->
+      <div class="group-title"><i class="fa fa-lock"></i> Preferências e LGPD</div>
+      <div class="form-grid">
+        <div>
+          <label class="label" for="contatoPref">Contato preferido</label>
+          <select id="contatoPref" name="contatoPref" class="control">
+            <option>WhatsApp</option>
+            <option>Ligação</option>
+            <option>E-mail</option>
+          </select>
+        </div>
+        <div>
+          <label class="label" for="pix">Chave PIX (opcional)</label>
+          <input id="pix" name="pix" class="control" placeholder="CPF, e-mail ou aleatória" />
+        </div>
+        <div class="full terms">
+          <input id="lgpd" type="checkbox" required>
+          <label for="lgpd" class="m-0">Autorizo o tratamento dos meus dados para fins de cadastro e intermediação de serviços, conforme a <a href="#" class="footer-link">Política de Privacidade</a>. *</label>
+        </div>
+        <div class="full terms">
+          <input id="termos" type="checkbox" required>
+          <label for="termos" class="m-0">Li e aceito os <a href="#" class="footer-link">Termos de Uso</a>. *</label>
+        </div>
+      </div>
+
+      <div class="d-flex gap-2 flex-wrap mt-2">
+        <button id="btnSubmit" class="btn btn-cta" type="submit">
+          <span class="btn-text">Enviar cadastro</span>
+          <span class="spinner-border spinner-border-sm spinner d-none" role="status" aria-hidden="true"></span>
+        </button>
+        <button type="reset" class="btn btn-ghost">Limpar</button>
+        <div class="muted-xs">Ao enviar, você poderá acompanhar o status pelo WhatsApp.</div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- MODAL OK -->
+<div class="modal fade" id="cadOk" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-ok">
+      <div class="modal-body text-center p-4">
+        <div class="ok-ic mb-2"><i class="fa fa-circle-check"></i></div>
+        <h5 class="mb-2">Cadastro enviado!</h5>
+        <p class="muted-sm">Recebemos suas informações. Nossa equipe fará a verificação em até 72h úteis e entrará em contato pelo WhatsApp.</p>
+        <button type="button" class="btn btn-cta mt-2" data-bs-dismiss="modal">Ok, obrigado</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container container-narrow">
+    <div class="footer-bottom">
+      <div class="copy">&copy; <span id="ano"></span> Mão Rápida — Todos os direitos reservados.</div>
+      <div class="legal">
+        <a href="#" class="footer-link">Termos de Uso</a>
+        <span class="dot" aria-hidden="true">•</span>
+        <a href="#" class="footer-link">Política de Privacidade</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Ano no rodapé
+  document.getElementById('ano').textContent = new Date().getFullYear();
+
+  // Range output
+  const raio = document.getElementById('raio');
+  const raioOut = document.getElementById('raioOut');
+  if(raio){
+    const updateOut = ()=> raioOut.textContent = raio.value + ' km';
+    raio.addEventListener('input', updateOut); updateOut();
+  }
+
+  // Validação e envio (placeholder — backend PHP depois)
+  const form = document.getElementById('cadastroProForm');
+  const btn = document.getElementById('btnSubmit');
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    if(!form.checkValidity()){
+      form.classList.add('was-validated');
+      // destaca campos required
+      [...form.querySelectorAll('[required]')].forEach(el=>{
+        if(!el.checkValidity()) el.classList.add('is-invalid');
+        else el.classList.remove('is-invalid');
+      });
+      return;
+    }
+    // loading
+    btn.querySelector('.btn-text').classList.add('d-none');
+    btn.querySelector('.spinner').classList.remove('d-none');
+    btn.setAttribute('disabled','disabled');
+
+    // Simula envio e abre modal OK
+    setTimeout(()=>{
+      const ok = new bootstrap.Modal(document.getElementById('cadOk'));
+      ok.show();
+      btn.querySelector('.btn-text').classList.remove('d-none');
+      btn.querySelector('.spinner').classList.add('d-none');
+      btn.removeAttribute('disabled');
+      form.reset();
+      form.classList.remove('was-validated');
+      [...form.querySelectorAll('.is-invalid')].forEach(el=>el.classList.remove('is-invalid'));
+    }, 900);
+  });
+
+  // remove marcação inválida ao digitar
+  document.querySelectorAll('#cadastroProForm .control').forEach(el=>{
+    el.addEventListener('input', ()=> el.classList.remove('is-invalid'))
+  });
+</script>
+
+<script>
+// ======= TABELA DE PREÇOS =======
+const priceBody = document.getElementById('priceBody');
+const btnAdd = document.getElementById('btnAddLinha');
+const btnSug = document.getElementById('btnSugestoes');
+const categoriaSel = document.getElementById('categoria');
+
+// helpers
+let rowId = 0;
+const currencySanitize = (v)=> (v || '').toString().replace(/[R$\s.]/g,'').replace(',', '.');
+const toBRL = (v)=>{
+  const n = Number(currencySanitize(v));
+  if (isNaN(n)) return '';
+  return n.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+};
+
+// cria uma linha
+function addLinha(preset = {}){
+  const tr = document.createElement('tr');
+  const id = ++rowId;
+  tr.innerHTML = `
+    <td>
+      <input type="text" class="control" name="precos[${id}][servico]" placeholder="Ex.: Instalação de luminária" value="${preset.servico||''}" required>
+    </td>
+    <td>
+      <input type="text" class="control" name="precos[${id}][desc]" placeholder="Detalhes (material, tamanho, etc.)" value="${preset.desc||''}">
+    </td>
+    <td>
+      <input type="text" inputmode="decimal" class="control brl" name="precos[${id}][fixo]" placeholder="Ex.: 150,00" value="${preset.fixo||''}">
+    </td>
+    <td>
+      <input type="text" inputmode="decimal" class="control brl" name="precos[${id}][hora]" placeholder="Ex.: 120,00" value="${preset.hora||''}">
+    </td>
+    <td>
+      <input type="number" class="control" name="precos[${id}][urgencia]" placeholder="Ex.: 30" min="0" max="200" step="1" value="${preset.urgencia||''}">
+    </td>
+    <td class="text-end">
+      <button type="button" class="btn-icon" aria-label="Duplicar"><i class="fa fa-copy"></i></button>
+      <button type="button" class="btn-icon" aria-label="Remover"><i class="fa fa-trash"></i></button>
+    </td>
+  `;
+  priceBody.appendChild(tr);
+
+  // ações linha
+  const [btnDup, btnDel] = tr.querySelectorAll('.btn-icon');
+  btnDup.addEventListener('click', ()=> addLinha({
+    servico: tr.querySelector(`[name="precos[${id}][servico]"]`).value,
+    desc:    tr.querySelector(`[name="precos[${id}][desc]"]`).value,
+    fixo:    tr.querySelector(`[name="precos[${id}][fixo]"]`).value,
+    hora:    tr.querySelector(`[name="precos[${id}][hora]"]`).value,
+    urgencia:tr.querySelector(`[name="precos[${id}][urgencia]"]`).value,
+  }));
+  btnDel.addEventListener('click', ()=> tr.remove());
+
+  // máscara/format BRL (formata ao sair do campo)
+  tr.querySelectorAll('.brl').forEach(inp=>{
+    inp.addEventListener('blur', ()=> {
+      const val = currencySanitize(inp.value);
+      inp.value = val ? toBRL(val) : '';
+    });
+    // ao focar, tira R$
+    inp.addEventListener('focus', ()=>{
+      inp.value = currencySanitize(inp.value).replace('.', ',');
+    });
+  });
+}
+
+// presets por categoria
+const SUGESTOES = {
+  'Eletricista': [
+    {servico:'Troca de tomada/interruptor', fixo:'60,00'},
+    {servico:'Instalação de luminária simples', fixo:'120,00'},
+    {servico:'Instalação de disjuntor', fixo:'160,00'},
+    {servico:'Padrão/hora', hora:'120,00'}
+  ],
+  'Encanador': [
+    {servico:'Desentupimento simples', fixo:'150,00'},
+    {servico:'Conserto de vazamento (padrão)', fixo:'180,00'},
+    {servico:'Instalação de torneira/misturador', fixo:'120,00'},
+    {servico:'Padrão/hora', hora:'120,00'}
+  ],
+  'Pintura': [
+    {servico:'Parede até 10m² (mão única)', fixo:'200,00'},
+    {servico:'Porta com batente', fixo:'150,00'},
+    {servico:'Retoque com massa + lixamento', hora:'120,00'},
+  ],
+  'Pedreiro e Reforma': [
+    {servico:'Assentamento de porcelanato (m²)', fixo:'65,00', desc:'Mão de obra'},
+    {servico:'Drywall (m²)', fixo:'80,00', desc:'Estrutura + placa (mão de obra)'},
+    {servico:'Pequenos reparos', hora:'120,00'}
+  ],
+  'Montagem de Móveis': [
+    {servico:'Guarda-roupa 2 portas', fixo:'180,00'},
+    {servico:'Cama box', fixo:'90,00'},
+    {servico:'Hora adicional', hora:'110,00'}
+  ],
+  'Lavagem de Telhado': [
+    {servico:'Lavagem (m²)', fixo:'12,00', desc:'Hidrojato, sem impermeabilização'},
+    {servico:'Impermeabilização (m²)', fixo:'18,00'},
+  ],
+  'Energia Solar': [
+    {servico:'Manutenção preventiva', fixo:'300,00'},
+    {servico:'Inspeção técnica', fixo:'220,00'},
+  ],
+  'Diarista': [
+    {servico:'Residência até 70m²', fixo:'160,00'},
+    {servico:'Residência 70–120m²', fixo:'220,00'},
+    {servico:'Hora adicional', hora:'60,00'}
+  ],
+};
+
+// botões
+btnAdd?.addEventListener('click', ()=> addLinha());
+btnSug?.addEventListener('click', ()=>{
+  const cat = categoriaSel?.value || '';
+  if(!cat || !SUGESTOES[cat]){ addLinha(); return; }
+  // limpa atuais e insere sugestões
+  priceBody.innerHTML = '';
+  SUGESTOES[cat].forEach(s=> addLinha(s));
+});
+
+// ao trocar a categoria, oferecer sugestões se a tabela estiver vazia
+categoriaSel?.addEventListener('change', ()=>{
+  if(priceBody.children.length === 0 && SUGESTOES[categoriaSel.value]){
+    SUGESTOES[categoriaSel.value].forEach(s=> addLinha(s));
+  }
+});
+
+// inicia com uma linha vazia
+if(priceBody.children.length === 0) addLinha();
+</script>
+
+</body>
+</html>

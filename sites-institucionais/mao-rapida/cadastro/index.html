@@ -177,6 +177,17 @@
   .price-table input[type="text"], .price-table input[type="number"], .price-table select{
     border-radius:12px;padding:.7rem .8rem;font-size:1rem
   }
+
+  .price-table td{ position:relative; padding:.45rem .25rem; }
+.price-table td::before{
+  content:attr(data-th);
+  display:block;
+  font-size:.82rem;
+  font-weight:800;           /* mais destaque ao “th” */
+  color:#0b1220;             /* mais contraste que o cinza claro */
+  margin:0 0 .35rem;
+}
+
 }
 
 /* otimizações extras */
@@ -233,7 +244,7 @@
 
 <!-- INTRO -->
 <section class="section">
-  <div class=" container-narrow">
+  <div class=" container-narrow m-auto">
     <div class="intro-card">
       <div class="row g-4 align-items-center">
         
@@ -286,10 +297,10 @@
 </section>
 
 <!-- FORMULÁRIO -->
-<section id="cadastro" class="section">
-  <div class="container container-narrow">
-    <div class="mb-3 d-flex align-items-center gap-2">
-      <span class="kicker">Cadastro</span>
+<section id="cadastro" class="section pt-0">
+  <div class=" container-narrow section-form-cadastro m-auto">
+    <div class="mb-3 d-flex align-items-center row">
+      <span class="kicker col-12">Cadastro</span>
       <h2 class="m-0" style="font-weight:800">Dados do Profissional</h2>
     </div>
 
@@ -643,27 +654,27 @@ const toBRL = (v)=>{
 function addLinha(preset = {}){
   const tr = document.createElement('tr');
   const id = ++rowId;
-  tr.innerHTML = `
-    <td>
-      <input type="text" class="control" name="precos[${id}][servico]" placeholder="Ex.: Instalação de luminária" value="${preset.servico||''}" required>
-    </td>
-    <td>
-      <input type="text" class="control" name="precos[${id}][desc]" placeholder="Detalhes (material, tamanho, etc.)" value="${preset.desc||''}">
-    </td>
-    <td>
-      <input type="text" inputmode="decimal" class="control brl" name="precos[${id}][fixo]" placeholder="Ex.: 150,00" value="${preset.fixo||''}">
-    </td>
-    <td>
-      <input type="text" inputmode="decimal" class="control brl" name="precos[${id}][hora]" placeholder="Ex.: 120,00" value="${preset.hora||''}">
-    </td>
-    <td>
-      <input type="number" class="control" name="precos[${id}][urgencia]" placeholder="Ex.: 30" min="0" max="200" step="1" value="${preset.urgencia||''}">
-    </td>
-    <td class="text-end">
-      <button type="button" class="btn-icon" aria-label="Duplicar"><i class="fa fa-copy"></i></button>
-      <button type="button" class="btn-icon" aria-label="Remover"><i class="fa fa-trash"></i></button>
-    </td>
-  `;
+tr.innerHTML = `
+  <td data-th="Serviço">
+    <input type="text" class="control" name="precos[${id}][servico]" placeholder="Ex.: Instalação de luminária" value="${preset.servico||''}" required>
+  </td>
+  <td data-th="Descrição/observação">
+    <input type="text" class="control" name="precos[${id}][desc]" placeholder="Detalhes (material, tamanho, etc.)" value="${preset.desc||''}">
+  </td>
+  <td data-th="Preço fixo (R$)">
+    <input type="text" inputmode="decimal" class="control brl" name="precos[${id}][fixo]" placeholder="Ex.: 150,00" value="${preset.fixo||''}">
+  </td>
+  <td data-th="Preço/h (R$)">
+    <input type="text" inputmode="decimal" class="control brl" name="precos[${id}][hora]" placeholder="Ex.: 120,00" value="${preset.hora||''}">
+  </td>
+  <td data-th="Urgência (%)">
+    <input type="number" class="control" name="precos[${id}][urgencia]" placeholder="Ex.: 30" min="0" max="200" step="1" value="${preset.urgencia||''}">
+  </td>
+  <td class="actions text-end" data-th="Ações">
+    <button type="button" class="btn-icon" aria-label="Duplicar"><i class="fa fa-copy"></i></button>
+    <button type="button" class="btn-icon" aria-label="Remover"><i class="fa fa-trash"></i></button>
+  </td>
+`;
   priceBody.appendChild(tr);
 
   // ações linha

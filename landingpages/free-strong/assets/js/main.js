@@ -48,4 +48,29 @@
   const yearEl = $('#year');
   if(yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Navbar: sólido no mobile; alterna no desktop
+const nav = document.getElementById('navbar');
+function updateNav(){
+  if(!nav) return;
+  const desktop = window.innerWidth >= 992;
+
+  if(desktop){
+    if(window.scrollY > 10){
+      nav.classList.add('nav-solid');
+      nav.classList.remove('nav-transparent');
+    }else{
+      nav.classList.add('nav-transparent');
+      nav.classList.remove('nav-solid');
+    }
+  }else{
+    // MOBILE: sempre sólido
+    nav.classList.add('nav-solid');
+    nav.classList.remove('nav-transparent');
+  }
+}
+window.addEventListener('scroll', updateNav, {passive:true});
+window.addEventListener('resize', updateNav);
+updateNav();
+
+
 })();

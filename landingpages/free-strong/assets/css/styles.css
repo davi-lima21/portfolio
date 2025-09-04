@@ -110,6 +110,39 @@ body{
   .hero-glow{right:auto; left:20%; bottom:-10%; width:300px; height:300px}
 }
 
+/* Selo do hero com alto contraste no fundo escuro */
+.badge-hero{
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.28);
+  color:#fff;
+  backdrop-filter: blur(4px);
+  letter-spacing:.02em;
+}
+
+/* Lista do hero com mais respiro */
+.hero-points li{
+  line-height:1.45;
+}
+.hero-points .icon-24{
+  font-size:22px; /* levemente menor para caber melhor ao lado do texto */
+}
+
+/* ======= Ajustes MOBILE do HERO ======= */
+@media (max-width: 991.98px){
+  .hero{ padding-top:6rem; padding-bottom:2.75rem; }
+  .hero .lead{ font-size:1rem; line-height:1.65; margin-bottom:1.1rem; }
+  .hero .display-5{ font-size:2.1rem; line-height:1.15; margin-bottom:.85rem; }
+  .hero-points{ gap:.75rem !important; margin-bottom:1.2rem !important; }
+  .hero-img{ max-height:320px; margin-top:.5rem; }
+  .icon-24{ font-size:20px; } /* ícones um pouco menores no mobile */
+}
+
+/* Extra pequeno: H1 um pouco menor para caber sem quebrar muito */
+@media (max-width: 575.98px){
+  .hero .display-5{ font-size:1.9rem; }
+}
+
+
 /* INFO BAR */
 .info-bar{
   background:linear-gradient(90deg,var(--brand-1),var(--brand-2));
@@ -263,4 +296,40 @@ footer{background:#fff}
 }
 .footer-minimal .credits .ig-link:hover{
   color:#0b0f14;
+}
+
+/* Altura aproximada do navbar no desktop (ajuste se o seu variar) */
+:root{ --nav-h: 72px; }
+
+/* 2) Reservar espaço para o navbar no desktop (evita sobrepor o hero) */
+@media (min-width: 992px){
+  .hero{ padding-top: 10px; }  /* respiro extra */
+  html{ scroll-padding-top: var(--nav-h); } /* âncoras não ficam escondidas atrás do nav */
+}
+
+/* Navbar fixo só no desktop */
+.nav-fixed-lg{ position: static; }
+@media (min-width: 992px){
+  .nav-fixed-lg{
+    position: fixed; top:0; left:0; right:0; z-index:1030;
+  }
+}
+
+/* Força navbar sólido no MOBILE (sem transparência/“fundo branco”) */
+@media (max-width: 991.98px){
+  #navbar{
+    background:#0b0f14 !important;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+    backdrop-filter:none;
+  }
+  #navbar.nav-transparent{ background:#0b0f14 !important; } /* ignora toggles do JS */
+  #navbar .navbar-brand strong,
+  #navbar .nav-link{ color:#fff !important; }
+}
+
+/* Reserva espaço no topo do HERO no desktop pra não ficar por baixo do nav */
+:root{ --nav-h: 72px; } /* ajuste se seu nav for mais alto/baixo */
+@media (min-width: 992px){
+  .hero{ padding-top: calc(var(--nav-h) + 24px); }
+  html{ scroll-padding-top: var(--nav-h); } /* âncoras não ficam escondidas */
 }

@@ -333,3 +333,12 @@ footer{background:#fff}
   .hero{ padding-top: calc(var(--nav-h) + 24px); }
   html{ scroll-padding-top: var(--nav-h); } /* âncoras não ficam escondidas */
 }
+
+/* Sticky CTA escondido quando o HERO estiver visível */
+@media (max-width: 991.98px){
+  #sticky-cta.in-hero{
+    transform: translateY(110%) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}

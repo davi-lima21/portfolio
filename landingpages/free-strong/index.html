@@ -501,5 +501,62 @@
   <!-- Bootstrap JS + Main JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="assets/js/main.js" defer></script>
+
+    <script>
+    // Sticky CTA: mobile -> mostra fora do HERO (e opcional: só quando rolar p/ baixo)
+(function(){
+  const sticky = document.getElementById('sticky-cta');
+  const hero   = document.getElementById('topo');
+  if(!sticky || !hero) return;
+
+  let lastY = window.pageYOffset || 0;
+  let heroInView = true; // começa no topo, então visível
+
+  const SHOW_AFTER = 120; // px após o topo p/ liberar exibição
+
+  function isMobile(){ return window.innerWidth < 992; }
+
+  function applySticky(){
+    if(!isMobile()){
+      sticky.classList.remove('is-visible','in-hero');
+      return;
+    }
+    // se o hero está visível, oculta SEMPRE
+    if(heroInView){
+      sticky.classList.add('in-hero');
+      sticky.classList.remove('is-visible');
+      return;
+    }
+    // fora do hero: comportamento normal (ex.: mostra ao rolar p/ baixo)
+    const y = window.pageYOffset || 0;
+    const goingDown = y > lastY;
+    if(y > SHOW_AFTER && goingDown){
+      sticky.classList.add('is-visible');
+    }else{
+      sticky.classList.remove('is-visible');
+    }
+    sticky.classList.remove('in-hero'); // garante remoção
+    lastY = Math.max(y, 0);
+  }
+
+  // Observa o HERO: se ≥ ~25% em tela, considera "in-hero"
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      const e = entries[0];
+      heroInView = e.isIntersecting && e.intersectionRatio > 0.25;
+      applySticky();
+    }, { threshold: [0,0.25,0.5,1], rootMargin: '0px 0px -10% 0px' });
+    io.observe(hero);
+  }else{
+    // fallback simples: considera "no hero" apenas no topo
+    heroInView = (window.pageYOffset || 0) < 50;
+  }
+
+  window.addEventListener('scroll', applySticky, {passive:true});
+  window.addEventListener('resize', applySticky);
+  applySticky();
+})();
+
+  </script>
 </body>
 </html>

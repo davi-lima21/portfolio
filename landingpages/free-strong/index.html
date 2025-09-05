@@ -687,7 +687,7 @@
 <!-- FOOTER -->
 <footer class="py-4 border-top footer-minimal">
   <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3">
-    <div class="text-secondary small">
+    <div class="text-secondary small text-center">
       © <span id="year"></span> FREE & STRONG. Todos os direitos reservados.
     </div>
 
@@ -766,5 +766,34 @@
 })();
 
   </script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Seleciona TODAS as <section> (hero é <header>, então fica de fora naturalmente)
+  const targets = Array.from(document.querySelectorAll('section'));
+  if (!targets.length) return;
+
+  // Aplica a classe inicial
+  targets.forEach(el => el.classList.add('reveal'));
+
+  // Fallback se o navegador não suportar IO
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target); // revela uma vez só
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+
+  targets.forEach(el => io.observe(el));
+});
+</script>
+
 </body>
 </html>

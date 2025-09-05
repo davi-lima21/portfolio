@@ -7,7 +7,7 @@
 }
 
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body{height:100%; overflow-x: hidden;}
 body{
   font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
   color:#1b1f23;
@@ -127,6 +127,33 @@ body{
   font-size:22px; /* levemente menor para caber melhor ao lado do texto */
 }
 
+/* Destaque minimalista para "mobilidade, força e liberdade" */
+.text-key{
+  color:#fff;                 /* branco puro para máximo contraste no fundo escuro */
+  font-weight:800;            /* firme, mas sem exagero */
+  text-decoration: underline; /* sublinhado limpo, discreto */
+  text-decoration-thickness:.08em;
+  text-decoration-color: rgba(37,117,252,.35); /* azul suave da paleta */
+  text-underline-offset:.18em;                 /* afastado do texto p/ ficar elegante */
+  text-shadow:none;           /* garante zero glow */
+}
+
+/* Garante que não herda estilos antigos extravagantes */
+.text-key::before,
+.text-key::after{ display:none !important; }
+@supports(-webkit-text-stroke:1px #fff){
+  .text-key{ -webkit-text-stroke:0; }
+}
+
+/* Microajuste no mobile: sublinhado um pouco mais fino */
+@media (max-width:575.98px){
+  .text-key{
+    text-decoration-thickness:.06em;
+    text-underline-offset:.16em;
+  }
+}
+
+
 /* ======= Ajustes MOBILE do HERO ======= */
 @media (max-width: 991.98px){
   .hero{ padding-top:6rem; padding-bottom:2.75rem; }
@@ -141,6 +168,77 @@ body{
 @media (max-width: 575.98px){
   .hero .display-5{ font-size:1.9rem; }
 }
+
+/* ===== HERO – conteúdo com o texto da arte ===== */
+.brand-title{
+  font-weight:800; letter-spacing:.02em;
+  font-size:clamp(2rem,6vw,3.25rem);
+  background:linear-gradient(90deg,var(--brand-1),var(--brand-2));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  text-shadow:0 0 22px rgba(106,17,203,.18);
+}
+.brand-kicker{
+  font-size:.6em; font-weight:600; margin-left:.15em;
+  -webkit-text-fill-color:initial; color:#cfc8ff; opacity:.95;
+}
+
+.hero-headline{
+  font-weight:800; color:#fff;
+  font-size:clamp(1.05rem,2.2vw,1.6rem);
+  line-height:1.25; max-width:32ch;
+}
+.hero-sub{
+  font-size:clamp(.98rem,1.8vw,1.1rem);
+  line-height:1.65; max-width:48ch;
+}
+
+/* divisor luminoso entre headline e parágrafo */
+.hero-divider{
+  height:2px; width:100%; max-width:540px; border-radius:999px;
+  background:linear-gradient(90deg,transparent,
+             rgba(106,17,203,.9),rgba(37,117,252,.9),transparent);
+  box-shadow:0 0 18px rgba(106,17,203,.35),0 0 22px rgba(37,117,252,.25);
+}
+
+/* CTA com borda gradiente e brilho sutil */
+.btn-cta-ghost{
+  border:2px solid transparent; border-radius:999px;
+  color:#fff; font-weight:800; letter-spacing:.02em;
+  background:
+    linear-gradient(#10151b,#0b0f14) padding-box,
+    linear-gradient(90deg,var(--brand-1),var(--brand-2)) border-box;
+  box-shadow:0 14px 32px rgba(37,117,252,.28),
+             inset 0 0 0 1px rgba(255,255,255,.06);
+  transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn-cta-ghost:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 42px rgba(37,117,252,.35),
+             inset 0 0 0 1px rgba(255,255,255,.12);
+  filter:brightness(1.03);
+}
+.btn-cta-ghost:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 .2rem rgba(37,117,252,.35),
+             0 18px 42px rgba(37,117,252,.35);
+}
+
+/* Mobile: respiro extra e CTA full-width */
+@media (max-width: 991.98px){
+  .hero{ padding-top:6rem; padding-bottom:2rem; }
+  .brand-title{ font-size:clamp(2rem,8vw,2.6rem); }
+  .hero-headline{ max-width:28ch; }
+}
+/* Desktop: imagem realmente no “meio” da coluna e com limite elegante */
+@media (min-width: 992px){
+  .hero-visual{ display:flex; justify-content:center; align-items:center; }
+  .hero-img--desktop{
+    width: min(100%, 640px);
+    max-height: 620px;
+    object-fit: contain;
+  }
+}
+
 
 
 /* INFO BAR */
@@ -341,4 +439,311 @@ footer{background:#fff}
     opacity: 0 !important;
     visibility: hidden !important;
   }
+}
+
+/* 1) Hierarquia limpa */
+.kicker{
+  font-weight:800;
+  font-size:.95rem;
+  letter-spacing:.02em;
+  color:#cbd5e1;
+}
+
+/* 2) H1 com quebra equilibrada e tamanho fluido */
+.hero-title{
+  font-weight:800;
+  color:#fff;
+  line-height:1.2;
+  font-size:clamp(1.6rem, 4.8vw, 2.2rem);
+  text-wrap: balance;              /* navegadores modernos */
+}
+@supports not (text-wrap: balance){
+  .hero-title{ hyphens:auto; }     /* fallback suave */
+}
+
+/* 3) Destaque minimalista na frase-chave (sem exagero) */
+.text-key{
+  color:#fff;
+  font-weight:800;
+  text-decoration: underline;
+  text-decoration-thickness:.08em;
+  text-decoration-color: rgba(37,117,252,.35);
+  text-underline-offset:.18em;
+}
+.text-key::before,
+.text-key::after{ display:none !important; }
+
+/* 4) CTA sólido (alto contraste) mantendo identidade com borda gradiente */
+.btn-cta-solid{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:.5rem;
+  padding:.95rem 1.2rem;
+  font-weight:800; letter-spacing:.02em;
+  color:#fff;
+  border-radius:14px;
+  border:2px solid transparent;
+  background:
+    linear-gradient(#0f1420,#0b0f14) padding-box,
+    linear-gradient(90deg,var(--brand-1),var(--brand-2)) border-box;
+  box-shadow:0 14px 28px rgba(37,117,252,.22);
+  transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn-cta-solid:hover{ transform:translateY(-2px); filter:brightness(1.03); }
+.btn-cta-solid:active{ transform:translateY(0); box-shadow:0 10px 18px rgba(37,117,252,.18); }
+
+/* 5) Espaçamento mais respirado acima da imagem */
+@media (max-width: 991.98px){
+  .hero .container .row{ row-gap:1rem; }
+  .hero-title{ margin-bottom:.6rem; }
+  .hero-sub{ margin-top:.4rem; }
+}
+
+/* 6) Imagem um pouco mais alta no mobile + sem corte da cabeça */
+@media (max-width: 575.98px){
+  .hero-img{ max-height:320px; object-position:center top; }
+  .hero-visual{ margin-top:.75rem; } /* empurra pouquinho p/ baixo do CTA */
+}
+/* Desktop segue como você definiu, com imagem antes e centralizada */
+@media (min-width: 992px){
+  .hero-img--desktop{ width:min(100%, 640px); max-height:620px; object-fit:contain; }
+}
+
+/* 7) Esconde CTA do navbar no mobile (evita competição) */
+@media (max-width: 991.98px){
+  #navbar .btn.btn-cta{ display:none !important; }
+}
+
+/* 8) Safe area no sticky CTA (se usar) */
+@supports (padding: max(0px)) {
+  .sticky-cta{ padding-bottom: max(.75rem, env(safe-area-inset-bottom)); }
+}
+
+/* --- Espaçamento geral do HERO --- */
+.hero{ min-height:100vh; display:flex; align-items:center; }
+@media (max-width: 991.98px){
+  .hero{ padding-top:6rem; padding-bottom:2.25rem; }
+}
+@media (min-width: 992px){
+  .hero{ padding-top: calc(var(--nav-h,72px) + 16px); padding-bottom: 48px; }
+}
+
+/* --- Tipografia enxuta e responsiva --- */
+.kicker{
+  font-weight:800; font-size:.95rem; letter-spacing:.02em; color:#cbd5e1;
+}
+.hero-title{
+  font-weight:800; color:#fff; line-height:1.2;
+  font-size:clamp(1.75rem, 4.6vw, 2.6rem);
+  text-wrap:balance;
+  max-width:30ch;
+}
+.hero-sub{ line-height:1.65; max-width:48ch; }
+
+/* Destaque minimal para “mobilidade, força e liberdade” */
+.text-key{
+  color:#fff; font-weight:800;
+  text-decoration: underline;
+  text-decoration-thickness:.08em;
+  text-decoration-color: rgba(37,117,252,.35);
+  text-underline-offset:.18em;
+}
+
+/* --- Botão com alto contraste e identidade --- */
+.btn-hero{
+  border-radius:14px;
+  color:#fff; font-weight:800; letter-spacing:.02em;
+  border:2px solid transparent;
+  background:
+    linear-gradient(#0f1420,#0b0f14) padding-box,
+    linear-gradient(90deg,var(--brand-1),var(--brand-2)) border-box;
+  box-shadow:0 14px 28px rgba(37,117,252,.22);
+  transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn-hero:hover{ transform:translateY(-2px); filter:brightness(1.03); }
+.btn-hero:active{ transform:translateY(0); box-shadow:0 10px 18px rgba(37,117,252,.18); }
+
+/* --- Imagem centralizada e com limites elegantes --- */
+@media (min-width: 992px){
+  .hero-visual{ display:flex; justify-content:center; align-items:center; }
+  .hero-img--desk{ width:min(100%, 640px); max-height:620px; object-fit:contain; }
+}
+
+/* Um pouco mais de respiro entre elementos no mobile */
+@media (max-width: 991.98px){
+  .hero .container .row{ row-gap:1.25rem; }
+  .hero-title{ margin-bottom:.6rem; }
+}
+
+/* (mantém seu glow/gradiente existentes) */
+
+/* ===== Seção O QUE É (tema claro) ===== */
+.section-what{ background:#fff; }
+
+/* Card clean com detalhes discretos */
+.what-card{
+  position:relative;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:20px;
+  box-shadow:0 8px 24px rgba(16,24,40,.06);
+  overflow:hidden;
+}
+/* filete superior com a sua paleta (sutil) */
+.what-card::before{
+  content:""; position:absolute; left:0; top:0; right:0; height:4px;
+  background:linear-gradient(90deg,var(--brand-1),var(--brand-2));
+}
+
+/* Título */
+.brand-mark{
+  background:linear-gradient(90deg,var(--brand-1),var(--brand-2));
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* Lista */
+.what-list{ display:grid; gap:14px; margin:0; padding:0; }
+.what-item{
+  display:grid; grid-template-columns: 34px 1fr; gap:12px;
+  align-items:start; padding:10px 0;
+  border-bottom:1px dashed rgba(0,0,0,.08);
+}
+.what-item:last-child{ border-bottom:0; }
+
+/* Bullet redondo com gradiente leve (contraste alto e elegante) */
+.what-bullet{
+  width:34px; height:34px; border-radius:50%;
+  display:grid; place-items:center;
+  background:linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  color:#fff; font-size:18px; box-shadow:0 6px 16px rgba(37,117,252,.18);
+}
+
+/* Verbo em destaque (sem exagero) */
+.accent{
+  color:var(--brand-2);
+  font-weight:800;
+}
+
+/* Responsividade */
+@media (max-width: 575.98px){
+  .what-card{ border-radius:16px; }
+  .what-bullet{ width:30px; height:30px; font-size:16px; }
+  .what-item{ gap:10px; }
+}
+@media (min-width: 992px){
+  .section-what{ padding-top:4rem; padding-bottom:4rem; }
+}
+
+/* ===== Jornada (tema claro) ===== */
+.section-journey{ background:#fff; }
+.section-journey .journey-intro{ max-width:860px; }
+
+/* Card com acento lateral em gradiente (sem “linha no topo”) */
+.step-card{
+  position:relative;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:16px;
+  box-shadow:0 8px 24px rgba(16,24,40,.06);
+  padding:1.25rem 1.25rem 1.25rem 3.5rem; /* espaço pro acento e número */
+  transition:transform .15s ease, box-shadow .2s ease;
+}
+.step-card::before{
+  /* barra vertical suave */
+  content:""; position:absolute; left:0; top:0; bottom:0; width:6px;
+  background:linear-gradient(180deg, var(--brand-1), var(--brand-2));
+  border-radius:6
+  px 0 0 6px;
+  opacity:.9;
+}
+.step-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(16,24,40,.08);
+}
+
+/* Badge numerado “chip” */
+.step-num{
+  position:absolute; left:14px; top:14px;
+  width:38px; height:38px; border-radius:50%;
+  display:grid; place-items:center;
+  font-weight:800; font-size:0.95rem; color:#fff;
+  background:linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  box-shadow:0 8px 18px rgba(37,117,252,.22);
+  border:2px solid #fff; /* recorte limpo contra o fundo */
+}
+
+/* Subtítulo curto */
+.step-kicker{
+  color:#6c757d; font-weight:600; letter-spacing:.01em;
+}
+
+/* Responsividade */
+@media (max-width: 575.98px){
+  .step-card{ padding:1rem 1rem 1rem 3.25rem; border-radius:14px; }
+  .step-num{ width:34px; height:34px; left:12px; top:12px; font-size:.9rem; }
+}
+
+/* ===== Minha História (tema claro) ===== */
+.section-story{ background:#fff; }
+
+.story-accent{
+  position: relative;
+  padding-left: 1.25rem;       /* espaço pro acento */
+}
+.story-accent::before{
+  content:"";
+  position:absolute; left:0; top:0; bottom:0; width:6px;
+  background: linear-gradient(180deg, var(--brand-1), var(--brand-2));
+  border-radius: 6px;
+  opacity:.95;
+}
+
+/* Chips de destaque */
+.chip{
+  padding:.35rem .65rem;
+  border-radius:999px;
+  font-weight:600;
+  font-size:.85rem;
+  color:#0b0f14;
+  background: rgba(37,117,252,.08);
+  border:1px solid rgba(0,0,0,.06);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 575.98px){
+  .story-accent{ padding-left: 1rem; }
+  .story-accent::before{ width:5px; }
+}
+/* Depoimentos */
+.testi { border:1px solid rgba(0,0,0,.06); border-radius:16px; position:relative; }
+.testi .card-body { padding:1.25rem 1.25rem 1.15rem; }
+.testi .stars { color:#f7b500; letter-spacing:.05em; font-weight:700; }
+.testi blockquote { color:#1b1f23; }
+.testi-bar{
+  content:""; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  border-top-left-radius:16px; border-top-right-radius:16px;
+}
+/* Modal imagens */
+.modal-content { border-radius:14px; }
+.modal-body img { width:100%; height:auto; display:block; }
+
+/* mobile: mostrar só o CTA */
+@media (max-width: 991.98px){
+  #mainNav{ display:none !important; }              /* esconde menu */
+  #navbar .cta-mobile{ display:flex !important; }   /* mostra wrapper */
+  #navbar .btn.btn-cta{ display:inline-flex !important; } /* mostra o botão */
+}
+
+/* MOBILE: mostrar só o CTA compacto, esconder o menu */
+@media (max-width: 991.98px){
+  #navbar .cta-mobile{ display:flex !important; }   /* mostra o botão "Acessar" */
+  #mainNav{ display:none !important; }              /* esconde o menu inteiro */
+}
+
+/* DESKTOP: mostrar o menu completo (com CTA dentro dele), esconder o CTA mobile */
+@media (min-width: 992px){
+  #navbar .cta-mobile{ display:none !important; }   /* esconde o botão "Acessar" do mobile */
+  #mainNav{ display:flex !important; }
+  #mainNav .btn-cta{ display:inline-flex !important; } /* garante o CTA do desktop visível */
 }

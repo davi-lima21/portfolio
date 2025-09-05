@@ -36,7 +36,7 @@
     "brand": {"@type":"Brand","name":"FREE & STRONG"},
     "offers": {
       "@type": "Offer",
-      "url": "https://pay.hotmart.com/Q100512394S?checkoutMode=10&bid=1757014063720",
+      "url": "https://pay.hotmart.com/Q100512394S",
       "priceCurrency": "BRL",
       "availability": "https://schema.org/InStock"
     }
@@ -44,165 +44,229 @@
   </script>
 </head>
 
-<body data-checkout="https://pay.hotmart.com/Q100512394S?checkoutMode=10&bid=1757014063720" data-whats="5547999999999">
-  <!-- NAV -->
-  <nav id="navbar" class="navbar navbar-expand-lg nav-fixed-lg nav-solid py-3">
-    <div class="container">
-      <!-- BRAND -->
-      <a class="navbar-brand d-flex align-items-center gap-2" href="#topo">
-       
-        <strong class="text-white">FREE & STRONG</strong>
-      </a>
+<body data-checkout="https://pay.hotmart.com/Q100512394S" data-whats="5547999999999">
+<nav id="navbar" class="navbar navbar-expand-lg nav-fixed-lg nav-solid py-3">
+  <div class="container">
+    <!-- BRAND -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#topo">
+      <strong class="text-white">FREE & STRONG</strong>
+    </a>
 
-      <!-- CTA no mobile (somente título + CTA) -->
-      <div class="d-flex d-lg-none ms-auto">
-        <a class="btn btn-primary btn-cta js-checkout" href="#">Acessar</a>
-      </div>
-
-      <!-- Menu completo só no desktop -->
-      <div id="mainNav" class="collapse navbar-collapse d-none d-lg-flex">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="#como-funciona">Como funciona</a></li>
-          <li class="nav-item"><a class="nav-link" href="#beneficios">Benefícios</a></li>
-          <li class="nav-item"><a class="nav-link" href="#historia">Minha história</a></li>
-          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-          <li class="nav-item ms-lg-3">
-            <a class="btn btn-primary btn-cta js-checkout" href="#">Acessar agora</a>
-          </li>
-        </ul>
-      </div>
+    <!-- CTA no mobile (somente título + CTA) -->
+    <div class="cta-mobile ms-auto d-lg-none">
+      <a class="btn btn-primary btn-cta js-checkout" href="#">Acessar</a>
     </div>
-  </nav>
 
-<!-- HERO (gradiente + conteúdo à esquerda, imagem à direita) -->
-<header id="topo" class="hero d-flex align-items-center text-white">
-  <!-- fundo em gradientes, sem imagem de backgroud -->
+    <!-- Menu completo só no desktop -->
+    <div id="mainNav" class="navbar-collapse d-none d-lg-flex">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#como-funciona">Como funciona</a></li>
+        <li class="nav-item"><a class="nav-link" href="#beneficios">Benefícios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#historia">Minha história</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        <li class="nav-item ms-lg-3">
+          <a class="btn btn-primary btn-cta js-checkout" href="#">Acessar agora</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="topo" class="hero text-white">
   <div aria-hidden="true" class="hero-gradient"></div>
 
   <div class="container position-relative">
-    <div class="row align-items-center gy-5">
-      <!-- Conteúdo ESQUERDA -->
-      <div class="col-lg-6">
-      <span class="badge badge-hero mb-3 fw-semibold">Jornada FREE & STRONG</span>
+    <div class="row align-items-center gx-lg-5 gy-4 py-4 py-lg-5">
 
-        <h1 class="display-5 fw-800 lh-tight mb-3">
-          Uma jornada de <span class="text-gradient">mobilidade, força e liberdade</span> no corpo.
-        </h1>
-        <p class="lead text-white-75 mb-4">
-          Aulas novas a cada 15 dias. Assinatura mensal, sem fidelidade. Assista no seu tempo — do seu jeito.
-        </p>
-
-        <ul class="hero-points list-unstyled d-grid gap-2 mb-4">
-          <li class="d-flex align-items-start gap-2">
-            <i class="bi bi-check-circle-fill icon-24 mt-1"></i>
-            <span>Conteúdo progressivo: punhos, coluna, quadril, ativações e body lines</span>
-          </li>
-          <li class="d-flex align-items-start gap-2">
-            <i class="bi bi-check-circle-fill icon-24 mt-1"></i>
-            <span>Acesso ao acervo de aulas anteriores</span>
-          </li>
-          <li class="d-flex align-items-start gap-2">
-            <i class="bi bi-check-circle-fill icon-24 mt-1"></i>
-            <span>Sem fidelidade — cancele quando quiser</span>
-          </li>
-        </ul>
-<!-- BOTÕES HERO: col-12 no mobile, auto no desktop -->
-<div class="row g-2 g-lg-2">
-  <div class="col-12 col-lg-auto">
-    <a class="btn btn-primary btn-lg px-4 py-3 w-100 w-lg-auto js-checkout" href="#">
-      Começar agora!
-    </a>
-  </div>
-  <div class="col-12 col-lg-auto">
-    <a class="btn btn-outline-light btn-lg px-4 py-3 w-100 w-lg-auto" href="#como-funciona">
-      Ver como funciona
-    </a>
-  </div>
-</div>
-
-<!-- TRUST (desktop) -->
-<!-- <ul class="hero-trust d-none d-lg-flex mt-4" aria-label="Sinais de confiança">
-  <li class="trust-item"><i class="bi bi-shield-lock-fill"></i>Pagamento 100% seguro</li>
-  <li class="trust-sep" role="separator" aria-hidden="true"></li>
-  <li class="trust-item"><i class="bi bi-lightning-charge-fill"></i>Acesso imediato</li>
-  <li class="trust-sep" role="separator" aria-hidden="true"></li>
-  <li class="trust-item"><i class="bi bi-arrow-repeat"></i>Garantia 7 dias</li>
-  <li class="trust-sep" role="separator" aria-hidden="true"></li>
-  <li class="trust-item"><i class="bi bi-credit-card-2-front-fill"></i>Pix • Cartão • Boleto</li>
-</ul> -->
-
-      </div>
-
-      <!-- IMAGEM DIREITA -->
-      <div class="col-lg-6">
-        <figure class="hero-visual m-0">
-          <!-- Use PNG/WebP com fundo transparente -->
-          <img src="assets/img/pode.jpg" class="hero-img img-fluid" alt="Demonstração de movimento de mobilidade e força">
+      <!-- IMAGEM (DESKTOP PRIMEIRO) -->
+      <div class="col-lg-6 order-2 order-lg-1">
+        <figure class="hero-visual m-0 d-flex justify-content-center">
+          <img src="assets/img/pode.jpg"
+               class="hero-img img-fluid hero-img--desk"
+               alt="Demonstração de mobilidade e força">
           <span class="hero-glow" aria-hidden="true"></span>
         </figure>
+      </div>
+
+      <!-- TEXTO + CTA (CTA é o último) -->
+      <div class="col-lg-6 order-1 order-lg-2">
+        <p class="kicker mb-2">
+          FREE & STRONG <span class="text-secondary">— Livre e forte</span>
+        </p>
+
+        <h1 class="hero-title mb-3">
+          Uma jornada de <span class="text-key">mobilidade, força e liberdade</span> no corpo.
+        </h1>
+
+        <p class="hero-sub text-white-75 mb-4">
+          Você não precisa viver travada, com dores ou limitada nos movimentos.
+          Existe um outro caminho — mais consciente, fluido e forte.
+        </p>
+
+        <!-- ÚNICO CTA -->
+        <a class="btn btn-hero btn-lg px-4 py-3 w-100 w-lg-auto js-checkout"
+           href="https://pay.hotmart.com/Q100512394S">
+          E ele começa aqui
+        </a>
       </div>
     </div>
   </div>
 </header>
 
+<!-- O QUE É -->
+<section id="o-que-e" class="section-what py-5 py-lg-6 bg-white">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-9 col-lg-10">
+        <div class="what-card">
+          <div class="p-4 p-md-5">
+            <h2 class="text-center fw-800 mb-3">
+              O que é o <span class="brand-mark">FREE & STRONG</span>?
+            </h2>
 
-  <!-- INFO BAR -->
-  <section class="info-bar text-center text-white">
-    <div class="container">
-      <div class="row g-3 align-items-center">
-        <div class="col-12 col-md-4"><small><i class="bi bi-shield-lock-fill me-1"></i>Pagamento 100% seguro via Hotmart</small></div>
-        <div class="col-12 col-md-4"><small><i class="bi bi-lightning-charge-fill me-1"></i>Acesso imediato após a compra</small></div>
-        <div class="col-12 col-md-4"><small><i class="bi bi-arrow-repeat me-1"></i>Garantia incondicional de 7 dias</small></div>
+            <p class="lead text-secondary mb-4">
+              Free & Strong é uma jornada <strong>100% online</strong>, com aulas gravadas,
+              que combinam <strong>mobilidade</strong>, <strong>força</strong> e
+              <strong>controle corporal</strong> para te ajudar a:
+            </p>
+
+            <ul class="what-list list-unstyled">
+              <li class="what-item">
+                <span class="what-bullet"><i class="bi bi-check-lg"></i></span>
+                <p class="mb-0"><strong class="accent">Aliviar</strong> dores e tensões acumuladas</p>
+              </li>
+
+              <li class="what-item">
+                <span class="what-bullet"><i class="bi bi-check-lg"></i></span>
+                <p class="mb-0"><strong class="accent">Recuperar</strong> amplitude de movimento</p>
+              </li>
+
+              <li class="what-item">
+                <span class="what-bullet"><i class="bi bi-check-lg"></i></span>
+                <p class="mb-0"><strong class="accent">Desenvolver</strong> força funcional — de dentro pra fora</p>
+              </li>
+
+              <li class="what-item">
+                <span class="what-bullet"><i class="bi bi-check-lg"></i></span>
+                <p class="mb-0"><strong class="accent">Trazer leveza</strong>, consciência e estabilidade pro seu corpo</p>
+              </li>
+
+              <li class="what-item">
+                <span class="what-bullet"><i class="bi bi-check-lg"></i></span>
+                <p class="mb-0"><strong class="accent">Voltar a se sentir bem</strong> no próprio corpo — em casa dentro de si</p>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- /what-card -->
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- COMO FUNCIONA -->
-  <section id="como-funciona" class="py-5">
-    <div class="container">
-      <div class="text-center mb-5">
-        <span class="badge bg-primary-soft text-primary-emphasis fw-semibold mb-3">Passo a passo</span>
-        <h2 class="fw-800">Como funciona a jornada <span class="text-gradient">FREE & STRONG</span></h2>
-        <p class="text-secondary">Aulas organizadas em blocos progressivos e liberadas a cada 15 dias.</p>
-      </div>
 
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-3">
-          <div class="card card-step h-100 text-center p-4">
-            <i class="bi bi-collection-play icon-40 mb-3"></i>
-            <h3 class="h6 fw-bold">Blocos progressivos</h3>
-            <p class="mb-0">Punhos, coluna, quadril, ativações e body lines.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="card card-step h-100 text-center p-4">
-            <i class="bi bi-calendar2-check icon-40 mb-3"></i>
-            <h3 class="h6 fw-bold">Aula a cada 15 dias</h3>
-            <p class="mb-0">Ritmo constante para evoluir com segurança.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="card card-step h-100 text-center p-4">
-            <i class="bi bi-arrow-repeat icon-40 mb-3"></i>
-            <h3 class="h6 fw-bold">Assinatura mensal</h3>
-            <p class="mb-0">Acesso recorrente a todo o conteúdo gravado.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="card card-step h-100 text-center p-4">
-            <i class="bi bi-display icon-40 mb-3"></i>
-            <h3 class="h6 fw-bold">Assista no seu tempo</h3>
-            <p class="mb-0">Celular, tablet ou computador — do seu jeito.</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="text-center mt-4">
-        <a class="btn btn-primary btn-lg px-5 js-checkout" href="#">Garantir meu acesso</a>
-        <small class="d-block text-secondary mt-2">Pagamento seguro · Acesso imediato</small>
+
+
+<!-- COMO FUNCIONA / A JORNADA -->
+<section id="como-funciona" class="section-journey py-5">
+  <div class="container">
+    <!-- Cabeçalho -->
+    <div class="text-center mb-4 mb-lg-5">
+      <span class="badge bg-primary-soft text-primary-emphasis fw-semibold mb-2">🌿 A Jornada Free & Strong</span>
+      <h2 class="fw-800 mb-2">Mobilidade, força e liberdade em <span class="text-gradient">blocos progressivos</span></h2>
+      <div class="journey-intro mx-auto">
+        <p class="text-secondary mb-2">
+          Se você sente dores, rigidez ou limitações… não é porque “falta alongar”.
+          O que falta é <strong>treinar mobilidade de forma inteligente e estruturada</strong>.
+        </p>
+        <p class="text-secondary mb-0">
+          É exatamente isso que você encontra na Jornada Free & Strong: um
+          <strong>método progressivo</strong> que transforma seu corpo em camadas —
+          passo a passo, com segurança, até você conquistar movimentos que talvez nunca tenha imaginado.
+        </p>
       </div>
     </div>
-  </section>
+
+    <!-- Blocos -->
+    <div class="row g-4">
+      <!-- Bloco 1 -->
+      <div class="col-md-6">
+        <article class="step-card h-100">
+          <span class="step-num">1</span>
+          <h3 class="h5 fw-800 mb-1">Bloco 1 – Mobilidade de Punhos</h3>
+          <p class="step-kicker mb-2">A base para tudo.</p>
+          <p class="mb-0 text-secondary">
+            Punhos rígidos limitam até os movimentos mais simples. Aqui você vai ganhar
+            <strong>estabilidade, amplitude</strong> e <strong>prevenção de dores</strong> para sustentar
+            práticas mais avançadas sem medo.
+          </p>
+        </article>
+      </div>
+
+      <!-- Bloco 2 -->
+      <div class="col-md-6">
+        <article class="step-card h-100">
+          <span class="step-num">2</span>
+          <h3 class="h5 fw-800 mb-1">Bloco 2 – Coluna & Quadril</h3>
+          <p class="step-kicker mb-2">O centro da liberdade.</p>
+          <p class="mb-0 text-secondary">
+            <strong>Coluna:</strong> mobilidade para aliviar tensões, dores lombares e rigidez. <br>
+            <strong>Quadril:</strong> desbloqueio das articulações que mais travam o corpo,
+            devolvendo <strong>leveza e potência</strong> para seus treinos e para o dia a dia.
+          </p>
+        </article>
+      </div>
+
+      <!-- Bloco 3 -->
+      <div class="col-md-6">
+        <article class="step-card h-100">
+          <span class="step-num">3</span>
+          <h3 class="h5 fw-800 mb-1">Bloco 3 – Movimentos Suspensos</h3>
+          <p class="step-kicker mb-2">É aqui que você começa a desafiar seus limites.</p>
+          <p class="mb-0 text-secondary">
+            “Suspensos” significa tirar pontos de contato com o chão, exigindo mais
+            <strong>equilíbrio, coordenação e força articular</strong>. Este bloco cria a base para você
+            se mover de forma <strong>fluida, forte e confiante</strong>.
+          </p>
+        </article>
+      </div>
+
+      <!-- Bloco 4 -->
+      <div class="col-md-6">
+        <article class="step-card h-100">
+          <span class="step-num">4</span>
+          <h3 class="h5 fw-800 mb-1">Bloco 4 – Body Lines & Shapes</h3>
+          <p class="step-kicker mb-2">As portas de entrada para as invertidas.</p>
+          <p class="mb-0 text-secondary">
+            Você vai aprender a alinhar o corpo em <strong>posturas estratégicas (body lines)</strong>
+            e a dominar <strong>shapes</strong> que ativam cada grupo muscular. Assim, conquistar uma
+            <strong>invertida</strong> deixa de ser impossível — você chega lá de forma segura, natural
+            e muito mais rápida.
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <!-- Fecho -->
+    <div class="text-center mt-4 mt-lg-5">
+      <p class="lead mb-3">
+        ✨ A Jornada Free & Strong é para quem deseja muito mais do que alongar:
+        é para quem quer um corpo feminino, livre, sem dor e com novas habilidades.
+      </p>
+      <p class="text-secondary">
+        Você não apenas melhora sua mobilidade, mas conquista <strong>confiança, presença</strong> e
+        <strong>liberdade</strong> em cada movimento.
+      </p>
+
+      <a class="btn btn-primary btn-lg px-5 js-checkout"
+         href="https://pay.hotmart.com/Q100512394S">
+        Garantir meu acesso
+      </a>
+      <small class="d-block text-secondary mt-2">Pagamento seguro · Acesso imediato</small>
+    </div>
+  </div>
+</section>
+
 
   <!-- BENEFÍCIOS -->
   <section id="beneficios" class="py-5 bg-light">
@@ -257,24 +321,54 @@
     </div>
   </section>
 
-  <!-- HISTÓRIA -->
-  <section id="historia" class="py-5">
-    <div class="container">
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-6 order-lg-2">
-          <img src="assets/img/story.jpg" class="img-fluid rounded-4 shadow" alt="Minha história" loading="lazy">
-        </div>
-        <div class="col-lg-6">
-          <span class="badge bg-primary-soft text-primary-emphasis fw-semibold mb-3">Minha história</span>
-          <h2 class="fw-800">A verdadeira força começa dentro.</h2>
-          <p class="text-secondary">
-            Personal trainer há 12 anos, por muito tempo busquei um corpo esteticamente bonito. Com o tempo, veio a rigidez, a dor e a perda de mobilidade. Foi então que nasceu o <strong>FREE & STRONG</strong>: treinar de forma mais leve, consciente e sustentável — para um corpo bonito, livre e funcional.
+<!-- HISTÓRIA -->
+<section id="historia" class="section-story py-5">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <!-- Imagem -->
+      <div class="col-lg-6 order-lg-2">
+        <img src="assets/img/story.jpg" class="img-fluid rounded-4 shadow" alt="Minha história" loading="lazy">
+      </div>
+
+      <!-- Texto -->
+      <div class="col-lg-6">
+        <span class="badge bg-primary-soft text-primary-emphasis fw-semibold mb-3">Minha história</span>
+        <h2 class="fw-800 mb-3">A verdadeira força começa dentro.</h2>
+
+        <div class="story-accent">
+          <p class="text-secondary mb-3">
+            Sou personal trainer há <strong>12 anos</strong> e, por muito tempo, busquei apenas um corpo esteticamente bonito.
+            Mas junto com os resultados na aparência vieram também a <strong>rigidez</strong>, as <strong>dores</strong> e a <strong>perda de mobilidade</strong>.
           </p>
-          <a class="btn btn-dark btn-lg js-checkout" href="#">Quero fazer parte</a>
+
+          <p class="text-secondary mb-3">
+            Foi nessa fase que conheci o <strong>Flow Education Brasil</strong> — mergulhei de verdade na metodologia,
+            concluindo as formações do <strong>Level 1 e 2</strong>. A partir dessa experiência, percebi que era possível treinar
+            de um jeito totalmente diferente: <strong>mais leve, consciente e sustentável</strong>.
+          </p>
+
+          <p class="text-secondary mb-0">
+            Assim nasceu o <span class="text-gradient fw-800">Free &amp; Strong</span> — um método que apliquei primeiro em mim,
+            transformando meu corpo e minha relação com o movimento, e depois em <strong>dezenas de alunas</strong> que hoje vivem
+            essa mesma liberdade: um corpo <strong>bonito, livre e funcional</strong>.
+          </p>
         </div>
+
+        <div class="d-flex flex-wrap gap-2 mt-4">
+          <span class="chip">12 anos como personal</span>
+          <span class="chip">Flow Education L1 + L2</span>
+          <span class="chip">Método leve e sustentável</span>
+        </div>
+
+        <a class="btn btn-dark btn-lg mt-4 js-checkout"
+           href="https://pay.hotmart.com/Q100512394S">
+          Quero fazer parte
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
 <!-- PLANO / CTA -->
 <section id="plano" class="py-5 text-center text-white bg-dark">
@@ -290,19 +384,21 @@
             <h3 class="h4 fw-bold mb-2">FREE & STRONG</h3>
 
             <!-- PREÇO + DESCONTO (apenas adição, mantendo o estilo) -->
-            <div class="price-wrap mb-3">
-              <div class="d-flex align-items-center justify-content-center gap-2 mb-1">
-                <span class="text-white-50 text-decoration-line-through fw-semibold">R$ 129,90</span>
-                <span class="badge off-badge">-38%</span>
-              </div>
-              <div class="d-flex align-items-end justify-content-center lh-1">
-                <span class="fs-5 me-1">R$</span>
-                <span class="display-4 fw-800">79</span>
-                <span class="fs-3 fw-800">,90</span>
-                <span class="fs-6 ms-1">/mês</span>
-              </div>
-              <small class="text-white-50 d-block mt-1">Renovação mensal · Cancele quando quiser</small>
-            </div>
+<!-- PREÇO + DESCONTO (estático e correto) -->
+<div class="price-wrap mb-3">
+  <div class="d-flex align-items-center justify-content-center gap-2 mb-1">
+    <span class="text-white-50 text-decoration-line-through fw-semibold">R$ 126,80</span>
+    <span class="badge off-badge">-37%</span>
+  </div>
+  <div class="d-flex align-items-end justify-content-center lh-1">
+    <span class="fs-5 me-1">R$</span>
+    <span class="display-4 fw-800">79</span>
+    <span class="fs-3 fw-800">,90</span>
+    <span class="fs-6 ms-1">/mês</span>
+  </div>
+  <small class="text-white-50 d-block mt-1">Renovação mensal · Cancele quando quiser</small>
+</div>
+
             <!-- /PREÇO -->
 
             <ul class="list-unstyled d-grid gap-2 text-start mx-auto" style="max-width:520px">
@@ -313,7 +409,7 @@
             </ul>
 
             <a class="btn btn-primary btn-lg px-5 py-3 mt-4 js-checkout"
-               href="https://pay.hotmart.com/Q100512394S?checkoutMode=10&bid=1757014063720">
+               href="https://pay.hotmart.com/Q100512394S">
               Acessar agora com segurança
             </a>
 
@@ -329,49 +425,146 @@
 </section>
 
 
-  <!-- DEPOIMENTOS -->
-  <section id="depoimentos" class="py-5 bg-light">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="fw-800">Quem já está na jornada</h2>
-        <p class="text-secondary">Opiniões espontâneas de alunas (substitua pelos seus depoimentos reais).</p>
-      </div>
+<!-- DEPOIMENTOS -->
+<section id="depoimentos" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-800 mb-2">Quem já está na jornada</h2>
+      <p class="text-secondary">Depoimentos reais de alunas. Clique para ver o print.</p>
+    </div>
 
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <div class="stars mb-2" aria-label="5 de 5">★★★★★</div>
-              <p>"Senti meu corpo destravar nas primeiras semanas. As dores diminuíram muito!"</p>
-              <small class="text-secondary">— Juliana Pedroso</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <div class="stars mb-2">★★★★★</div>
-              <p>"A estrutura por blocos fez toda a diferença. Evoluí com segurança e constância."</p>
-              <small class="text-secondary">— Ana Gabriela Schuartzup</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <div class="stars mb-2">★★★★★</div>
-              <p>"Acesso quando posso. Sem pressão, sem dor — só presença e fluidez."</p>
-              <small class="text-secondary">— Joana Pinheiro</small>
+    <div class="row g-4">
+      <!-- 1) Yuka -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card testi h-100 shadow-sm">
+          <div class="testi-bar"></div>
+          <div class="card-body">
+            <div class="stars mb-2" aria-label="5 de 5">★★★★★</div>
+            <blockquote class="mb-3">
+              “Fiz novamente a aula e é nítido o quanto meu corpo <strong>destrava</strong>. No final consegui
+              colocar os dois joelhos nos cotovelos — <strong>nunca tinha conseguido</strong>!
+              Próximo passo é a invertida. Obrigada pela aula!”
+            </blockquote>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-secondary">— Yuka</small>
+              <a class="btn btn-link p-0 small" data-bs-toggle="modal" data-bs-target="#proofYuka">
+                <i class="bi bi-file-earmark-image me-1"></i>ver print
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="text-center mt-4">
-        <a class="btn btn-primary btn-lg js-checkout" href="https://pay.hotmart.com/Q100512394S?checkoutMode=10&bid=1757014063720">Quero começar agora</a>
+      <!-- 2) Thaís -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card testi h-100 shadow-sm">
+          <div class="testi-bar"></div>
+          <div class="card-body">
+            <div class="stars mb-2" aria-label="5 de 5">★★★★★</div>
+            <blockquote class="mb-3">
+              “Ana!! Obrigada por hoje. <strong>As aulas estão demais</strong>, tô amando!”
+            </blockquote>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-secondary">— Thaís Marcon</small>
+              <a class="btn btn-link p-0 small" data-bs-toggle="modal" data-bs-target="#proofThais">
+                <i class="bi bi-file-earmark-image me-1"></i>ver print
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3) Carime -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card testi h-100 shadow-sm">
+          <div class="testi-bar"></div>
+          <div class="card-body">
+            <div class="stars mb-2" aria-label="5 de 5">★★★★★</div>
+            <blockquote class="mb-3">
+              “Você está sempre um passo à frente! <strong>Aula excelente</strong>, domínio do conteúdo e
+              uma condução que torna a prática <strong>incrível</strong>. Sigo aprendendo e crescendo com você!”
+            </blockquote>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-secondary">— Carime</small>
+              <a class="btn btn-link p-0 small" data-bs-toggle="modal" data-bs-target="#proofCarime">
+                <i class="bi bi-file-earmark-image me-1"></i>ver print
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+
+    <div class="text-center mt-4">
+      <a class="btn btn-primary btn-lg js-checkout"
+         href="https://pay.hotmart.com/Q100512394S">
+        Quero começar agora
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MODALS (provas/prints) -->
+<div class="modal fade" id="proofYuka" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Print — depoimento da Yuka</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/img/depoimentos/depo-yuka.jpg" class="img-fluid rounded" alt="Print WhatsApp — Yuka">
+      </div>
+      <div class="modal-footer">
+        <a href="assets/img/depoimentos/depo-yuka.jpg" target="_blank" rel="noopener" class="btn btn-outline-secondary btn-sm">
+          Abrir original
+        </a>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="proofThais" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Print — depoimento da Thaís</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/img/depoimentos/depo-thais.jpg" class="img-fluid rounded" alt="Print WhatsApp — Thaís Marcon">
+      </div>
+      <div class="modal-footer">
+        <a href="assets/img/depoimentos/depo-thais.jpg" target="_blank" rel="noopener" class="btn btn-outline-secondary btn-sm">
+          Abrir original
+        </a>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="proofCarime" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Print — depoimento da Carime</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/img/depoimentos/depo-carime.jpg" class="img-fluid rounded" alt="Print WhatsApp — Carime">
+      </div>
+      <div class="modal-footer">
+        <a href="assets/img/depoimentos/depo-carime.jpg" target="_blank" rel="noopener" class="btn btn-outline-secondary btn-sm">
+          Abrir original
+        </a>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!-- FAQ -->
 <section id="faq" class="py-5">
@@ -449,20 +642,22 @@
         <div id="faq4c" class="accordion-collapse collapse"
              aria-labelledby="faq4" data-bs-parent="#faqAccordion">
           <div class="accordion-body">
-            Não. Você pode começar com o que tem em casa e ir adaptando os movimentos conforme as orientações.
+            Você só precisa do próprio peso corporal, de um tapete de yoga ou tatame de EVA (evite colchonetes) e, se tiver, um bloco de yoga.
           </div>
         </div>
       </div>
     </div>
 
     <div class="text-center mt-4">
-      <a class="btn btn-primary btn-lg js-checkout" href="https://pay.hotmart.com/Q100512394S?checkoutMode=10&bid=1757014063720">
+      <a class="btn btn-primary btn-lg js-checkout" href="https://pay.hotmart.com/Q100512394S">
         Ir para o checkout seguro
       </a>
       <small class="d-block text-secondary mt-2">Hotmart · Garantia 7 dias</small>
     </div>
   </div>
 </section>
+
+
 
 
   <!-- STICKY CTA MOBILE -->
@@ -472,9 +667,20 @@
         <strong>FREE & STRONG</strong>
         <small>Acesso imediato · Checkout seguro</small>
       </div>
-      <a class="btn btn-primary js-checkout" href="https://pay.hotmart.com/Q100512394S?checkoutMode=10&bid=1757014063720">Começar</a>
+      <a class="btn btn-primary js-checkout" href="https://pay.hotmart.com/Q100512394S">Começar</a>
     </div>
   </div>
+
+    <!-- INFO BAR -->
+  <section class="info-bar text-center text-white">
+    <div class="container">
+      <div class="row g-3 align-items-center">
+        <div class="col-12 col-md-4"><small><i class="bi bi-shield-lock-fill me-1"></i>Pagamento 100% seguro via Hotmart</small></div>
+        <div class="col-12 col-md-4"><small><i class="bi bi-lightning-charge-fill me-1"></i>Acesso imediato após a compra</small></div>
+        <div class="col-12 col-md-4"><small><i class="bi bi-arrow-repeat me-1"></i>Garantia incondicional de 7 dias</small></div>
+      </div>
+    </div>
+  </section>
 
 
 
@@ -496,6 +702,8 @@
     </div>
   </div>
 </footer>
+
+
 
 
   <!-- Bootstrap JS + Main JS -->

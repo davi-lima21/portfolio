@@ -776,3 +776,28 @@ footer{background:#fff}
 @media (prefers-reduced-motion: reduce){
   .reveal { opacity: 1 !important; transition: none !important; }
 }
+
+
+
+/* Tokens do gradiente dos TÍTULOS */
+:root{
+  /* light (original) */
+  --title-g1: #6a11cb;
+  --title-g2: #2575fc;
+}
+
+/* dark: versões mais claras para boa leitura */
+@media (prefers-color-scheme: dark){
+  :root{
+    --title-g1: #b388ff; /* violeta claro */
+    --title-g2: #73b0ff; /* azul claro   */
+  }
+}
+
+/* aplica APENAS nos spans de título */
+.text-gradient,
+.brand-mark{
+  background-image: linear-gradient(90deg, var(--title-g1), var(--title-g2));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}

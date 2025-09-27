@@ -1,0 +1,1387 @@
+/* ===========================
+   DLR Web Studio — Styles (versão refinada)
+   Paleta: #000000 #d323e2 #9605a2 #b2bcc6 #ffffff #dcddde
+=========================== */
+:root{
+  --bg:#000000;
+  --ink:#ffffff;
+  --muted:#dcddde;
+  --muted-2:#b2bcc6;
+  --pri:#d323e2;
+  --pri-2:#9605a2;
+
+  /* Superfícies mais claras e limpas */
+  --surface-1:#0c0d11;   /* cards */
+  --surface-2:#0f1015;   /* seções alternadas */
+  --surface-3:#12131a;   /* hover leve */
+
+  --border:rgba(255,255,255,.10);
+  --border-soft:rgba(255,255,255,.06);
+
+  --shadow: 0 10px 35px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Sora',system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utilitários */
+.text-muted-2{color:var(--muted-2)!important}
+.section-padding{padding:90px 0}
+.section-alt{background: var(--surface-2)}
+.section-tag{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:999px;
+  background:linear-gradient(90deg, rgba(150,5,162,.14), rgba(211,35,226,.14));
+  border:1px solid var(--border);
+  color:var(--muted);
+  font-size:.85rem;
+  letter-spacing:.08em;
+}
+
+/* Navbar (um pouco mais clara) */
+.main-navbar{
+  position: sticky;
+  top:0; z-index: 1000;
+  background:rgba(18,19,26,.7);
+  backdrop-filter: blur(12px);
+  border-bottom:1px solid var(--border-soft);
+}
+.navbar-brand{color:#fff}
+.navbar .nav-link{ color:var(--muted); transition:.25s }
+.navbar .nav-link:hover{ color:#fff }
+.custom-toggler{
+  display:inline-block;width:1.5rem;height:1.5rem;
+  background: linear-gradient(135deg, var(--pri), var(--pri-2));
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.5a.5.5 0 010-1h14a.5.5 0 010 1H1zm0 5a.5.5 0 010-1h14a.5.5 0 010 1H1zm0 5a.5.5 0 010-1h14a.5.5 0 010 1H1z'/%3E%3C/svg%3E") center/cover no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.5a.5.5 0 010-1h14a.5.5 0 010 1H1zm0 5a.5.5 0 010-1h14a.5.5 0 010 1H1zm0 5a.5.5 0 010-1h14a.5.5 0 010 1H1z'/%3E%3C/svg%3E") center/cover no-repeat;
+}
+
+
+
+.btn-cta:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(211,35,226,.12);
+}
+.btn-ghost{
+  border:1px solid var(--border);
+  color:#fff;
+  border-radius:10px;
+  background: var(--surface-1);
+  transition: .2s ease;
+}
+.btn-ghost:hover{ background:#171824 }
+
+/* Botão flutuante */
+.botao-flutuante{
+  position:fixed; bottom:24px; left:50%; transform: translate(-50%, 130%);
+  z-index:999; transition: transform .45s ease;
+}
+.botao-flutuante.is-visible{ transform: translate(-50%, 0) }
+
+/* Logo seed */
+.logo-dot{
+  width:14px;height:14px; border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #fff0 55%),
+              linear-gradient(135deg, var(--pri), var(--pri-2));
+  display:inline-block;
+  filter: drop-shadow(0 0 10px rgba(211,35,226,.35));
+}
+
+/* Hero (mais claro) */
+.hero-section{
+  position: relative; isolation: isolate;
+  padding: 120px 0 100px;
+  background:
+    radial-gradient(60% 48% at 50% 120%, rgba(211,35,226,.14), transparent 70%),
+    #0a0b10;
+  text-align:center;
+}
+.hero-glow{
+  position:absolute; inset:0; z-index:-1;
+  background:
+    radial-gradient(35% 40% at 70% 20%, rgba(150,5,162,.12), transparent 60%),
+    radial-gradient(30% 45% at 20% 80%, rgba(211,35,226,.10), transparent 65%);
+  filter: blur(18px);
+}
+.hero-tag{
+  display:inline-block; padding:6px 14px; border-radius:999px;
+  border:1px solid var(--border);
+  color:var(--muted); font-size:.8rem; letter-spacing:.1em;
+  background:rgba(255,255,255,.03);
+}
+.hero-title{letter-spacing:-.02em}
+.text-gradient{
+  background: linear-gradient(90deg, var(--pri), var(--pri-2));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow: 0 0 16px rgba(211,35,226,.22);
+}
+.tech-strip{
+  display:flex; gap:18px; flex-wrap:wrap; justify-content:center;
+  margin-top:28px; color:var(--muted-2); font-size:.95rem;
+}
+.tech-strip span{display:inline-flex; gap:8px; align-items:center; opacity:.95}
+
+/* Cards de serviço */
+.service-card{
+  background: var(--surface-1);
+  border:1px solid var(--border);
+  border-radius:16px; padding:24px;
+  box-shadow: var(--shadow), 0 0 0 1px rgba(255,255,255,.02) inset;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.service-card:hover{ transform: translateY(-4px); background:#121321 }
+.service-card .icon-wrap{
+  width:46px;height:46px; display:grid;place-items:center;
+  border-radius:12px;
+  background: linear-gradient(135deg, rgba(211,35,226,.18), rgba(150,5,162,.18));
+  margin-bottom:12px; color:#fff; font-size:1.2rem;
+}
+
+/* Portfólio */
+.portfolio-section{ position:relative; }
+.portfolio-card{
+  background: var(--surface-1); border:1px solid var(--border); border-radius:16px;
+  overflow:hidden; transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  box-shadow: var(--shadow);
+}
+.portfolio-card:hover{ transform: translateY(-4px); background:#14151e }
+.portfolio-card .thumb{
+  position:relative; aspect-ratio: 16/10; overflow:hidden; background:#0f1016;
+}
+.portfolio-card .thumb img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition: transform .5s ease;
+  filter: saturate(1.05) contrast(1.03);
+}
+.portfolio-card:hover .thumb img{ transform: scale(1.05) }
+.tags span{
+  display:inline-block; padding:4px 10px; border-radius:999px;
+  background:rgba(255,255,255,.06); color:var(--muted);
+  border:1px solid var(--border); font-size:.8rem; margin-right:6px;
+}
+.btn-outline-light{
+  --bs-btn-color:#fff; --bs-btn-border-color:rgba(255,255,255,.26);
+  --bs-btn-hover-bg:#171822; --bs-btn-hover-border-color:rgba(255,255,255,.38);
+}
+/* ===========================
+   Processo — v2 (clean/pro)
+   Melhor legibilidade + timeline no mobile
+=========================== */
+.process-section .step-card{
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 26px 22px 22px;
+  position: relative;
+  box-shadow: 0 10px 35px rgba(0,0,0,.30);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.process-section .step-card:hover{
+  transform: translateY(-3px);
+  background: #14151c;
+  box-shadow: 0 16px 45px rgba(0,0,0,.38);
+}
+
+/* badge da etapa (gradiente da paleta) */
+.process-section .step-badge{
+  position: absolute;
+  top: -14px; left: 22px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: .75rem; letter-spacing: .08em; font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--pri), var(--pri-2));
+  box-shadow: 0 8px 24px rgba(211,35,226,.28);
+}
+
+/* cabeça do card: ícone + título */
+.process-section .step-head{
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 10px;
+}
+.process-section .step-icon{
+  width: 42px; height: 42px; border-radius: 12px;
+  display: grid; place-items: center; flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(211,35,226,.20), rgba(150,5,162,.20));
+  color: #fff; font-size: 1.1rem;
+}
+.process-section .step-card h6{
+  margin: 0;
+  font-size: 1.06rem; letter-spacing: .01em; font-weight: 700;
+}
+.process-section .step-card p{
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: .98rem;
+}
+
+/* ---------- Mobile: timeline vertical elegante ---------- */
+@media (max-width: 767.98px){
+  .process-section .step-card{
+    padding: 26px 18px 22px 78px; /* espaço p/ ícone fixo + linha */
+    min-height: 110px;
+  }
+  /* linha vertical (timeline) */
+  .process-section .step-card::before{
+    content: "";
+    position: absolute;
+    left: 42px; top: 0; bottom: -18px;
+    width: 2px; border-radius: 2px;
+    background: linear-gradient(180deg, var(--pri), var(--pri-2));
+    opacity: .35;
+  }
+  /* “ponto” do passo */
+  .process-section .step-card::after{
+    content: "";
+    position: absolute;
+    left: 33px; top: 28px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--pri), var(--pri-2));
+    box-shadow: 0 0 0 4px rgba(211,35,226,.18);
+  }
+  /* remove a linha do último card da linha */
+  .process-section .row > [class*="col-"]:last-child .step-card::before{
+    display: none;
+  }
+  /* ícone “ancorado” na timeline */
+  .process-section .step-icon{
+    position: absolute; left: 21px; top: 19px;
+    width: 42px; height: 42px;
+  }
+  /* badge acompanha o layout */
+  .process-section .step-badge{
+    left: 22px; top: -10px;
+  }
+}
+
+/* ---------- Desktop/Tablet: reforço de legibilidade ---------- */
+@media (min-width: 768px){
+  .process-section .step-card{ min-height: 220px; }
+  .process-section .step-card p{ font-size: .95rem; }
+}
+
+/* reduz movimento, se preferir */
+@media (prefers-reduced-motion: reduce){
+  .process-section .step-card{ transition: none !important; }
+}
+
+/* ===========================
+   FAQ — Clean/Pro v2
+   simples, com realces sutis
+=========================== */
+
+.faq-clean2{
+  position: relative;
+  isolation: isolate;
+}
+
+.accordion-clean2 .accordion-item{
+  background: var(--surface-1, #0f1015);
+  border: 1px solid var(--border, rgba(255,255,255,.10));
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.22);
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  position: relative;
+}
+
+/* faixa sutil à esquerda (cresce quando aberto) */
+.accordion-clean2 .accordion-item::before{
+  content:"";
+  position:absolute; left:0; top:0; bottom:0; width:2px;
+  background: linear-gradient(180deg, var(--pri, #d323e2), var(--pri-2, #9605a2));
+  transform: scaleY(.2);
+  transform-origin: top;
+  transition: transform .25s ease;
+  opacity: .9;
+}
+
+/* botão */
+.accordion-clean2 .accordion-button{
+  background: transparent;
+  color: #fff;
+  padding: 1rem 1rem 1rem .75rem;
+  border: 0;
+  box-shadow: none;
+  display: flex; align-items: center; gap: .9rem;
+}
+
+/* remove o caret padrão */
+.accordion-clean2 .accordion-button::after{ display:none !important; }
+
+/* título */
+.accordion-clean2 .faq-title{
+  font-weight: 600; letter-spacing: .01em;
+}
+
+/* ícone quadrado com leve borda (plus/minus alterna) */
+.accordion-clean2 .faq-icon{
+  width: 38px; height: 38px; border-radius: 10px;
+  display: inline-grid; place-items: center;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border, rgba(255,255,255,.10));
+  transition: transform .14s ease, background .14s ease, border-color .14s ease;
+  flex-shrink: 0;
+}
+.accordion-clean2 .faq-icon .dash{ display:none; }
+.accordion-clean2 .accordion-button:hover .faq-icon{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.18);
+}
+
+/* estado aberto */
+.accordion-clean2 .accordion-button:not(.collapsed){
+  color:#fff;
+}
+.accordion-clean2 .accordion-button:not(.collapsed) .faq-icon .plus{ display:none; }
+.accordion-clean2 .accordion-button:not(.collapsed) .faq-icon .dash{ display:inline-block; }
+.accordion-clean2 .accordion-item:has(.accordion-button:not(.collapsed))::before{
+  transform: scaleY(1);
+}
+.accordion-clean2 .accordion-item:has(.accordion-button:not(.collapsed)){
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.28);
+  border-color: rgba(255,255,255,.16);
+}
+
+/* conteúdo com fade+slide leve */
+.accordion-clean2 .accordion-body{
+  color: var(--muted, #dcddde);
+  padding: 0 1rem 1rem 1rem;
+  opacity: 0; transform: translateY(-4px);
+  transition: opacity .16s ease, transform .16s ease;
+}
+.accordion-clean2 .accordion-collapse.show .accordion-body{
+  opacity: 1; transform: translateY(0);
+}
+
+/* foco acessível */
+.accordion-clean2 .accordion-button:focus{
+  box-shadow: 0 0 0 6px rgba(211,35,226,.16);
+  border-radius: 10px;
+  outline: none;
+}
+
+/* reduz movimento se o usuário preferir */
+@media (prefers-reduced-motion: reduce){
+  .accordion-clean2 .accordion-item,
+  .accordion-clean2 .accordion-button,
+  .accordion-clean2 .accordion-body,
+  .accordion-clean2 .faq-icon{ transition: none !important; }
+}
+
+/* CTA final */
+.final-cta{
+  position:relative; isolation:isolate; text-align:center;
+  background:
+    radial-gradient(60% 40% at 50% 120%, rgba(211,35,226,.10), transparent 70%),
+    #0d0f15;
+}
+.cta-glow{
+  position:absolute; inset:0; z-index:-1;
+  background:
+    radial-gradient(35% 45% at 80% 20%, rgba(150,5,162,.10), transparent 60%),
+    radial-gradient(30% 50% at 20% 80%, rgba(211,35,226,.10), transparent 65%);
+  animation: breathe 8s ease-in-out infinite;
+  filter: blur(18px);
+}
+@keyframes breathe{ 0%,100%{opacity:.8} 50%{opacity:.45} }
+
+/* Footer */
+.hover-up{ transition: transform .16s ease, color .16s ease }
+.hover-up:hover{ transform: translateY(-2px); color:#fff !important }
+
+/* Reveal default (começa oculto) */
+[data-sr]{ visibility: hidden; }
+
+/* Responsivo */
+@media (max-width: 991.98px){
+  .hero-section{ padding: 100px 0 80px }
+}
+
+/* Respeita usuários com redução de movimento */
+@media (prefers-reduced-motion: reduce){
+  .botao-flutuante,
+  .portfolio-card .thumb img,
+  .service-card,
+  .btn-cta,
+  .hover-up,
+  .cta-glow { transition: none !important; animation: none !important; }
+}
+
+/* =======================================
+   ATUALIZAÇÕES E MELHORIAS - HERO SECTION
+   ======================================= */
+
+/* Hero Section (Removido gradiente estático para dar lugar à animação) */
+.hero-section {
+    position: relative;
+    isolation: isolate;
+    padding: 120px 0 100px;
+    background: #0a0b10; /* Cor de fundo base sólida */
+    text-align: center;
+    overflow: hidden; /* Garante que a animação não vaze */
+}
+
+/* NOVO: Fundo com Gradiente Animado 
+   Um pseudo-elemento que cobre todo o fundo com gradientes que se movem.
+*/
+.hero-glow-animation {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        /* Gradiente roxo no canto superior direito */
+        radial-gradient(40vw 40vh at 80% 20%, rgba(150, 5, 162, 0.18), transparent 80%),
+        /* Gradiente rosa/magenta no canto inferior esquerdo */
+        radial-gradient(40vw 40vh at 20% 80%, rgba(211, 35, 226, 0.16), transparent 80%);
+    
+    filter: blur(24px); /* Suaviza ainda mais os gradientes */
+    
+    /* Aplica a animação */
+    animation: animate-glow 12s ease-in-out infinite;
+}
+
+/* Keyframes para a animação do background */
+@keyframes animate-glow {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(40px, -30px) scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Remove o glow estático antigo */
+.hero-glow {
+    display: none;
+}
+
+/* Título (aumenta um pouco o espaçamento para a nova frase) */
+.hero-title {
+    letter-spacing: -.025em;
+}
+
+/* ===========================
+   BOTÕES COM HIERARQUIA
+   =========================== */
+
+/* BOTÃO PRIMÁRIO (Principal) - Estilo sólido e chamativo */
+.btn-primary-gradient {
+    border: none;
+    border-radius: 999px;
+    padding: .75rem 1.5rem;
+    color: #fff;
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--pri), var(--pri-2));
+    transition: transform .2s ease, box-shadow .2s ease;
+    box-shadow: 0 4px 20px rgba(211, 35, 226, .25);
+}
+.btn-primary-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(211, 35, 226, .35);
+    color: #fff;
+}
+.btn-primary-gradient:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 6px rgba(211, 35, 226, .2);
+}
+
+/* BOTÃO SECUNDÁRIO (Fantasma/Ghost) - Mais sutil */
+.btn-secondary-ghost {
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    padding: .75rem 1.5rem;
+    color: var(--muted);
+    background-color: transparent;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn-secondary-ghost:hover {
+    background-color: rgba(255, 255, 255, .05);
+    border-color: rgba(255, 255, 255, .35);
+    color: #fff;
+}
+
+/* Remove o estilo do btn-outline-light genérico que você tinha,
+   para não entrar em conflito. Se você o usa em outro lugar,
+   pode manter, mas o novo botão é o btn-secondary-ghost.
+*/
+.btn-outline-light {
+    --bs-btn-color: #fff;
+    --bs-btn-border-color: rgba(255, 255, 255, .26);
+    --bs-btn-hover-bg: #171822;
+    --bs-btn-hover-border-color: rgba(255, 255, 255, .38);
+}
+
+/* =========================================
+   FAQ — ajustes de espaçamento e velocidade
+   Cole no FINAL do style.css
+========================================= */
+
+/* ao clicar no anchor #faq, compensa a navbar fixa */
+#faq { scroll-margin-top: 96px; }
+
+/* mais respiro entre os itens */
+.faq-clean2 .accordion-item{
+  margin-bottom: 18px;
+  border-radius: 14px;
+}
+
+/* mais padding no botão (título) */
+.faq-clean2 .accordion-button{
+  padding: 1.2rem 1.25rem 1.2rem 1.25rem; /* top/right/bottom/left */
+}
+
+/* traz o traço colorido alguns px pra dentro e evita "curvar" no topo */
+.faq-clean2 .accordion-item::before{
+  left: 10px;                 /* desloca pra dentro */
+  width: 3px;                 /* um pouco mais grosso */
+  border-radius: 3px;         /* topo e base arredondados */
+}
+
+/* acelera a transição da altura do collapse do Bootstrap */
+.faq-clean2 .accordion-collapse{
+  transition: height .16s ease !important;
+}
+
+/* o corpo já começa visível, sem esperar a animação toda */
+.faq-clean2 .accordion-body{
+  padding: .5rem 1.25rem 1.25rem 1.25rem; /* dá um espacinho em cima */
+  opacity: 1;
+  transform: none;
+  transition: opacity .12s ease !important;
+}
+/* durante o "collapsing" mantém visível (sem fade demorado) */
+.faq-clean2 .accordion-collapse.collapsing .accordion-body{
+  opacity: 1;
+}
+
+/* hover bem sutil (opcional) */
+.faq-clean2 .accordion-button:hover{
+  background: rgba(255,255,255,.035);
+}
+
+/* se quiser ainda mais rápido, troque .16s por .12s acima */
+
+/* ===========================
+   PROCESSO — HOTFIX MOBILE
+   Corrige timeline e alinhamento
+=========================== */
+@media (max-width: 767.98px){
+
+  /* Mais respiro à esquerda para a timeline */
+  .process-section .step-card{
+    padding: 26px 18px 22px 78px; /* espaço para ícone/linha */
+    min-height: 112px;
+  }
+
+  /* Linha vertical DENTRO do card, sem invadir as curvas */
+  .process-section .step-card::before{
+    content: "";
+    position: absolute;
+    left: 42px;                 /* alinha com o ícone */
+    top: 18px;                  /* não encosta na borda superior */
+    bottom: 18px;               /* não encosta na borda inferior */
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--pri), var(--pri-2));
+    opacity: .38;
+  }
+
+  /* Em todos, exceto o último, estende um pouco pra baixo
+     para “conectar” visualmente com o próximo card */
+  .process-section .row > [class*="col-"]:not(:last-child) .step-card::before{
+    bottom: -22px; /* liga com o próximo */
+  }
+
+  /* No último card, termina dentro das curvas (limpo) */
+  .process-section .row > [class*="col-"]:last-child .step-card::before{
+    bottom: 18px;
+  }
+
+  /* Ícone ancorado e alinhado na timeline */
+  .process-section .step-icon{
+    position: absolute;
+    left: 31px;                 /* centraliza sobre a linha de 2px */
+    top: 22px;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--pri), var(--pri-2));
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 6px 18px rgba(211,35,226,.28);
+    z-index: 1;                 /* acima da linha */
+  }
+
+  /* Badge ajustada para não colar no topo */
+  .process-section .step-badge{
+    top: -10px; left: 22px;
+  }
+
+  /* Remove o "ponto" (se ficou da versão anterior) */
+  .process-section .step-card::after{
+    content: none !important;
+  }
+}
+
+/* Leve boost na legibilidade geral (opcional) */
+.process-section .step-card h6{ font-size: 1.08rem; }
+.process-section .step-card p{ font-size: .98rem; line-height: 1.65; }
+
+/* PROCESSO — ajuste fino mobile: ícone menor, mais respiro e roxo forte */
+@media (max-width: 767.98px){
+
+  /* mais respiro à esquerda e entre cards */
+  .process-section .step-card{
+    padding: 26px 18px 24px 92px; /* ↑ dá espaço pro ícone + linha */
+    margin-bottom: 22px;          /* ↑ separa os cards */
+    min-height: 108px;
+  }
+
+  /* linha central alinhada ao ícone, sem encostar nas bordas arredondadas */
+  .process-section .step-card::before{
+    content: "";
+    position: absolute;
+    left: 40px;           /* posição da linha */
+    top: 22px;            /* não cola no topo */
+    bottom: 22px;         /* nem na base */
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--pri), var(--pri-2));
+    opacity: .38;
+  }
+  /* conecta visualmente com o próximo card */
+  .process-section .row > [class*="col-"]:not(:last-child) .step-card::before{
+    bottom: -28px;
+  }
+  .process-section .row > [class*="col-"]:last-child .step-card::before{
+    bottom: 22px;
+  }
+
+  /* ícone menor e com roxo forte sólido */
+  .process-section .step-icon{
+    position: absolute;
+    left: 25px;           /* centraliza sobre a linha (40px - 15px) */
+    top: 24px;
+    width: 30px;          /* ↓ menor */
+    height: 30px;         /* ↓ menor */
+    border-radius: 10px;
+    display: grid; place-items: center;
+    background: var(--pri-2);                 /* roxo forte */
+    color: #fff;
+    font-size: .9rem;                          /* ícone interno menor */
+    box-shadow: 0 6px 16px rgba(150,5,162,.35);/* glow sutil do roxo forte */
+    z-index: 1;
+  }
+  .process-section .step-icon i{
+    line-height: 1;
+    font-size: .9rem;
+  }
+
+  /* badge ajustada pra não colar no topo */
+  .process-section .step-badge{
+    top: -8px;
+    left: 18px;
+  }
+
+  /* remove qualquer ponto adicional de versões anteriores */
+  .process-section .step-card::after{ content: none !important; }
+}
+
+/* leve boost geral de leitura */
+.process-section .step-card h6{ font-size: 1.08rem; }
+.process-section .step-card p{ font-size: .98rem; line-height: 1.65; }
+
+/* Portfólio — mantém cards sem borda */
+.portfolio-card{
+  border: 0 !important;
+  background: var(--surface-1);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.portfolio-card:hover{
+  transform: translateY(-4px);
+  background:#14151e;
+  box-shadow: 0 16px 50px rgba(0,0,0,.45);
+}
+
+/* Botões modernos (pill) dentro do Portfólio */
+.portfolio-card .btn{
+  --padY:.72rem; --padX:1.15rem;
+  padding: var(--padY) var(--padX);
+  font-weight: 600;
+  letter-spacing: .01em;
+  border-radius: 999px;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
+}
+.portfolio-card .btn:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(211,35,226,.18);
+}
+
+/* Primário (substitui o outline): gradiente, chamativo */
+.portfolio-card .btn-outline-light{
+  border: 0 !important;
+  color: #fff;
+  background: linear-gradient(135deg, var(--pri), var(--pri-2));
+  box-shadow: 0 10px 24px rgba(211,35,226,.28);
+}
+.portfolio-card .btn-outline-light:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(211,35,226,.36);
+}
+
+/* Secundário (ghost sutil) */
+.portfolio-card .btn-ghost{
+  border: 1px solid rgba(255,255,255,.16);
+  color: #fff;
+  background: rgba(255,255,255,.05);
+}
+.portfolio-card .btn-ghost:hover{
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.26);
+  transform: translateY(-2px);
+}
+
+/* aumenta um pouco os .btn-sm aqui, sem afetar o resto do site */
+.portfolio-card .btn.btn-sm{
+  font-size: .92rem;
+  padding: .72rem 1.15rem;
+}
+/* =========================================
+   BOTÃO CTA COM BORDA GIRATÓRIA ANIMADA
+   (Substitua a definição antiga de .btn-cta por esta)
+   ========================================= */
+
+/* Define uma variável CSS (--cta-angle) que o navegador entende como um ângulo.
+   Isso permite uma animação super performática do gradiente, que é suportada
+   em navegadores baseados em Chromium (Chrome, Edge, Opera) e Safari.
+*/
+@property --cta-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.btn-cta {
+  --cta-bg: #10111a;
+  --cta-speed: 4s;   /* Velocidade do giro */
+  --cta-thick: 2px;  /* Espessura da borda animada */
+
+  position: relative;
+  z-index: 0;
+  border: 0;
+  border-radius: 999px; /* Formato de pílula */
+  padding: .9rem 1.35rem;
+  background: var(--cta-bg);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .01em;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  isolation: isolate; /* Cria um novo contexto de empilhamento */
+}
+
+/* O pseudo-elemento ::before é a "mágica". Ele fica atrás do botão
+   e contém o gradiente cônico giratório.
+*/
+.btn-cta::before {
+  content: "";
+  position: absolute;
+  inset: -2px; /* Faz o pseudo-elemento ser 2px maior que o botão */
+  padding: var(--cta-thick);
+  border-radius: inherit; /* Herda o border-radius do botão */
+  pointer-events: none;
+  z-index: -1; /* Fica atrás do conteúdo do botão */
+
+  /* O gradiente cônico que usa as cores da sua paleta */
+  background: conic-gradient(from var(--cta-angle), var(--pri), var(--pri-2), var(--pri));
+
+  /* A máscara "corta" o centro do gradiente, deixando apenas uma
+     faixa na área do padding, criando o efeito de borda.
+  */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box, /* Máscara interna (o buraco) */
+    linear-gradient(#000 0 0);             /* Máscara externa (a forma toda) */
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+
+  /* Aplica a animação que muda o --cta-angle */
+  animation: cta-angle-spin var(--cta-speed) linear infinite;
+  will-change: --cta-angle; /* Dica de otimização para o navegador */
+}
+
+/* Um brilho sutil que fica atrás de tudo */
+.btn-cta::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: inherit;
+  background: radial-gradient(60% 60% at 50% 50%, rgba(211, 35, 226, .22), transparent 60%);
+  filter: blur(12px);
+  opacity: .25;
+  z-index: -2;
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  background: #15161f;
+  box-shadow: 0 12px 28px rgba(211, 35, 226, .25);
+}
+
+/* Acelera a animação no hover para um efeito mais dinâmico */
+.btn-cta:hover::before {
+  animation-duration: 2.6s;
+}
+
+.btn-cta:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(211, 35, 226, .2);
+}
+
+@keyframes cta-angle-spin {
+  to {
+    --cta-angle: 360deg;
+  }
+}
+
+/* Fallback para Firefox e outros navegadores que não suportam animar @property.
+   Ele usa a animação 'transform: rotate()' no pseudo-elemento, que é
+   um pouco menos performática, mas garante compatibilidade visual.
+*/
+@supports not (background: conic-gradient(from 1deg, #000, #000)) {
+  .btn-cta::before {
+    animation: cta-rotate var(--cta-speed) linear infinite;
+    transform-origin: 50% 50%;
+  }
+  @keyframes cta-rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* Respeita a preferência de acessibilidade para reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+  .btn-cta::before {
+    animation: none;
+  }
+}
+
+/* Marca na navbar (altura agradável, responsiva) */
+.brand-mark{
+  height: 25px;          /* mobile */
+  width: auto;
+  display: block;        /* evita “sobrar” linha na flex row */
+}
+
+@media (min-width: 992px){
+  .brand-mark{ height: 32px; }  /* desktop */
+}
+
+/* Sticky CTA (DLR) */
+.dlr-sticky-cta{
+  position: fixed; left: 0; right: 0; bottom: 0;
+  padding: .75rem 0 calc(.75rem + env(safe-area-inset-bottom));
+  background: rgba(16,17,26,.88);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -14px 30px rgba(0,0,0,.45);
+  z-index: 1030;
+
+  transform: translateY(110%);
+  transition: transform .28s ease;
+}
+.dlr-sticky-cta.is-on{ transform: translateY(0) }
+
+.dlr-sticky-cta .eyebrow{
+  color: var(--muted-2);
+  letter-spacing: .12em;
+  font-size: .72rem;
+}
+
+/* Botão um tiquinho mais encorpado no sticky */
+.dlr-sticky-cta .btn.btn-sm{ padding: .78rem 1.2rem; }
+
+
+/* ===== Hero 97vh + sem animação ===== */
+.hero-section{
+  position: relative;
+  isolation: isolate;
+  /* Mantém seu fundo base */
+  background: #0a0b10;
+  text-align: center;
+  overflow: hidden;
+
+  /* Altura desejada */
+  min-height: 97vh;
+
+  /* Centralização vertical elegante (preserva responsividade) */
+  display: grid;
+  place-items: center;
+
+  /* Opcional: ajuste de respiro interno.
+     Se quiser ainda mais “cheio” de tela, reduza estes paddings. */
+  padding: 64px 0;
+}
+
+/* Mantém o glow, mas ESTÁTICO (sem animação) */
+.hero-glow-animation{
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(40vw 40vh at 80% 20%, rgba(150, 5, 162, 0.18), transparent 80%),
+    radial-gradient(40vw 40vh at 20% 80%, rgba(211, 35, 226, 0.16), transparent 80%);
+  filter: blur(24px);
+  /* Remove a animação completamente */
+  animation: none !important;
+}
+
+/* Se quiser garantir que QUALQUER animação seja ignorada */
+@media (prefers-reduced-motion: no-preference){
+  .hero-glow-animation{ animation: none !important; }
+}
+
+/* Opcional: se você não quiser mais o arquivo de keyframes,
+   pode manter, não afeta. Mas, se preferir, "desativa" assim: */
+@keyframes animate-glow { from{opacity:1} to{opacity:1} }
+
+/* ===== CTA Final (DLR v2) — ocupa boa área de tela no desktop ===== */
+.dlr-cta{
+  position: relative;
+  isolation: isolate;
+  padding: 72px 0;               /* mobile/tablet */
+  text-align: center;
+  background:
+    radial-gradient(60% 40% at 50% 120%, rgba(211,35,226,.10), transparent 70%),
+    #0d0f15; /* mantém sua paleta */
+}
+
+/* Centro vertical elegante no desktop e usa ~72vh */
+@media (min-width: 992px){
+  .dlr-cta{
+    min-height: 72vh;
+    padding: 8vh 0;              /* respiro proporcional */
+    display: grid;
+    place-items: center;
+  }
+}
+
+/* Título responsivo sem exagerar no mobile */
+.dlr-cta h2.display-5{
+  letter-spacing: -.015em;
+  line-height: 1.15;
+  font-size: clamp(2rem, 1.6rem + 1.2vw, 3rem);
+}
+
+/* Ações (botões) — leve reforço de impacto */
+.dlr-cta .cta-actions .btn-lg{
+  padding: .9rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* Pílulas de confiança (trust) */
+.dlr-cta .pill{
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .4rem .8rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: .9rem;
+  letter-spacing: .01em;
+  transition: transform .16s ease, background .16s ease, border-color .16s ease;
+}
+.dlr-cta .pill:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.18);
+  color: #fff;
+}
+
+/* Se quiser reduzir o movimento global */
+@media (prefers-reduced-motion: reduce){
+  .dlr-cta .pill{ transition: none !important; }
+}
+
+/* Opcional: deixa a .cta-glow um pouco mais suave nesta seção */
+.dlr-cta .cta-glow{
+  filter: blur(18px);
+  opacity: .85;
+}
+
+.icon-workana{ display:inline-block; vertical-align:middle }
+
+/* Footer base já existente */
+.hover-up{ transition: transform .16s ease, color .16s ease }
+.hover-up:hover{ transform: translateY(-2px); color:#fff !important }
+
+/* Ajustes institucionais do footer */
+.dlr-footer .brand-mark{ height:28px; width:auto }
+
+/* Lista de contatos com separadores sutis no desktop */
+.dlr-contact li{
+  position: relative;
+}
+@media (min-width: 992px){
+  .dlr-contact li + li::before{
+    content:"";
+    position:absolute; left:-22px; top:50%;
+    width:1px; height:22px; transform:translateY(-50%);
+    background: var(--border, rgba(255,255,255,.10));
+  }
+}
+
+/* Links de contato: alinhamento e contraste */
+.contact-link{
+  line-height: 1;
+  text-decoration: none;
+  padding:.25rem .1rem;
+}
+.contact-link .contact-text{
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+
+/* Workana: somente a logo (badge) */
+.workana-badge{
+  display:block;
+  height: 22px;              /* ajuste fino da altura */
+  width: auto;
+  filter: none;               /* deixe sem filtro; use um arquivo claro */
+  opacity: .9;
+  transition: transform .16s ease, opacity .16s ease;
+}
+.workana-link:hover .workana-badge{
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+/* Melhor toque-alvo em telas pequenas */
+@media (max-width: 991.98px){
+  .contact-link, .workana-link{
+    padding: .35rem .25rem;
+  }
+}
+
+/* ==================================
+   ESTILOS - FOOTER INSTITUCIONAL V2
+   ================================== */
+.footer-institutional {
+  background: var(--surface-2); /* Fundo sutilmente diferente */
+  color: var(--muted-2);
+  border-top: 1px solid var(--border);
+}
+
+/* Títulos das colunas */
+.footer-heading {
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .8rem;
+  margin-bottom: 1rem;
+}
+
+/* Links de navegação e contato */
+.footer-nav li {
+  margin-bottom: .6rem;
+}
+.footer-nav a {
+  color: var(--muted-2);
+  text-decoration: none;
+  transition: color .2s ease, transform .2s ease;
+  display: inline-block; /* Permite o uso do transform */
+}
+.footer-nav a:hover {
+  color: var(--ink);
+  transform: translateX(3px);
+}
+.footer-nav a i {
+    font-size: .9rem;
+    vertical-align: middle;
+}
+
+
+/* Ícones sociais */
+.social-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, .05);
+    color: var(--muted-2);
+    font-size: 1.1rem;
+    transition: all .2s ease;
+}
+.social-icon:hover {
+    background-color: var(--pri);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* Ícone da Workana dentro do círculo */
+.social-icon .icon-workana{
+    width: 20px;
+    height: 20px;
+}
+
+/* Linha de Copyright (sub-footer) */
+.footer-sub {
+  font-size: .85rem;
+  color: var(--muted-2);
+  opacity: .8;
+}
+
+/* Ajuste para centralizar o texto no mobile quando as colunas empilharem */
+@media (max-width: 991.98px) {
+  .footer-institutional .row > div {
+    text-align: center;
+  }
+  .footer-institutional .navbar-brand,
+  .footer-institutional .d-flex {
+    justify-content: center;
+  }
+  .footer-nav a {
+    transform: none; /* Remove o efeito de translação no mobile */
+  }
+  .footer-nav a:hover {
+    transform: none;
+  }
+}
+
+.social-icon img{
+  max-height: 20px;
+}
+
+/* ===== Depoimentos (DLR v2) ===== */
+.testimonials{
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(60% 40% at 50% 120%, rgba(211,35,226,.08), transparent 70%),
+    var(--surface-2, #0f1015);
+}
+
+/* Glow suave de fundo */
+.testimonials .t-glow{
+  position:absolute; inset:0; z-index:-1;
+  background:
+    radial-gradient(40% 45% at 80% 20%, rgba(150,5,162,.12), transparent 60%),
+    radial-gradient(35% 50% at 20% 80%, rgba(211,35,226,.10), transparent 65%);
+  filter: blur(20px);
+  opacity:.9;
+}
+
+/* Cards */
+.t-card{
+  background: var(--surface-1, #0c0d11);
+  border: 1px solid var(--border, rgba(255,255,255,.10));
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.30), 0 0 0 1px rgba(255,255,255,.02) inset;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  min-width: 82%;
+  scroll-snap-align: start;
+}
+.t-card:hover{
+  transform: translateY(-3px);
+  background: #12131a;
+  border-color: rgba(255,255,255,.16);
+  box-shadow: 0 16px 42px rgba(0,0,0,.38);
+}
+
+.t-quote{
+  width:40px; height:40px; border-radius:10px;
+  display:grid; place-items:center;
+  background: linear-gradient(135deg, rgba(211,35,226,.18), rgba(150,5,162,.18));
+  color:#fff; margin-bottom:12px; flex-shrink:0;
+}
+.t-quote i{ font-size:1.25rem; line-height:1 }
+
+.t-text{
+  color:#e9e9ea;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.t-meta{
+  display:flex; align-items:center; gap:12px;
+  margin-top: 6px; margin-bottom: 10px;
+}
+.t-avatar{
+  width:42px; height:42px; border-radius:50%;
+  object-fit:cover; flex-shrink:0;
+  border:1px solid rgba(255,255,255,.14);
+}
+.t-name{ letter-spacing:.01em }
+.t-role{ font-size:.92rem }
+
+.t-stars i{ color:#f6c94c } /* dourado sutil */
+
+/* Tags */
+.t-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 2px; }
+.t-tags span{
+  display:inline-block; padding:4px 10px; border-radius:999px;
+  background: rgba(255,255,255,.06); color: var(--muted);
+  border: 1px solid var(--border);
+  font-size: .82rem;
+}
+
+/* Trilho mobile (carrossel sem JS) */
+.t-scroll{
+  display:flex; gap:14px; overflow-x:auto; padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.t-scroll::-webkit-scrollbar{ height: 8px }
+.t-scroll::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.14); border-radius: 999px;
+}
+.t-scroll::-webkit-scrollbar-track{ background: rgba(255,255,255,.06) }
+
+/* Desktop: cards fixos em grade (já controlado no HTML com d-lg-flex) */
+@media (min-width: 992px){
+  .t-card{ min-width: auto; height: 100% }
+}
+
+/* Reduz movimento se preferido */
+@media (prefers-reduced-motion: reduce){
+  .t-card{ transition: none !important; }
+}
+/* ===== Estrelas amarelas (fix) ===== */
+.t-stars .bi-star-fill,
+.t-stars .bi-star-half,
+.t-stars .bi-star{
+  color: #f6c94c !important;              /* amarelo */
+  filter: drop-shadow(0 0 4px rgba(246,201,76,.35));
+}
+
+/* Descrição do trabalho no depoimento */
+.t-work{
+  color: var(--muted-2);
+  font-size: .92rem;
+  display: flex; align-items: center; gap: .4rem;
+  margin: 6px 0 3px;
+}
+/* ==== FIX estrelas desalinhadas ==== */
+.t-stars{
+  display: flex;               /* fila estável */
+  align-items: center;         /* centraliza verticalmente */
+  gap: 2px;                    /* espaço consistente */
+  line-height: 1;              /* remove interferência da linha */
+  margin-top: 1px;             /* microajuste óptico */
+}
+
+.t-stars i{
+  display: inline-flex;        /* vira “caixa” */
+  align-items: center;
+  justify-content: center;
+  width: 1.1em;                /* caixas quadradas */
+  height: 1.1em;
+  font-size: 1.05rem;          /* tamanho uniforme */
+  line-height: 1;              /* sem altura extra */
+  vertical-align: middle;      /* corrige baseline da fonte */
+  color: #f6c94c !important;   /* amarelo */
+  filter: drop-shadow(0 0 4px rgba(246,201,76,.35));
+  transform: translateY(0.5px);/* leve nudge para “assentar” */
+}
+
+/* garanta que nenhum pseudo anterior interfira */
+/* .t-stars i::before{ content: none !important; } */
+
+.icon-sticky{
+  max-height: 22px;
+  max-width: 22px;
+}
+
+h2{
+  margin-top: 10px !important;
+}
+
+/* ===== Footer FX ===== */
+
+/* link base */
+.footer-nav a.fx-link{
+  position: relative;
+  color: var(--muted-2);
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: .2rem .1rem;
+  transition: color .2s ease, transform .2s ease, opacity .2s ease;
+}
+
+/* underline gradiente que cresce */
+.footer-nav a.fx-link::after{
+  content:"";
+  position:absolute; left: 0; bottom: -2px;
+  height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--pri), var(--pri-2));
+  border-radius: 2px;
+  transition: width .22s ease;
+}
+
+/* ícone dá um leve slide e a cor sobe */
+.footer-nav a.fx-link i{
+  transition: transform .22s ease, color .22s ease, opacity .22s ease;
+  opacity: .9;
+}
+
+.footer-nav a.fx-link:hover{
+  color: #fff;
+  transform: translateX(2px);
+}
+.footer-nav a.fx-link:hover::after{ width: 100%; }
+.footer-nav a.fx-link:hover i{
+  transform: translateX(2px);
+  color: var(--pri);
+  opacity: 1;
+}
+
+/* foco acessível */
+.footer-nav a.fx-link:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(211,35,226,.18);
+  border-radius: 8px;
+}
+
+/* social icons já existem; só deixo um brilho sutil no hover */
+.social-icon:hover{
+  box-shadow: 0 10px 24px rgba(211,35,226,.25);
+}
+
+/* Workana badge equaliza baseline */
+.social-icon .icon-workana{ display:block; }
+
+
+@media (max-width: 381px){
+  .cta-principal{
+    font-size: 1.15rem;
+  }
+}
+

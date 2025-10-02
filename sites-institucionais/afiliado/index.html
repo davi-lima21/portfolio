@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Afiliado Mercado Livre • Loja</title>
+
+  <!-- Bootstrap + Icons + Font -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg sticky-top py-2">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <span class="logo-pill"><i class="bi bi-bag-check-fill me-1 text-warning"></i> Loja Afiliada</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="nav" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#catalogo">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#garantias">Garantias</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item ms-lg-2"><a class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#cadModal"><i class="bi bi-plus-circle me-1"></i> Cadastrar produto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="badge badge-soft rounded-pill mb-3"><i class="bi bi-lightning-charge-fill me-1"></i> Ofertas quentes via Mercado Livre</span>
+          <h1 class="display-5 fw-800 lh-tight">Tecnologia que entrega <span class="text-primary">mais valor</span> pelo seu dinheiro</h1>
+          <p class="lead small-muted mt-2">
+            Curadoria diária de produtos com preço real, reputação alta e envio rápido. Você compra <b>direto no Mercado Livre</b>, com toda a segurança — nós apenas facilitamos a decisão e mostramos a melhor condição para converter.
+          </p>
+          <div class="d-flex gap-2 mt-2 hero-actions">
+            <a href="#catalogo" class="btn btn-buy btn-lg"><i class="bi bi-cart-check me-1"></i> Ver ofertas</a>
+            <a href="#faq" class="btn btn-outline-dark btn-lg"><i class="bi bi-shield-check me-1"></i> Como funciona?</a>
+          </div>
+          <div class="d-flex gap-3 align-items-center mt-4 trustbar p-2 rounded-3">
+            <div class="d-flex align-items-center gap-2"><i class="bi bi-patch-check-fill text-primary"></i><small>Vendedores Gold</small></div>
+            <div class="vr"></div>
+            <div class="d-flex align-items-center gap-2"><i class="bi bi-truck text-success"></i><small>Entrega Full</small></div>
+            <div class="vr"></div>
+            <div class="d-flex align-items-center gap-2"><i class="bi bi-arrow-counterclockwise text-warning"></i><small>Devolução grátis</small></div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="search-wrap rounded-4 p-3 p-md-4">
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="pill"><i class="bi bi-stars me-1 text-warning"></i> melhores do dia</span>
+              <span class="pill"><i class="bi bi-cash-coin me-1 text-success"></i> até 12x sem juros</span>
+              <span class="pill"><i class="bi bi-safe2 me-1 text-primary"></i> compra protegida</span>
+            </div>
+            <div class="row g-2 filter">
+              <div class="col-md-8"><input id="q" class="form-control form-control-lg" placeholder="Buscar por nome, marca, memória..."></div>
+              <div class="col-md-4 d-grid"><button id="btnSearch" class="btn btn-dark btn-lg"><i class="bi bi-search me-1"></i> Buscar</button></div>
+              <div class="col-md-4"><select id="cat" class="form-select"><option value="">Todas as categorias</option><option>Smartphones</option><option>Áudio</option><option>Casa</option></select></div>
+              <div class="col-md-4"><select id="order" class="form-select"><option value="relevance">Ordenar por: Relevância</option><option value="price">Menor preço</option><option value="rating">Melhor avaliação</option></select></div>
+              <div class="col-md-4"><input id="max" class="form-control" placeholder="Preço máx. (R$)"></div>
+            </div>
+            <small class="small-muted d-block mt-2">Dica: pesquise “256GB 5G” para achar os mais completos.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CATÁLOGO -->
+  <main id="catalogo" class="container py-5">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h2 class="section-title h4 m-0">Catálogo selecionado</h2>
+      <div class="small small-muted"><span id="count">3</span> produtos</div>
+    </div>
+
+    <div id="grid" class="row g-4">
+      <!-- PRODUTO 1 -->
+      <div class="col-md-6 col-lg-4 product" data-category="Smartphones" data-price="902.61" data-rating="4.6">
+        <div class="card-product">
+          <div class="img-wrap position-relative">
+            <img src="img_1.webp" class="w-100 h-100 object-fit-cover" alt="Moto g35 5G">
+            <span class="position-absolute top-0 start-0 m-2 badge text-bg-primary rounded-pill">Mais vendido</span>
+            <span class="position-absolute top-0 end-0 m-2 badge text-bg-warning text-dark rounded-pill"><i class="bi bi-percent me-1"></i> 47% OFF</span>
+          </div>
+          <div class="p-3">
+            <div class="d-flex align-items-center gap-2 small">
+              <span class="rating">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+              </span>
+              <span class="small-muted">(19.388)</span>
+            </div>
+            <h3 class="h6 mt-1">Motorola Moto g35 5G • 256GB • 12GB (4GB + 8GB Boost) • Câmera 50MP • NFC • 6.7" Superbrilho — Cinza</h3>
+            <div class="d-flex align-items-baseline gap-2 mt-1">
+              <span class="price">R$ 902,61</span>
+              <span class="strike small">R$ 1.730,64</span>
+            </div>
+            <div class="small small-muted">ou R$ 1.002,90 em 12x de R$ 83,58 sem juros</div>
+            <div class="mt-2 d-flex flex-wrap gap-2">
+              <span class="chip"><i class="bi bi-hdd me-1"></i>256GB</span>
+              <span class="chip"><i class="bi bi-5-circle me-1"></i>5G</span>
+              <span class="chip"><i class="bi bi-camera me-1"></i>50MP AI</span>
+            </div>
+          </div>
+          <div class="p-3 pt-0 sticky-cta">
+            <div class="d-flex align-items-center justify-content-between">
+              <small class="small-muted">Expira em <b class="timer" data-deadline="24"></b> • <b class="text-success stock" data-stock="15">15</b> un.</small>
+              <div class="btn-group">
+                <a class="btn btn-ml" target="_blank" rel="nofollow sponsored" href="https://mercadolivre.com/sec/2UVghbv"><i class="bi bi-bag-heart me-1"></i> Mercado Livre</a>
+                <a class="btn btn-buy" target="_blank" rel="nofollow sponsored" href="https://mercadolivre.com/sec/2UVghbv"><i class="bi bi-lightning-charge me-1"></i> Pagar no Pix</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUTO 2 (exemplo de outro item) -->
+      <div class="col-md-6 col-lg-4 product" data-category="Smartphones" data-price="1299.90" data-rating="4.7">
+        <div class="card-product">
+          <div class="img-wrap position-relative">
+            <img src="IMG_2.webp" class="w-100 h-100 object-fit-cover" alt="Smartphone 2">
+            <span class="position-absolute top-0 start-0 m-2 badge text-bg-success rounded-pill">TOP custo-benefício</span>
+          </div>
+          <div class="p-3">
+            <div class="d-flex align-items-center gap-2 small">
+              <span class="rating">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+              </span>
+              <span class="small-muted">(8.421)</span>
+            </div>
+            <h3 class="h6 mt-1">Smartphone 5G 256GB • Tela 6.6" 120Hz • Câmera tripla 50MP • Bateria 5000mAh</h3>
+            <div class="d-flex align-items-baseline gap-2 mt-1">
+              <span class="price">R$ 1.299,90</span>
+              <span class="strike small">R$ 1.699,90</span>
+            </div>
+            <div class="small small-muted">12x sem juros no Mercado Pago</div>
+            <div class="mt-2 d-flex flex-wrap gap-2">
+              <span class="chip"><i class="bi bi-lightning me-1"></i>120Hz</span>
+              <span class="chip"><i class="bi bi-battery-full me-1"></i>5000mAh</span>
+              <span class="chip"><i class="bi bi-5-circle me-1"></i>5G</span>
+            </div>
+          </div>
+          <div class="p-3 pt-0 sticky-cta">
+            <div class="d-flex align-items-center justify-content-between">
+              <small class="small-muted">Expira em <b class="timer" data-deadline="20"></b> • <b class="text-success stock" data-stock="9">9</b> un.</small>
+              <div class="btn-group">
+                <a class="btn btn-ml" target="_blank" rel="nofollow sponsored" href="https://mercadolivre.com/sec/SEU_LINK_2">Mercado Livre</a>
+                <a class="btn btn-buy" target="_blank" rel="nofollow sponsored" href="https://mercadolivre.com/sec/SEU_LINK_2?payment=pix">Pagar no Pix</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUTO 3 (exemplo) -->
+      <div class="col-md-6 col-lg-4 product" data-category="Áudio" data-price="299.90" data-rating="4.8">
+        <div class="card-product">
+          <div class="img-wrap position-relative">
+            <img src="img_3.webp" class="w-100 h-100 object-fit-cover" alt="Fone BT">
+            <span class="position-absolute top-0 start-0 m-2 badge text-bg-info rounded-pill">Novo</span>
+          </div>
+          <div class="p-3">
+            <div class="d-flex align-items-center gap-2 small">
+              <span class="rating">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </span>
+              <span class="small-muted">(2.103)</span>
+            </div>
+            <h3 class="h6 mt-1">Fone Bluetooth ANC • 35h bateria • USB-C • À prova de suor</h3>
+            <div class="d-flex align-items-baseline gap-2 mt-1">
+              <span class="price">R$ 299,90</span>
+              <span class="strike small">R$ 399,90</span>
+            </div>
+            <div class="small small-muted">Frete Full para diversas regiões</div>
+            <div class="mt-2 d-flex flex-wrap gap-2">
+              <span class="chip"><i class="bi bi-earbuds me-1"></i>ANC</span>
+              <span class="chip"><i class="bi bi-battery-charging me-1"></i>35h</span>
+              <span class="chip"><i class="bi bi-usb-plug me-1"></i>USB-C</span>
+            </div>
+          </div>
+          <div class="p-3 pt-0 sticky-cta">
+            <div class="d-flex align-items-center justify-content-between">
+              <small class="small-muted">Expira em <b class="timer" data-deadline="18"></b> • <b class="text-success stock" data-stock="22">22</b> un.</small>
+              <div class="btn-group">
+                <a class="btn btn-ml" target="_blank" rel="nofollow sponsored" href="https://mercadolivre.com/sec/SEU_LINK_3">Mercado Livre</a>
+                <a class="btn btn-buy" target="_blank" rel="nofollow sponsored" href="https://mercadolivre.com/sec/SEU_LINK_3?payment=pix">Pagar no Pix</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GARANTIAS -->
+    <section id="garantias" class="mt-5">
+      <h3 class="section-title h5 mb-3">Compre sem medo: nossa proposta de valor</h3>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="p-3 rounded-3" style="border:1px solid var(--border);background:var(--soft)">
+            <div class="d-flex align-items-center gap-2 mb-1"><i class="bi bi-hand-thumbs-up text-success"></i><strong>Curadoria para converter</strong></div>
+            <p class="small-muted mb-0">Escolhemos ofertas que realmente valem a pena e escrevemos a copy para facilitar sua decisão. Clique e finalize em minutos.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 rounded-3" style="border:1px solid var(--border);background:var(--soft)">
+            <div class="d-flex align-items-center gap-2 mb-1"><i class="bi bi-piggy-bank text-primary"></i><strong>Preço e condição claros</strong></div>
+            <p class="small-muted mb-0">Exibimos o <b>melhor cenário</b> (Pix/parcelado) e a reputação do vendedor. Sem pegadinhas, sem letrinhas miúdas.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 rounded-3" style="border:1px solid var(--border);background:var(--soft)">
+            <div class="d-flex align-items-center gap-2 mb-1"><i class="bi bi-shield-check text-warning"></i><strong>Compra protegida</strong></div>
+            <p class="small-muted mb-0">Você compra <b>direto no Mercado Livre</b>, com garantia de devolução e suporte do Mercado Pago.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER / WHATS -->
+    <section class="newsletter mt-5 p-4 rounded-4">
+      <div class="row g-3 align-items-center">
+        <div class="col-lg-7">
+          <h3 class="h5 fw-800 mb-1">Receba alertas de queda de preço</h3>
+          <p class="small-muted mb-0">A gente monitora para você e envia só quando vale a pena — sem spam.</p>
+        </div>
+        <div class="col-lg-5">
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Seu melhor e-mail">
+            <button class="btn btn-dark"><i class="bi bi-bell me-1"></i> Quero economizar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mt-5">
+      <h3 class="section-title h5 mb-3">Perguntas frequentes</h3>
+      <div class="accordion" id="acc">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#c1">Vocês vendem ou são afiliados?</button>
+          </h2>
+          <div id="c1" class="accordion-collapse collapse" data-bs-parent="#acc">
+            <div class="accordion-body small-muted">Somos afiliados. Você compra no Mercado Livre e, se concluir a compra pelo nosso link, recebemos uma pequena comissão — e você não paga nada a mais por isso.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#c2">É seguro?</button>
+          </h2>
+          <div id="c2" class="accordion-collapse collapse" data-bs-parent="#acc">
+            <div class="accordion-body small-muted">Sim. O pagamento e a entrega são feitos 100% dentro do Mercado Livre / Mercado Pago, com Compra Garantida.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- BARRA FLOTANTE -->
+  <div class="floating-bar">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-3">
+        <i class="bi bi-lightning-charge-fill text-warning"></i>
+        <div class="small"><b>Ofertas ativas</b> — finalize no Mercado Livre com segurança</div>
+      </div>
+      <div class="d-flex gap-2">
+        <a class="btn btn-outline-dark btn-sm" href="#catalogo"><i class="bi bi-bag"></i> Ver catálogo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CADASTRO (visual/sem backend) -->
+  <div class="modal fade" id="cadModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cadastrar produto (somente interface)</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Título</label>
+              <input id="fTitle" class="form-control" placeholder="Ex: Smartphone 5G 256GB">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Preço (Pix)</label>
+              <input id="fPrice" class="form-control" placeholder="999,90">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Categoria</label>
+              <select id="fCat" class="form-select">
+                <option>Smartphones</option><option>Áudio</option><option>Casa</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Link Mercado Livre (afiliado)</label>
+              <input id="fLink" class="form-control" placeholder="https://mercadolivre.com/sec/SEU_LINK">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Imagem (URL)</label>
+              <input id="fImg" class="form-control" placeholder="https://...jpg">
+            </div>
+          </div>
+          <small class="text-muted d-block mt-2">Integração real e persistência ficam para o backend.</small>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="btnAdd" class="btn btn-dark" data-bs-dismiss="modal"><i class="bi bi-save2 me-1"></i> Adicionar ao catálogo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer py-4 mt-5">
+    <div class="container d-flex flex-wrap gap-2 justify-content-between align-items-center">
+      <small class="small-muted">© <span id="y"></span> Loja Afiliada — seleção independente de ofertas do Mercado Livre.</small>
+      <div class="d-flex gap-2">
+        <a class="btn btn-outline-dark btn-sm" href="#faq"><i class="bi bi-question-circle"></i> Ajuda</a>
+        <a class="btn btn-outline-dark btn-sm" href="https://wa.me/5500000000000?text=Olá,%20quero%20ajuda%20com%20uma%20oferta" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Ano no footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Contador de produtos
+    const updateCount = () => {
+      document.getElementById('count').textContent = document.querySelectorAll('#grid .product').length;
+    }; updateCount();
+
+    // Timers de urgência por cartão
+    const timers = document.querySelectorAll('.timer');
+    const runTimers = () => {
+      timers.forEach(t => {
+        const hours = Number(t.dataset.deadline || 24);
+        if(!t.dataset.endsAt){
+          t.dataset.endsAt = Date.now() + hours*60*60*1000;
+        }
+        const left = Math.max(0, t.dataset.endsAt - Date.now());
+        const h = String(Math.floor((left/3.6e6)%24)).padStart(2,'0');
+        const m = String(Math.floor((left/6e4)%60)).padStart(2,'0');
+        const s = String(Math.floor((left/1e3)%60)).padStart(2,'0');
+        t.textContent = `${h}:${m}:${s}`;
+      });
+      requestAnimationFrame(runTimers);
+    }; runTimers();
+
+    // Estoque dinâmico leve (visual de escassez)
+    setInterval(()=>{
+      document.querySelectorAll('.stock').forEach(el=>{
+        let v = Number(el.dataset.stock);
+        if(v>3 && Math.random()<0.15){ v--; el.dataset.stock=v; el.textContent=v; el.classList.add('text-warning'); setTimeout(()=>el.classList.remove('text-warning'),500) }
+      });
+    }, 7000);
+
+    // Busca/ordenação simples no front
+    const grid = document.getElementById('grid');
+    const products = [...grid.children];
+
+    function applyFilters(){
+      const q = document.getElementById('q').value.toLowerCase();
+      const cat = document.getElementById('cat').value;
+      const max = parseFloat((document.getElementById('max').value||'').replace('.','').replace(',','.'));
+      const order = document.getElementById('order').value;
+
+      let filtered = products.filter(card=>{
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        const price = parseFloat(card.dataset.price);
+        const category = card.dataset.category;
+        let ok = true;
+        if(q && !name.includes(q)) ok=false;
+        if(cat && category!==cat) ok=false;
+        if(!isNaN(max) && price>max) ok=false;
+        card.style.display = ok ? '' : 'none';
+        return ok;
+      });
+
+      if(order==='price'){
+        filtered.sort((a,b)=>parseFloat(a.dataset.price)-parseFloat(b.dataset.price));
+      }else if(order==='rating'){
+        filtered.sort((a,b)=>parseFloat(b.dataset.rating)-parseFloat(a.dataset.rating));
+      }else{ // relevance: volta ao DOM original
+        filtered = products.filter(el=>el.style.display!=='none');
+      }
+
+      filtered.forEach(el=>grid.appendChild(el));
+      updateCount();
+    }
+    document.getElementById('btnSearch').addEventListener('click', applyFilters);
+    ['cat','order','max'].forEach(id=>document.getElementById(id).addEventListener('change', applyFilters));
+    document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter')applyFilters()});
+
+    // Cadastro visual de novo produto
+    document.getElementById('btnAdd').addEventListener('click', ()=>{
+      const t = fTitle.value.trim(), p = fPrice.value.trim(), c = fCat.value, l = fLink.value.trim(), i = fImg.value.trim();
+      if(!t || !p || !l || !i) return;
+      const price = (p.replace('.','').replace(',','.'));
+      const col = document.createElement('div');
+      col.className = 'col-md-6 col-lg-4 product';
+      col.dataset.category = c;
+      col.dataset.price = price;
+      col.dataset.rating = '4.5';
+      col.innerHTML = `
+        <div class="card-product">
+          <div class="img-wrap position-relative">
+            <img src="${i}" class="w-100 h-100 object-fit-cover" alt="">
+            <span class="position-absolute top-0 start-0 m-2 badge text-bg-info rounded-pill">Novo</span>
+          </div>
+          <div class="p-3">
+            <div class="d-flex align-items-center gap-2 small">
+              <span class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i></span>
+              <span class="small-muted">(—)</span>
+            </div>
+            <h3 class="h6 mt-1">${t}</h3>
+            <div class="d-flex align-items-baseline gap-2 mt-1">
+              <span class="price">R$ ${p}</span>
+            </div>
+            <div class="small small-muted">Condição especial via afiliado</div>
+          </div>
+          <div class="p-3 pt-0 sticky-cta">
+            <div class="d-flex align-items-center justify-content-between">
+              <small class="small-muted">Expira em <b class="timer" data-deadline="24"></b> • <b class="text-success stock" data-stock="12">12</b> un.</small>
+              <div class="btn-group">
+                <a class="btn btn-ml" target="_blank" rel="nofollow sponsored" href="${l}">Mercado Livre</a>
+                <a class="btn btn-buy" target="_blank" rel="nofollow sponsored" href="${l}?payment=pix">Pagar no Pix</a>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      grid.appendChild(col);
+      timers.forEach(()=>{}); // no-op; new timers will be captured next frame automatically
+      updateCount();
+    });
+  </script>
+</body>
+</html>

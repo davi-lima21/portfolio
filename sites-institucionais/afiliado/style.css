@@ -1,0 +1,304 @@
+/*
+  ============================================
+  MELHORIA DE DESIGN - LOJA AFILIADA
+  ============================================
+*/
+
+/* -------------------
+ * Variáveis e Estilos Base
+ * ------------------- */
+:root {
+  /* Paleta de Cores */
+  --brand-primary: #3483fa; /* Azul do Mercado Livre */
+  --brand-secondary: #fff159; /* Amarelo do Mercado Livre */
+  --brand-success: #00a650; /* Verde de sucesso */
+  --brand-dark: #333333; /* Cinza escuro/chumbo */
+
+  /* Cores de Suporte */
+  --bg-body: #f5f5f5; /* Fundo geral mais suave */
+  --bg-card: #ffffff;
+  --text-primary: #1c1c1c;
+  --text-muted: #6c757d;
+  --border-color: #e8e8e8;
+
+  /* Sombras e Bordas */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.12);
+  --border-radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------------------
+ * Componentes Principais
+ * ------------------- */
+
+/* Navegação */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 0;
+}
+
+.logo-pill {
+  font-weight: 800;
+  color: var(--brand-dark);
+  font-size: 1.1rem;
+}
+
+/* Seção Hero */
+.hero {
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(255, 241, 89, 0.2), transparent 60%),
+    radial-gradient(ellipse at 0% 100%, rgba(52, 131, 250, 0.15), transparent 60%),
+    linear-gradient(180deg, #ffffff, #f9f9f9);
+  border-bottom: 1px solid var(--border-color);
+  padding: 4rem 0;
+}
+
+.hero h1 {
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: var(--brand-dark);
+  letter-spacing: -1px;
+}
+
+.hero .lead {
+  color: var(--text-muted);
+  max-width: 550px;
+}
+
+.trustbar {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 0.75rem 1rem;
+}
+
+/* Caixa de Busca e Filtros */
+.search-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+}
+
+.filter .form-control,
+.filter .form-select {
+  border: 1px solid #ced4da;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter .form-control:focus,
+.filter .form-select:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(52, 131, 250, 0.15);
+}
+
+/* -------------------
+ * Cartões de Produto
+ * ------------------- */
+#catalogo {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-title {
+  font-weight: 800;
+  color: var(--brand-dark);
+}
+
+.card-product {
+  height: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-product:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-product .img-wrap {
+  aspect-ratio: 1 / 1;
+  background: #f0f0f0;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.card-product .img-wrap img {
+  transition: transform 0.3s ease;
+}
+
+.card-product:hover .img-wrap img {
+  transform: scale(1.05);
+}
+
+.card-product .p-3 {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-product h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  flex-grow: 1; /* Faz o título ocupar espaço para alinhar os preços */
+}
+
+.card-product .price {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+
+.card-product .strike {
+  color: var(--text-muted);
+}
+
+.card-product .chip {
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* -------------------
+ * Botões de Ação (CTA)
+ * ------------------- */
+.btn {
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.btn-buy,
+.btn-ml {
+  border: none;
+  font-weight: 700;
+  padding: 0.6rem 1rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-buy {
+  background: linear-gradient(45deg, var(--brand-primary), #579dff);
+  color: #fff;
+}
+
+.btn-ml {
+  background: linear-gradient(45deg, #ffd60a, var(--brand-secondary));
+  color: var(--brand-dark);
+}
+
+.btn-buy:hover,
+.btn-ml:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+}
+
+.sticky-cta {
+  border-top: 1px solid var(--border-color);
+  background: #fff;
+  margin-top: auto; /* Empurra para o final do card */
+  padding-top: 1rem !important; /* !important para sobrescrever o pt-0 */
+}
+
+.timer {
+  font-variant-numeric: tabular-nums;
+  background-color: #ffebeb;
+  color: #c02121;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+
+/* -------------------
+ * Outras Seções
+ * ------------------- */
+
+/* Garantias */
+#garantias .p-3 {
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  height: 100%;
+}
+
+#garantias .p-3:hover {
+  border-color: var(--brand-primary);
+  background-color: #f7faff;
+}
+
+/* Newsletter */
+.newsletter {
+  background-color: var(--brand-dark);
+  color: #fff;
+  border: none;
+}
+.newsletter h3 { color: #fff; }
+.newsletter p { color: #ccc; }
+
+/* Barra Flutuante */
+.floating-bar {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+}
+
+/* Footer */
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-color);
+}
+
+/*
+  ============================================
+  Responsividade
+  ============================================
+*/
+
+/* Para telas pequenas como celulares (até 767.98px de largura) */
+@media (max-width: 767.98px) {
+  .hero-actions {
+    flex-direction: column; /* Muda a direção do flex para vertical */
+    align-items: stretch;   /* Faz os itens esticarem para ocupar todo o espaço */
+    gap: 0.75rem;           /* Ajusta o espaçamento para o layout vertical */
+  }
+
+  .hero-actions .btn {
+    width: 100%; /* Garante que os botões ocupem 100% da largura */
+    font-size: 1rem; /* Aumenta um pouco a fonte para melhor legibilidade */
+    padding: 0.8rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.8rem, 8vw, 2.2rem); /* Ajusta o tamanho do título principal */
+  }
+}

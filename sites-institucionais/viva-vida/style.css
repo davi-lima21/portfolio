@@ -1,0 +1,256 @@
+/* ========= Design Tokens ========= */
+:root{
+  --vida-50:#f0fbf8;
+  --vida-100:#dcf6f0;
+  --vida-200:#baeade;
+  --vida-300:#8fd7c7;
+  --vida-400:#6bc6b4;
+  --vida-500:#4fb6a2;
+  --vida-600:#3f8f80;
+  --vida-700:#2f6a5f;
+  --ink:#0e1216;
+  --sub:#5e6673;
+  --border:#e7eaf1;
+  --shadow: 0 1px 2px rgba(16,24,40,.06), 0 8px 24px rgba(16,24,40,.08);
+  --shadow-xl: 0 10px 30px rgba(16,24,40,.12);
+  --shadow-xxl: 0 14px 60px rgba(16,24,40,.14);
+  --radius: 18px;
+}
+
+/* ========= Base ========= */
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color:var(--ink);
+  background:#fff;
+  line-height:1.7;
+  font-size:16.5px;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+.vv-light .text-body-emphasis{color:#1a1f25}
+.fw-800{font-weight:800}
+
+/* Acessibilidade: foco visível */
+:focus-visible{
+  outline:3px solid var(--vida-300);
+  outline-offset:2px;
+  border-radius:10px;
+}
+
+/* ========= Navbar ========= */
+.vv-nav{
+  position:sticky; top:0; z-index:1030;
+  backdrop-filter:saturate(1.2) blur(8px);
+  background:rgba(255,255,255,.85)!important;
+  border-bottom:1px solid var(--border);
+}
+.navbar-brand{letter-spacing:.3px}
+.navbar-brand span{font-weight:800}
+.nav-link{
+  font-weight:500; color:#334155!important; opacity:.9;
+  padding:.75rem 1rem; border-radius:10px;
+}
+.nav-link:hover{background:var(--vida-50); color:#0f172a!important}
+.brand-logo{width:36px;height:36px;object-fit:cover}
+
+/* ========= Hero ========= */
+.hero{
+  min-height:74vh;
+  display:grid; align-items:center;
+  background:linear-gradient(180deg,#ffffff 0%, #f7fbfa 100%);
+}
+.hero-bg{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(60% 40% at 20% 10%, rgba(79,182,162,.18), transparent 60%),
+    radial-gradient(50% 40% at 80% 60%, rgba(79,182,162,.10), transparent 65%);
+  pointer-events:none;
+}
+.hero-grid{
+  pointer-events:none; position:absolute; inset:0;
+  background-image:
+    linear-gradient(to right, rgba(79,182,162,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(79,182,162,.06) 1px, transparent 1px);
+  background-size:36px 36px;
+  mask-image:linear-gradient(to bottom, black, rgba(0,0,0,.15));
+}
+.vv-badge{
+  background:var(--vida-100); color:#0f172a; border:1px solid var(--vida-200);
+  padding:.5rem .75rem; border-radius:999px; font-weight:600;
+}
+.brand-grad{
+  background:linear-gradient(90deg,var(--vida-600), var(--vida-400) 60%, #7fe5d1);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+/* CTA stack: mobile empilha, >= sm lado a lado */
+.cta-stack{display:grid; gap:.75rem}
+@media (min-width: 576px){
+  .cta-stack{grid-auto-flow:column; justify-content:start; align-items:center}
+}
+
+/* Pills */
+.pill{
+  border:1px solid var(--border);
+  background:#fff; color:#0f172a;
+  padding:.35rem .7rem; border-radius:999px; font-size:.92rem;
+  box-shadow:var(--shadow);
+}
+
+/* Mockup */
+.mockup-card{
+  padding:.8rem; border-radius:var(--radius);
+  border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#fbfdfc);
+  box-shadow:var(--shadow-xl);
+}
+
+/* ========= Cards & Embeds ========= */
+.vv-card{
+  border:1px solid var(--border);
+  background:#ffffff; border-radius:var(--radius); overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.vv-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-xl); }
+.vv-card-body{padding:0}
+.vv-card-footer{
+  padding: .9rem 1rem; display:flex; justify-content:flex-end; background:linear-gradient(180deg,#fff,#fafcfc);
+  border-top:1px solid var(--border);
+}
+.vv-embed{border:0; display:block}
+
+/* ========= Sections ========= */
+.section-title{
+  font-family:'Playfair Display', serif;
+  font-weight:700; letter-spacing:.3px; color:#0b1320;
+}
+.section.pad{padding:5rem 0}
+
+/* ========= Botões ========= */
+.btn-vida{
+  --bg: var(--vida-600);
+  --bg2: var(--vida-500);
+  background:linear-gradient(180deg,var(--bg),var(--bg2));
+  color:#ffffff; border:1px solid var(--vida-600);
+  box-shadow: 0 12px 24px rgba(79,182,162,.24), 0 2px 6px rgba(79,182,162,.18);
+}
+.btn-vida:hover{ filter:brightness(.98); transform:translateY(-1px) }
+.btn-vida:active{ transform:translateY(0) }
+
+.btn-outline-vida{
+  background:#fff; color:var(--vida-700); border:1px solid var(--vida-300);
+}
+.btn-outline-vida:hover{ background:var(--vida-50); border-color:var(--vida-400); color:var(--vida-700) }
+
+/* ========= Lista com ícones ========= */
+.vv-list li{
+  display:flex; gap:.6rem; align-items:flex-start; margin:.5rem 0; color:#374151;
+}
+.vv-list i{color:var(--vida-600)}
+
+/* ========= Stats ========= */
+.stat{
+  padding:1.25rem; border:1px solid var(--border);
+  border-radius:16px; background:#fff; box-shadow:var(--shadow);
+}
+.stat-num{font-size:2.25rem; font-weight:800; line-height:1; color:#0b1320}
+.stat-label{font-size:.98rem; color:var(--sub)}
+
+/* ========= Footer ========= */
+.vv-footer{border-top:1px solid var(--border); background:#fff}
+.vv-hover:hover{opacity:1!important}
+
+/* ========= Helpers ========= */
+.shadow-xxl{box-shadow:var(--shadow-xxl)}
+/* Maior legibilidade de parágrafos longos */
+p{max-width:65ch}
+
+/* ========= Small refinements ========= */
+img{max-width:100%; height:auto}
+/* ======== Toggler minimalista ======== */
+/* Botão clicável, sem borda/ruído visual */
+.vv-burger{
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: .35rem .55rem;
+  border-radius: 10px;
+  width: 46px; height: 38px;
+  display: grid; place-items: center;
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.vv-burger:focus-visible{ box-shadow: 0 0 0 3px var(--vida-200) }
+.vv-burger:hover{ background: var(--vida-50) }
+
+/* Caixa do ícone */
+.vv-burger-box{
+  position: relative;
+  width: 24px; height: 16px; /* compacto e legível */
+}
+
+/* 1 elemento = 3 linhas (before/after) para ficar limpo */
+.vv-burger-inner,
+.vv-burger-inner::before,
+.vv-burger-inner::after{
+  position: absolute; left: 0;
+  width: 100%; height: 2px;
+  background: #0b1320; border-radius: 2px;
+  content: ""; transition: transform .22s ease, opacity .2s ease, top .22s ease;
+}
+.vv-burger-inner{ top: 7px }       /* linha do meio */
+.vv-burger-inner::before{ top: -6px } /* linha de cima */
+.vv-burger-inner::after{ top: 6px }   /* linha de baixo */
+
+/* Estado ABERTO (Bootstrap seta aria-expanded=true) — vira um “X” minimal */
+.navbar-toggler[aria-expanded="true"] .vv-burger-inner{
+  transform: rotate(45deg);
+}
+.navbar-toggler[aria-expanded="true"] .vv-burger-inner::before{
+  opacity: 0;
+}
+.navbar-toggler[aria-expanded="true"] .vv-burger-inner::after{
+  transform: rotate(-90deg);
+  top: 0;
+}
+
+/* Overlay do menu (mantemos para foco visual no mobile) */
+.vv-nav-overlay{
+  position: fixed; inset: 0; background: rgba(15,23,42,.35);
+  opacity: 0; pointer-events: none; transition: opacity .25s ease;
+}
+.vv-nav.show-overlay .vv-nav-overlay{ opacity: 1; pointer-events: auto }
+
+/* Suavizações para evitar "tremidas" no mobile */
+.navbar-collapse { will-change: height; }
+@media (max-width: 991.98px){
+  .vv-nav{
+    backdrop-filter: none;          /* evita repaints pesados */
+    background: #ffffff !important; /* mantém contraste */
+  }
+}
+
+/* Toggler minimalista (mantém seu visual atual) */
+.vv-burger{
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: .35rem .55rem;
+  border-radius: 10px;
+  width: 46px; height: 38px;
+  display: grid; place-items: center;
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.vv-burger:focus-visible{ box-shadow: 0 0 0 3px var(--vida-200) }
+.vv-burger:hover{ background: var(--vida-50) }
+.vv-burger-box{ position: relative; width: 24px; height: 16px; }
+.vv-burger-inner,
+.vv-burger-inner::before,
+.vv-burger-inner::after{
+  position: absolute; left: 0;
+  width: 100%; height: 2px; background: #0b1320; border-radius: 2px;
+  content: ""; transition: transform .22s ease, opacity .2s ease, top .22s ease;
+}
+.vv-burger-inner{ top: 7px }
+.vv-burger-inner::before{ top: -6px }
+.vv-burger-inner::after{ top: 6px }
+.navbar-toggler[aria-expanded="true"] .vv-burger-inner{ transform: rotate(45deg); }
+.navbar-toggler[aria-expanded="true"] .vv-burger-inner::before{ opacity: 0; }
+.navbar-toggler[aria-expanded="true"] .vv-burger-inner::after{ transform: rotate(-90deg); top: 0; }

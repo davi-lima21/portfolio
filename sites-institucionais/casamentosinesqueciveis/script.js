@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-
-
     // ======================================================
     // EFEITO PARALLAX (VERSÃO CORRIGIDA E EFICIENTE)
     // ======================================================
@@ -52,44 +50,85 @@ document.addEventListener("DOMContentLoaded", function() {
             const btnText = verMaisBtn.querySelector('.text');
             const collapsibleTextContainer = document.querySelector('.collapsible-text');
 
-            rafaelCollapseElement.addEventListener('show.bs.collapse', function () {
+            rafaelCollapseElement.addEventListener('show.bs.collapse', function() {
                 btnText.textContent = 'Ver Menos';
                 collapsibleTextContainer.classList.add('expanded');
             });
 
-            rafaelCollapseElement.addEventListener('hide.bs.collapse', function () {
+            rafaelCollapseElement.addEventListener('hide.bs.collapse', function() {
                 btnText.textContent = 'Ver Mais';
                 collapsibleTextContainer.classList.remove('expanded');
             });
         }
     }
-    
+
     // ======================================================
-    // NOVO: FECHA O MENU NAVBAR AO CLICAR EM UM LINK (MOBILE)
+    // FECHA O MENU NAVBAR AO CLICAR EM UM LINK (MOBILE)
     // ======================================================
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     const navbarCollapse = document.querySelector('.navbar-collapse');
 
-    // Apenas executa se houver um menu colapsável
     if (navbarCollapse) {
         const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-            toggle: false // Evita que o menu feche ao iniciar
+            toggle: false
         });
 
         navLinks.forEach(function(link) {
             link.addEventListener('click', function() {
-                // Verifica se o menu está aberto (visível na tela mobile)
                 if (navbarCollapse.classList.contains('show')) {
-                    // Usa o método da API do Bootstrap para fechar o menu
                     bsCollapse.hide();
                 }
             });
         });
     }
 
+    // ======================================================
+    // FUNÇÃO PARA ENVIAR DADOS DO FORMULÁRIO PARA O WHATSAPP
+    // ======================================================
+    const contactForm = document.getElementById('contactForm');
 
-        
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            // 1. Previne o comportamento padrão do formulário
+            event.preventDefault();
 
+            // 2. NÚMERO DE WHATSAPP ATUALIZADO
+            const phoneNumber = '555499248998'; // Número correto
 
-    
+            // 3. Pega os valores preenchidos nos campos
+            const name = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const eventDateInput = document.getElementById('data_evento').value;
+            const message = document.getElementById('mensagem').value;
+
+            // 4. Formata a data para (DD/MM/AAAA)
+            let eventDate = "Não informada";
+            if (eventDateInput) {
+                const dateParts = eventDateInput.split('-');
+                eventDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+            }
+
+            // 5. Cria o texto da mensagem
+            const whatsappMessage = `
+Olá, Rafael! Gostaria de solicitar um orçamento.
+
+*Nome:* ${name}
+*Email:* ${email}
+*Data do Evento:* ${eventDate}
+
+*Mensagem:*
+${message}
+            `.trim();
+
+            // 6. Codifica a mensagem para a URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+
+            // 7. Cria o link final do WhatsApp
+            const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+
+            // 8. Abre o WhatsApp em uma nova aba
+            window.open(whatsappURL, '_blank');
+        });
+    }
+
 });

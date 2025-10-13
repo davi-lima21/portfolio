@@ -62,9 +62,9 @@
 
         <div class="hero-content-container">
             <div class="hero-content">
-                <h1 class="display-4">Cada detalhe importa. Cada nota conta uma história.</h1>
+                <h1 class="display-4">Transformamos o seu casamento em um espetáculo inesquecível com música ao vivo que emociona do início ao fim.</h1>
                 <p class="lead">A sua história, traduzida em música.</p>
-                <a href="#contato" class="btn btn-outline-light btn-lg mt-3">Solicite um atendimento personalizado</a>
+                <a href="https://api.whatsapp.com/send?phone=555499248998&text=Ol%C3%A1%2C%20Rafael!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20como%20reservar%20uma%20data%20para%20o%20meu%20casamento." class="btn btn-outline-light btn-lg mt-3" target="_blank">Reserve sua data</a>
             </div>
         </div>
     </header>
@@ -75,7 +75,7 @@
 <link rel="stylesheet" href="navbar.css">
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="#">
             <img src="https://davi-lima21.github.io/portfolio/sites-institucionais/casamentosinesqueciveis/src/img/logo/logo-light.png"
                 alt="Rafael Lumi Logo" height="50">
         </a>
@@ -87,12 +87,12 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="/#sobre">Sobre</a></li>
-                <li class="nav-item"><a class="nav-link" href="/#parallax-services">Serviços Musicais</a></li>
-                <li class="nav-item"><a class="nav-link" href="/#depoimentos">Depoimentos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="#parallax-services">Serviços Musicais</a></li>
+                <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
                 <li class="nav-item"><a class="nav-link" href="./escolha-musicas/">Escolha das Músicas</a></li>
-                <li class="nav-item"><a class="nav-link" href="/#contato">Contato</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
             </ul>
         </div>
     </div>
@@ -184,10 +184,14 @@
                 </div>
             </div>
         </div>
-
+        
+        <div class="text-center mt-5">
+            <a href="https://api.whatsapp.com/send?phone=555499248998&text=Ol%C3%A1%2C%20Rafael!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20como%20reservar%20uma%20data%20para%20o%20meu%20casamento." class="btn btn-primary btn-lg" target="_blank">Reserve sua data</a>
+        </div>
     </div>
 </section>
     <section id="parallax-services">
+    <div class="parallax-overlay"></div>
     <div class="parallax-bg"></div>
     <div class="container h-100">
         <div class="row h-100 align-items-center justify-content-center text-center">
@@ -241,6 +245,9 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+                <div class="mt-5">
+                    <a href="https://api.whatsapp.com/send?phone=555499248998&text=Ol%C3%A1%2C%20Rafael!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20como%20reservar%20uma%20data%20para%20o%20meu%20casamento." class="btn btn-outline-light btn-lg" target="_blank">Reserve sua data</a>
                 </div>
             </div>
         </div>
@@ -337,16 +344,69 @@
             </button>
 
         </div>
-
+        
+        <div class="text-center mt-5">
+            <a href="https://api.whatsapp.com/send?phone=555499248998&text=Ol%C3%A1%2C%20Rafael!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20como%20reservar%20uma%20data%20para%20o%20meu%20casamento." class="btn btn-primary btn-lg" target="_blank">Reserve sua data</a>
+        </div>
     </div>
 
 </section>
+
+<section id="contato" class="contact-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Vamos Conversar?</h2>
+            <p class="lead">Preencha o formulário ou chame no WhatsApp. <br>Estamos prontos para criar a trilha sonora do seu sonho.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form-wrapper">
+                    <form id="contactForm" action="#" method="post">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nome" class="form-label">Nome Completo</label>
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Melhor Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="data_evento" class="form-label">Data do Casamento</label>
+                            <input type="date" class="form-control" id="data_evento" name="data_evento">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensagem" class="form-label">Sua Mensagem</label>
+                            <textarea class="form-control" id="mensagem" name="mensagem" rows="5" placeholder="Conte-nos um pouco sobre o que vocês imaginam para o grande dia..." required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Enviar Pedido de Contato</button>
+                        </div>
+                    </form>
+                    
+                    <div class="contact-divider">
+                        <span>OU</span>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="https://api.whatsapp.com/send?phone=555499248998&text=Ol%C3%A1%2C%20Rafael!%20Encontrei%20seu%20contato%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20seus%20servi%C3%A7os%20de%20m%C3%BAsica%20para%20casamentos." class="btn btn-success btn-lg w-100" target="_blank">
+                            <i class="bi bi-whatsapp"></i> Chamar Agora no WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <section id="pre-footer-image" class="pre-footer-section">
     <img src="src/img/harpahorizontal.jpg" alt="Músicos se apresentando em um casamento" class="pre-footer-img">
 </section>
 
-<footer id="contato" class="site-footer">
+<footer class="site-footer">
 <div class="container">
     <div class="row">
 
@@ -361,12 +421,12 @@
             <div class="footer-widget">
                 <h5 class="footer-title">Menu</h5>
                 <ul class="footer-links">
-                    <li><a href="/#sobre">Sobre</a></li>
-                    <li><a href="/#parallax-services">Serviços</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#parallax-services">Serviços</a></li>
                     <li><a href="#">Momentos Inesquecíveis</a></li>
-                    <li><a href="/#depoimentos">Depoimentos</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
                     <li><a href="./escolha-musicas/">Escolha das Músicas</a></li>
-                    <li><a href="/#contato">Contato</a></li>
+                    <li><a href="#contato">Contato</a></li>
                 </ul>
             </div>
         </div>
@@ -375,9 +435,12 @@
             <div class="footer-widget">
                 <h5 class="footer-title">Fale Conosco</h5>
                 <ul class="footer-contact">
-                    <li><i class="bi bi-whatsapp"></i> <a href="https://wa.me/550000000000" target="_blank">(XX) XXXXX-XXXX</a></li>
+                    <li><i class="bi bi-whatsapp"></i> <a href="https://api.whatsapp.com/send?phone=555499248998&text=Ol%C3%A1%2C%20Rafael!%20Encontrei%20seu%20contato%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20seus%20servi%C3%A7os%20de%20m%C3%BAsica%20para%20casamentos." target="_blank">(54) 9924-8998</a></li>
                     <li><i class="bi bi-envelope"></i> <a href="mailto:contato@rafaellumi.com">contato@rafaellumi.com</a></li>
                 </ul>
+                <a href="https://api.whatsapp.com/send?phone=555499248998&text=Ol%C3%A1%2C%20Rafael!%20Encontrei%20seu%20contato%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20seus%20servi%C3%A7os%20de%20m%C3%BAsica%20para%20casamentos." class="btn btn-success mt-3 w-100" target="_blank">
+                    <i class="bi bi-whatsapp"></i> Chamar no WhatsApp
+                </a>
             </div>
         </div>
 

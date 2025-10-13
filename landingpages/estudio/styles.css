@@ -1,0 +1,128 @@
+/* ===== Paleta e tokens ===== */
+:root{
+  --brand: #7c3aed;        /* violeta-600 */
+  --brand-600:#6d28d9;     /* violeta-700 */
+  --brand-700:#5b21b6;     /* violeta-800 */
+  --brand-aux:#06b6d4;     /* ciano-500 (toque secundário) */
+
+  --bg-soft:#f8fafc;       /* slate-50 */
+  --ink:#0f172a;           /* slate-900 */
+  --muted:#475569;         /* slate-600 */
+
+  /* Override Bootstrap primary para usar a cor de marca */
+  --bs-primary: var(--brand);
+  --bs-primary-rgb: 124, 58, 237;
+}
+
+/* Reset básico */
+html { scroll-behavior:smooth;
+overflow-x: hidden;
+}
+body { color:var(--ink); background:#fff; overflow-x: hidden; }
+
+/* Navbar */
+.navbar { transition: box-shadow .2s ease, background-color .2s ease; background-color: #fff; /* <-- Adicione esta linha */}
+.navbar.stuck { box-shadow: 0 6px 24px rgba(2, 8, 23, .08); background: rgba(255,255,255,.9); backdrop-filter: saturate(180%) blur(6px); }
+.nav-link { color:#334155; }
+.nav-link:hover { color:var(--brand); }
+
+.brand-dot {
+  width:.6rem; height:.6rem; display:inline-block; border-radius:999px; margin-inline:.35rem; transform:translateY(-2px);
+  background: radial-gradient(circle at 30% 30%, var(--brand) 0 40%, var(--brand-600) 75%, var(--brand-700) 100%);
+}
+
+/* Hero */
+.hero{
+  min-height:90vh; display:flex; align-items:center;
+  background:
+    radial-gradient(64rem 64rem at 80% -10%, rgba(124,58,237,.12), transparent 60%),
+    radial-gradient(42rem 42rem at -10% 20%, rgba(6,182,212,.12), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #fbfbff 100%);
+}
+.hero .badge-soft{
+  background: rgba(124,58,237,.10);
+  color: var(--brand-600);
+  border: 1px solid rgba(124,58,237,.18);
+}
+.hero-img{ object-fit:cover; width:100%; height:100%; max-height:500px; }
+
+/* Botões */
+.btn-brand{
+  --bs-btn-bg: var(--brand);
+  --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand-600);
+  --bs-btn-hover-border-color: var(--brand-600);
+  --bs-btn-focus-shadow-rgb: 124,58,237;
+  color:#fff;
+}
+.btn-soft{
+  background: linear-gradient(180deg, #eef2ff, #e0e7ff);
+  color: var(--brand-700);
+  border: 1px solid #c7d2fe;
+}
+.btn-soft:hover{ filter:brightness(.98); }
+
+/* Seções / Cards */
+.section{ padding:72px 0; }
+.bg-soft{ background:var(--bg-soft); }
+.card{ border:1px solid #e6e8eb; }
+.icon{
+  width:44px; height:44px; border-radius:12px; display:inline-grid; place-items:center;
+  background: radial-gradient(circle at 30% 30%, #ede9fe 0 60%, #e0e7ff 100%);
+  color: var(--brand-700);
+}
+
+/* Preços */
+.price{ font-size:2.25rem; font-weight:800; letter-spacing:-0.02em; }
+
+/* FAQ */
+.accordion-button:not(.collapsed){ color:var(--ink); background-color:#eef2ff; }
+
+/* WhatsApp flutuante */
+.whatsapp-float{ position:fixed; right:18px; bottom:18px; z-index:1050; }
+
+/* Galeria */
+.gallery-item{
+  display:block; overflow:hidden; border-radius:.75rem;
+  box-shadow:0 0.125rem 0.25rem rgba(0,0,0,.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+  border:1px solid #e5e7eb;
+}
+.gallery-item:hover{
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:0 0.75rem 1.25rem rgba(17,24,39,.12);
+  border-color:#d1d5db;
+}
+.gallery-item img{
+  width:100%; height:250px; object-fit:cover; transition: transform .35s ease;
+}
+.gallery-item:hover img{ transform: scale(1.05); }
+
+/* Footer */
+footer{ border-top:1px solid #e6e8eb; }
+
+/* Acessibilidade foco visível */
+:focus-visible{
+  outline:3px solid rgba(124,58,237,.5);
+  outline-offset:2px;
+}
+
+/* Botão flutuante do WhatsApp — círculo perfeito */
+.whatsapp-float .whatsapp-btn{
+  width: 64px;
+  height: 64px;
+  padding: 0;                     /* evita oval */
+  border-radius: 50% !important;  /* força círculo */
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 20px rgba(124,58,237,.25);
+}
+.whatsapp-float .whatsapp-btn i{
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* opcional: menor no mobile */
+@media (max-width: 576px){
+  .whatsapp-float .whatsapp-btn{ width:56px; height:56px; }
+}

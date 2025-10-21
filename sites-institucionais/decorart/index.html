@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Decorart — Móveis Alto Padrão | Seu espaço, do jeito que você sempre sonhou.</title>
+
+  <meta name="description" content="Decorart: Projetamos, fabricamos e instalamos móveis planejados sob medida de alto padrão em Florianópolis e região. Transforme seu espaço." />
+  <meta name="keywords" content="móveis planejados, móveis sob medida, alto padrão, marcenaria, design de interiores, Florianópolis, cozinha planejada, dormitório planejado, sala planejada, Decorart" />
+  <meta name="author" content="Decorart" />
+
+  <meta property="og:title" content="Decorart — Móveis Planejados de Alto Padrão" />
+  <meta property="og:description" content="Seu espaço, do jeito que você sempre sonhou. Projetamos, fabricamos e instalamos móveis planejados com acabamento de excelência em Florianópolis." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://davi-lima21.github.io/portfolio/sites-institucionais/decorart/" />
+  <meta property="og:image" content="https://davi-lima21.github.io/portfolio/sites-institucionais/decorart/assets/logo2.png" />
+  <meta property="og:image:width" content="1200" /> <meta property="og:image:height" content="630" /> <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SeuTwitter" /> <meta name="twitter:creator" content="@SeuTwitter" /> <meta name="twitter:title" content="Decorart — Móveis Planejados de Alto Padrão" />
+  <meta name="twitter:description" content="Projetamos, fabricamos e instalamos móveis planejados sob medida de alto padrão em Florianópolis e região. Transforme seu espaço com a Decorart." />
+  <meta name="twitter:image" content="https://davi-lima21.github.io/portfolio/sites-institucionais/decorart/assets/logo2.png" />
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#0aa3e4;        /* azul do logo */
+      --text:#0f172a;          /* slate-900 */
+      --muted:#475569;         /* slate-600 */
+      --line:#e5e7eb;          /* gray-200 */
+      --bg:#ffffff;
+      --card:#fafafa;
+      --radius:18px;
+      --shadow: 0 8px 30px rgba(2,6,23,.06);
+    }
+    html,body{background:var(--bg); color:var(--text); font-family:"Plus Jakarta Sans",system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    .btn-brand{
+      --bs-btn-bg: var(--brand);
+      --bs-btn-border-color: var(--brand);
+      --bs-btn-hover-bg: #0284c7;
+      --bs-btn-hover-border-color:#0284c7;
+      --bs-btn-active-bg:#0369a1;
+      --bs-btn-active-border-color:#0369a1;
+      --bs-btn-color:#fff;
+    }
+    /* NAV */
+    .navbar{backdrop-filter:saturate(140%) blur(6px)}
+    .navbar.is-stuck{ box-shadow: 0 4px 24px rgba(2,6,23,.06); }
+    .navbar-brand img{height:40px}
+    
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height: 85vh; /* Ajuste de altura */
+      display:grid;
+      place-items:center;
+      background:linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      overflow:hidden;
+      padding-top: 40px; /* Espaço para nav no mobile */
+      padding-bottom: 40px;
+    }
+    @media (min-width: 992px){
+      .hero{ 
+        min-height: 90vh; /* Altura maior no desktop */
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+    .hero .bg-img{
+      position:absolute; inset:0; z-index:0; opacity:.28;
+      background-image:url('https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1920&auto=format&fit=crop');
+      background-size:cover; background-position:center;
+      filter:saturate(100%) contrast(105%);
+      transform:scale(1.02);
+    }
+    .hero .mask{
+      position:absolute; inset:0; 
+      /* Responsivo: Centralizado no mobile */
+      background:radial-gradient(circle at 50% 30%, rgba(255,255,255,.0), #fff 70%);
+    }
+    @media (min-width: 992px){
+      /* Desktop: Posição original */
+      .hero .mask{
+        background:radial-gradient(1200px 600px at 80% 10%, rgba(255,255,255,.0), #fff 60%);
+      }
+    }
+    .hero .content{
+      position:relative; z-index:1;
+    }
+    .badge-soft{
+      background:#e0f2fe; color:#075985; border-radius:999px; padding:.45rem .8rem; font-weight:600; font-size:.85rem
+    }
+
+    /* SEÇÕES */
+    section{
+      padding: 64px 0; /* Padding responsivo (menor no mobile) */
+    }
+    @media (min-width: 992px){
+      section{
+        padding: 80px 0; /* Padding original no desktop */
+      }
+    }
+    
+    .section-title{
+      font-family:"Playfair Display", serif;
+      letter-spacing:.2px;
+      font-weight:600;
+      margin-bottom:12px;
+      font-size: 2.25rem; /* ~h2 */
+    }
+    @media (min-width: 992px){
+      .section-title{
+        font-size: 2.75rem; /* ~h1 */
+      }
+    }
+    .section-lead{color:var(--muted)}
+
+    /* CARDS */
+    .card-svc, .card-project{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      transition:.28s ease;
+      height:100%;
+    }
+    .card-svc:hover, .card-project:hover{ transform:translateY(-3px) }
+    .icon-badge{
+      width:52px;height:52px;border-radius:12px;display:grid;place-items:center;
+      background:#e6f4fb;color:#0369a1;font-size:24px
+    }
+    .ratio > img{ object-fit: cover; }
+
+    /* PROCESSO */
+    .step{
+      border-left:3px solid var(--brand);
+      padding-left:16px;
+    }
+
+    /* CTA */
+    .cta{
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(145deg, #e0f2fe, #f0f9ff);
+      box-shadow: var(--shadow);
+    }
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--line)}
+    .link-muted{color:var(--muted);text-decoration:none}
+    .link-muted:hover{color:#0f172a}
+
+    /* UTIL */
+    .rounded-2xl{border-radius:24px}
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-white sticky-top">
+  <div class="container py-2">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="assets/logo.png" alt="Decorart Logo" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projetos">Portfólio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#processo">Processo</a></li>
+        <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="btn btn-brand rounded-pill" href="https://wa.me/5548999946293?text=Olá%20Decorart!%20Gostaria%20de%20um%20orçamento%20de%20móveis%20planejados.">
+            <i class="bi bi-whatsapp me-1"></i> Solicitar Orçamento
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="bg-img"></div><div class="mask"></div>
+  <div class="container content">
+    <div class="row align-items-center g-5">
+      
+      <div class="col-lg-6 order-1 order-lg-2">
+        <div class="ratio ratio-4x3 rounded-2xl shadow-sm">
+          <img
+            src="assets/salaclaramadeira.webp"
+            srcset="
+              assets/salaclaramadeira.webp,
+              assets/salaclaramadeira.webp,
+              assets/salaclaramadeira.webp"
+            sizes="(max-width: 992px) 100vw, 600px"
+            class="rounded-2xl" alt="Sala com mobiliário planejado em madeira clara" />
+        </div>
+      </div>
+
+      <div class="col-lg-6 order-2 order-lg-1 text-center text-lg-start">
+        <span class="badge-soft mb-3 d-inline-flex align-items-center gap-2">
+          <i class="bi bi-stars"></i> Móveis sob medida • Alto padrão
+        </span>
+        <h1 class="display-5 fw-bold">Seu espaço, do jeito que você sempre sonhou.</h1>
+        <p class="lead mt-2 text-secondary">
+          Projetamos, fabricamos e instalamos móveis planejados com acabamento de excelência — do briefing à instalação.
+        </p>
+        
+        <div class="d-flex gap-2 mt-4 justify-content-center justify-content-lg-start">
+          <a class="btn btn-brand btn-lg" href="https://wa.me/5548999946293?text=Quero%20um%20projeto%20completo%20para%20minha%20casa.">
+            <i class="bi bi-whatsapp me-1"></i> Falar com especialista
+          </a>
+        </div>
+        
+        <div class="d-flex gap-4 mt-4 text-secondary small justify-content-center justify-content-lg-start">
+          <div><i class="bi bi-award me-1 text-warning"></i> Garantia e pós-venda</div>
+          <div><i class="bi bi-truck me-1 text-success"></i> Instalação especializada</div>
+          <div><i class="bi bi-box-seam me-1 text-primary"></i> MDF Linha 100%</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<div class="py-4 border-top border-bottom" role="region" aria-label="Selo de qualidade">
+  <div class="container text-center">
+    <div class="row row-cols-2 row-cols-md-4 g-4 align-items-center">
+      <div class="col"><span class="text-secondary"><i class="bi bi-shield-check me-1"></i> Garantia 12 meses</span></div>
+      <div class="col"><span class="text-secondary"><i class="bi bi-hammer me-1"></i> Fabricação própria</span></div>
+      <div class="col"><span class="text-secondary"><i class="bi bi-lightning-charge me-1"></i> Prazos ágeis</span></div>
+      <div class="col"><span class="text-secondary"><i class="bi bi-people me-1"></i> +100 clientes</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="servicos">
+  <div class="container">
+    <div class="row align-items-end">
+      <div class="col-lg-7">
+        <h2 class="section-title h1">Soluções completas em mobiliário</h2>
+        <p class="section-lead">Do conceito ao último parafuso: projeto, fabricação e instalação com acabamento premium.</p>
+      </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mt-2">
+      <div class="col">
+        <div class="card-svc p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="icon-badge"><i class="bi bi-rulers"></i></div>
+            <h3 class="h5 m-0">Projeto sob medida</h3>
+          </div>
+          <p class="text-secondary">Layout inteligente para cada ambiente, aproveitando milímetros com estética e ergonomia.</p>
+          <ul class="text-secondary small m-0 ps-3">
+            <li>3D realista e memorial descritivo</li>
+            <li>Curadoria de materiais e ferragens</li>
+            <li>Compatibilização com elétrica e marcenaria</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card-svc p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="icon-badge"><i class="bi bi-tools"></i></div>
+            <h3 class="h5 m-0">Fabricação premium</h3>
+          </div>
+          <p class="text-secondary">MDF linha 100%, fitas de borda perfeitas e acabamentos duráveis com controle de qualidade.</p>
+          <ul class="text-secondary small m-0 ps-3">
+            <li>Corte CNC e coladeira de borda</li>
+            <li>Padrões madeirados e laqueados</li>
+            <li>Ferragens de alto desempenho</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card-svc p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="icon-badge"><i class="bi bi-house-gear"></i></div>
+            <h3 class="h5 m-0">Instalação & pós-venda</h3>
+          </div>
+          <p class="text-secondary">Montagem limpa, prazos combinados e suporte após a entrega para manter tudo perfeito.</p>
+          <ul class="text-secondary small m-0 ps-3">
+            <li>Equipe própria de instalação</li>
+            <li>Ajustes finos e nivelamento</li>
+            <li>Garantia e assistência</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos" class="bg-light">
+  <div class="container">
+    <div class="d-flex align-items-end justify-content-between gap-3 flex-wrap">
+      <div>
+        <h2 class="section-title h1">Portfólio recente</h2>
+        <p class="section-lead">Alguns ambientes executados pela Decorart.</p>
+      </div>
+      <a class="btn btn-outline-dark rounded-pill" href="https://www.instagram.com/decorart.planejados/" target="_blank" rel="noopener">
+        <i class="bi bi-instagram me-1"></i> Ver mais no Instagram
+      </a>
+    </div>
+
+    <div class="row g-4 mt-1">
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-project">
+          <div class="ratio ratio-4x3">
+            <img src="assets/cozinha-ilha.jpg" alt="Cozinha planejada em tons de madeira e cinza" />
+          </div>
+          <div class="p-3">
+            <h3 class="h6 mb-1">Cozinha contemporânea</h3>
+            <p class="text-secondary small mb-0">Ilhas funcionais, ferragens premium e iluminação embutida.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-project">
+          <div class="ratio ratio-4x3">
+            <img src="assets/sala-pequena-com-painel-ripado.jpg" alt="Sala com painel ripado e estante de vidro" />
+          </div>
+          <div class="p-3">
+            <h3 class="h6 mb-1">Estar & Painel ripado</h3>
+            <p class="text-secondary small mb-0">Texturas naturais e nichos iluminados para aconchego.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-project">
+          <div class="ratio ratio-4x3">
+            <img src="assets/1-living-integrado-estar-jantar-paineis-de-madeira-casa33-arquitetura.avif" alt="Dormitório planejado com cabeceira e mesas laterais" />
+          </div>
+          <div class="p-3">
+            <h3 class="h6 mb-1">Suíte minimalista</h3>
+            <p class="text-secondary small mb-0">Paleta clara e marcenaria com integração de iluminação.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-project">
+          <div class="ratio ratio-4x3">
+            <img src="assets/bwcfuncional.jpg" alt="Banheiro com marcenaria planejada e espelho" />
+          </div>
+          <div class="p-3">
+            <h3 class="h6 mb-1">BWC funcional</h3>
+            <p class="text-secondary small mb-0">Organização, durabilidade e fácil manutenção no dia a dia.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-project">
+          <div class="ratio ratio-4x3">
+            <img src="assets/homeoffice.webp" alt="Home office com mesa e armários superiores" />
+          </div>
+          <div class="p-3">
+            <h3 class="h6 mb-1">Home office</h3>
+            <p class="text-secondary small mb-0">Produtividade e conforto com design sob medida.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-project">
+          <div class="ratio ratio-4x3">
+            <img src="assets/lavanderia.webp" alt="Armário planejado para lavanderia" />
+          </div>
+          <div class="p-3">
+            <h3 class="h6 mb-1">Lavanderia otimizada</h3>
+            <p class="text-secondary small mb-0">Cada centímetro aproveitado com soluções inteligentes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="processo">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-5">
+        <h2 class="section-title h1">Como trabalhamos</h2>
+        <p class="section-lead">Fluxo simples e transparente, do briefing ao pós-instalação.</p>
+        <div class="vstack gap-4 mt-3">
+          <div class="step">
+            <h3 class="h6 mb-1">1. Briefing e medição</h3>
+            <p class="text-secondary small mb-0">Entendimento do seu estilo, necessidades e levantamento técnico.</p>
+          </div>
+          <div class="step">
+            <h3 class="h6 mb-1">2. Projeto & orçamento</h3>
+            <p class="text-secondary small mb-0">Apresentação 3D e proposta detalhada com materiais e prazos.</p>
+          </div>
+          <div class="step">
+            <h3 class="h6 mb-1">3. Fabricação</h3>
+            <p class="text-secondary small mb-0">Produção interna com controle de qualidade e prazos definidos.</p>
+          </div>
+          <div class="step">
+            <h3 class="h6 mb-1">4. Instalação & pós-venda</h3>
+            <p class="text-secondary small mb-0">Montagem limpa, ajustes finos e garantia.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="ratio ratio-16x9 rounded-2xl shadow-sm">
+          <img src="assets/trabalhadores.png" class="rounded-2xl" alt="Equipe instalando mobiliário sob medida" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="depoimentos" class="bg-light">
+  <div class="container">
+    <h2 class="section-title h1 text-center">O que dizem nossos clientes</h2>
+    <p class="section-lead text-center mx-auto" style="max-width:680px">Feedbacks reais sobre a experiência com a Decorart.</p>
+
+    <div class="row g-4 mt-2">
+      <div class="col-md-4">
+        <div class="card-svc p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <img class="rounded-circle" src="https://i.pravatar.cc/64?img=8" width="48" height="48" alt="Cliente 1">
+            <div>
+              <strong>Carolina M.</strong><br>
+              <span class="text-secondary small">Jurerê, Florianópolis</span>
+            </div>
+          </div>
+          <p class="mb-0">“Profissionais excelentes. O projeto ficou idêntico ao 3D e a montagem foi impecável. Recomendo!”</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card-svc p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <img class="rounded-circle" src="https://i.pravatar.cc/64?img=12" width="48" height="48" alt="Cliente 2">
+            <div>
+              <strong>Renato M.</strong><br>
+              <span class="text-secondary small">Itacorubi, Florianópolis</span>
+            </div>
+          </div>
+          <p class="mb-0">“Pontuais, caprichosos e com excelente pós-venda. Melhor custo-benefício que encontrei.”</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card-svc p-4 h-100">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <img class="rounded-circle" src="https://i.pravatar.cc/64?img=5" width="48" height="48" alt="Cliente 3">
+            <div>
+              <strong>Bárbara M.</strong><br>
+              <span class="text-secondary small">Campeche, Florianópolis</span>
+            </div>
+          </div>
+          <p class="mb-0">“Eles entenderam nosso estilo e entregaram além do esperado. Atendimento humano e detalhista.”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="cta p-4 p-lg-5 d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3">
+      <div>
+        <h3 class="h4 mb-1">Pronto para começar seu projeto?</h3>
+        <p class="text-secondary mb-0">Clique e fale agora com um especialista Decorart no WhatsApp.</p>
+      </div>
+      <a class="btn btn-brand btn-lg rounded-pill px-4" href="https://wa.me/5548999946293?text=Olá%20Decorart!%20Quero%20um%20orçamento.">
+        <i class="bi bi-whatsapp me-1"></i> Chamar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="bg-light">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <h2 class="section-title h1">Contato</h2>
+        <p class="section-lead">Atendemos Florianópolis e região. Agende uma visita técnica.</p>
+
+        <div class="vstack gap-2 mt-2">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-telephone text-success"></i>
+            <a class="link-muted" href="tel:+5548999946293">(48) 99994-6293</a>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-envelope text-danger"></i>
+            <a class="link-muted" href="mailto:contato@decorart.com.br">contato@decorart.com.br</a>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-geo-alt text-primary"></i>
+            <a class="link-muted" target="_blank" rel="noopener" href="https://maps.google.com/?q=Rod.%20Francisco%20Magno%20Vieira%20398%20Fundos%20-%20Florian%C3%B3polis">
+              Rod. Francisco Magno Vieira, 398 (galpão 2), Florianópolis/SC
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <form class="card-svc p-4 needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Nome</label>
+              <input type="text" class="form-control" placeholder="Seu nome" required>
+              <div class="invalid-feedback">Informe seu nome.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Telefone/WhatsApp</label>
+              <input type="tel" class="form-control" placeholder="(48) 9 9999-0000" required>
+              <div class="invalid-feedback">Informe um telefone válido.</div>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Mensagem</label>
+              <textarea class="form-control" rows="4" placeholder="Conte brevemente seu projeto (ambientes, medidas aproximadas, estilo)..." required></textarea>
+              <div class="invalid-feedback">Escreva uma mensagem.</div>
+            </div>
+            <div class="col-12 d-grid d-sm-flex gap-2">
+              <button class="btn btn-brand px-4" type="submit"><i class="bi bi-send me-1"></i> Enviar</button>
+              <a class="btn btn-outline-dark px-4" href="https://wa.me/5548999946293?text=Olá%20Decorart!%20Tenho%20um%20projeto%20para%20orçamento.">
+                <i class="bi bi-whatsapp me-1"></i> WhatsApp
+              </a>
+            </div>
+            <div class="col-12 small text-secondary">Ao enviar, você concorda com nosso contato por WhatsApp e e-mail.</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-4">
+  <div class="container">
+    <div class="row gy-3 align-items-center">
+      <div class="col-md-6 text-center text-md-start">
+        <div class="d-flex align-items-center gap-2 justify-content-center justify-content-md-start">
+          <img src="assets/logo.png" height="55" alt="Decorart Logo" height="28">
+        </div>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <span class="text-secondary small">© <span id="year"></span> Decorart. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Ano no footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Validação do formulário (Bootstrap)
+  (function () {
+    'use strict';
+    const forms = document.querySelectorAll('.needs-validation');
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) { event.preventDefault(); event.stopPropagation(); }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+
+  // Navbar sombra ao rolar
+  const nav = document.querySelector('.navbar');
+  const toggleStick = () => {
+    if (window.scrollY > 4) nav.classList.add('is-stuck');
+    else nav.classList.remove('is-stuck');
+  };
+  toggleStick(); window.addEventListener('scroll', toggleStick);
+</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+/* --- Variáveis de Cor e Fontes --- */
+:root{
+ --primary-color:#3d342e;    /* Marrom escuro */
+ --secondary-color:#c5a47e;   /* Dourado/Ocre */
+ --light-gray:#f8f9fa;
+ --dark-color:#212529;
+ --whatsapp-green:#25D366;
+ --font-primary:'Playfair Display', serif;
+ --font-secondary:'Poppins', sans-serif;
+ --font-signature:'Great Vibes', cursive;
+ --shadow-sm:0 5px 15px rgba(0,0,0,.08);
+ --ease:cubic-bezier(.2,.8,.2,1);
+ --dur:.25s;
+}
+
+html,body{overflow-x:hidden;}
+body{
+ font-family:var(--font-secondary);
+ color:var(--primary-color);
+ line-height:1.7;
+ background:#fff;
+}
+
+h1,h2,h3,h4,h5,h6{ font-family:var(--font-primary); font-weight:700; }
+
+/* --- Botões base --- */
+.btn-primary{
+ background-color:var(--secondary-color);
+ border-color:var(--secondary-color);
+ color:var(--primary-color);
+ padding:12px 30px;
+ font-weight:700;
+ text-transform:uppercase;
+ letter-spacing:.5px;
+ transition:all .3s var(--ease);
+}
+.btn-primary:hover,.btn-primary:focus{
+ background-color:#b38e5d; border-color:#b38e5d; color:#fff;
+ transform:translateY(-3px); box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+
+/* ===========================
+ NAVBAR (logo + CTA)
+ =========================== */
+.navbar-sales{
+ background: rgba(61,52,46,.45);
+ backdrop-filter: blur(8px);
+ transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+ padding:.65rem 0;
+}
+@media (min-width: 992px){
+ .navbar-sales{
+  position:fixed; top:0; left:0; right:0; z-index:1030;
+  background:rgba(61,52,46,.96); box-shadow:var(--shadow-sm);
+ }
+ body{ padding-top:70px; } /* compensa a navbar no desktop */
+}
+@media (max-width: 991.98px){
+ .navbar-sales{ padding:.5rem 0; }
+ .navbar-sales .btn{ padding:.55rem 1rem; font-size:.92rem; }
+}
+
+/* ===========================
+ HERO (ATUALIZADO)
+ =========================== */
+.hero-section{
+ padding: 6rem 0 5rem; /* Ajustado para melhor espaçamento vertical */
+ color:#fff;
+ background:
+  linear-gradient(rgba(40,30,25,.72), rgba(40,30,25,.72)),
+  url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2516&auto=format&fit=crop')
+  no-repeat center/cover;
+ text-align:center;
+  /* --- NOVAS REGRAS --- */
+ min-height: 80vh; /* Altura mínima solicitada */
+ display: flex;
+ flex-direction: column;
+ justify-content: center; /* Centraliza o conteúdo verticalmente */
+}
+.hero-eyebrow{
+ color:var(--secondary-color);
+ font-weight:700;
+ letter-spacing:.14em;
+ text-transform:uppercase;
+ font-size:.82rem;
+}
+.hero-title{
+ margin:.35rem auto .6rem;
+ max-width: 24ch;  
+ font-size: clamp(1.9rem, 6.2vw, 3rem);
+ line-height: 1.12;
+ letter-spacing:-.2px;
+  text-shadow: 0 2px 8px rgba(0,0,0,.3); /* NOVO: Legibilidade */
+}
+.hero-subtitle{
+ margin:0 auto 1.2rem;
+ max-width: 42ch;
+ font-size: clamp(.98rem, 3.4vw, 1.15rem);
+ color:rgba(255,255,255,.92);
+  text-shadow: 0 2px 8px rgba(0,0,0,.3); /* NOVO: Legibilidade */
+}
+.hero-section .btn.btn-lg{ padding: .92rem 1.25rem; }
+.mini-proof{ font-size:.92rem; color:rgba(255,255,255,.9); }
+
+/* ===========================
+ PROOF STRIP
+ =========================== */
+.proof-strip{
+ background:var(--light-gray);
+ padding:.8rem 0;
+ border-top:1px solid #eee;
+ border-bottom:1px solid #eee;
+}
+
+/* ===========================
+ CHECKLIST / CARDS / ACCORDION
+ =========================== */
+.checklist{ list-style:none; padding-left:0; }
+.checklist li{ margin:.5rem 0; display:flex; gap:.5rem; align-items:flex-start; }
+.checklist i{ color:#1f9d55; margin-top:.2rem; }
+
+.card{ border:none; border-top:4px solid var(--secondary-color); }
+
+.accordion-button{ font-family:var(--font-secondary); font-weight:600; font-size:1.05rem; }
+.accordion-button:not(.collapsed){ background-color:var(--primary-color); color:#fff; }
+.accordion-button:focus{ box-shadow:0 0 0 .25rem rgba(197,164,126,.25); }
+.accordion-item{ border:1px solid #ddd; }
+
+/* ===========================
+ Ícones & Depoimentos
+ =========================== */
+.icon-feature{ font-size:2.6rem; color:var(--secondary-color); }
+
+.testimonial-card{
+ background:#fff; padding:1.5rem; border-radius:10px;
+ border-top:4px solid var(--secondary-color); box-shadow:var(--shadow-sm); height:100%;
+}
+.testimonial-author{ margin-top:.75rem; font-style:italic; color:#555; }
+
+/* ===========================
+ OFERTA / PREÇO (ATUALIZADO)
+ =========================== */
+.pricing-box{
+ background:var(--light-gray); padding:2.2rem; border-radius:12px;
+ border:1px solid #eee; box-shadow:var(--shadow-sm);
+}
+
+/* --- ESTILOS NOVOS (Foco na Parcela) --- */
+.price-installment {
+  font-family: var(--font-primary);
+  font-size: clamp(2.5rem, 8vw, 3rem); /* Tamanho de destaque */
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1.1;
+  margin: .5rem 0 0;
+}
+.price-full {
+  font-size: 1.1rem;
+  color: #555;
+  font-weight: 500;
+}
+/* --- Fim dos estilos novos --- */
+
+.price-tag{ /* Estilo antigo - não usado mais, mas mantido caso precise */
+ font-family:var(--font-primary); font-size:4rem; font-weight:700;
+ color:var(--primary-color); margin:.5rem 0 .25rem;
+}
+.price-cents{ font-size:1.2rem; }
+
+
+.stack-value .stack-item{ display:flex; gap:.5rem; align-items:center; margin:.35rem 0; color:#4a4a4a; }
+.stack-value i{ color:#1f9d55; }
+.garantia{
+ background:#fff; border:1px solid #eee; border-radius:10px;
+ padding:1rem 1.25rem;
+}
+.garantia i{ color:#1f9d55; font-size:1.2rem; margin-right:.5rem; }
+
+/* ===========================
+ BÔNUS / CTA FINAL
+ =========================== */
+.bonus{ background:#fff7ec; border:1px solid #f2dfc3; }
+.cta-final{ background:linear-gradient(180deg,#faf7f2 0%,#fff 100%); }
+
+/* ===========================
+ FOOTER
+ =========================== */
+footer{ background:var(--primary-color); line-height:1.8; }
+.footer-brand-name{ font-family:var(--font-signature); color:var(--secondary-color); font-size:2.2rem; }
+.footer-heading{ font-family:var(--font-primary); color:#fff; letter-spacing:1px; }
+.footer-nav-link{ color:rgba(255,255,255,.75); text-decoration:none; transition:all .3s var(--ease); }
+.footer-nav-link:hover{ color:var(--secondary-color); padding-left:5px; }
+.footer-link{ color:rgba(255,255,255,.85); text-decoration:none; transition:color .3s var(--ease); }
+.footer-link:hover{ color:var(--secondary-color); }
+.social-icons .social-link{ color:#fff; font-size:1.5rem; margin-right:15px; transition:color .3s; }
+.social-icons .social-link:hover{ color:var(--secondary-color); }
+
+/* ===========================
+ STICKY CTA (ATUALIZADO)
+ =========================== */
+.dlr-sticky-cta{
+ position:fixed; left:0; right:0; bottom:0; z-index:1029;
+  /* NOVO: Fundo escuro para alto contraste e consistência de marca */
+ background: var(--primary-color); 
+ border-top:1px solid #2e2823; 
+  box-shadow:0 -10px 30px rgba(0,0,0,.15);
+ padding:.7rem 0 calc(.7rem + env(safe-area-inset-bottom));
+ transform:translateY(110%); 
+  transition:transform .28s ease;
+}
+.dlr-sticky-cta.is-on{ transform:translateY(0) }
+
+/* grid: texto cresce, botão ocupa o necessário */
+.dlr-sticky-cta .sticky-inner{
+ display:grid; grid-template-columns:1fr auto; align-items:center;
+ gap:12px; padding:.6rem 1rem;
+}
+
+/* título do sticky (sem cortes) */
+.sticky-title{
+ color: #fff; /* ATUALIZADO: Cor do texto para fundo escuro */
+  font-size:1rem; 
+  line-height:1.28;
+ display:block; overflow:visible; max-width:none; word-break:break-word;
+}
+
+/* botão do sticky (2 palavras) */
+.btn-cta{
+ background:var(--secondary-color); border-color:var(--secondary-color);
+ color:var(--primary-color); font-weight:800; letter-spacing:.2px; white-space:nowrap;
+}
+.btn-cta:hover{ background:#b38e5d; border-color:#b38e5d; color:#fff; }
+.dlr-sticky-cta .btn-cta.btn-lg{ padding:.7rem 1rem; font-size:.95rem; border-radius:10px; min-width:150px; }
+
+/* sticky quebra em 2 linhas em telas muito estreitas */
+@media (max-width:420px){
+ .dlr-sticky-cta .sticky-inner{ grid-template-columns:1fr; gap:10px; }
+ .dlr-sticky-cta .btn-cta.btn-lg{ width:100%; justify-self:stretch; text-align:center; }
+}
+
+/* desktop: barra deixa de ser fixa (continua full width) */
+@media (min-width:992px){
+ .dlr-sticky-cta{
+  position:static; transform:none; box-shadow:none; border-top:none; padding:1.2rem 0;
+    /* NOVO: Mantém o fundo escuro para consistência */
+    background: var(--primary-color);
+ }
+ .dlr-sticky-cta .sticky-inner{ padding:1rem 0; }
+ .sticky-title{ font-size:1.1rem; }
+}
+
+/* evita que o sticky cubra conteúdo no mobile quando visível */
+body.has-sticky{ padding-bottom:82px; }
+
+/* (REMOVIDO) As regras duplicadas que estavam aqui foram limpas */

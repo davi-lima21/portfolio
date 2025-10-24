@@ -1,0 +1,364 @@
+/* =============================================================
+   KELLY SATO — THEME V5 (Institucional)
+   - Paleta e tipografia solicitadas
+   - Visual editorial premium + slider full + ondas SVG
+   ============================================================= */
+
+/* -------- Tokens de Marca -------- */
+:root{
+  --primary-color:#3d342e; /* Marrom escuro */
+  --secondary-color:#c5a47e; /* Dourado/Ocre */
+  --light-gray:#f8f9fa;
+  --dark-color:#212529;
+  --whatsapp-green:#25D366;
+  --font-primary:'Playfair Display', serif;
+  --font-secondary:'Poppins', sans-serif;
+  --font-signature:'Great Vibes', cursive;
+
+  /* extras */
+  --ink:#2b2420;
+  --sand:#f5efe8;
+  --stone:#e9e3dc;
+  --accent:#9b7b58;
+
+  --radius-sm:12px; --radius:16px; --radius-lg:22px; --radius-xl:28px;
+  --shadow-sm:0 10px 24px rgba(0,0,0,.08);
+  --shadow-md:0 18px 42px rgba(0,0,0,.12);
+  --shadow-lg:0 34px 72px rgba(0,0,0,.18);
+  --container-max:1200px;
+
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --dur:.3s;
+}
+
+/* -------- Base -------- */
+html,body{scroll-behavior:smooth}
+body{
+  font-family:var(--font-secondary);
+  color:var(--primary-color);
+  background:#fff;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+img{max-width:100%; height:auto; display:block}
+a{color:var(--primary-color)}
+a:hover{color:var(--accent)}
+.container{max-width:var(--container-max)}
+
+h1,h2,h3,h4,h5,h6,.navbar-brand,.section-title{
+  font-family:var(--font-primary); font-weight:700; letter-spacing:.2px;
+}
+.section-title{font-size:clamp(1.7rem,3.2vw,2.3rem); position:relative; padding-bottom:.6rem}
+.section-title::after{content:""; position:absolute; left:0; bottom:0; width:68px; height:3px; background:linear-gradient(90deg,var(--secondary-color),transparent)}
+.section-pad{
+  padding:96px 0;
+  min-height:calc(80vh);
+}
+.section-pad-small{padding: 80px 0; min-height:50vh}
+.section-muted{background:var(--sand)}
+.muted-sm{color:#8b8077}
+.rounded-2xl{border-radius:var(--radius-lg)!important}
+.shadow-soft{box-shadow:var(--shadow-sm)!important}
+.text-ink{color:var(--ink)!important}
+
+/* Foco acessível */
+:where(a,button,[role="button"],.form-control):focus{outline:2px solid rgba(197,164,126,.5); outline-offset:3px}
+
+/* -------- Navbar -------- */
+.navbar{background:rgba(61,52,46,.45); backdrop-filter:blur(8px); transition:background var(--dur) var(--ease), box-shadow var(--dur) var(--ease)}
+.navbar.scrolled{background:rgba(61,52,46,.96); box-shadow:var(--shadow-sm)}
+.brand-signature{font-family:var(--font-signature); font-size:1.7rem}
+.navbar .nav-link{position:relative; color:rgba(255,255,255,.9); font-weight:600}
+.navbar .nav-link::after{content:""; position:absolute; left:0; right:0; bottom:-6px; margin:auto; width:0; height:2px; background:var(--secondary-color); transition:width .18s var(--ease)}
+.navbar .nav-link:hover::after,.navbar .nav-link.active::after{width:24px}
+.navbar .btn{font-weight:700}
+
+/* --- Toggle minimalista que vira "X" --- */
+.navbar .navbar-toggler{
+  width:44px; height:44px;
+  display:grid; place-items:center;
+  border:none; outline:0; box-shadow:none!important;
+  padding:0; margin-left:auto;
+  color:#fff; /* barra herda essa cor */
+  background:transparent;
+}
+
+.navbar .navbar-toggler:focus-visible{
+  outline:2px solid rgba(197,164,126,.55); /* foco acessível no tom da marca */
+  outline-offset:3px;
+}
+
+/* zera o ícone padrão do Bootstrap */
+.navbar .navbar-toggler .navbar-toggler-icon{
+  background:none!important;
+  width:24px; height:2px; position:relative;
+  border-radius:2px;
+  transition:transform .25s var(--ease), background .25s var(--ease), width .25s var(--ease);
+}
+
+/* as três barras: meio (o próprio span) + before/after */
+.navbar .navbar-toggler .navbar-toggler-icon,
+.navbar .navbar-toggler .navbar-toggler-icon::before,
+.navbar .navbar-toggler .navbar-toggler-icon::after{
+  background:currentColor; /* usa a cor do botão (branco na .navbar-dark) */
+  display:block; content:"";
+  width:24px; height:2px; border-radius:2px;
+  position:relative;
+}
+
+.navbar .navbar-toggler .navbar-toggler-icon::before,
+.navbar .navbar-toggler .navbar-toggler-icon::after{
+  position:absolute; left:0;
+  transition:transform .25s var(--ease), opacity .2s var(--ease), background .25s var(--ease);
+}
+
+.navbar .navbar-toggler .navbar-toggler-icon::before{ transform:translateY(-7px); }
+.navbar .navbar-toggler .navbar-toggler-icon::after { transform:translateY(7px); }
+
+/* estado FECHADO (tem .collapsed) = hambúrguer */
+.navbar .navbar-toggler.collapsed .navbar-toggler-icon{ transform:none; }
+.navbar .navbar-toggler.collapsed .navbar-toggler-icon::before{ transform:translateY(-7px) rotate(0deg); }
+.navbar .navbar-toggler.collapsed .navbar-toggler-icon::after { transform:translateY(7px)  rotate(0deg); }
+
+/* estado ABERTO (sem .collapsed) = vira "X" */
+.navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon{
+  background:transparent; /* some a barra do meio */
+}
+.navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::before{
+  transform:translateY(0) rotate(45deg);
+}
+.navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after{
+  transform:translateY(0) rotate(-45deg);
+}
+
+/* opção: deixe mais grossinho em telas grandes */
+@media (min-width: 992px){
+  .navbar .navbar-toggler{ display:none; }
+}
+
+/* respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce){
+  .navbar .navbar-toggler .navbar-toggler-icon,
+  .navbar .navbar-toggler .navbar-toggler-icon::before,
+  .navbar .navbar-toggler .navbar-toggler-icon::after{
+    transition:none;
+  }
+}
+
+
+
+/* -------- Hero Full -------- */
+/* Hero Full */
+.hero-full {
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+}
+.hero-slide{min-height:100vh; background:#2d2621; position:relative}
+.hero-slide::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(1200px 520px at 8% -12%, rgba(197,164,126,.22), transparent 60%),
+    linear-gradient(180deg, rgba(45,38,33,.2) 0%, rgba(45,38,33,.55) 50%, rgba(45,38,33,.85) 100%);
+  z-index:1;
+}
+.hero-slide{background-image:var(--hero); background-size:cover; background-position:center}
+.hero-overlay{position:absolute; inset:0; z-index:1; display:flex; align-items:center}
+.hero-copy{max-width:680px}
+.hero .btn{
+  margin-top:.25rem,
+   z-
+  }
+
+  .hero .btn{ position:relative; z-index:4 } 
+
+  .carousel-control-prev{
+    z-index:4
+  }
+
+/* Controles do slider */
+.hero .carousel-control-prev, .hero .carousel-control-next{
+  width:48px; height:48px; top:auto; bottom:22px; opacity:.95;
+  background:rgba(0,0,0,.35); border-radius:999px; backdrop-filter:blur(6px);
+}
+
+.wave-sep {
+  position: relative;
+  line-height: 0;
+  height: 88px;
+  margin-top: -88px; /* puxa a onda pra cima, colando no hero */
+  z-index: 2;
+}
+
+.wave-sep svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wave-hero path {
+  fill: var(--sand); /* mesma cor do navbar/hero */
+}
+
+.wave-light
+/* Separadores ondulados (SVG) */
+.wave-sep{position:relative; line-height:0; height:88px}
+.wave-sep svg{display:block; width:100%; height:100%}
+.wave-sep path{transition:fill .2s var(--ease)}
+/* onda clara (usa embaixo do hero) */
+.wave-light path{fill:#fff}
+/* onda cor areia (entre blocos claros) */
+.wave-sand path{fill:var(--sand)}
+
+/* -------- Sobre & Sobre Mim -------- */
+#sobre {
+  margin-top: -2px;
+}
+.about-photo img{object-fit:cover; width:100%; height:100%}
+.about-pill{display:flex; align-items:center; background:#fff; border:1px solid var(--stone); border-radius:999px; padding:.6rem 1rem; box-shadow:var(--shadow-sm)}
+.about-list{list-style:none; padding:0; margin:1rem 0 0}
+.about-list li{margin:.35rem 0; color:#5e554d}
+
+/* -------- Cartões / utilitários -------- */
+.card-soft{background:#fff; border:1px solid var(--stone); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow-sm); transition:transform .2s var(--ease), box-shadow .2s var(--ease)}
+.card-soft:hover{transform:translateY(-3px); box-shadow:var(--shadow-md)}
+.icon-lg{font-size:1.8rem}
+
+/* -------- Seção Escura (Diferenciais) -------- */
+.section-portfolio{background:#3a3530; color:#eee; position:relative}
+.section-portfolio::before{content:""; position:absolute; inset:0; background:radial-gradient(1000px 380px at 85% -20%, rgba(197,164,126,.16), transparent 60%)}
+.section-portfolio .card-soft{background:#2b2622; border-color:#3c352f; box-shadow:none}
+.section-portfolio .text-muted{color:#c9c0b7!important}
+.section-portfolio .footer-link{color:#efe6dd}
+
+/* -------- Portfólio Cards -------- */
+.post-card{display:block; color:inherit; text-decoration:none}
+.post-card .thumb{position:relative; border-radius:18px; overflow:hidden; aspect-ratio:16/10; background:#ddd}
+.post-card img{width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease)}
+.post-card:hover img{transform:scale(1.05)}
+.post-card .thumb::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.35) 100%); opacity:0; transition:opacity .3s var(--ease)}
+.post-card:hover .thumb::after{opacity:1}
+.post-title{font-family:var(--font-primary); font-size:1.3rem; margin:.55rem 0 .25rem; line-height:1.25}
+
+/* ===================== CURSO ==================== */
+.course-teaser{
+  position:relative; 
+  background:linear-gradient(180deg,#2f2924 0%, #2a2521 100%); 
+  color:#fff; 
+  overflow:hidden;
+  padding-bottom: 140px !important; /* espaço para a onda */
+}
+.course-teaser .section-title{color:#fff}
+.course-teaser p{color:#efe6dd}
+.course-teaser .course-list{list-style:none; padding:0; margin:1rem 0 0}
+.course-teaser .course-list li{color:#e0d6cc; margin:.35rem 0}
+.course-teaser img{
+  border-radius: var(--radius-lg)
+}
+
+/* onda correta no rodapé da seção curso */
+.course-teaser .wave-bottom{position:absolute; bottom:0; left:0; right:0; height:88px; line-height:0; overflow:hidden}
+.course-teaser .wave-bottom svg{display:block; width:100%; height:100%}
+.course-teaser .wave-bottom path{fill:#fff}
+
+/* FAQ */
+.faq .accordion-item{
+  border:1px solid var(--stone);
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff; /* os cards continuam brancos */
+  box-shadow:var(--shadow-sm);
+}
+.faq .accordion-button{
+  background:#fff; color:var(--ink); font-weight:700; padding:16px 18px;
+}
+.faq .accordion-button:not(.collapsed){
+  background:#fdfbf8; /* bege bem claro para combinar com o sand */
+  color:var(--ink); 
+  box-shadow:inset 0 -1px 0 var(--stone);
+}
+.faq .accordion-body{color:#5a514a; padding:16px 18px}
+
+/* -------- Form / Contato -------- */
+.form-control{border-radius:14px; border:1px solid #ddd; padding:.9rem 1rem}
+.form-control:focus{border-color:#cdb499; box-shadow:0 0 0 .25rem rgba(197,164,126,.18)}
+.btn{border-radius:999px; padding:.78rem 1.25rem; font-weight:600}
+.btn-lg{padding:.95rem 1.5rem}
+.btn-primary{background:var(--secondary-color); border-color:var(--secondary-color); color:#fff; box-shadow:0 8px 18px rgba(197,164,126,.35)}
+.btn-primary:hover{background:var(--accent); border-color:var(--accent)}
+.btn-outline-dark{border-color:var(--secondary-color); color:var(--primary-color)}
+.btn-outline-dark:hover{background:rgba(197,164,126,.14)}
+.btn-outline-light{border-color:rgba(255,255,255,.72); color:#fff}
+.btn-outline-light:hover{background:rgba(255,255,255,.14)}
+.btn-whatsapp{background:var(--whatsapp-green); color:#fff; border:none; box-shadow:0 8px 18px rgba(37,211,102,.25)}
+.btn-whatsapp:hover{filter:brightness(.96)}
+
+/* -------- Footer -------- */
+.footer-subtle{background:#eee4d9; color:#3a3530}
+.footer-subtle a{color:#3a3530; text-decoration:none}
+.footer-subtle a:hover{text-decoration:underline}
+.social-icons .social-link{display:inline-grid; place-items:center; width:38px; height:38px; border-radius:50%; border:1px solid rgba(0,0,0,.16); opacity:.95; transition:transform .18s var(--ease), background .18s var(--ease)}
+.social-icons .social-link:hover{transform:translateY(-2px); background:rgba(0,0,0,.04)}
+.footer-brand-name{font-family:var(--font-primary)}
+
+/* -------- Responsivo -------- */
+@media (max-width:1199px){ .section-pad{padding:88px 0} }
+@media (max-width:991.98px){
+  .section-pad{padding:76px 0}
+  .hero-slide{min-height:98vh}
+}
+@media (max-width:767.98px){
+  .navbar .btn{padding:.6rem 1rem}
+  .hero .display-5{font-size:clamp(1.8rem,6vw,2.2rem)}
+}
+@media (max-width:575.98px){
+  .section-pad{padding:64px 0}
+  .card-soft{padding:18px}
+  .course-teaser{
+  position:relative; 
+  background:linear-gradient(180deg,#2f2924 0%, #2a2521 100%); 
+  color:#fff; 
+  overflow:hidden;
+  padding-bottom: 120px !important; /* espaço para a onda */
+}
+}
+
+
+@media (max-width: 991.98px) {
+  .hero-full {
+    padding-bottom: 0px; /* mais espaço em telas menores */
+
+  }
+
+  .sobre-kelly{
+    padding-bottom: 120px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-full {
+    padding-bottom: 0px; /* mais espaço em telas menores */
+
+  }
+
+
+}
+
+/* Onda */
+.wave-sep {
+  position: relative;
+  line-height: 0;
+  height: 88px;
+  margin-top: -88px; /* cola na borda inferior do hero */
+  z-index: 2;
+}
+
+.wave-sep svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wave-hero path {
+  fill: var(--primary-color); /* mesma cor do navbar/hero */
+}

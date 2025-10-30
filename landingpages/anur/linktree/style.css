@@ -1,0 +1,63 @@
+/* style.css — links com pouco espaçamento, 2 por linha no desktop, 512x288 fixo no desktop e responsivo no mobile */
+:root{
+  --black:#000; --gold:#d4af37; --gold-soft:#e8cf82; --silver:#bdbdbd;
+  --card-w:512px; --card-gap:12px;
+}
+
+html,body{background:var(--black); color:#fff; text-align:center}
+.text-gold{color:var(--gold)} .text-silver{color:var(--silver)}
+
+.ornament-7x{position:fixed; top:14px; right:18px; color:var(--gold); font:700 20px "Times New Roman",serif; letter-spacing:.04em; opacity:.85}
+
+.title-serif{font-family:"Times New Roman",serif; letter-spacing:.03em}
+.subtitle{color:var(--silver)}
+.welcome-fixed{max-width:780px; line-height:1.55; color:var(--silver); font-size:1rem}
+
+.profile-photo{width:116px; height:116px; border-radius:50%; border:1.5px solid var(--gold);
+  background:radial-gradient(80% 80% at 50% 35%, rgba(212,175,55,.25), transparent 60%), #0b0b0b; display:grid; place-items:center; overflow:hidden}
+.placeholder-img{color:var(--silver); font-size:.9rem}
+
+/* Vídeo */
+.portal-frame{max-width:min(900px, 94vw); aspect-ratio:16/9; border:1.5px solid rgba(212,175,55,.4);
+  border-radius:18px; background:#0a0a0a; margin:0 auto; box-shadow:0 0 18px rgba(212,175,55,.08)}
+.portal-placeholder{width:100%; height:100%; border-radius:18px; border:1.5px dashed rgba(212,175,55,.3)}
+
+/* ======= GRID DE LINKS ======= */
+/* Mobile first: 1 por linha, cartões fluidos (escala suave até 512px mantendo 16:9) */
+.links-grid{
+  display:grid; grid-template-columns:1fr; gap:var(--card-gap); justify-items:center; padding-inline:6px;
+}
+.link-card-img{
+  display:block; width:min(100%, var(--card-w)); aspect-ratio:16/9; border-radius:16px;
+  border:1.5px solid rgba(212,175,55,.28); overflow:hidden; background:#0a0f16;
+  box-shadow:0 8px 22px rgba(0,0,0,.35); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.link-card-img:hover{transform:translateY(-2px); border-color:rgba(212,175,55,.55); box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.link-card-img img{width:100%; height:100%; object-fit:cover; display:block; background:#090b10}
+
+/* Desktop (>=992px): 2 por linha, largura fixa 512 e altura 288, pouco espaço */
+@media (min-width: 992px){
+  .links-grid{
+    grid-template-columns: repeat(2, var(--card-w));
+    justify-content:center; column-gap:var(--card-gap); row-gap:var(--card-gap);
+  }
+  .link-card-img{width:var(--card-w); height:288px; aspect-ratio:auto} /* fixa exatamente 512x288 */
+}
+
+/* Botões (stack compacto e responsivo) */
+.btn-outline-gold{
+  --bs-btn-color:var(--gold); --bs-btn-border-color:var(--gold);
+  --bs-btn-hover-bg:rgba(212,175,55,.12); --bs-btn-hover-color:var(--gold-soft);
+  --bs-btn-hover-border-color:var(--gold-soft); border-width:1.5px; border-radius:999px;
+  font-weight:500; letter-spacing:.2px; padding:.6rem 1.4rem;
+}
+.btn-stack{display:grid; gap:10px; justify-items:center; padding-inline:6px}
+.btn-stack .btn{width:min(100%, 560px)}
+
+/* Pequenos refinamentos de espaçamento global */
+.container{max-width:1080px}
+header{margin-bottom:1.25rem}
+#video{margin-bottom:1.25rem}
+#links{margin-bottom:1.25rem}
+#links-texto{margin-bottom:1.25rem}
+footer{margin-top:1.25rem}

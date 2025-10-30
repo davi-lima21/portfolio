@@ -50,10 +50,14 @@ h1,h2,h3,h4,h5,h6{ font-family:var(--font-primary); font-weight:700; }
 }
 @media (min-width: 992px){
  .navbar-sales{
+   background: #a8a3a156;
   position:fixed; top:0; left:0; right:0; z-index:1030;
-  background:rgba(61,52,46,.96); box-shadow:var(--shadow-sm);
+ 
+   
  }
- body{ padding-top:70px; } /* compensa a navbar no desktop */
+ body{ padding-top:80px; } /* compensa a navbar no desktop */
+
+
 }
 @media (max-width: 991.98px){
  .navbar-sales{ padding:.5rem 0; }

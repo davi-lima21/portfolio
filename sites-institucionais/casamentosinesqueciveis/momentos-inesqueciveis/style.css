@@ -1,0 +1,1158 @@
+/*--------------------------------------------------------------
+# Configurações Gerais e Tipografia
+--------------------------------------------------------------*/
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+/*--------------------------------------------------------------
+# Navbar
+--------------------------------------------------------------*/
+.navbar {
+    background: transparent;
+    transition: background-color 0.5s ease;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar-scrolled {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.navbar-brand img {
+    max-height: 45px;
+}
+
+.navbar .nav-link {
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-left: 15px;
+    margin-right: 15px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #e0e0e0;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+    width: 100%;
+}
+
+.navbar-toggler {
+    border: 2px solid #fff;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/*--------------------------------------------------------------
+# Hero Section com Slider
+--------------------------------------------------------------*/
+.page-hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#heroCarousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.carousel-inner, .carousel-item {
+    height: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay para escurecer as imagens e garantir legibilidade do texto */
+.carousel-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+/* Container para o conteúdo textual que fica sobre o slider */
+.hero-content-container {
+    position: relative;
+    z-index: 3; /* Garante que o texto fique na frente do overlay */
+    padding: 0 15px;
+}
+
+.hero-content {
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero-content h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content .lead {
+    font-weight: 300;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content .btn {
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 12px 35px;
+    border-radius: 50px;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+.hero-content .btn:hover {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/*--------------------------------------------------------------
+# Responsividade
+--------------------------------------------------------------*/
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 0.5rem;
+        padding: 20px;
+        margin-top: 10px;
+    }
+    .navbar .nav-link { margin: 10px 0; text-align: center; }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero-content .lead { font-size: 1.2rem; }
+    .hero-content .btn { padding: 10px 30px; font-size: 0.9rem; }
+}
+
+/*--------------------------------------------------------------
+# Menu Hambúrguer Animado (Estilo Original Preferido)
+--------------------------------------------------------------*/
+/* Remove o estilo padrão do botão do Bootstrap */
+.navbar-toggler {
+  border: none;
+  background: transparent !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Estilo base para cada linha do ícone */
+.toggler-icon {
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff;
+  display: block;
+  transition: all 0.3s cubic-bezier(.86, 0, .07, 1);
+  position: relative;
+}
+
+/* Espaçamento entre as linhas (este era o estilo original) */
+.toggler-icon + .toggler-icon {
+  margin-top: 5px;
+}
+
+/* ANIMAÇÃO PARA O 'X' (Quando o menu está aberto, NÃO tem a classe .collapsed) */
+.navbar-toggler:not(.collapsed) .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 15% 15%;
+}
+
+.navbar-toggler:not(.collapsed) .middle-bar {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.navbar-toggler:not(.collapsed) .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 15% 95%;
+}/*--------------------------------------------------------------
+# Seção Sobre v2 - Estilo Moderno (VERSÃO ATUALIZADA)
+--------------------------------------------------------------*/
+.about-section-v2 {
+    padding: 140px 0; /* Mais espaçamento vertical na seção */
+    position: relative;
+    overflow: hidden;
+    background-color: #080808;
+}
+
+.about-block {
+    margin-bottom: 120px;
+}
+.about-block:last-child {
+    margin-bottom: 0;
+}
+
+.about-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2.5rem; /* Aumenta o padding interno do card */
+    position: relative;
+    z-index: 2;
+}
+
+.about-card .section-title,
+.about-card .rafael-title {
+    color: #fff;
+    font-weight: 700;
+}
+
+.about-card p, .about-card .lead {
+    color: #c5c5c5;
+}
+.about-card .lead {
+    color: #e0e0e0;
+    font-weight: 400;
+}
+
+.about-image-wrapper,
+.about-carousel-wrapper {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Lógica Responsiva --- */
+
+/* ESTILOS APENAS PARA DESKTOP (Telas a partir de 992px) */
+@media (min-width: 992px) {
+    /* 1. Efeito de sobreposição mais sutil */
+    .about-block:first-of-type .about-image-wrapper {
+        
+    }
+    .about-block:last-of-type .about-carousel-wrapper {
+        
+    }
+
+    /* 2. Força o texto completo a aparecer no desktop */
+    #rafaelTextCollapse {
+        display: block;
+    }
+    
+    .about-card {
+        padding: 3rem; /* Aumenta ainda mais o padding no desktop */
+    }
+}
+
+/* ESTILOS APENAS PARA MOBILE (Telas até 991.98px) */
+@media (max-width: 991.98px) {
+    /* Gradiente que some com o texto para indicar que há mais conteúdo */
+    .collapsible-text:not(.expanded)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(to bottom, transparent, #080808);
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+}
+
+/* Botão "Ver Mais" (agora escondido no desktop via HTML) */
+.btn-ver-mais {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #c5a47e;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.btn-ver-mais:hover {
+    color: #fff;
+}
+
+.btn-ver-mais .bi {
+    font-size: 1rem;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-ver-mais[aria-expanded="true"] .bi {
+    transform: rotate(180deg);
+}
+
+/* Animações de entrada */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.row .animate-on-scroll:nth-child(2) {
+    transition-delay: 0.2s;
+}/*--------------------------------------------------------------
+# Seção de Serviços Parallax (VERSÃO CORRIGIDA)
+--------------------------------------------------------------*/
+#parallax-services {
+    position: relative;
+    min-height: 150vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 100px 0;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+#parallax-services .parallax-bg {
+    position: absolute;
+    top: 40%; 
+    left: 0;
+    width: 100%;
+    /* CORRIGIDO: Altura maior que a seção para permitir o efeito */
+    height: 50%; 
+    /* CORRIGIDO: Use a imagem correta para desktop */
+    background-image: url('src/img/parallax-mobile.jpg'); 
+    background-size: cover;
+    /* Ajuste o foco vertical da imagem conforme necessário */
+    background-position: center 50%;
+    z-index: -2;
+}
+
+#parallax-services::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.parallax-main-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
+}
+
+.parallax-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 1rem auto 0;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    height: 100%;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ... (as classes do glass-card não precisam mudar) ... */
+.glass-card-title { font-weight: 700; font-size: 1.8rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+.glass-card-list { list-style: none; padding: 0; text-align: left; }
+.glass-card-list li { padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.glass-card-list li:last-child { border-bottom: none; }
+.formation-name { display: block; font-weight: 700; color: #ffffff; font-size: 1.1rem; }
+.formation-description { font-weight: 300; color: #e0e0e0; font-size: 0.9rem; margin-top: 5px; margin-bottom: 0; line-height: 1.5; }
+
+/* --------------------------------------------------- */
+/* Responsividade - AJUSTES PARA CELULAR (CORRIGIDO) */
+/* --------------------------------------------------- */
+@media (max-width: 767.98px) {
+    #parallax-services {
+        min-height: auto;
+        padding: 80px 0;
+    }
+
+    #parallax-services .parallax-bg {
+        /* Use a imagem correta para mobile */
+        background-image: url('src/img/parallax3.jpg'); 
+        
+        /* CORRIGIDO: Resetando a geometria para o mobile */
+        height: 50%; 
+        top: 30%;
+        opacity: 0.7;
+        /* ADICIONADO DE VOLTA: Efeito mais simples e performático para mobile */
+        background-attachment: fixed;
+    }
+    
+    .parallax-main-title {
+        font-size: 2.5rem;
+    }
+
+    .parallax-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .col-md-6:last-child .glass-card {
+        margin-top: 2rem;
+    }
+}
+/* --- DEPOIMENTOS CARROSSEL (VERSÃO CORRIGIDA) --- */
+#depoimentos {
+    background-color: #000000;
+    color: #f8f9fa;
+    position: relative;
+    height: 90vh;
+    display: flex; /* Adicionado para ajudar na centralização vertical */
+    align-items: center; /* Adicionado para ajudar na centralização vertical */
+}
+
+#depoimentos .lead {
+    color: #aaa;
+}
+
+/* NOVO: Aplique o padding aqui para afastar o conteúdo dos botões */
+#depoimentos .carousel-inner {
+    padding: 0 100px;
+}
+
+.testimonial-icon {
+    font-size: 3.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+}
+
+.testimonial-card {
+    background-color: transparent;
+    border: none;
+    /* REMOVIDO: padding: 0 15%; */
+    text-align: center;
+    min-height: 250px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial-card p {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-card cite {
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilos para os controles do carrossel */
+.carousel-control-prev, .carousel-control-next {
+    width: 10%; /* Aumentei um pouco para facilitar o clique */
+    z-index: 10; /* Garante que os botões fiquem na frente */
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: transparent;
+    background-size: 100%, 100%;
+}
+
+/* Estilos para os indicadores (bolinhas) */
+.carousel-indicators {
+    bottom: -60px;
+}
+
+.carousel-indicators [data-bs-target] {
+    box-sizing: content-box;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.5;
+    transition: opacity .2s ease;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+
+@media (max-width: 767.98px)  {
+      #depoimentos .carousel-inner {
+    padding: 0 20px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Seção de Imagem Pré-Rodapé
+--------------------------------------------------------------*/
+.pre-footer-section {
+    padding: 0;
+    line-height: 0; /* Remove qualquer espaço extra da linha */
+}
+
+.pre-footer-img {
+    width: 100%;
+    height: auto;
+    max-height: 500px; /* Define uma altura máxima para a imagem */
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+    object-position: center;
+}
+
+/*--------------------------------------------------------------
+# Rodapé (Versão Minimalista P&B)
+--------------------------------------------------------------*/
+.site-footer {
+    background-color: #080808;
+    padding: 80px 0 40px 0;
+    color: #a0a0a0;
+    font-size: 0.9rem;
+}
+
+.footer-widget {
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    max-height: 150px;
+    opacity: 0.8;
+}
+
+.footer-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Linha de destaque sob o título */
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    /* COR MUDOU: Acento dourado removido, agora é branco */
+    background-color: rgba(255, 255, 255, 0.5); 
+}
+
+.footer-links,
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li,
+.footer-contact li {
+    margin-bottom: 10px;
+}
+
+.footer-links a,
+.footer-contact a {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+.footer-contact i {
+    /* COR MUDOU: Acento dourado removido, agora é branco */
+    color: #ffffff;
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* EFEITO MUDOU: Fundo branco e ícone preto ao passar o mouse */
+.social-icons a:hover {
+    background-color: #ffffff;
+    color: #080808;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.footer-hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.footer-bottom .credits {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    color: #a0a0a0; /* Mantém a cor cinza para os créditos */
+}
+
+/*--------------------------------------------------------------
+# Estilos dos Botões CTA e Overlay de Contraste
+--------------------------------------------------------------*/
+
+/* 1. Overlay para Melhorar Contraste na Seção de Serviços */
+/* Este código cria uma camada escura sobre a imagem de fundo, 
+   garantindo que o texto branco seja sempre legível. */
+.parallax-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Ajuste a opacidade (0.6) se desejar mais ou menos escuro */
+  z-index: 0;
+}
+
+/* Ajuste para garantir que o conteúdo fique sobre o overlay */
+#parallax-services .container {
+    position: relative;
+    z-index: 1;
+}
+#parallax-services .parallax-bg {
+    z-index: -1; /* Coloca a imagem de fundo atrás do overlay */
+}
+
+
+/* 2. Estilo para o Botão Principal (Branco Sólido) */
+/* Usado nas seções "Sobre" e "Depoimentos". */
+.btn-primary {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 35px;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-3px); /* Efeito de elevação sutil */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+/* 3. Estilo para o Botão Contornado (Branco Vazado) */
+/* Garante que o botão na seção "Serviços" se pareça com o do topo. */
+#parallax-services .btn-outline-light {
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 12px 35px;
+    border-radius: 50px;
+    border-width: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+#parallax-services .btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: scale(1.05); /* Efeito de zoom sutil */
+}
+
+
+/* 4. Estilo para o Botão do WhatsApp no Rodapé */
+/* Personaliza o botão verde padrão do Bootstrap. */
+.footer-widget .btn-success {
+    background-color: #25D366; /* Cor oficial do WhatsApp */
+    border-color: #25D366;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer-widget .btn-success:hover,
+.footer-widget .btn-success:focus {
+    background-color: #1EBE57; /* Um tom mais escuro no hover */
+    border-color: #1EBE57;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/*--------------------------------------------------------------
+# Seção de Contato
+--------------------------------------------------------------*/
+.contact-section {
+    padding: 120px 0;
+    background-color: #080808;
+    color: #f8f9fa;
+}
+
+.contact-section .section-title {
+    color: #ffffff;
+}
+
+.contact-section .lead {
+    color: #a0a0a0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-form-wrapper {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .contact-form-wrapper {
+        padding: 3.5rem;
+    }
+}
+
+.contact-section .form-label {
+    color: #c5c5c5;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.contact-section .form-control {
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #ffffff;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.contact-section .form-control:focus {
+    background-color: rgba(0,0,0,0.4);
+    color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.1);
+}
+
+.contact-section .form-control::placeholder {
+    color: #888;
+}
+
+/* Divisor "OU" entre os botões */
+.contact-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 2rem 0;
+    color: #888;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-divider span {
+    padding: 0 1rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* hero menor */
+.hero-title-smaller {
+  font-size: 2.6rem;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 768px) {
+  .hero-title-smaller {
+    font-size: 2rem;
+  }
+}
+
+/* card do “sobre mim” mais limpo */
+.about-card-profile {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* depoimentos com foto (instagram style) */
+.testimonial-has-photo {
+  background: rgba(255,255,255,0.01);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 2.4rem 1.8rem 2rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.testimonial-has-photo p {
+  font-style: normal;
+}
+.testimonial-photo {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+/* contato enxuto */
+#contato-enxuto {
+  background-color: #000;
+}
+.btn-whats-enxuto {
+  border-radius: 9999px;
+  font-weight: 600;
+  padding: 10px 26px;
+  font-size: 0.9rem;
+}
+
+#depoimentos {
+  background-color: #000;
+  color: #fff;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+#depoimentos img {
+  border-radius: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+.carousel-item {
+  text-align: center;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+.lead.text-muted {
+  color: #ccc !important;
+}
+/*--------------------------------------------------------------
+# Depoimentos com prints do Instagram
+--------------------------------------------------------------*/
+#depoimentos {
+  background-color: #000;
+  color: #fff;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+#depoimentos .section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+#depoimentos .lead.text-muted {
+  color: #ccc !important;
+}
+
+.depoimento-img {
+  max-width: 700px;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.5);
+}
+
+/* Centraliza tudo dentro do carrossel */
+#depoimentosCarousel {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Deixa os botões e indicadores elegantes e discretos */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+  width: 2rem;
+  height: 2rem;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #fff;
+  opacity: 0.4;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.carousel-indicators .active {
+  opacity: 1;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .depoimento-img {
+    max-width: 90%;
+    border-radius: 10px;
+  }
+}
+
+/* =========================================================
+   AJUSTES FORTES DE MOBILE (SOBRE / SOBRE MIM)
+   ========================================================= */
+@media (max-width: 991.98px) {
+
+  /* seção como um todo mais “magrela” no mobile */
+  .about-section-v2 {
+    padding: 70px 0 60px;
+  }
+
+  /* cada bloco com menos espaço entre eles */
+  .about-block {
+    margin-bottom: 50px;
+  }
+
+  /* card mais compacto */
+  .about-card,
+  .about-card-profile {
+    padding: 1.5rem 1.25rem;
+    border-radius: 14px;
+  }
+
+  /* título menor */
+  .about-card .section-title,
+  .about-card .rafael-title,
+  #sobre-mim .rafael-title {
+    font-size: 1.4rem;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  /* textos mais legíveis no mobile */
+  .about-card p,
+  .about-card .lead {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  /* imagem e carrossel ocupam 100% e com borda mais suave */
+  .about-image-wrapper,
+  .about-carousel-wrapper {
+    margin-top: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.35);
+  }
+
+  /* força a ordem: texto primeiro, imagem depois,
+     mesmo se no desktop estiver invertido */
+  #sobre .row .col-lg-6,
+  #sobre-mim .row .col-lg-6,
+  #sobre-mim .row .col-lg-5,
+  #sobre-mim .row .offset-lg-1 {
+    order: unset !important;
+  }
+
+  /* dá respiro lateral */
+  .about-section-v2 .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* botão “ver mais” fica mais visível no mobile */
+  .btn-ver-mais {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+  }
+
+  /* bloco “sobre mim” não fica esticado demais */
+  #sobre-mim .about-card-profile {
+    gap: .6rem;
+  }
+}
+
+/* =========================================================
+   MOBILE BEM PEQUENO (até 480px)
+   ========================================================= */
+@media (max-width: 480px) {
+
+  .about-section-v2 {
+    padding-top: 60px;
+  }
+
+  .about-card,
+  .about-card-profile {
+    padding: 1.25rem 1rem;
+  }
+
+  .about-card .section-title,
+  .about-card .rafael-title {
+    font-size: 1.25rem;
+  }
+
+  /* evita imagem enorme */
+  .about-image-wrapper img,
+  .about-carousel-wrapper img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* hero título um pouco menor pra não quebrar feio */
+  .hero-title-smaller {
+    font-size: 1.75rem;
+  }
+}
+
+/* =========================================================
+   BOTÕES WHATSAPP — ESTILO BRANCO DISCRETO
+   ========================================================= */
+
+/* Versão enxuta (seção Contato Enxuto) */
+.btn-whats-enxuto {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 10px 26px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-whats-enxuto i {
+  color: #fff;
+  margin-right: 6px;
+}
+
+.btn-whats-enxuto:hover,
+.btn-whats-enxuto:focus {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255,255,255,0.1);
+}
+
+.btn-whats-enxuto:hover i {
+  color: #000;
+}
+
+/* Versão no footer */
+.footer-widget .btn-success {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.footer-widget .btn-success i {
+  color: #fff;
+  margin-right: 6px;
+}
+
+.footer-widget .btn-success:hover,
+.footer-widget .btn-success:focus {
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255,255,255,0.15);
+}
+
+.footer-widget .btn-success:hover i {
+  color: #000;
+}

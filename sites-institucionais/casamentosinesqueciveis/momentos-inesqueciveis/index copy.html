@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rafael Lumi - Casamentos Inesquecíveis</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="./src/img/logo/logo-dark.png" type="image/png" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://davi-lima21.github.io/portfolio/sites-institucionais/casamentosinesqueciveis/src/img/logo/logo-light.png"
+          alt="Rafael Lumi Logo" height="50" />
+      </a>
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-icon top-bar"></span>
+        <span class="toggler-icon middle-bar"></span>
+        <span class="toggler-icon bottom-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#parallax-services">Serviços Musicais</a></li>
+          <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#momentos">Momentos Inesquecíveis</a></li>
+          <li class="nav-item"><a class="nav-link" href="./escolha-musicas/">Escolha das Músicas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato-enxuto">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO / CARROSSEL -->
+  <header class="page-hero">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+        <div class="carousel-item active w-100">
+          <img src="src/img/carrosel/desktop/1.jpg" class="d-none d-md-block w-100" alt="Cerimônia de casamento ao ar livre" />
+          <img src="src/img/carrosel/mobile/1.jpg" class="d-block d-md-none w-100" alt="Cerimônia de casamento ao ar livre" />
+        </div>
+        <div class="carousel-item">
+          <img src="src/img/carrosel/desktop/2.jpg" class="d-none d-md-block w-100" alt="Noivos em um momento especial" />
+          <img src="src/img/carrosel/mobile/2.jpg" class="d-block d-md-none w-100" alt="Noivos em um momento especial" />
+        </div>
+        <div class="carousel-item">
+          <img src="src/img/carrosel/desktop/3.jpg" class="d-none d-md-block w-100" alt="Músicos tocando em evento" />
+          <img src="src/img/carrosel/mobile/3.jpg" class="d-block d-md-none w-100" alt="Músicos tocando em evento" />
+        </div>
+        <div class="carousel-item">
+          <img src="src/img/carrosel/desktop/4.jpg" class="d-none d-md-block w-100" alt="Músicos tocando em evento" />
+          <img src="src/img/carrosel/mobile/4.jpg" class="d-block d-md-none w-100" alt="Músicos tocando em evento" />
+        </div>
+        <div class="carousel-item">
+          <img src="src/img/carrosel/desktop/5.jpg" class="d-none d-md-block w-100" alt="Músicos tocando em evento" />
+          <img src="src/img/carrosel/mobile/5.jpg" class="d-block d-md-none w-100" alt="Músicos tocando em evento" />
+        </div>
+      </div>
+    </div>
+
+    <!-- TEXTO DO HERO -->
+    <div class="hero-content-container">
+      <div class="hero-content">
+        <h1 class="display-4 hero-title-smaller">
+          Transformamos o seu casamento em um espetáculo inesquecível com música ao vivo do início ao fim.
+        </h1>
+        <p class="lead">A sua história, traduzida em música.</p>
+        <!-- cliente pediu pra tirar o botão daqui -->
+      </div>
+    </div>
+  </header>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="about-section-v2">
+    <div class="container">
+      <div class="row align-items-center about-block">
+        <div class="col-lg-6 order-lg-2">
+          <div class="about-card animate-on-scroll">
+            <h2 class="section-title">SOBRE NÓS</h2>
+            <p class="lead">Somos apaixonados por transformar sentimentos em som.</p>
+            <p>
+              Mesmo sediados no coração da Serra Gaúcha, atendemos todo o RS e demais estados — sempre com atenção
+              artesanal, olhar artístico e soluções sob medida para cada celebração.
+            </p>
+            <p>
+              Criamos experiências musicais para cerimônias e recepções inesquecíveis, com formações que unem excelência
+              técnica, estética e sensibilidade.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-5 order-lg-1">
+          <div class="about-image-wrapper animate-on-scroll">
+            <!-- ele disse que vai trocar essa imagem, então deixo assim -->
+            <img src="src/img/1.webp" class="img-fluid" alt="Equipe de músicos em preparação" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SOBRE MIM -->
+      <div class="row align-items-stretch about-block" id="sobre-mim">
+        <div class="col-lg-6 d-flex">
+          <div class="about-card about-card-profile animate-on-scroll">
+            <h3 class="rafael-title mb-3">Sobre mim: <strong>Rafael Lumi</strong></h3>
+            <p class="mb-3">
+              Com mais de 20 anos de envolvimento com a cena musical e experiências ao lado de grandes profissionais, Rafael
+              Lumi consolidou o conceito premium em música para eventos.
+            </p>
+            <p class="mb-3">
+              Quarta geração de uma família de músicos, começou cedo no violão, aproximou-se do piano e encontrou no canto uma
+              forma de expressão. Multi-instrumentista, cantor e produtor, uniu talento e visão para criar formações musicais
+              sob medida para casamentos sofisticados.
+            </p>
+            <p class="mb-0">
+              Hoje, a empresa Casamentos Inesquecíveis traduz a identidade de cada casal em trilhas sonoras exclusivas —
+              elegantes, emocionantes e com execução impecável.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1">
+          <!-- carrossel de fotos do Rafael -->
+          <div id="rafaelCarouselDesktop" class="carousel slide carousel-fade about-carousel-wrapper animate-on-scroll"
+            data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner">
+              <div class="carousel-item active"><img src="src/img/rafael-lumi/1.jpg" class="d-block w-100" alt="Rafael Lumi produtor musical" /></div>
+              <div class="carousel-item"><img src="src/img/rafael-lumi/2.jpg" class="d-block w-100" alt="Rafael Lumi tocando piano" /></div>
+              <div class="carousel-item"><img src="src/img/rafael-lumi/3.jpg" class="d-block w-100" alt="Rafael Lumi cantando" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS / PARALLAX -->
+  <section id="parallax-services">
+    <div class="parallax-overlay"></div>
+    <div class="parallax-bg"></div>
+    <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-10">
+          <h2 class="parallax-main-title reveal-on-scroll">A Trilha Sonora da Sua História</h2>
+          <p class="parallax-subtitle reveal-on-scroll">
+            Música ao vivo com a sensibilidade e a sofisticação que o seu grande dia merece.
+          </p>
+          <div class="row mt-5">
+            <div class="col-md-6 reveal-on-scroll">
+              <div class="glass-card">
+                <h3 class="glass-card-title">Cerimônias</h3>
+                <ul class="glass-card-list">
+                  <li>
+                    <span class="formation-name">Orquestra</span>
+                    <p class="formation-description">Imponência e emoção para cortejos e entrada dos noivos.</p>
+                  </li>
+                  <li>
+                    <span class="formation-name">Piano e Quarteto de Cordas</span>
+                    <p class="formation-description">Clássico, romântico e extremamente elegante.</p>
+                  </li>
+                  <li>
+                    <span class="formation-name">Piano, Violino e Violoncelo</span>
+                    <p class="formation-description">Formação harmônica e emocionante para cerimônias intimistas.</p>
+                  </li>
+                  <li>
+                    <span class="formation-name">Cantores e Clarinada</span>
+                    <p class="formation-description">Entrada triunfal e momentos de destaque da celebração.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6 reveal-on-scroll">
+              <div class="glass-card">
+                <h3 class="glass-card-title">Coquetel & Recepção</h3>
+                <ul class="glass-card-list">
+                  <li>
+                    <span class="formation-name">Magic Jazz</span>
+                    <p class="formation-description">Clima sofisticado, moderno e acolhedor.</p>
+                  </li>
+                  <li>
+                    <span class="formation-name">Magic Jazz com Cantora</span>
+                    <p class="formation-description">Repertório internacional e presença marcante.</p>
+                  </li>
+                  <li>
+                    <span class="formation-name">Piano, Sax e Contrabaixo</span>
+                    <p class="formation-description">Estilo lounge / jazz para eventos de alto padrão.</p>
+                  </li>
+                  <li>
+                    <span class="formation-name">Consulte outros formatos ou crie conosco algo exclusivo para seu evento</span>
+                    <p class="formation-description">Formações autorais e personalizadas.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- cliente pediu pra tirar "Reserve sua data" aqui também -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOMENTOS / GALERIA PLACEHOLDER -->
+  <section id="momentos" class="py-5 bg-black">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">Momentos Inesquecíveis</h2>
+        <p class="lead text-muted">Em breve: registros reais dos casamentos realizados.</p>
+      </div>
+      <!-- pode ser um grid de 3 cols depois -->
+    </div>
+  </section>
+<section id="depoimentos" class="py-5 bg-black">
+  <div class="container text-center">
+    <h2 class="section-title mb-3">Depoimentos Reais</h2>
+    <p class="lead text-muted mb-5">Direto do nosso Instagram</p>
+
+    <!-- Carrossel centralizado -->
+    <div id="depoimentosCarousel" class="carousel slide mx-auto" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <img src="src/img/depoimentos/gabriela-henrique.jpg" class="d-block mx-auto depoimento-img" alt="Depoimento Gabriela e Henrique" />
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <img src="src/img/depoimentos/julia-bruno.jpg" class="d-block mx-auto depoimento-img" alt="Depoimento Júlia e Bruno" />
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <img src="src/img/depoimentos/aline-murilo.jpg" class="d-block mx-auto depoimento-img" alt="Depoimento Aline e Murilo" />
+        </div>
+
+      </div>
+
+      <!-- Controles -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#depoimentosCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#depoimentosCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+
+      <!-- Indicadores -->
+      <div class="carousel-indicators mt-4">
+        <button type="button" data-bs-target="#depoimentosCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#depoimentosCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#depoimentosCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- CONTATO ENXUTO -->
+  <section id="contato-enxuto" class="py-5 bg-black">
+    <div class="container text-center">
+      <p class="lead mb-4">
+        Fale diretamente conosco sobre disponibilidade, formações e repertório.
+      </p>
+      <a href="https://api.whatsapp.com/send?phone=555499248998&text=Ol%C3%A1%2C%20Rafael!%20Gostaria%20de%20informações%20sobre%20música%20para%20casamento."
+        class="btn btn-success btn-sm btn-whats-enxuto" target="_blank">
+        <i class="bi bi-whatsapp"></i> Chamar no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-5 mb-5 mb-lg-0">
+          <div class="footer-widget text-center text-lg-start">
+            <img src="./src/img/logo/logo-texto-light.png" alt="Rafael Lumi Logo" class="footer-logo mb-3" />
+            <p class="footer-text">
+              Música para Casamentos Inesquecíveis no Brasil e onde mais o amor nos levar. Transformamos seu sonho em uma
+              trilha sonora emocionante e sofisticada.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+          <div class="footer-widget">
+            <h5 class="footer-title">Menu</h5>
+            <ul class="footer-links">
+              <li><a href="#sobre">Sobre</a></li>
+              <li><a href="#parallax-services">Serviços</a></li>
+              <li><a href="#momentos">Momentos Inesquecíveis</a></li>
+              <li><a href="#depoimentos">Depoimentos</a></li>
+              <li><a href="./escolha-musicas/">Escolha das Músicas</a></li>
+              <li><a href="#contato-enxuto">Contato</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+          <div class="footer-widget">
+            <h5 class="footer-title">Contato</h5>
+            <ul class="footer-contact">
+              <li>
+                <i class="bi bi-whatsapp"></i>
+                <a href="https://api.whatsapp.com/send?phone=555499248998&text=Ol%C3%A1%2C%20Rafael!%20Gostaria%20de%20informações."
+                  target="_blank">(54) 9 9248-8998</a>
+              </li>
+              <li>
+                <i class="bi bi-envelope"></i>
+                <!-- ele disse que vão criar o e-mail quando tiver hospedagem -->
+                <span class="text-muted">contato@rafaellumi.com (a configurar)</span>
+              </li>
+            </ul>
+            <a href="https://api.whatsapp.com/send?phone=555499248998&text=Ol%C3%A1%2C%20Rafael!%20Gostaria%20de%20informações."
+              class="btn btn-success mt-3 w-100" target="_blank">
+              <i class="bi bi-whatsapp"></i> Chamar no WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="footer-widget">
+            <h5 class="footer-title">Siga-nos</h5>
+            <div class="social-icons">
+              <a href="https://www.instagram.com/casamentos.inesqueciveis/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+              <a href="https://www.facebook.com/rafalumi" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <hr class="footer-hr" />
+        <p>&copy; 2025 Rafael Lumi - Casamentos Inesquecíveis. Todos os direitos reservados.</p>
+        <p class="credits">Desenvolvido por DLR Web Studio</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar no scroll
+    document.addEventListener('DOMContentLoaded', function () {
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        const scrollThreshold = 50;
+        function handleScroll() {
+          if (window.scrollY > scrollThreshold) {
+            navbar.classList.add('navbar-scrolled');
+          } else {
+            navbar.classList.remove('navbar-scrolled');
+          }
+        }
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+      }
+    });
+  </script>
+</body>
+</html>

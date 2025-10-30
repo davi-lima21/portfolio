@@ -1,0 +1,58 @@
+<link rel="icon"
+    href="https://davi-lima21.github.io/portfolio/sites-institucionais/casamentosinesqueciveis/src/img/logo/logo-dark.png"
+    type="image/png">
+<link rel="stylesheet" href="navbar.css">
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="https://davi-lima21.github.io/portfolio/sites-institucionais/casamentosinesqueciveis/src/img/logo/logo-light.png"
+                alt="Rafael Lumi Logo" height="50">
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="toggler-icon top-bar"></span>
+            <span class="toggler-icon middle-bar"></span>
+            <span class="toggler-icon bottom-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="/#sobre">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="/#parallax-services">Serviços Musicais</a></li>
+                <li class="nav-item"><a class="nav-link" href="/#depoimentos">Depoimentos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/escolha-musicas/">Escolha das Músicas</a></li>
+                <li class="nav-item"><a class="nav-link" href="/#contato">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // ======================================================
+        // EFEITO NAVBAR SCROLL (COM VERIFICAÇÃO DE EXISTÊNCIA)
+        // ======================================================
+        const navbar = document.querySelector('.navbar');
+
+        // Só adiciona o efeito se a navbar existir na página
+        if (navbar) {
+            const scrollThreshold = 50;
+
+            function handleScroll() {
+                if (window.scrollY > scrollThreshold) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+
+            // Opcional: Chama a função uma vez no início para definir o estado correto no carregamento
+            handleScroll();
+        }
+    });
+</script>

@@ -1,281 +1,255 @@
-/* css/style.css */
-
 /* --- Variáveis de Cor e Fontes --- */
-:root {
-    --primary-color: #3d342e; /* Marrom escuro */
-    --secondary-color: #c5a47e; /* Dourado/Ocre */
-    --light-gray: #f8f9fa;
-    --dark-color: #212529;
-    --whatsapp-green: #25D366;
-    --font-primary: 'Playfair Display', serif;
-    --font-secondary: 'Poppins', sans-serif;
-    --font-signature: 'Great Vibes', cursive;
+:root{
+ --primary-color:#3d342e;    /* Marrom escuro */
+ --secondary-color:#c5a47e;   /* Dourado/Ocre */
+ --light-gray:#f8f9fa;
+ --dark-color:#212529;
+ --whatsapp-green:#25D366;
+ --font-primary:'Playfair Display', serif;
+ --font-secondary:'Poppins', sans-serif;
+ --font-signature:'Great Vibes', cursive;
+ --shadow-sm:0 5px 15px rgba(0,0,0,.08);
+ --ease:cubic-bezier(.2,.8,.2,1);
+ --dur:.25s;
 }
 
-html, body {
-    overflow-x: hidden;
+html,body{overflow-x:hidden;}
+body{
+ font-family:var(--font-secondary);
+ color:var(--primary-color);
+ line-height:1.7;
+ background:#fff;
 }
 
-body {
-    font-family: var(--font-secondary);
-    color: var(--primary-color);
-    line-height: 1.7;
+h1,h2,h3,h4,h5,h6{ font-family:var(--font-primary); font-weight:700; }
+
+/* --- Botões base --- */
+.btn-primary{
+ background-color:var(--secondary-color);
+ border-color:var(--secondary-color);
+ color:var(--primary-color);
+ padding:12px 30px;
+ font-weight:700;
+ text-transform:uppercase;
+ letter-spacing:.5px;
+ transition:all .3s var(--ease);
+}
+.btn-primary:hover,.btn-primary:focus{
+ background-color:#b38e5d; border-color:#b38e5d; color:#fff;
+ transform:translateY(-3px); box-shadow:0 4px 10px rgba(0,0,0,.2);
 }
 
-h1, h2, h3, h4, h5, h6, .navbar-brand {
-    font-family: var(--font-primary);
-    font-weight: 700;
+/* ===========================
+ NAVBAR (logo + CTA)
+ =========================== */
+.navbar-sales{
+ background: rgba(61,52,46,.45);
+ backdrop-filter: blur(8px);
+ transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+ padding:.65rem 0;
 }
-
-
-/* -------- Navbar -------- */
-.navbar{background:rgba(61,52,46,.45); backdrop-filter:blur(8px); transition:background var(--dur) var(--ease), box-shadow var(--dur) var(--ease)}
-.navbar.scrolled{background:rgba(61,52,46,.96); box-shadow:var(--shadow-sm)}
-.brand-signature{font-family:var(--font-signature); font-size:1.7rem}
-.navbar .nav-link{position:relative; color:rgba(255,255,255,.9); font-weight:600}
-.navbar .nav-link::after{content:""; position:absolute; left:0; right:0; bottom:-6px; margin:auto; width:0; height:2px; background:var(--secondary-color); transition:width .18s var(--ease)}
-.navbar .nav-link:hover::after,.navbar .nav-link.active::after{width:24px}
-.navbar .btn{font-weight:700}
-
-/* --- Toggle minimalista que vira "X" --- */
-.navbar .navbar-toggler{
-  width:44px; height:44px;
-  display:grid; place-items:center;
-  border:none; outline:0; box-shadow:none!important;
-  padding:0; margin-left:auto;
-  color:#fff; /* barra herda essa cor */
-  background:transparent;
-}
-
-.navbar .navbar-toggler:focus-visible{
-  outline:2px solid rgba(197,164,126,.55); /* foco acessível no tom da marca */
-  outline-offset:3px;
-}
-
-/* zera o ícone padrão do Bootstrap */
-.navbar .navbar-toggler .navbar-toggler-icon{
-  background:none!important;
-  width:24px; height:2px; position:relative;
-  border-radius:2px;
-  transition:transform .25s var(--ease), background .25s var(--ease), width .25s var(--ease);
-}
-
-/* as três barras: meio (o próprio span) + before/after */
-.navbar .navbar-toggler .navbar-toggler-icon,
-.navbar .navbar-toggler .navbar-toggler-icon::before,
-.navbar .navbar-toggler .navbar-toggler-icon::after{
-  background:currentColor; /* usa a cor do botão (branco na .navbar-dark) */
-  display:block; content:"";
-  width:24px; height:2px; border-radius:2px;
-  position:relative;
-}
-
-.navbar .navbar-toggler .navbar-toggler-icon::before,
-.navbar .navbar-toggler .navbar-toggler-icon::after{
-  position:absolute; left:0;
-  transition:transform .25s var(--ease), opacity .2s var(--ease), background .25s var(--ease);
-}
-
-.navbar .navbar-toggler .navbar-toggler-icon::before{ transform:translateY(-7px); }
-.navbar .navbar-toggler .navbar-toggler-icon::after { transform:translateY(7px); }
-
-/* estado FECHADO (tem .collapsed) = hambúrguer */
-.navbar .navbar-toggler.collapsed .navbar-toggler-icon{ transform:none; }
-.navbar .navbar-toggler.collapsed .navbar-toggler-icon::before{ transform:translateY(-7px) rotate(0deg); }
-.navbar .navbar-toggler.collapsed .navbar-toggler-icon::after { transform:translateY(7px)  rotate(0deg); }
-
-/* estado ABERTO (sem .collapsed) = vira "X" */
-.navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon{
-  background:transparent; /* some a barra do meio */
-}
-.navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::before{
-  transform:translateY(0) rotate(45deg);
-}
-.navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after{
-  transform:translateY(0) rotate(-45deg);
-}
-
-/* opção: deixe mais grossinho em telas grandes */
 @media (min-width: 992px){
-  .navbar .navbar-toggler{ display:none; }
+ .navbar-sales{
+  position:fixed; top:0; left:0; right:0; z-index:1030;
+  background:rgba(61,52,46,.96); box-shadow:var(--shadow-sm);
+ }
+ body{ padding-top:70px; } /* compensa a navbar no desktop */
+}
+@media (max-width: 991.98px){
+ .navbar-sales{ padding:.5rem 0; }
+ .navbar-sales .btn{ padding:.55rem 1rem; font-size:.92rem; }
 }
 
-/* respeita quem prefere menos animação */
-@media (prefers-reduced-motion: reduce){
-  .navbar .navbar-toggler .navbar-toggler-icon,
-  .navbar .navbar-toggler .navbar-toggler-icon::before,
-  .navbar .navbar-toggler .navbar-toggler-icon::after{
-    transition:none;
-  }
+/* ===========================
+ HERO (ATUALIZADO)
+ =========================== */
+.hero-section{
+ padding: 6rem 0 5rem; /* Ajustado para melhor espaçamento vertical */
+ color:#fff;
+ background:
+  linear-gradient(rgba(40,30,25,.72), rgba(40,30,25,.72)),
+  url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2516&auto=format&fit=crop')
+  no-repeat center/cover;
+ text-align:center;
+  /* --- NOVAS REGRAS --- */
+ min-height: 80vh; /* Altura mínima solicitada */
+ display: flex;
+ flex-direction: column;
+ justify-content: center; /* Centraliza o conteúdo verticalmente */
+}
+.hero-eyebrow{
+ color:var(--secondary-color);
+ font-weight:700;
+ letter-spacing:.14em;
+ text-transform:uppercase;
+ font-size:.82rem;
+}
+.hero-title{
+ margin:.35rem auto .6rem;
+ max-width: 24ch;  
+ font-size: clamp(1.9rem, 6.2vw, 3rem);
+ line-height: 1.12;
+ letter-spacing:-.2px;
+  text-shadow: 0 2px 8px rgba(0,0,0,.3); /* NOVO: Legibilidade */
+}
+.hero-subtitle{
+ margin:0 auto 1.2rem;
+ max-width: 42ch;
+ font-size: clamp(.98rem, 3.4vw, 1.15rem);
+ color:rgba(255,255,255,.92);
+  text-shadow: 0 2px 8px rgba(0,0,0,.3); /* NOVO: Legibilidade */
+}
+.hero-section .btn.btn-lg{ padding: .92rem 1.25rem; }
+.mini-proof{ font-size:.92rem; color:rgba(255,255,255,.9); }
+
+/* ===========================
+ PROOF STRIP
+ =========================== */
+.proof-strip{
+ background:var(--light-gray);
+ padding:.8rem 0;
+ border-top:1px solid #eee;
+ border-bottom:1px solid #eee;
 }
 
-.logo-navbar{
-    max-height: 50px;
+/* ===========================
+ CHECKLIST / CARDS / ACCORDION
+ =========================== */
+.checklist{ list-style:none; padding-left:0; }
+.checklist li{ margin:.5rem 0; display:flex; gap:.5rem; align-items:flex-start; }
+.checklist i{ color:#1f9d55; margin-top:.2rem; }
+
+.card{ border:none; border-top:4px solid var(--secondary-color); }
+
+.accordion-button{ font-family:var(--font-secondary); font-weight:600; font-size:1.05rem; }
+.accordion-button:not(.collapsed){ background-color:var(--primary-color); color:#fff; }
+.accordion-button:focus{ box-shadow:0 0 0 .25rem rgba(197,164,126,.25); }
+.accordion-item{ border:1px solid #ddd; }
+
+/* ===========================
+ Ícones & Depoimentos
+ =========================== */
+.icon-feature{ font-size:2.6rem; color:var(--secondary-color); }
+
+.testimonial-card{
+ background:#fff; padding:1.5rem; border-radius:10px;
+ border-top:4px solid var(--secondary-color); box-shadow:var(--shadow-sm); height:100%;
 }
-/* --- Botões --- */
-.btn-primary {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    color: var(--primary-color);
-    padding: 12px 30px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-}
-.btn-primary:hover, .btn-primary:focus {
-    background-color: #b38e5d;
-    border-color: #b38e5d;
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+.testimonial-author{ margin-top:.75rem; font-style:italic; color:#555; }
+
+/* ===========================
+ OFERTA / PREÇO (ATUALIZADO)
+ =========================== */
+.pricing-box{
+ background:var(--light-gray); padding:2.2rem; border-radius:12px;
+ border:1px solid #eee; box-shadow:var(--shadow-sm);
 }
 
-/* --- Hero Section --- */
-.hero-section {
-    padding: 180px 0;
-    color: white;
-    background: linear-gradient(rgba(40, 30, 25, 0.7), rgba(40, 30, 25, 0.7)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2516&auto=format&fit=crop') no-repeat center center;
-    background-size: cover;
+/* --- ESTILOS NOVOS (Foco na Parcela) --- */
+.price-installment {
+  font-family: var(--font-primary);
+  font-size: clamp(2.5rem, 8vw, 3rem); /* Tamanho de destaque */
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1.1;
+  margin: .5rem 0 0;
 }
-.text-secondary-color { color: var(--secondary-color); font-weight: 600; letter-spacing: 1px; }
-.hero-subtitle { font-size: 1.25rem; max-width: 600px; margin: 1rem auto 0; color: rgba(255,255,255,0.9); }
+.price-full {
+  font-size: 1.1rem;
+  color: #555;
+  font-weight: 500;
+}
+/* --- Fim dos estilos novos --- */
 
-/* --- Seção Instrutora --- */
-.text-signature {
-    font-family: var(--font-signature);
-    font-size: 3rem;
-    color: var(--secondary-color);
-    margin-top: 1.5rem;
-    font-weight: normal;
+.price-tag{ /* Estilo antigo - não usado mais, mas mantido caso precise */
+ font-family:var(--font-primary); font-size:4rem; font-weight:700;
+ color:var(--primary-color); margin:.5rem 0 .25rem;
 }
+.price-cents{ font-size:1.2rem; }
 
-/* --- Accordion (Currículo & FAQ) --- */
-.accordion-button { font-family: var(--font-secondary); font-weight: 600; font-size: 1.1rem; }
-.accordion-button:not(.collapsed) { background-color: var(--primary-color); color: white; }
-.accordion-button:focus { box-shadow: 0 0 0 0.25rem rgba(197, 164, 126, 0.25); }
-.accordion-item { border: 1px solid #ddd; }
 
-/* --- Seção Benefícios --- */
-.icon-feature { font-size: 3rem; color: var(--secondary-color); }
+.stack-value .stack-item{ display:flex; gap:.5rem; align-items:center; margin:.35rem 0; color:#4a4a4a; }
+.stack-value i{ color:#1f9d55; }
+.garantia{
+ background:#fff; border:1px solid #eee; border-radius:10px;
+ padding:1rem 1.25rem;
+}
+.garantia i{ color:#1f9d55; font-size:1.2rem; margin-right:.5rem; }
 
-/* --- Depoimentos --- */
-.testimonial-card {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    border-top: 4px solid var(--secondary-color);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    height: 100%;
-}
-.testimonial-author { margin-top: 1rem; font-style: italic; color: #555; }
+/* ===========================
+ BÔNUS / CTA FINAL
+ =========================== */
+.bonus{ background:#fff7ec; border:1px solid #f2dfc3; }
+.cta-final{ background:linear-gradient(180deg,#faf7f2 0%,#fff 100%); }
 
-/* --- Seção Preço --- */
-.pricing-box {
-    background-color: var(--light-gray);
-    padding: 2.5rem;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
-.price-tag {
-    font-family: var(--font-primary);
-    font-size: 4.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin: 1rem 0;
-}
-.price-cents { font-size: 1.5rem; }
+/* ===========================
+ FOOTER
+ =========================== */
+footer{ background:var(--primary-color); line-height:1.8; }
+.footer-brand-name{ font-family:var(--font-signature); color:var(--secondary-color); font-size:2.2rem; }
+.footer-heading{ font-family:var(--font-primary); color:#fff; letter-spacing:1px; }
+.footer-nav-link{ color:rgba(255,255,255,.75); text-decoration:none; transition:all .3s var(--ease); }
+.footer-nav-link:hover{ color:var(--secondary-color); padding-left:5px; }
+.footer-link{ color:rgba(255,255,255,.85); text-decoration:none; transition:color .3s var(--ease); }
+.footer-link:hover{ color:var(--secondary-color); }
+.social-icons .social-link{ color:#fff; font-size:1.5rem; margin-right:15px; transition:color .3s; }
+.social-icons .social-link:hover{ color:var(--secondary-color); }
 
-/* --- Seção Consultoria (WhatsApp) --- */
-#consultoria {
-    background-color: var(--light-gray);
+/* ===========================
+ STICKY CTA (ATUALIZADO)
+ =========================== */
+.dlr-sticky-cta{
+ position:fixed; left:0; right:0; bottom:0; z-index:1029;
+  /* NOVO: Fundo escuro para alto contraste e consistência de marca */
+ background: var(--primary-color); 
+ border-top:1px solid #2e2823; 
+  box-shadow:0 -10px 30px rgba(0,0,0,.15);
+ padding:.7rem 0 calc(.7rem + env(safe-area-inset-bottom));
+ transform:translateY(110%); 
+  transition:transform .28s ease;
 }
-.icon-feature-alt {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-.btn-whatsapp {
-    background-color: var(--whatsapp-green);
-    border-color: var(--whatsapp-green);
-    color: white;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-}
-.btn-whatsapp:hover {
-    background-color: #1EBE55;
-    border-color: #1EBE55;
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+.dlr-sticky-cta.is-on{ transform:translateY(0) }
+
+/* grid: texto cresce, botão ocupa o necessário */
+.dlr-sticky-cta .sticky-inner{
+ display:grid; grid-template-columns:1fr auto; align-items:center;
+ gap:12px; padding:.6rem 1rem;
 }
 
-/* --- Footer --- */
-footer {
-    background-color: var(--primary-color);
-    line-height: 1.8;
+/* título do sticky (sem cortes) */
+.sticky-title{
+ color: #fff; /* ATUALIZADO: Cor do texto para fundo escuro */
+  font-size:1rem; 
+  line-height:1.28;
+ display:block; overflow:visible; max-width:none; word-break:break-word;
 }
 
-.footer-brand-name {
-    font-family: var(--font-signature);
-    color: var(--secondary-color);
-    font-size: 2.2rem;
-    vertical-align: middle;
+/* botão do sticky (2 palavras) */
+.btn-cta{
+ background:var(--secondary-color); border-color:var(--secondary-color);
+ color:var(--primary-color); font-weight:800; letter-spacing:.2px; white-space:nowrap;
+}
+.btn-cta:hover{ background:#b38e5d; border-color:#b38e5d; color:#fff; }
+.dlr-sticky-cta .btn-cta.btn-lg{ padding:.7rem 1rem; font-size:.95rem; border-radius:10px; min-width:150px; }
+
+/* sticky quebra em 2 linhas em telas muito estreitas */
+@media (max-width:420px){
+ .dlr-sticky-cta .sticky-inner{ grid-template-columns:1fr; gap:10px; }
+ .dlr-sticky-cta .btn-cta.btn-lg{ width:100%; justify-self:stretch; text-align:center; }
 }
 
-.footer-heading {
-    font-family: var(--font-primary);
-    color: white;
-    letter-spacing: 1px;
+/* desktop: barra deixa de ser fixa (continua full width) */
+@media (min-width:992px){
+ .dlr-sticky-cta{
+  position:static; transform:none; box-shadow:none; border-top:none; padding:1.2rem 0;
+    /* NOVO: Mantém o fundo escuro para consistência */
+    background: var(--primary-color);
+ }
+ .dlr-sticky-cta .sticky-inner{ padding:1rem 0; }
+ .sticky-title{ font-size:1.1rem; }
 }
 
-.footer-nav-link {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
+/* evita que o sticky cubra conteúdo no mobile quando visível */
+body.has-sticky{ padding-bottom:82px; }
 
-.footer-nav-link:hover {
-    color: var(--secondary-color);
-    padding-left: 5px;
-}
-
-.footer-link {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-link:hover {
-    color: var(--secondary-color);
-}
-
-.social-icons .social-link {
-    color: white;
-    font-size: 1.5rem;
-    margin-right: 15px;
-    transition: color 0.3s ease;
-}
-
-.social-icons .social-link:hover {
-    color: var(--secondary-color);
-}
-
-/* --- CORREÇÃO DEFINITIVA PARA O MENU HAMBÚRGUER --- */
-/* Força o ícone do menu a usar a cor dourada da marca para garantir o contraste inicial */
-.navbar-dark .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c5a47e' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-.navbar-toggler {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    z-index: 1050; /* Garante que o botão esteja acima de outros elementos do navbar */
-    border-color: rgba(197, 164, 126, 0.5);
-}
-
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 0.25rem rgba(197, 164, 126, 0.25);
-}
+/* (REMOVIDO) As regras duplicadas que estavam aqui foram limpas */

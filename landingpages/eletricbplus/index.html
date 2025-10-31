@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eletric B+ — Serviços Elétricos em Barretos | Instalação & Manutenção</title>
+  <meta name="description" content="Eletric B+ — Instalações, manutenções e reparos elétricos com segurança e qualidade em Barretos/SP. Orçamento rápido pelo WhatsApp.">
+  <meta name="theme-color" content="#0c284f" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Eletric B+ — Serviços Elétricos em Barretos" />
+  <meta property="og:description" content="Instalações e manutenções elétricas com segurança e qualidade. Orçamento rápido pelo WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1567016551700-6a1a6f44b7a4?w=1200" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Bootstrap + Icons + Font -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#0a0f1a;
+      --bg:#ffffff;
+      --brand:#0c284f;      /* azul escuro */
+      --accent:#ffcc00;      /* amarelo elétrico */
+      --muted:#6b7280;
+      --surface:#f6f7fb;
+      --border:rgba(10,15,26,.08);
+      /* IMPROVED: Sombras mais suaves */
+      --shadow-sm: 0 2px 4px rgba(0,0,0,.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.05);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);scroll-behavior:smooth}
+    
+    /* IMPROVED: Navbar com efeito "glass" ao rolar */
+    .navbar{
+      transition: background-color .3s ease, box-shadow .3s ease;
+    }
+    .navbar-glass{
+      background:rgba(255,255,255,.85);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-md);
+    }
+    .navbar-brand{font-weight:800; letter-spacing:.2px}
+    .brand-dot{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#16396f);display:inline-block;margin-right:.6rem;box-shadow:inset 0 0 0 2px rgba(255,255,255,.2),0 6px 16px rgba(12,40,79,.24)}
+    
+    .btn{border-radius: .5rem; transition: all .25s ease;}
+    .btn-brand{background:var(--accent); border:none; color:#1b1b1b; font-weight:700}
+    .btn-brand:hover{filter:brightness(.95); transform: translateY(-1px);}
+    .btn-outline-brand{border:2px solid var(--accent); color:var(--brand); font-weight:700}
+    .btn-outline-brand:hover{background:var(--accent); color:#111; transform: translateY(-1px);}
+    
+    /* FIX: Cor do botão "Ver Serviços" no Hero */
+    .hero .btn-outline-brand {
+      color: #fff; /* Texto branco */
+    }
+    .hero .btn-outline-brand:hover {
+      color: var(--brand); /* Texto escuro no hover */
+    }
+    
+    /* HERO */
+    .hero{
+      position:relative; min-height:82vh; display:flex; align-items:center;
+      /* IMPROVED: Padrão de grid sutil no fundo */
+      background-color: #0c284f;
+      background-image: 
+        linear-gradient(180deg,#0c284f 0%, #0e346a 60%, #10223d 100%),
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: auto, 20px 20px;
+      color:#fff; overflow:hidden;
+    }
+    .hero h1{font-weight:800; line-height:1.1}
+    .hero p.lead{color:#e6edf7}
+    .hero .card{
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(6px); color:#e8eef6;
+      border-radius: .75rem; /* Raio de borda mais suave */
+    }
+    .hero .badge{background:rgba(255,204,0,.15); color:#ffe48a}
+
+    /* SEÇÕES */
+    section{padding:76px 0}
+    .section-title{font-weight:800}
+    .muted{color:var(--muted)}
+    
+    /* IMPROVED: Benefícios com ícones destacados */
+    .benefit{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px; height:100%; box-shadow:var(--shadow-md)}
+    .benefit .icon-wrapper {
+      width: 50px; height: 50px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      background: rgba(12, 40, 79, 0.1);
+      color: var(--brand);
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+    
+    /* IMPROVED: Cards de serviço interativos */
+    .service-card{border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow-md); transition: all .25s ease;}
+    .service-card .icon{width:54px;height:54px;display:grid;place-items:center;border-radius:14px;background:#0f3561;color:#fff; font-size: 22px; transition: all .25s ease;}
+    .service-card:hover{
+      transform:translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+    }
+    .service-card:hover .icon {
+      background: var(--accent);
+      color: var(--brand);
+    }
+
+    /* IMPROVED: Depoimentos com estrelas e ícone */
+    .testimonial{
+      background:#fff; border:1px solid var(--border); 
+      border-radius:16px; padding:24px; box-shadow:var(--shadow-md);
+      position: relative;
+    }
+    .testimonial-quote {
+      font-size: 2.5rem;
+      color: var(--accent);
+      opacity: .6;
+      position: absolute;
+      top: 16px; right: 20px;
+    }
+    .testimonial .stars {
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+
+    /* IMPROVED: FAQ Accordion styles */
+    .accordion-item {
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .accordion-button {
+      font-weight: 600;
+      color: var(--ink);
+      padding: 1.25rem 0;
+    }
+    .accordion-button:not(.collapsed) {
+      background: none;
+      box-shadow: none;
+      color: var(--brand);
+    }
+    .accordion-button:focus {
+      box-shadow: none;
+      border-color: transparent;
+    }
+    .accordion-button::after {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%236b7280'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    }
+    .accordion-button:not(.collapsed)::after {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c284f'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+      transform: rotate(-180deg);
+    }
+    .accordion-body {
+      padding: 0 0 1.25rem 0;
+      color: var(--muted);
+    }
+
+    footer{background:#0b1322; color:#cfd6e4}
+    footer a{color:#fff}
+    .whats-bubble{
+      position: fixed; right:16px; bottom:16px; width:56px; height:56px; border-radius:50%;
+      display:grid; place-items:center; background:#25D366; color:#fff; box-shadow:0 8px 24px rgba(37,211,102,.4); z-index:9999;
+      transition: transform .2s ease;
+    }
+    .whats-bubble:hover {
+      transform: scale(1.1);
+    }
+    .tiny{font-size:.875rem}
+  </style>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Eletric B+",
+    "image":"https://images.unsplash.com/photo-1567016551700-6a1a6f44b7a4?w=800",
+    "address":{"@type":"PostalAddress","addressLocality":"Barretos","addressRegion":"SP","addressCountry":"BR"},
+    "telephone":"+55 17 99777-6526",
+    "url":"https://example.com/",
+    "description":"Instalações e manutenções elétricas residenciais e comerciais em Barretos/SP.",
+    "areaServed":"Barretos, São Paulo",
+    "sameAs":["https://instagram.com/eletricbplus"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <!-- ADDED: Classe 'navbar-glass' será adicionada via JS ao rolar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#home">
+        <span class="brand-dot"></span> Eletric B+
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="nav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+          <li class="nav-item ms-lg-2"><a class="btn btn-brand" href="https://wa.me/5517997776526" target="_blank">💬 Orçamento</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <span class="badge rounded-pill mb-3">⚡ Especialista em soluções elétricas</span>
+          <h1 class="display-5 mb-3">Serviços elétricos com <span style="color:#ffcc00">segurança</span> e <span style="color:#ffcc00">qualidade</span> em Barretos</h1>
+          <p class="lead mb-4">Instalação, manutenção e reparo. Atendimento rápido, preço justo e garantia de serviço.</p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="#contato" class="btn btn-brand btn-lg"><i class="bi bi-lightning-charge"></i> Pedir orçamento</a>
+            <a href="#servicos" class="btn btn-outline-brand btn-lg"><i class="bi bi-tools"></i> Ver serviços</a>
+          </div>
+          <p class="tiny mt-3 mb-0">📍 Barretos/SP • ⏱️ Agendamento pelo WhatsApp • 🔒 Serviço garantido</p>
+        </div>
+        <div class="col-lg-5">
+          <div class="card p-4">
+            <h6 class="mb-3">Orçamento rápido</h6>
+            <div class="d-flex align-items-start gap-3 mb-2"><i class="bi bi-check2-circle text-warning"></i><span>Resposta direta no WhatsApp</span></div>
+            <div class="d-flex align-items-start gap-3 mb-2"><i class="bi bi-check2-circle text-warning"></i><span>Sem compromisso</span></div>
+            <div class="d-flex align-items-start gap-3 mb-2"><i class="bi bi-check2-circle text-warning"></i><span>Fotos do problema ajudam a acelerar</span></div>
+            <a class="btn btn-brand mt-2" href="https://wa.me/5517997776526" target="_blank">Falar agora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BENEFÍCIOS -->
+  <section id="sobre">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-lg-7">
+          <h2 class="section-title mb-2">Por que a Eletric B+?</h2>
+          <p class="muted mb-0">Atuamos com foco em segurança, atendimento ágil e qualidade em cada projeto.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <!-- IMPROVED: Ícones com fundo -->
+        <div class="col-md-4">
+          <div class="benefit">
+            <div class="icon-wrapper"><i class="bi bi-shield-lock"></i></div>
+            <h6 class="fw-bold">Segurança em 1º lugar</h6>
+            <p class="mb-0 muted">Trabalho conforme normas técnicas, com materiais adequados e garantia.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="benefit">
+            <div class="icon-wrapper"><i class="bi bi-stopwatch"></i></div>
+            <h6 class="fw-bold">Agilidade & preço justo</h6>
+            <p class="mb-0 muted">Atendimento rápido, diagnóstico claro e orçamento transparente.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="benefit">
+            <div class="icon-wrapper"><i class="bi bi-whatsapp"></i></div>
+            <h6 class="fw-bold">WhatsApp sempre ativo</h6>
+            <p class="mb-0 muted">Envie sua demanda e fotos. Resposta rápida e agendamento facilitado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos" style="background:var(--surface)">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Serviços</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 service-card h-100">
+            <div class="icon mb-3"><i class="bi bi-lightbulb"></i></div>
+            <h6 class="fw-bold">Instalações</h6>
+            <p class="muted">Pontos de energia e iluminação, ventiladores de teto, chuveiros, lustres e mais.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 service-card h-100">
+            <div class="icon mb-3"><i class="bi bi-tools"></i></div>
+            <h6 class="fw-bold">Manutenções</h6>
+            <p class="muted">Reparo de fiação, troca de disjuntores, quadros de distribuição e prevenção.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 service-card h-100">
+            <div class="icon mb-3"><i class="bi bi-plug"></i></div>
+            <h6 class="fw-bold">Tomadas & Padrões</h6>
+            <p class="muted">Padrão de entrada, tomadas, aterramento e correção de quedas de tensão.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 service-card h-100">
+            <div class="icon mb-3"><i class="bi bi-shield-check"></i></div>
+            <h6 class="fw-bold">Inspeção & Laudos</h6>
+            <p class="muted">Verificação técnica, segurança e conformidade para imóveis residenciais e comércios.</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5"> <!-- ADDED: Margem maior -->
+        <a href="#contato" class="btn btn-brand btn-lg"><i class="bi bi-whatsapp"></i> Pedir orçamento</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <!-- IMPROVED: Seção de depoimentos com estrelas e ícones -->
+  <section id="depoimentos">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">O que clientes dizem</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="testimonial h-100">
+            <i class="bi bi-quote testimonial-quote"></i>
+            <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p>“Atendimento rápido e serviço impecável. Trocaram o disjuntor e resolveram meu problema no mesmo dia.”</p>
+            <div class="d-flex align-items-center gap-2"><i class="bi bi-person-circle fs-4"></i><strong>Paula S.</strong><span class="ms-1 muted small">Barretos</span></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial h-100">
+            <i class="bi bi-quote testimonial-quote"></i>
+            <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p>“Instalaram meus ventiladores de teto e deixaram tudo limpo e organizado. Recomendo muito!”</p>
+            <div class="d-flex align-items-center gap-2"><i class="bi bi-person-circle fs-4"></i><strong>Rogério M.</strong><span class="ms-1 muted small">Barretos</span></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial h-100">
+            <i class="bi bi-quote testimonial-quote"></i>
+            <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p>“Preço justo e explicaram tudo com clareza. Voltarei a contratar.”</p>
+            <div class="d-flex align-items-center gap-2"><i class="bi bi-person-circle fs-4"></i><strong>Jéssica T.</strong><span class="ms-1 muted small">Barretos</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO / FORM WHATSAPP -->
+  <section id="contato" style="background:var(--surface)">
+    <div class="container">
+      <div class="row g-4 g-lg-5 align-items-center"> <!-- ADDED: Gutter maior (g-lg-5) -->
+        <div class="col-lg-6">
+          <h2 class="section-title mb-3">Solicite seu orçamento</h2>
+          <p class="muted">Preencha os dados e clique em enviar. Vamos te responder pelo WhatsApp o mais rápido possível.</p>
+          <form id="wppForm" class="mt-4">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Seu nome</label>
+                <input type="text" class="form-control" name="nome" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Bairro (Barretos)</label>
+                <input type="text" class="form-control" name="bairro" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Serviço desejado</label>
+                <select class="form-select" name="servico" required>
+                  <option value="" selected disabled>Selecione</option>
+                  <option>Instalação de ventilador de teto</option>
+                  <option>Troca de disjuntor/quadros</option>
+                  <option>Instalação de chuveiro</option>
+                  <option>Tomadas/Iluminação</option>
+                  <option>Outro (descrever abaixo)</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Descrição (opcional)</label>
+                <textarea class="form-control" name="descricao" rows="3" placeholder="Pode enviar fotos depois no WhatsApp."></textarea>
+              </div>
+              
+              <!-- ADDED: Mensagem de erro para o formulário (substitui o alert) -->
+              <div class="col-12">
+                <div id="formError" class="alert alert-danger d-none p-2 tiny"></div>
+              </div>
+
+              <div class="col-12 d-grid d-sm-flex gap-3">
+                <button class="btn btn-brand btn-lg" type="submit"><i class="bi bi-send"></i> Enviar pelo WhatsApp</button>
+                <a class="btn btn-outline-brand btn-lg" href="https://wa.me/5517997776526" target="_blank"><i class="bi bi-whatsapp"></i> Falar agora</a>
+              </div>
+              <p class="tiny text-muted mt-2 mb-0">Ao clicar em enviar, você será redirecionado ao WhatsApp com a mensagem pronta.</p>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-6">
+          <div class="ratio ratio-16x9 rounded" style="box-shadow:var(--shadow-lg); border:1px solid var(--border); overflow:hidden; border-radius: 1rem;">
+            <img src="https://images.unsplash.com/photo-1616628188475-8c5209a88fc8?w=1200" alt="Serviço elétrico" style="object-fit:cover; width:100%; height:100%">
+          </div>
+          <div class="mt-4 p-3 rounded" style="border:1px solid var(--border); background: #fff;">
+            <div class="d-flex align-items-center gap-3"><i class="bi bi-geo-alt-fill text-danger fs-4"></i><div><strong>Atendemos Barretos e região</strong><div class="muted">Seg–Sáb • 8h às 18h</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <!-- IMPROVED: Seção de FAQ transformada em Accordion -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Dúvidas frequentes</h2>
+      <div class="col-lg-9 mx-auto">
+        <div class="accordion" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                Fazem orçamento sem custo?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Sim. Envie sua necessidade pelo WhatsApp e, se necessário, agendamos uma visita técnica sem custo para avaliar o serviço.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                Atendem emergência?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Dependendo da agenda e da localidade, atendemos urgências (como falta de energia geral ou curtos-circuitos). Envie mensagem e sinalize como “emergência” para priorizarmos.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                Tem garantia?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Sim, oferecemos garantia padrão de 90 dias sobre a mão de obra. A garantia dos materiais (como disjuntores, tomadas, etc.) segue a política do fabricante.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <h5 class="mb-2">Eletric B+</h5>
+          <p class="mb-2">Especialista em soluções elétricas — Barretos/SP.</p>
+          <p class="mb-1">📞 <a href="tel:+5517997776526">+55 17 99777-6526</a></p>
+          <p class="mb-0">📷 <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a class="btn btn-brand mb-3" href="https://wa.me/5517997776526" target="_blank"><i class="bi bi-whatsapp"></i> Falar no WhatsApp</a>
+          <div class="small">© 2025 Eletric B+ • Todos os direitos reservados</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Bubble -->
+  <a class="whats-bubble" href="https://wa.me/5517997776526" aria-label="WhatsApp"><i class="bi bi-whatsapp fs-4"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ADDED: Script para efeito 'glass' na navbar ao rolar
+    const nav = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('navbar-glass');
+      } else {
+        nav.classList.remove('navbar-glass');
+      }
+    });
+
+    // Smooth scroll offset para navegação
+    document.querySelectorAll('a.nav-link[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const el = document.querySelector(a.getAttribute('href'));
+        if(!el) return;
+        const y = el.getBoundingClientRect().top + window.pageYOffset - 70; // 70px de offset
+        window.scrollTo({top:y, behavior:'smooth'});
+        
+        // ADDED: Fecha o menu mobile ao clicar em um link
+        const navCollapse = document.getElementById('nav');
+        if (navCollapse.classList.contains('show')) {
+          new bootstrap.Collapse(navCollapse).hide();
+        }
+      });
+    });
+
+    // Enviar mensagem formatada para o WhatsApp
+    // IMPROVED: Validação com mensagem de erro na tela (sem alert)
+    const wppForm = document.getElementById('wppForm');
+    const formError = document.getElementById('formError');
+
+    wppForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      formError.classList.add('d-none'); // Esconde erro
+      
+      const f = new FormData(this);
+      const nome = (f.get('nome')||'').trim();
+      const bairro = (f.get('bairro')||'').trim();
+      const servico = f.get('servico') || '';
+      const descricao = (f.get('descricao')||'').trim();
+
+      if(!nome || !bairro || !servico){
+        // SUBSTITUIU O alert()
+        formError.textContent = 'Por favor, preencha nome, bairro e o serviço desejado.';
+        formError.classList.remove('d-none');
+        return;
+      }
+      
+      const msg =
+        `Olá, sou ${nome} de ${bairro}.%0A` +
+        `Gostaria de orçamento para: ${servico}.%0A` +
+        (descricao ? `Detalhes: ${encodeURIComponent(descricao)}%0A` : '') +
+        `%0AEnviado pelo site Eletric B+`;
+
+      const phone = '5517997776526';
+      const url = `https://wa.me/${phone}?text=${msg}`;
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
+

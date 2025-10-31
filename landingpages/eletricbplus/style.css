@@ -1,0 +1,29 @@
+body {
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+              url("https://images.unsplash.com/photo-1567016551700-6a1a6f44b7a4?w=1600")
+              center/cover no-repeat;
+  height: 100vh;
+}
+.hero .logo {
+  width: 120px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255,255,255,.2);
+}
+
+section h2 {
+  color: #222;
+}
+.card i {
+  transition: transform 0.3s;
+}
+.card:hover i {
+  transform: scale(1.2);
+}
+footer {
+  background: #111;
+}

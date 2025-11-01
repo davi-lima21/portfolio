@@ -59,5 +59,57 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// CTA fixo: aparece depois do hero e some perto do checkout/rodapé
+(function () {
+  const cta = document.querySelector('.fixed-cta');
+  const hero = document.querySelector('.hero');
+  const checkout = document.querySelector('#checkout');
+  const footer = document.querySelector('footer.footer-minimal');
+
+  if (!cta || !hero) return;
+
+  const getStopY = () => {
+    // pega o primeiro que existir: checkout > footer
+    if (checkout) {
+      return checkout.getBoundingClientRect().top + window.scrollY;
+    } else if (footer) {
+      return footer.getBoundingClientRect().top + window.scrollY;
+    }
+    return Infinity;
+  };
+
+  const updateCta = () => {
+    const heroHeight = hero.offsetHeight || 0;
+    const triggerShow = heroHeight - 120;          // depois do hero
+    const stopY = getStopY();                      // onde começa checkout/rodapé
+    const viewportBottom = window.scrollY + window.innerHeight;
+    const distanceToStop = stopY - viewportBottom; // se for pequeno, estamos embaixo
+
+    // se estamos antes do hero -> não mostra
+    if (window.scrollY <= triggerShow) {
+      cta.classList.remove('is-visible');
+      document.documentElement.style.setProperty('--fixed-cta-h', '0px');
+      return;
+    }
+
+    // se estamos MUITO perto do checkout/rodapé -> não mostra
+    // 80px = respiro para não encobrir CTA do checkout
+    if (distanceToStop <= 80) {
+      cta.classList.remove('is-visible');
+      document.documentElement.style.setProperty('--fixed-cta-h', '0px');
+      return;
+    }
+
+    // caso normal -> mostra
+    cta.classList.add('is-visible');
+    document.documentElement.style.setProperty('--fixed-cta-h', cta.offsetHeight + 'px');
+  };
+
+  updateCta();
+  window.addEventListener('scroll', updateCta, { passive: true });
+  window.addEventListener('resize', updateCta);
+})();
+
+
 // Melhorar a experiência de toque em dispositivos móveis
 document.addEventListener('touchstart', function() {}, {passive: true});

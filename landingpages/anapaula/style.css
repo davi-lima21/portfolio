@@ -17,7 +17,7 @@
   --fixed-cta-h: 0px; /* atualizado via JS no mobile */
 }
 
-html,body{height:100%;}
+html,body{height:100%; overflow-x: hidden;}
 body{
   color: var(--text);
   background: #FFFFFF;
@@ -363,3 +363,31 @@ a{ text-decoration: none; }
   }
   .plan-price .value{ font-size: 1.25rem; }
 }
+
+.fixed-cta{
+  position: fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  padding: .75rem;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(0,0,0,.06);
+  z-index: 1030;
+  transform: translateY(110%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.fixed-cta.is-visible{
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (min-width: 992px){
+  .fixed-cta{
+    display: none !important;
+  }
+}
+.text-center .btn-terra,
+.text-center .btn-lilas { margin-left:auto; margin-right:auto; }

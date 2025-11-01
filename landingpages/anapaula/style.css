@@ -1,0 +1,365 @@
+/* =========================
+   Core — Tipografia / Cores
+   ========================= */
+:root{
+  --beige: #F9F5F1;
+  --beige-2: #FAF8F6;
+  --terra: #D39D7C;
+  --terra-hover: #E8B299;
+  --lilas-very-light: #F7F5F8;
+  --lilas-gray: #C6B6A8;
+  --pale: #F8F7F6;
+  --text: #3A332E;
+  --muted: #9C8F87;
+  --maxw: 1200px;
+  --xpad: 120px;
+  --vertical-gap: 100px;
+  --fixed-cta-h: 0px; /* atualizado via JS no mobile */
+}
+
+html,body{height:100%;}
+body{
+  color: var(--text);
+  background: #FFFFFF;
+  font-family: 'Lato', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.6;
+  padding-bottom: var(--fixed-cta-h);
+}
+
+.title-serif{font-family:'Playfair Display','Cormorant',serif; letter-spacing:.2px;}
+.subtitle-serif{font-family:'Cormorant','Playfair Display',serif;}
+.code-serif{font-family:'Cormorant','Playfair Display',serif;}
+.quote-serif{font-family:'Cormorant','Playfair Display',serif; font-style: italic;}
+.body-sans{font-family:'Lato','Poppins',sans-serif;}
+a{ text-decoration: none; }
+
+/* Container “revista” com margens laterais 120px em desktop */
+.site-container{
+  max-width: var(--maxw);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media (min-width: 1200px){
+  .site-container{ padding-left: var(--xpad); padding-right: var(--xpad); }
+}
+
+/* =========================
+   Utilitários de imagem
+   ========================= */
+.object-cover{ width:100%; height:100%; object-fit: cover; }
+.img-fluid{ max-width:100%; height:auto; display:block; }
+
+/* =========================
+   Hero (Dobra 1)
+   ========================= */
+.hero{
+  min-height: 100vh;
+  background: var(--beige);
+  position: relative;
+  overflow: hidden;
+  display:flex;
+  align-items:center;
+}
+.hero-figure{ max-width: 640px; margin-left:auto; }
+.hero-figure img.object-cover{ width:100%; height:100%; object-fit: cover; border-radius: 1rem; }
+.price-chip{
+  background: #f3e5db;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: .75rem 1rem;
+  border-radius: 12px;
+}
+.price-chip .highlight{ color: var(--terra); }
+.seal{ opacity:.8; }
+
+.wave-divider{
+  position:absolute; left:0; right:0; bottom:-1px; height:60px;
+  background: radial-gradient(100% 60px at 50% 0, rgba(0,0,0,.05), transparent 60%);
+  mask: linear-gradient(to bottom, black 0 10px, transparent);
+}
+
+/* =========================
+   Seções / Ritmo Visual
+   ========================= */
+.section-default{ padding: var(--vertical-gap) 0; }
+.bg-beige{ background: var(--beige); }
+.bg-lilac{ background: var(--lilas-very-light); }
+.bg-pale{ background: var(--pale); }
+.bg-faq{ background: var(--beige-2); }
+
+.card-minimal{
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.03);
+}
+.icon-soft{ color:#A48E7B; }
+
+/* Método: linha sinuosa + pontos */
+.method-graphic svg{ max-width: 980px; display:block; margin-inline:auto; }
+.method-points circle{ fill:#D7CBC1; transition: transform .2s ease, opacity .2s ease; }
+.method-points circle:hover{ transform: scale(1.1); opacity:.9; }
+.method-points .p1{ fill:#cdb9aa; } .p2{ fill:#dbcfc5;} .p3{ fill:#d6c7bb;}
+.method-points .p4{ fill:#e1d6cc;} .p5{ fill:#e6dbd1;} .p6{ fill:#cebeb2;}
+.method-points .p7{ fill:#c7b3a4;}
+.label-row span{ width:14%; text-align:center; }
+
+.paper-texture{ pointer-events:none; position: relative; }
+.paper-texture::after{
+  content:"";
+  display:block;
+  height:18px;
+  background: linear-gradient(to right, rgba(0,0,0,.05), transparent 30%, rgba(0,0,0,.05) 70%, transparent);
+  opacity:.08;
+  margin-top: 24px;
+}
+
+/* =========================
+   Mockups (Dobra 6)
+   ========================= */
+.product-mockups{
+  display:flex; align-items:end; justify-content:center; gap:1rem;
+  flex-wrap: wrap; /* permite quebrar no mobile */
+}
+.product-mockups .mockup{
+  background:#fff;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+.product-mockups .mockup img{ display:block; border-radius: 14px; }
+
+/* tamanhos default (desktop) */
+.product-mockups .phone img{ width: 280px; height: 520px; object-fit: cover; }
+.product-mockups .tablet img{ width: 420px; height: 560px; object-fit: cover; }
+.product-mockups .headphones img{ width: 200px; height: 200px; object-fit: cover; border-radius: 999px; }
+
+/* remove deslocamentos que causavam sobreposição no mobile */
+.product-mockups .phone{ transform:none; }
+.product-mockups .tablet{ transform:none; }
+.product-mockups .headphones{ transform:none; }
+
+/* =========================
+   Tabela comparativa
+   ========================= */
+.compare-table{ border-collapse: separate; border-spacing: 0; }
+.compare-table tbody td, .compare-table thead th{ border-bottom: 1px solid rgba(0,0,0,.06); }
+.compare-table .highlight-row{ background: var(--lilas-very-light); }
+
+/* =========================
+   Depoimentos / FAQ / Footer
+   ========================= */
+#quotesCarousel .signature{
+  font-family:'Cormorant','Playfair Display',serif;
+  font-style: italic;
+  color: var(--muted);
+}
+.accordion-clean .accordion-button{
+  font-family:'Cormorant','Playfair Display',serif;
+  font-size: 1.1rem;
+}
+.accordion-clean .accordion-button:focus{ box-shadow:none; }
+.accordion-clean .accordion-button::after{
+  background-image: none;
+  content: "+";
+  transform: rotate(0deg);
+  transition: transform .2s ease;
+  font-weight: 600;
+}
+.accordion-clean .accordion-button:not(.collapsed)::after{ transform: rotate(45deg); }
+
+.footer-minimal{
+  background:#fff;
+  padding: 40px 0 60px;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+.footer-minimal .signature{
+  font-family:'Cormorant','Playfair Display',serif;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* =========================
+   Botões / Cores
+   ========================= */
+.btn-terra{
+  background: var(--terra);
+  border-color: var(--terra);
+  color:#fff;
+  transition: background .2s ease, filter .2s ease, transform .05s ease;
+  border-radius: 50px !important; /* borda 50px conforme guia */
+}
+.btn-terra:hover{ background: var(--terra-hover); border-color: var(--terra-hover); color:#fff; filter: brightness(1.02); }
+.btn-terra:active{ transform: translateY(1px); }
+
+.btn-lilas{
+  background: var(--lilas-gray);
+  border-color: var(--lilas-gray);
+  color:#fff;
+  border-radius: 50px !important;
+}
+.btn-lilas:hover{ filter: brightness(1.08); color:#fff; }
+
+/* Sombra/textura sutis estilo revista */
+.rounded-4{ border-radius: 1rem!important; }
+.shadow-sm{ box-shadow: 0 10px 30px rgba(0,0,0,.06)!important; }
+
+/* CTA fixo inferior (mobile) */
+.fixed-cta{
+  position: fixed; left:0; right:0; bottom:0;
+  padding: .75rem;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(0,0,0,.06);
+  z-index: 1030;
+}
+
+/* =========================
+   Responsividade
+   ========================= */
+
+/* Tablet */
+@media (max-width: 991.98px){
+  :root{ --xpad: 24px; }
+
+  .hero{ min-height: auto; padding-top: 32px; padding-bottom: 24px; }
+  .display-4{ font-size: 2.25rem; }
+  .subtitle-serif.h4{ font-size: 1.1rem; }
+
+  .label-row span{ font-size:.85rem; }
+
+  /* mockups menores */
+  .product-mockups .phone img{ width: 200px; height: 380px; }
+  .product-mockups .tablet img{ width: 300px; height: 420px; }
+  .product-mockups .headphones img{ width: 150px; height: 150px; }
+}
+
+/* Mobile */
+@media (max-width: 575.98px){
+  :root{ --vertical-gap: 72px; }
+
+  .hero{ padding-top: 24px; padding-bottom: 16px; }
+  .hero .lead{ font-size: 1rem; }
+  .hero-figure{ max-width: 100%; }
+
+  /* imagens sempre dentro do container */
+  .ratio, .hero-figure, .ratio img{ width:100%; }
+
+  /* mockups em grid 2x2 com centralização */
+  .product-mockups{ gap: .75rem; }
+  .product-mockups .mockup{ padding:8px; }
+  .product-mockups .phone img{ width: 44vw; height: 72vw; max-width: 240px; }
+  .product-mockups .tablet img{ width: 60vw; height: 80vw; max-width: 320px; }
+  .product-mockups .headphones img{ width: 32vw; height: 32vw; max-width: 140px; }
+
+  /* cards “para quem é” com respiro */
+  .card-minimal .card-body{ padding: 1rem .75rem; }
+
+  /* carrossel padding confortável */
+  #quotesCarousel .carousel-item{ padding: 2rem 1.25rem !important; }
+
+  /* acordeão: botões menores */
+  .accordion-clean .accordion-button{ padding: .9rem 1rem; }
+
+  /* tabela: tipografia um pouco menor */
+  .compare-table td, .compare-table th{ font-size: .95rem; }
+}
+
+/* =========================
+   Bloco comparativo (Dobra 7)
+   ========================= */
+.pricing-flow{
+  align-items: stretch;
+}
+
+.plan-card{
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.03);
+  border-radius: 20px;
+  padding: 1.75rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: 100%;
+  box-shadow: 0 14px 40px rgba(0,0,0,.03);
+}
+
+.plan-muted{
+  background: #FDFBF9;
+}
+
+.plan-featured{
+  background: linear-gradient(160deg, #F9F5F1 0%, #fff 40%, #FBEDE4 100%);
+  border: 1px solid rgba(211,157,124,.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.plan-head h4{
+  font-size: 1.25rem;
+}
+
+.plan-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  font-size: .95rem;
+}
+.plan-list li::before{
+  content: "•";
+  margin-right: .4rem;
+  color: #A48E7B;
+  font-weight: 700;
+}
+
+.plan-price{
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.plan-price .label{
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(0,0,0,.4);
+}
+.plan-price .value{
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #3A332E;
+}
+.plan-price .highlight{
+  font-size: 1.6rem;
+  color: var(--terra);
+}
+
+.plan-badge{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(211,157,124,.15);
+  color: #9B5F3D;
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: .35rem .7rem;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+  font-weight: 600;
+}
+
+/* mobile */
+@media (max-width: 767.98px){
+  .plan-card{
+    flex-direction: column;
+    text-align: left;
+  }
+  .plan-price{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .plan-price .value{ font-size: 1.25rem; }
+}

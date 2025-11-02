@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AgricOnline Academy — Sua escola online do agro</title>
+
+  <!-- Bootstrap 5 -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    crossorigin="anonymous"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    rel="stylesheet"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Seu CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR AGRICONLINE -->
+<nav class="navbar navbar-expand-lg navbar-agri fixed-top">
+  <div class="container">
+    <!-- LOGO -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="Logo-Agriconline-BRANCO.svg" alt="Agriconline" height="34" class="me-1">
+    </a>
+
+    <!-- TOGGLER -->
+    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAgri" aria-controls="navbarAgri" aria-expanded="false" aria-label="Menu">
+      <span class="toggler-icon"></span>
+    </button>
+
+    <!-- LINKS -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarAgri">
+      <ul class="navbar-nav align-items-lg-center gap-lg-3">
+        <li class="nav-item">
+          <a class="nav-link" href="https://go.agriconline.com.br/pos-graduacao/" target="_blank" rel="noopener">Pós-graduação</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://agriconline.com.br/portal/" target="_blank" rel="noopener">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://materiais.agriconline.com.br/?_gl=1*15zrc6y*_gcl_au*MTYyNjM4ODAwOS4xNzYxMzQ2OTYw*_ga*MTIwMjU0OTU3MS4xNzYxMzQ2OTYw*_ga_18KRQJHBB4*czE3NjIxMTg5NzIkbzIyJGcxJHQxNzYyMTIxNjg4JGo1MiRsMCRoMA.." target="_blank" rel="noopener">Materiais</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://academy.agriconline.com.br/?_gl=1*aapsfe*_gcl_au*MTYyNjM4ODAwOS4xNzYxMzQ2OTYw*_ga*MTIwMjU0OTU3MS4xNzYxMzQ2OTYw*_ga_18KRQJHBB4*czE3NjIxMTg5NzIkbzIyJGcxJHQxNzYyMTIxNjg4JGo1MiRsMCRoMA.." target="_blank" rel="noopener">Entrar</a>
+        </li>
+      </ul>
+
+      <!-- CTA WHATS -->
+      <a
+        href="https://api.whatsapp.com/send/?phone=5527999349642&text=Oi,%20pode%20me%20ajudar?"
+        class="btn btn-success ms-lg-3"
+        target="_blank"
+        rel="noopener"
+      >
+        <i class="fa-brands fa-whatsapp me-1"></i> Falar no Whats
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-agri" id="topo">
+  <div class="container h-100">
+    <div class="row align-items-center h-100 py-5">
+      <!-- TEXTO -->
+      <div class="col-lg-6 col-xl-5">
+        <span class="hero-badge mb-3 d-inline-flex align-items-center gap-2">
+          <i class="fa-solid fa-circle-check"></i>
+          Maior escola online do agro
+        </span>
+
+        <h1 class="hero-title mb-4">
+          AgricOnline
+          <span class="hero-highlight">Academy</span>
+        </h1>
+
+        <p class="hero-sub mb-5">
+          Aprenda com os melhores do agronegócio brasileiro. Conteúdos práticos, aulas atualizadas e professores que atuam no campo todos os dias.
+        </p>
+
+        <div class="hero-actions d-flex flex-wrap gap-3 mb-4">
+          <a href="#planos" class="btn hero-primary">Cursos Profissionalizantes</a>
+          <a href="https://go.agriconline.com.br/pos-graduacao/" target="_blank" rel="noopener" class="btn hero-secondary">Pós-graduação</a>
+        </div>
+
+        <div class="hero-meta d-flex align-items-center gap-2">
+          <div class="hero-dots"></div>
+          <p class="mb-0 small text-white-50">+5.000 alunos já estudam com a gente.</p>
+        </div>
+      </div>
+
+      <!-- MOCKUP / DEVICE -->
+      <div class="col-lg-5 offset-lg-1 mt-5 mt-lg-0">
+        <div class="hero-device p-3">
+          <img src="plataforma.png" alt="Plataforma AgricOnline" class="img-fluid rounded-4 shadow-sm">
+          <div class="p-3">
+            <p class="mb-1 text-white-50 small">Plataforma 100% online</p>
+            <h5 class="mb-2">Conheça a plataforma em detalhes</h5>
+            <p class="small text-white-50 mb-0">Conteúdos, módulos, certificados e novas aulas todo mês.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATALHOS -->
+<section class="shortcuts-agri py-5">
+  <div class="container py-4">
+    <div class="row g-3">
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="shortcut-box h-100 text-center">
+          <div class="shortcut-icon mb-2"><i class="fa fa-tv"></i></div>
+          <h3 class="shortcut-title">+120 aulas</h3>
+          <p class="shortcut-text mb-0">catalogadas e atualizadas</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="shortcut-box h-100 text-center">
+          <div class="shortcut-icon mb-2"><i class="fa fa-graduation-cap"></i></div>
+          <h3 class="shortcut-title">Certificado</h3>
+          <p class="shortcut-text mb-0">emissão direto na plataforma</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="shortcut-box h-100 text-center">
+          <div class="shortcut-icon mb-2"><i class="fa fa-user-tie"></i></div>
+          <h3 class="shortcut-title">Professores do agro</h3>
+          <p class="shortcut-text mb-0">conteúdo de quem atua no campo</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="shortcut-box h-100 text-center">
+          <div class="shortcut-icon mb-2"><i class="fa fa-phone-volume"></i></div>
+          <h3 class="shortcut-title">WhatsApp</h3>
+          <p class="shortcut-text mb-0">suporte rápido pra dúvidas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE PLATAFORMA -->
+<section class="agri-about section-light py-5" id="plataforma">
+  <div class="container py-4">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-6">
+        <span class="agri-pill mb-3 d-inline-block">Plataforma completa</span>
+        <h2 class="mb-3 fw-bold text-success">AgricOnline Academy</h2>
+        <p class="lead text-secondary mb-3">Tudo o que você precisa pra acelerar sua carreira no agro em um só lugar.</p>
+        <p class="text-secondary mb-4">
+          Aulas objetivas, materiais complementares, suporte e trilhas de aprendizagem para quem quer trabalhar em grandes empresas rurais, cooperativas, revendas e consultorias.
+        </p>
+        <ul class="list-unstyled text-secondary fs-6 mb-4">
+          <li class="mb-2"><i class="fa fa-check-circle text-success me-2"></i> Conteúdo atualizado</li>
+          <li class="mb-2"><i class="fa fa-check-circle text-success me-2"></i> Módulos feitos por especialistas</li>
+          <li class="mb-2"><i class="fa fa-check-circle text-success me-2"></i> Acesso 100% online</li>
+        </ul>
+
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#planos" class="btn btn-success px-4">Quero ver os planos</a>
+          <a href="#cursos" class="btn btn-outline-success px-4">Ver cursos disponíveis</a>
+        </div>
+      </div>
+
+      <div class="col-lg-5 offset-lg-1">
+        <div class="agri-video ratio ratio-16x9 rounded-4 overflow-hidden shadow-lg">
+          <iframe
+            src="https://www.youtube.com/embed/sZvIElLx9ng?rel=0"
+            title="Apresentação AgricOnline"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section class="agri-pricing" id="planos">
+  <div class="container">
+
+    <div class="pricing-head text-center mb-5">
+      <span class="pricing-pill">Planos 100% online</span>
+      <h2 class="pricing-title">Escolha o seu plano</h2>
+      <p class="pricing-sub">Invista no seu crescimento profissional no agro</p>
+    </div>
+
+    <div class="row justify-content-center g-4">
+
+      <!-- PLANO 1 -->
+      <div class="col-md-5 col-lg-4">
+        <div class="pricing-card">
+          <div class="pricing-top">
+            <h3 class="pricing-name">Profissional</h3>
+            <p class="pricing-desc">Para quem está iniciando na área</p>
+          </div>
+
+          <div class="pricing-pricebox">
+            <small class="price-label">12x</small>
+            <div class="price-line">
+              <span class="price-main">R$103</span><span class="price-cents">,11</span>
+            </div>
+            <p class="price-anno">ou R$ 997,00/ano</p>
+          </div>
+
+          <ul class="pricing-list">
+            <li><i class="fa-solid fa-check"></i> Acesse todas as aulas</li>
+            <li><i class="fa-solid fa-check"></i> Materiais baixáveis</li>
+            <li><i class="fa-solid fa-check"></i> Certificados <strong>ilimitados</strong></li>
+            <li><i class="fa-solid fa-check"></i> Suporte com especialistas</li>
+            <li class="disabled"><i class="fa-solid fa-xmark"></i> AgricOnline Premium</li>
+          </ul>
+
+          <a href="#" class="btn btn-outline-agri w-100">Assinar</a>
+        </div>
+      </div>
+
+      <!-- PLANO 2 (DESTAQUE) -->
+      <div class="col-md-5 col-lg-4">
+        <div class="pricing-card featured">
+          <div class="ribbon">Mais escolhido</div>
+          <div class="pricing-top">
+            <h3 class="pricing-name">Premium</h3>
+            <p class="pricing-desc">Para quem quer tudo da plataforma</p>
+          </div>
+
+          <div class="pricing-pricebox">
+            <small class="price-label">12x</small>
+            <div class="price-line">
+              <span class="price-main">R$137</span><span class="price-cents">,24</span>
+            </div>
+            <p class="price-anno">ou R$ 1.327,00/ano</p>
+          </div>
+
+          <ul class="pricing-list">
+            <li><i class="fa-solid fa-check"></i> Acesse todas as aulas</li>
+            <li><i class="fa-solid fa-check"></i> Materiais baixáveis</li>
+            <li><i class="fa-solid fa-check"></i> Certificados <strong>ilimitados</strong></li>
+            <li><i class="fa-solid fa-check"></i> Suporte com especialistas</li>
+            <li>
+              <i class="fa-solid fa-check"></i> AgricOnline Premium
+              <small class="d-block text-white-50 ms-4">vendas, empreendedorismo e carreira</small>
+            </li>
+          </ul>
+
+          <a href="#" class="btn btn-agri w-100">Assinar agora</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CURSOS / FORMAÇÕES -->
+<section class="agri-courses" id="cursos">
+  <div class="container py-5">
+
+    <!-- Cabeçalho -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+      <div>
+        <h2 class="fw-bold mb-1 text-white">Cursos e formações</h2>
+        <p class="text-white-50 mb-0">Veja alguns dos cursos que você vai encontrar dentro da plataforma.</p>
+      </div>
+      <a href="#planos" class="btn btn-outline-light btn-sm">Adquirir acesso</a>
+    </div>
+
+    <!-- Abas -->
+    <div class="courses-tabs mb-4">
+      <button class="courses-tab active" data-tab="bases">Bases técnicas</button>
+      <button class="courses-tab" data-tab="culturas">Culturas</button>
+      <button class="courses-tab" data-tab="mercado">Mercado e carreira</button>
+      <button class="courses-tab" data-tab="zootecnia">Zootecnia</button>
+      <button class="courses-tab" data-tab="horticultura">Horticultura</button>
+    </div>
+
+    <!-- 1) BASES TÉCNICAS -->
+    <div class="courses-panel active" data-panel="bases">
+      <div class="row g-3 courses-grid">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/fertilidade-solo-nutricao.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Fertilidade dos Solos e Nutrição de Plantas</h3>
+              <p class="course-meta">interpretação, adubação e correção</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/irrigacao.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Manejo de Irrigação</h3>
+              <p class="course-meta">dimensionamento e operação</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/defensivosagricolas.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Defensivos Agrícolas</h3>
+              <p class="course-meta">segurança, aplicação e legislação</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/herbicidas.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Utilização de Herbicidas</h3>
+              <p class="course-meta">alvos, doses e deriva</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/precisaoagro.webp');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Agricultura de Precisão</h3>
+              <p class="course-meta">sensores, mapas e taxa variável</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/fitopatologia.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Fitopatologia</h3>
+              <p class="course-meta">doenças e controle</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/fisiologia-vegetal.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Fisiologia Vegetal</h3>
+              <p class="course-meta">crescimento, estresses e produtividade</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/anatomia-fisiologia.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Anatomia e Fisiologia Vegetal</h3>
+              <p class="course-meta">ênfase em proteção de plantas</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/adubacaofoliar.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Adubação Foliar</h3>
+              <p class="course-meta">quando usar e como formular</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/fertirrigacao.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Fertirrigação</h3>
+              <p class="course-meta">passo a passo para o campo</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producao-organica.webp');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Orgânica</h3>
+              <p class="course-meta">manejo sem agrotóxicos</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2) CULTURAS -->
+    <div class="courses-panel" data-panel="culturas">
+      <div class="row g-3 courses-grid">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producaosoja.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Soja</h3>
+              <p class="course-meta">do plantio à colheita</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producaomilho.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Milho</h3>
+              <p class="course-meta">nutrição, pragas e mercado</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producao-sojamilho.avif');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Soja e Milho Avançado</h3>
+              <p class="course-meta">altas produtividades</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producao-cana.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Cana-de-açúcar</h3>
+              <p class="course-meta">implantação e tratos</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producaocafe.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Café</h3>
+              <p class="course-meta">manejo, pragas e pós-colheita</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producao-cafeconilon.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Produção de Café Conilon</h3>
+              <p class="course-meta">cultivo no Espírito Santo</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producaocritrus.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Citrus</h3>
+              <p class="course-meta">fitossanidade e produtividade</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producao-cacau.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Cacau</h3>
+              <p class="course-meta">sombrite, pragas e colheita</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producao-mamao.png');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Mamão</h3>
+              <p class="course-meta">clima, condução e pragas</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producao-maracuja.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Maracujá</h3>
+              <p class="course-meta">polinização e sanidade</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producao-banana.webp');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Banana</h3>
+              <p class="course-meta">variedades e manejo</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producao-pimenta-reino.jpeg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Pimenta-do-reino</h3>
+              <p class="course-meta">tutoramento e doenças</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3) MERCADO E CARREIRA -->
+    <div class="courses-panel" data-panel="mercado">
+      <div class="row g-3 courses-grid">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/creditorural.webp');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Projetista de Crédito Rural</h3>
+              <p class="course-meta">financiamento e projetos</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/admrural.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Administração Rural</h3>
+              <p class="course-meta">gestão da fazenda</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/vendaagro.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Vendas no Agro</h3>
+              <p class="course-meta">negociação e relacionamento</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/assistenciatecnicarural.webp');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Assistência Técnica Rural</h3>
+              <p class="course-meta">atendimento ao produtor</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/construcaocarreira.webp');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Construção de Carreira no Agro</h3>
+              <p class="course-meta">networking e posicionamento</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/maratonacarreiraagro.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Série</p>
+              <h3 class="course-title">Maratona Carreira no Agro</h3>
+              <p class="course-meta">do CV ao primeiro emprego</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/protorural.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">PROTAGRO — carreira e empreendedorismo</h3>
+              <p class="course-meta">posicionamento e vendas</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/agro-eua.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Agro nos EUA — como trabalhar</h3>
+              <p class="course-meta">visto, adaptação e mercado</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4) ZOOTECNIA -->
+    <div class="courses-panel" data-panel="zootecnia">
+      <div class="row g-3 courses-grid">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/manejobovinos.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Nutrição e Manejo de Bovinos</h3>
+              <p class="course-meta">pastagens e suplementação</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/manejoequinos.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Manejo de Equinos</h3>
+              <p class="course-meta">sanidade, doma e nutrição</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/manejosuinos.jpeg');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Produção de Suínos</h3>
+              <p class="course-meta">instalações e manejo</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5) HORTICULTURA -->
+    <div class="courses-panel" data-panel="horticultura">
+      <div class="row g-3 courses-grid">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/hidroponia.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção em Hidroponia</h3>
+              <p class="course-meta">estrutura, solução e pragas</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producaotomate.webp');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Tomate</h3>
+              <p class="course-meta">do viveiro ao mercado</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producaomandioca.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Curso profissional</p>
+              <h3 class="course-title">Produção de Mandioca</h3>
+              <p class="course-meta">cultivo e sanidade</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producaobeterraba.png');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Produção de Beterraba</h3>
+              <p class="course-meta">solo e irrigação</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producaoquiabo.webp');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Produção de Quiabo</h3>
+              <p class="course-meta">cultivo contínuo</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producaoalface.webp');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Produção de Alface</h3>
+              <p class="course-meta">cultivo protegido</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producaocenoura.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Produção de Cenoura</h3>
+              <p class="course-meta">adubação e colheita</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producaopimentao.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Produção de Pimentão</h3>
+              <p class="course-meta">ambiente protegido</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="course-card" style="background-image:url('src/img/producao-morango.jpg');">
+            <div class="course-overlay">
+              <p class="course-tag">Minicurso</p>
+              <h3 class="course-title">Produção de Morango</h3>
+              <p class="course-meta">cultivo comercial</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA final -->
+    <div class="text-center mt-4">
+      <a href="#planos" class="btn btn-agri-cta">Adquirir acesso</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- TÉCNICO AGRÍCOLA / PROGRAMA -->
+<section class="agri-tech" id="tecnico">
+  <div class="container py-5">
+    <div class="row align-items-center gy-4">
+      <!-- TEXTO -->
+      <div class="col-lg-6">
+        <span class="hero-badge mb-3 d-inline-flex align-items-center gap-2 text-white ">
+          <i class="fa-solid fa-user-graduate"></i>
+          Formação específica
+        </span>
+        <h2 class="tech-title mb-3">Formação completa para <span>Técnicos Agrícolas</span></h2>
+        <p class="tech-text mb-3">
+          Um programa pensado pra quem está no campo e precisa dominar não só <strong>fertilidade, irrigação e defensivos</strong>,
+          mas também a parte <strong>burocrática, comercial e de atendimento ao produtor</strong>.
+        </p>
+        <ul class="tech-list mb-4">
+          <li><i class="fa-solid fa-check"></i> Trilhas prontas para estágio e primeiro emprego</li>
+          <li><i class="fa-solid fa-check"></i> Aulas rápidas (+ materiais baixáveis)</li>
+          <li><i class="fa-solid fa-check"></i> Certificado incluído na assinatura</li>
+        </ul>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="https://go.agriconline.com.br/manual-tecnico/" class="btn btn-agri-cta" target="_blank" rel="noopener">
+            Conhecer o Manual do Técnico
+          </a>
+          <p class="mb-0 small text-white-50 d-flex align-items-center gap-1">
+            <i class="fa-solid fa-face-smile-beam text-success"></i>
+            Indicado para quem está fazendo o técnico integrado
+          </p>
+        </div>
+      </div>
+
+      <!-- VÍDEO YOUTUBE -->
+      <div class="col-lg-5 ms-lg-auto">
+        <div class="tech-hero tech-video ratio ratio-16x9">
+          <iframe
+            src="https://www.youtube.com/embed/-dnIHrqe1t4?rel=0"
+            title="Manual do Técnico AgricOnline"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PARCEIROS -->
+<section class="agri-partners py-5" id="parceiros">
+  <div class="container">
+    <div class="text-center mb-4">
+      <span class="agri-pill mb-3 d-inline-flex align-items-center gap-2">
+        <i class="fa-solid fa-shield-check"></i>
+        Empresas que confiam no nosso ensino
+      </span>
+      <h2 class="agri-title mb-2">Nossos alunos atuam nessas empresas do agro</h2>
+      <p class="agri-sub mb-0">Presença em indústrias, revendas, cooperativas e grandes marcas do setor.</p>
+    </div>
+
+    <div class="row g-3 justify-content-center agri-logos-grid">
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="agri-logo-card">
+          <img src="3-coracoes.png" alt="3 Corações" class="company-logo">
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="agri-logo-card">
+          <img src="bayer.png" alt="Bayer" class="company-logo">
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="agri-logo-card">
+          <img src="bunge.png" alt="Bunge" class="company-logo">
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="agri-logo-card">
+          <img src="cargill-logo-1.png" alt="Cargill" class="company-logo">
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="agri-logo-card">
+          <img src="FMC_Corporation-Logo.wine_.png" alt="FMC" class="company-logo">
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="agri-logo-card">
+          <img src="jbs-logo.png" alt="JBS" class="company-logo">
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="agri-logo-card">
+          <img src="raizen-logo-1.png" alt="Raízen" class="company-logo">
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="agri-logo-card">
+          <img src="syngenta.png" alt="Syngenta" class="company-logo">
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="agri-logo-card">
+          <img src="tmf.png" alt="TMF" class="company-logo">
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="agri-logo-card">
+          <img src="yara.png" alt="Yara" class="company-logo">
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <p class="agri-foot mb-0">+ de <strong>300 profissionais</strong> formados atuando no mercado do agronegócio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTO / CTA -->
+<section class="py-5 agri-depo">
+  <div class="container py-4">
+    <div class="row gy-4 align-items-center">
+      <!-- COLUNA ESQUERDA: SLIDER DE DEPOIMENTOS -->
+      <div class="col-lg-5">
+
+        <div class="testimonial-shell">
+          <!-- slides -->
+          <div class="testimonial-item active" data-testimonial="1">
+            <div class="testimonial-avatar">
+              <img src="img/depoimentos/kaua.jpg" alt="Foto de Kauã Ourique">
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                Vou ser sincero, a plataforma da Agriconline é incrível, os cursos disponíveis superam as expectativas...
+                se não fosse pela Agriconline eu sairia um péssimo profissional. Vocês estão de parabéns 👏
+              </p>
+              <p class="testimonial-name">Kauã Ourique</p>
+              <p class="testimonial-role">Técnico Agropecuário</p>
+            </div>
+          </div>
+
+          <div class="testimonial-item" data-testimonial="2">
+            <div class="testimonial-avatar">
+              <img src="img/depoimentos/alexia.jpg" alt="Foto de Alexia Lui da Silva">
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                Foi um dos melhores que fiz pela internet. Os vídeos não são cansativos, vão direto ao ponto e tem ótimo custo/benefício.
+                A didática do professor é excelente. Fiquei muito feliz 😄
+              </p>
+              <p class="testimonial-name">Alexia Lui da Silva</p>
+              <p class="testimonial-role">Estudante de Agronegócio</p>
+            </div>
+          </div>
+
+          <div class="testimonial-item" data-testimonial="3">
+            <div class="testimonial-avatar">
+              <img src="img/depoimentos/joao-paulo.jpg" alt="Foto do Aluno João Paulo">
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                “Depois que comecei a estudar pela plataforma, consegui aplicar direto na fazenda e melhorar meu manejo.
+                O curso de pastagem foi um divisor de águas.”
+              </p>
+              <p class="testimonial-name">João Paulo Silva</p>
+              <p class="testimonial-role">Técnico Agrícola, MT</p>
+            </div>
+          </div>
+
+          <!-- controles -->
+          <div class="testimonial-controls">
+            <button class="testimonial-prev" type="button" aria-label="Anterior">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="testimonial-dots">
+              <button class="dot active" data-target="1"></button>
+              <button class="dot" data-target="2"></button>
+              <button class="dot" data-target="3"></button>
+            </div>
+            <button class="testimonial-next" type="button" aria-label="Próximo">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <!-- botão whats igual ao teu -->
+          <a
+            href="https://api.whatsapp.com/send?phone=5527999349642&text=Ol%C3%A1,%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20cursos."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whats px-4 py-2 mt-3"
+          >
+            <i class="fa-brands fa-whatsapp"></i> Quero atendimento
+          </a>
+        </div>
+      </div>
+
+      <!-- COLUNA DIREITA: CTA IGUAL -->
+      <div class="col-lg-6 offset-lg-1">
+        <div class="cta-final p-4 p-md-5">
+          <h4 class="fw-bold mb-2">Maior escola do agronegócio 100% online da América Latina</h4>
+          <p class="text-white-50 mb-4">Aulas feitas por profissionais que estão no campo todos os dias.</p>
+          <div class="d-flex gap-4 flex-wrap">
+            <div>
+              <h3 class="mb-0 fw-bold">+5K</h3>
+              <p class="mb-0 small text-white-50">Alunos ativos</p>
+            </div>
+            <div>
+              <h3 class="mb-0 fw-bold">120+</h3>
+              <p class="mb-0 small text-white-50">Cursos</p>
+            </div>
+            <div>
+              <h3 class="mb-0 fw-bold">98%</h3>
+              <p class="mb-0 small text-white-50">Satisfação</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-agri py-5" id="faq">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold text-white">Perguntas frequentes</h2>
+      <p class="text-white-50 fs-6 mb-0">Tire suas dúvidas antes de entrar</p>
+    </div>
+
+    <div class="col-lg-10 mx-auto">
+      <div class="faq-item">
+        <button class="faq-btn" type="button">
+          <span>Como funciona a garantia?</span>
+          <i class="fa fa-chevron-down"></i>
+        </button>
+        <div class="faq-body">
+          <p>Você tem <strong>7 dias</strong> para acessar todos os conteúdos que quiser e, se quiser, solicitar o cancelamento e o <strong>reembolso</strong> do valor pago.</p>
+          <p>Devolveremos integralmente todo o valor pago.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button">
+          <span>Renovação</span>
+          <i class="fa fa-chevron-down"></i>
+        </button>
+        <div class="faq-body">
+          <p>A renovação da assinatura acontece automaticamente a cada <strong>12 meses</strong>.</p>
+          <p>Cartão de crédito: cobra de novo no cartão.</p>
+          <p>Boleto/Pix: você recebe o link de pagamento por e-mail no dia da renovação.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button">
+          <span>Fidelidade</span>
+          <i class="fa fa-chevron-down"></i>
+        </button>
+        <div class="faq-body">
+          <p>Você pode cancelar quando quiser, sem precisar continuar no ano seguinte.</p>
+          <p>Mas ao assinar, você adquire um <strong>pacote de 1 ano de acesso</strong> — se parcelar no cartão, as parcelas continuam até quitar.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button">
+          <span>Formas de pagamento</span>
+          <i class="fa fa-chevron-down"></i>
+        </button>
+        <div class="faq-body">
+          <p>Cartão de crédito em até <strong>12x</strong>, boleto ou Pix.</p>
+          <p>Todas as opções ficam na página de pagamento.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" type="button">
+          <span>Cancelamento</span>
+          <i class="fa fa-chevron-down"></i>
+        </button>
+        <div class="faq-body">
+          <p>Você pode cancelar sua assinatura quando quiser, basta falar com o nosso suporte.</p>
+          <p><strong>Atenção:</strong> o cancelamento evita a próxima renovação, mas não devolve parcelas já pagas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MUITO MAIS APRENDIZADO -->
+<section class="agri-more section-light py-5" id="conteudos">
+  <div class="container py-4">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-success mb-2">Muito mais aprendizado</h2>
+      <p class="text-secondary mb-0">Conheça também nossos conteúdos abertos e gratuitos</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Materiais ricos -->
+      <div class="col-md-4">
+        <article class="more-card h-100">
+          <div class="more-icon">
+            <i class="fa-solid fa-book-open"></i>
+          </div>
+          <h3>Materiais Ricos</h3>
+          <p>Planilhas, modelos, PDFs e checklists pra usar direto na fazenda.</p>
+          <a
+            href="https://materiais.agriconline.com.br/?_gl=1*15zrc6y*_gcl_au*MTYyNjM4ODAwOS4xNzYxMzQ2OTYw*_ga*MTIwMjU0OTU3MS4xNzYxMzQ2OTYw*_ga_18KRQJHBB4*czE3NjIxMTg5NzIkbzIyJGcxJHQxNzYyMTIxNjg4JGo1MiRsMCRoMA.."
+            class="btn btn-success w-100"
+            target="_blank"
+            rel="noopener"
+          >
+            Ver materiais <i class="fa-solid fa-download ms-1"></i>
+          </a>
+        </article>
+      </div>
+      <!-- Youtube -->
+      <div class="col-md-4">
+        <article class="more-card h-100">
+          <div class="more-icon">
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+          <h3>YouTube</h3>
+          <p>Aulas abertas, lives e novidades do agro toda semana.</p>
+          <a href="https://www.youtube.com/agriconline" target="_blank" class="btn btn-success w-100" rel="noopener">
+            Assistir agora <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
+          </a>
+        </article>
+      </div>
+      <!-- Blog -->
+      <div class="col-md-4">
+        <article class="more-card h-100">
+          <div class="more-icon">
+            <i class="fa-solid fa-newspaper"></i>
+          </div>
+          <h3>Blog Agriconline</h3>
+          <p>Artigos sobre manejo, mercado, carreira e tecnologia.</p>
+          <a href="https://agriconline.com.br/portal/" class="btn btn-success w-100" target="_blank" rel="noopener">
+            Ler conteúdos <i class="fa-solid fa-book ms-1"></i>
+          </a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO (SEM FORMULÁRIO) -->
+<section class="py-5 section-light" id="contato">
+  <div class="container py-4">
+    <div class="col-lg-7 mx-auto">
+      <div class="p-4 p-md-5 rounded-4 contact-box text-center text-md-start">
+        <div class="mb-4">
+          <h4 class="mb-1 text-success">Não encontrou o que procurava?</h4>
+          <p class="mb-0 text-secondary">Fale com a nossa equipe que a gente te ajuda a escolher o curso.</p>
+        </div>
+
+        <a
+          href="https://agriconline.com.br/fale-conosco/"
+          class="btn btn-success px-4"
+          target="_blank"
+          rel="noopener"
+        >
+          Fale conosco
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="agri-footer">
+  <div class="container py-5">
+    <div class="row gy-4 align-items-start">
+      <!-- Coluna 1 -->
+      <div class="col-md-4">
+        <h6 class="footer-title">Info</h6>
+        <ul class="footer-list">
+          <li><a href="https://agriconline.com.br/portal/" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="https://agriconline.com.br/fale-conosco/" target="_blank" rel="noopener">Fale conosco</a></li>
+          <li><a href="https://agriconline.com.br/newsletter/" target="_blank" rel="noopener">Assinar newsletter</a></li>
+          <li><a href="https://agriconline.com.br/legal/" target="_blank" rel="noopener">Política e Termos de uso</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna 2 -->
+      <div class="col-md-4">
+        <h6 class="footer-title">Acesso rápido</h6>
+        <ul class="footer-list footer-list-center">
+          <li><a href="https://go.agriconline.com.br/pos-graduacao/" target="_blank" rel="noopener">Pós-graduação</a></li>
+          <li><a href="#cursos">Principais cursos</a></li>
+          <li><a href="#faq">Perguntas frequentes</a></li>
+          <li><a href="https://materiais.agriconline.com.br/?_gl=1*15zrc6y*_gcl_au*MTYyNjM4ODAwOS4xNzYxMzQ2OTYw*_ga*MTIwMjU0OTU3MS4xNzYxMzQ2OTYw*_ga_18KRQJHBB4*czE3NjIxMTg5NzIkbzIyJGcxJHQxNzYyMTIxNjg4JGo1MiRsMCRoMA.." target="_blank" rel="noopener">Materiais</a></li>
+        </ul>
+
+        <div class="footer-brand mt-4">
+          <img src="Logo-Agriconline-BRANCO.svg" alt="AgricOnline" height="46" class="mb-3">
+          <p class="footer-text mb-0 text-center">Formando profissionais para o campo.</p>
+        </div>
+
+        <div class="footer-social mt-4">
+          <a href="https://www.instagram.com/agriconline/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/agriconline" class="social-link" aria-label="YouTube" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.facebook.com/agriculturaon/" class="social-link" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://twitter.com/scota_daniel" class="social-link" aria-label="Twitter / X" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://br.linkedin.com/in/daniel-scot%C3%A1-b44575184" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <!-- Coluna 3 -->
+      <div class="col-md-4">
+        <h6 class="footer-title">Suporte</h6>
+        <ul class="footer-list footer-list-right">
+          <li>
+            <i class="fa-solid fa-envelope me-2"></i>
+            <a href="mailto:atendimento@agriconline.com.br">atendimento@agriconline.com.br</a>
+          </li>
+          <li>
+            <i class="fa-brands fa-whatsapp me-2"></i>
+            <a
+              href="https://api.whatsapp.com/send?phone=5527999349642&text=Ol%C3%A1,%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20cursos."
+              target="_blank"
+              rel="noopener"
+            >
+              (27) 99934-9642
+            </a>
+          </li>
+          <li>
+            <i class="fa-solid fa-headset me-2"></i>
+            <a href="https://agriconline.com.br/fale-conosco/" target="_blank" rel="noopener">Fale conosco</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-check-double me-2"></i>
+            <a href="https://agriconline.com.br/newsletter/" target="_blank" rel="noopener">Inscreva-se na newsletter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- linha de baixo -->
+  <div class="footer-bottom">
+    <div class="container d-flex flex-wrap justify-content-between gap-3 align-items-center">
+      <p class="mb-0 small text-white-50">© 2025 AgricOnline. Todos os direitos reservados.</p>
+      <p class="mb-0 small text-white-50">Desenvolvido por <a href="https://dlrwebstudio.com/" target="_blank" rel="noopener">DLR Web Studio</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- JS Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<!-- Seu JS -->
+<script src="script.js" defer></script>
+</body>
+</html>

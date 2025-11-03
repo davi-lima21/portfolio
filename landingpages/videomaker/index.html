@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Haife Media — Videomaker Mobile</title>
+  <meta name="description" content="Vídeos mobile que destacam sua marca. Reels, eventos e conteúdo pronto para postar. Vale Europeu." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Bootstrap & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<!-- ATUALIZAÇÃO: Scrollspy ativado no body -->
+<body data-bs-spy="scroll" data-bs-target="#topNav" data-bs-offset="100">
+
+  <!-- ATUALIZAÇÃO: Cursor Customizado -->
+  <div class="cursor-dot" data-cursor></div>
+  <div class="cursor-outline" data-cursor-outline></div>
+
+  <!-- NAV -->
+  <nav id="topNav" class="navbar navbar-expand-lg fixed-top glass-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <span class="brand-mark"></span>
+        <span class="brand-text">Haife <b>Media</b></span>
+      </a>
+      
+      <!-- ATUALIZAÇÃO: Toggler customizado (Corrigido com classe 'collapsed' por padrão) -->
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="toggler-bar bar1"></span>
+        <span class="toggler-bar bar2"></span>
+        <span class="toggler-bar bar3"></span>
+      </button>
+
+      <div id="nav" class="collapse navbar-collapse">
+        <!-- Links do menu completos para Scrollspy -->
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="#hero">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfólio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="#planos">Planos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#processo">Processo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#depoimentos">Clientes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">Dúvidas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-dark btn-cta" href="https://wa.me/5547992170977" target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp me-1"></i> Orçamentos
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <header id="hero" class="hero section-pad">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7" data-aos="fade-right">
+          <!-- ... (conteúdo do hero) ... -->
+          <div class="badge-stack d-inline-flex align-items-center gap-2 mb-3">
+            <span class="badge-soft"><i class="bi bi-camera-video"></i> Videomaker Mobile</span>
+            <span class="badge-soft"><i class="bi bi-geo-alt"></i> Vale Europeu</span>
+          </div>
+
+          <h1 class="display-4 fw-bold lh-tight">
+            Vídeos verticais que <span class="grad">conectam</span> e vendem.
+          </h1>
+
+          <p class="lead text-muted mt-3 mb-4">
+            Reels e coberturas com estética atual, ritmo certo e entrega <b>100% pronta para postar</b>.
+            Produção leve, ágil e focada em resultado.
+          </p>
+
+          <ul class="hero-bullets text-muted">
+            <li><i class="bi bi-check2-circle"></i> Legendagem dinâmica + música licenciada</li>
+            <li><i class="bi bi-check2-circle"></i> Entrega média em 7 dias úteis</li>
+            <li><i class="bi bi-check2-circle"></i> Pacotes mensais e eventos</li>
+          </ul>
+
+          <div class="d-flex flex-wrap gap-2 mt-4">
+            <a class="btn btn-dark btn-lg" href="https://wa.me/5547992170977" target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp me-1"></i> Falar no WhatsApp
+            </a>
+            <a class="btn btn-outline-dark btn-lg" href="#portfolio">
+              <i class="bi bi-play-circle me-1"></i> Ver trabalhos
+            </a>
+          </div>
+
+          <div class="scroll-cue mt-5">
+            <i class="bi bi-arrow-down"></i> role para ver mais
+          </div>
+        </div>
+
+        <!-- Phone Mockup Carrossel -->
+        <div class="col-lg-5" data-aos="fade-left">
+          <div class="phone-wrap shadow">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="phone-carousel-content">
+                
+                <!-- ATUALIZAÇÃO: Vídeos com caminhos locais -->
+                
+                <!-- Slide 1 (Produto) -->
+                <video class="phone-video" muted loop playsinline poster="videos/produto-poster.jpg">
+                  <source src="./videos/video1.mp4" type="video/mp4">
+                </video>
+                <!-- Slide 2 (Gastro) -->
+                <video class="phone-video" muted loop playsinline poster="videos/gastro-poster.jpg">
+                  <source src="./videos/video2.mp4" type="video/mp4">
+                </video>
+                <!-- Slide 3 (Evento) -->
+                <video class="phone-video" muted loop playsinline poster="videos/evento-poster.jpg">
+                  <source src="./videos/videeo3.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            <!-- Controles do Carrossel -->
+            <div class="phone-controls">
+              <button class="phone-arrow" id="prevSlide"><i class="bi bi-arrow-left-short"></i></button>
+              <div class="phone-dots">
+                <span class="phone-dot active"></span>
+                <span class="phone-dot"></span>
+                <span class="phone-dot"></span>
+              </div>
+              <button class="phone-arrow" id="nextSlide"><i class="bi bi-arrow-right-short"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ATUALIZAÇÃO: NOVA SEÇÃO "CLIENTES" (Prova Social) -->
+  <section id="clientes" class="client-logos-bar">
+    <div class="container">
+      <div class="client-logos" data-aos="zoom-in">
+        <span class="trust-text text-muted">Marcas que confiam:</span>
+        <div class="logo-item" title="Marca Cliente 1">Cliente 1</div>
+        <div class="logo-item" title="Marca Cliente 2">Cliente 2</div>
+        <div class="logo-item" title="Marca Cliente 3">Cliente 3</div>
+        <div class="logo-item" title="Marca Cliente 4">Cliente 4</div>
+        <div class="logo-item" title="Marca Cliente 5">Cliente 5</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFÓLIO (MUITO MELHORADO - Formato 9:16) -->
+  <section id="portfolio" class="section-pad bg-soft">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-end justify-content-between gap-2 mb-4" data-aos="fade-up">
+        <div>
+          <h2 class="section-title">Portfólio Vertical</h2>
+          <p class="text-muted mb-0">Reels com estética e ritmo para social media.</p>
+        </div>
+        <a class="btn btn-link" href="https://instagram.com/haifemedia" target="_blank" rel="noopener">Ver Instagram <i class="bi bi-arrow-up-right"></i></a>
+      </div>
+
+      <div class="row g-4">
+        <!-- Card 1 (9:16) -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <article class="work-card card h-100">
+            <!-- ATUALIZAÇÃO: ratio-9x16 -->
+            <div class="ratio ratio-9x16 card-img-top overflow-hidden rounded-top">
+              <video class="work-video" muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&q=80">
+                <source src="https://videos.pexels.com/video-files/5780517/5780517-hd_720_1366_25fps.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Gastronomia</h5>
+              <p class="card-text text-muted">Texturas, vapor e apetite visual.</p>
+              <div class="d-flex align-items-center justify-content-between">
+                <span class="chip">:20–:45</span>
+                <a class="stretched-link subtle" href="#contato">Quero assim</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- Card 2 (9:16) -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <article class="work-card card h-100">
+            <!-- ATUALIZAÇÃO: ratio-9x16 -->
+            <div class="ratio ratio-9x16 card-img-top overflow-hidden rounded-top">
+              <video class="work-video" muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1519739994191-d8c3f7b9711c?w=800&q=80">
+                <source src="https://videos.pexels.com/video-files/5192138/5192138-hd_1080_1920_25fps.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Evento & Cobertura</h5>
+              <p class="card-text text-muted">Highlights com narrativa do dia.</p>
+              <div class="d-flex align-items-center justify-content-between">
+                <span class="chip">:30–:60</span>
+                <a class="stretched-link subtle" href="#contato">Quero assim</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- Card 3 (9:16) -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <article class="work-card card h-100">
+            <!-- ATUALIZAÇÃO: ratio-9x16 -->
+            <div class="ratio ratio-9x16 card-img-top overflow-hidden rounded-top">
+              <video class="work-video" muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1581093190804-3b1f09d3b036?w=800&q=80">
+                <source src="https://videos.pexels.com/video-files/5589139/5589139-hd_1080_1920_25fps.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Serviço & Processo</h5>
+              <p class="card-text text-muted">Mostrando os bastidores e o valor.</p>
+              <div class="d-flex align-items-center justify-content-between">
+                <span class="chip">:30</span>
+                <a class="stretched-link subtle" href="#contato">Quero assim</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos" class="section-pad">
+    <div class="container">
+      <div class="text-center mb-4" data-aos="fade-up">
+        <h2 class="section-title">Serviços</h2>
+        <p class="text-muted">Do briefing à entrega final. Plug-and-play para suas redes.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in">
+          <div class="service h-100">
+            <i class="bi bi-phone-vibrate"></i>
+            <h5>Reels & Shorts</h5>
+            <p>Roteiro ágil, captação mobile e edição vertical com ritmo.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+          <div class="service h-100">
+            <i class="bi bi-bag-check"></i>
+            <h5>Vídeo de Produto</h5>
+            <p>Mostre diferenciais e provoque o clique com chamadas claras.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+          <div class="service h-100">
+            <i class="bi bi-people"></i>
+            <h5>Eventos</h5>
+            <p>Cobertura enxuta, estética atual e storytelling objetivo.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+          <div class="service h-100">
+            <i class="bi bi-lightning-charge"></i>
+            <h5>Pacote Mensal</h5>
+            <p>Calendário de conteúdos e entregas recorrentes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section id="planos" class="section-pad bg-soft">
+    <div class="container">
+      <div class="text-center mb-4" data-aos="fade-up">
+        <h2 class="section-title">Planos</h2>
+        <p class="text-muted">Escolha o pacote que combina com seu momento.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <!-- Plano 1 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="pricing card h-100">
+            <div class="card-header text-center">
+              <h6 class="mb-1">Start</h6>
+              <div class="price">R$ <b>690</b> <span>/mês</span></div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="bi bi-check2"></i> 3 vídeos/mês (reels)</li>
+              <li class="list-group-item"><i class="bi bi-check2"></i> Legendas e música</li>
+              <li class="list-group-item"><i class="bi bi-check2"></i> Ajuste 1x por vídeo</li>
+              <li class="list-group-item disabled"><i class="bi bi-x"></i> Thumbs estáticas</li>
+            </ul>
+            <div class="card-body text-center">
+              <a class="btn btn-outline-dark w-100" href="https://wa.me/5547992170977" target="_blank">Quero esse</a>
+            </div>
+          </div>
+        </div>
+        <!-- Plano 2 (Destaque) -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing card h-100 featured">
+            <div class="card-header text-center">
+              <h6 class="mb-1">Growth</h6>
+              <div class="price">R$ <b>1.290</b> <span>/mês</span></div>
+              <span class="flag">Mais pedido</span>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="bi bi-check2"></i> 6 vídeos/mês</li>
+              <li class="list-group-item"><i class="bi bi-check2"></i> Revisões ilimitadas leves</li>
+              <li class="list-group-item"><i class="bi bi-check2"></i> Thumbs estáticas</li>
+            </ul>
+            <div class="card-body text-center">
+              <a class="btn btn-dark w-100" href="https://wa.me/5547992170977" target="_blank">Fechar agora</a>
+            </div>
+          </div>
+        </div>
+        <!-- Plano 3 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="pricing card h-100">
+            <div class="card-header text-center">
+              <h6 class="mb-1">Evento</h6>
+              <div class="price">A partir de <b>R$ 1.200</b></div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="bi bi-check2"></i> Cobertura até 4h</li>
+              <li class="list-group-item"><i class="bi bi-check2"></i> 1 vídeo highlight</li>
+              <li class="list-group-item"><i class="bi bi-check2"></i> Entrega em 48h</li>
+              <li class="list-group-item disabled"><i class="bi bi-x"></i> Conteúdo extra (stories)</li>
+            </ul>
+            <div class="card-body text-center">
+              <a class="btn btn-outline-dark w-100" href="https://wa.me/5547992170977" target="_blank">Solicitar orçamento</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-muted small mt-3">Valores estimados. Envie sua necessidade para receber proposta sob medida.</p>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section id="processo" class="section-pad">
+    <div class="container">
+      <div class="text-center mb-4" data-aos="fade-up">
+        <h2 class="section-title">Processo Simplificado</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3" data-aos="fade-up"><div class="step"><span>1</span><h6>Briefing</h6><p>Objetivo, público e referências.</p></div></div>
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100"><div class="step"><span>2</span><h6>Captação</h6><p>Mobile, leve e eficiente.</p></div></div>
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200"><div class="step"><span>3</span><h6>Edição</h6><p>Ritmo, legendas e identidade.</p></div></div>
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300"><div class="step"><span>4</span><h6>Entrega</h6><p>Formatos prontos para social.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="section-pad bg-soft">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <img class="img-fluid rounded-4 shadow-sm" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=80" alt="Bastidores de gravação">
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <h2 class="section-title mb-2">Sobre</h2>
+          <p class="text-muted">Sou videomaker mobile e ajudo negócios a comunicarem melhor no Instagram com vídeos diretos ao ponto. Atendo marcas e eventos no Vale Europeu.</p>
+          <ul class="list-unstyled mt-3 text-muted">
+            <li class="mb-2"><i class="bi bi-check2 me-2 text-success"></i>Produção rápida e leve</li>
+            <li class="mb-2"><i class="bi bi-check2 me-2 text-success"></i>Edição com ritmo e legendas</li>
+            <li class="mb-2"><i class="bi bi-check2 me-2 text-success"></i>Entrega pronta para postar</li>
+          </ul>
+          <a class="btn btn-dark mt-2" href="#contato">Vamos conversar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos" class="section-pad">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up">
+        <h2 class="section-title mb-1">O que dizem os clientes</h2>
+        <p class="text-muted mb-4">Feedback real de marcas que confiaram na Haife Media.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p class="review-text">"Agilidade e um olhar moderno. Nossos reels nunca performaram tão bem."</p>
+            <div class="review-author">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&q=80" alt="Avatar Cliente">
+              <div><strong>João Silva</strong><span class="text-muted d-block">@joaosilvabarber</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p class="review-text">"Cobertura de evento impecável e highlights prontos no dia seguinte."</p>
+            <div class="review-author">
+              <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?w=100&q=80" alt="Avatar Cliente">
+              <div><strong>Maria Clara</strong><span class="text-muted d-block">Brasa & Fogo</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p class="review-text">"Entendeu a identidade da marca e trouxe vídeos que convertem."</p>
+            <div class="review-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Avatar Cliente">
+              <div><strong>Rafael Borges</strong><span class="text-muted d-block">Arquiteto</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section-pad bg-soft">
+    <div class="container" data-aos="fade-up">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="section-title mb-1">Dúvidas Frequentes</h2>
+          <p class="text-muted mb-4">Respostas diretas para as perguntas mais comuns.</p>
+
+          <div class="accordion" id="faqAccordion">
+            <!-- FAQ 1 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                  Por que "Videomaker Mobile"? Você só usa celular?
+                </button>
+              </h2>
+              <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Sim. O foco mobile permite produção ágil, leve e com excelente custo-benefício, no formato vertical que performa nas redes.
+                </div>
+              </div>
+            </div>
+            <!-- FAQ 2 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+                  Em quanto tempo recebo meus vídeos?
+                </button>
+              </h2>
+              <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Em média 7 dias úteis após a captação. Para eventos, entrego highlights em até 48h.
+                </div>
+              </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
+                  Como funciona o pagamento?
+                </button>
+              </h2>
+              <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  50% de entrada para reservar a data e 50% na entrega final (Pix ou transferência).
+                </div>
+              </div>
+            </div>
+            <!-- FAQ 4 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q4">
+                  Os vídeos já vêm com legenda e música?
+                </button>
+              </h2>
+              <div id="q4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Sim. Entrega 100% pronta para postar: edição, legendas dinâmicas, tratamento de cor e música licenciada.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="section-pad contact-cta text-white">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <h2 class="section-title text-white">Vamos criar algo para sua marca?</h2>
+          <p class="text-white-50 fs-5">Chame no WhatsApp ou envie o formulário. Respondo rapidinho.</p>
+          <div class="d-flex gap-2 mt-4">
+            <a class="btn btn-light btn-lg" href="https://wa.me/5547992170977" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-1"></i> WhatsApp</a>
+            <a class="btn btn-outline-light btn-lg" href="https://instagram.com/haifemedia" target="_blank" rel="noopener"><i class="bi bi-instagram me-1"></i> Instagram</a>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div id="form-success" class="text-center" style="display:none;">
+            <i class="bi bi-check-circle-fill text-success" style="font-size:3rem;margin-bottom:1rem;"></i>
+            <h4 class="text-white">Mensagem enviada!</h4>
+            <p class="text-white-50">Obrigado pelo contato. Retorno em breve.</p>
+          </div>
+
+          <form class="needs-validation glass-form" id="contact-form" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Nome</label>
+                <input type="text" class="form-control" required>
+                <div class="invalid-feedback">Informe seu nome.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">WhatsApp/E-mail</label>
+                <input type="text" class="form-control" required>
+                <div class="invalid-feedback">Informe um contato.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Mensagem</label>
+                <textarea class="form-control" rows="4" placeholder="Fale um pouco sobre seu projeto..." required></textarea>
+                <div class="invalid-feedback">Fale um pouco sobre o projeto.</div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-light w-100 btn-lg" type="submit">Enviar</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <div class="text-secondary small">© <span id="year"></span> Haife Media — Videomaker Mobile</div>
+      <div class="footer-socials d-flex gap-3">
+        <a class="link-dark fs-5" href="https://instagram.com/haifemedia" target="_blank" rel="noopener" title="Instagram"><i class="bi bi-instagram"></i></a>
+        <a class="link-dark fs-5" href="https://wa.me/5547992170977" target="_blank" rel="noopener" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <div class="wa-float">
+    <a class="btn btn-light border" href="https://wa.me/5547992170977" target="_blank" rel="noopener">
+      <i class="bi bi-whatsapp"></i> Falar
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+/* ==============================
+  ESTILO AVANÇADO — Haife Media
+  cursor, carrossel, 9:16, gradientes
+  ============================== */
+
+:root{
+  --ink:#151515;
+  --muted:#6c6f76;
+  --accent:#f7b500; /* Amarelo */
+  --accent-2:#7b5cff; /* Roxo */
+  --chip:#f4f6f8;
+  --soft:#fff8e0; /* Amarelo claro */
+  --soft-2:#f7f3ff; /* Roxo claro */
+  --bg:#ffffff;
+  --bg-soft:#fafafa;
+  --shadow:0 18px 50px rgba(0,0,0,.08);
+  --shadow-sm:0 8px 24px rgba(0,0,0,.05);
+}
+
+/* ==============================
+  Setup Global e Fundo Animado
+  ============================== */
+
+*{box-sizing:border-box}
+
+html {
+  scroll-behavior:smooth;
+  /* ATUALIZAÇÃO: Impede scroll horizontal */
+  overflow-x: hidden;
+}
+
+body{
+  font-family:Outfit, Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--ink); 
+  background:var(--bg);
+  overflow-x: hidden; /* Fallback para html */
+
+  /* ATUALIZAÇÃO: Cursor customizado */
+  /* Esconde o cursor padrão em todo o body */
+  cursor: none;
+}
+
+/* ATUALIZAÇÃO: Fundo de gradiente animado para toda a página */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background: 
+    radial-gradient(80vw 40vh at 90% 10%, var(--soft) 0%, rgba(247,181,0,0) 70%),
+    radial-gradient(70vw 35vh at 10% 90%, var(--soft-2) 0%, rgba(123,92,255,0) 60%);
+  animation: pulse-bg 15s infinite alternate ease-in-out;
+  opacity: 0.6;
+}
+
+@keyframes pulse-bg { 
+  from {opacity:.4; transform:scale(1)} 
+  to {opacity:.7; transform:scale(1.05)} 
+}
+
+.section-pad{padding:120px 0}
+.section-title{font-weight:800; font-size: clamp(1.4rem,.8rem + 2vw,2.1rem)}
+.lead{font-weight:400}
+a.subtle{color:inherit; text-decoration:none}
+a.subtle:hover{color:var(--accent)}
+.bg-soft{background:var(--bg-soft)}
+.grad{background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+     -webkit-background-clip:text; background-clip:text; color:transparent}
+
+/* ==============================
+  Cursor Customizado
+  ============================== */
+.cursor-dot,
+.cursor-outline {
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-2);
+}
+.cursor-outline {
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(123, 92, 255, 0.5); /* --accent-2 com alfa */
+}
+/* Mostra o cursor quando o mouse entra no body */
+body:hover .cursor-dot,
+body:hover .cursor-outline {
+  opacity: 1;
+}
+
+/* Esconde o cursor padrão em links e botões */
+a, button, .btn, .accordion-button, .work-card {
+  cursor: none;
+}
+
+/* ==============================
+  NAV (com Toggler Customizado)
+  ============================== */
+.glass-nav{
+  background: rgba(255,255,255,.76);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+.brand-mark{
+  width:12px;height:12px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  box-shadow:0 0 0 6px rgba(123,92,255,.08);
+}
+.brand-text{font-weight:700; letter-spacing:.3px}
+.navbar.shrink{
+  background: rgba(255,255,255,.90);
+  box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+.navbar .nav-link{
+  font-weight:500;
+  padding: .5rem .8rem;
+  border-radius: 99px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+/* Estilo do link ativo (Scrollspy) */
+.navbar .nav-link.active {
+  color: var(--ink) !important;
+  background: var(--chip);
+}
+.navbar .nav-link:hover {
+  background: var(--chip);
+}
+
+/* ATUALIZAÇÃO: Estilos do Toggler Customizado */
+.navbar-toggler {
+  border: 0;
+  box-shadow: none !important; /* Remove foco do Bootstrap */
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+.toggler-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+}
+/* Animação para "X" quando o menu está aberto */
+.navbar-toggler:not(.collapsed) .bar1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.navbar-toggler:not(.collapsed) .bar2 {
+  opacity: 0;
+}
+.navbar-toggler:not(.collapsed) .bar3 {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* ==============================
+  HERO (com Carrossel no Phone)
+  ============================== */
+/* ... (estilos do hero, phone mockup, etc. - sem alterações) ... */
+.hero{position:relative;overflow:hidden}
+.badge-soft{background:#fff; border:1px solid #eee; padding:.45rem .7rem; border-radius:999px; font-size:.9rem}
+.hero-bullets{ list-style:none; padding:0; margin: 0 }
+.hero-bullets li{ display:flex; align-items:center; gap:.5rem; margin:.25rem 0 }
+.hero-bullets i{ color:#10b981 }
+.scroll-cue{ display:flex; align-items:center; gap:.5rem; color:var(--muted); font-size:.95rem }
+.scroll-cue i{ animation:bounce 1.4s infinite }
+@keyframes bounce{ 0%,100%{ transform:translateY(0)} 50%{ transform:translateY(6px)} }
+.phone-wrap{
+  border-radius: 36px;
+  padding: 10px; 
+  background: #111;
+  position: relative; 
+  box-shadow: 0 25px 60px rgba(0,0,0,.25);
+}
+.phone-screen{
+  border-radius: 28px;
+  overflow: hidden;
+  background: #000;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+}
+.phone-notch{
+  position:absolute; top:8px; left:50%; transform:translateX(-50%);
+  width: 30%; height: 16px; background: #111; border-radius: 0 0 12px 12px;
+  z-index: 10;
+}
+.phone-carousel-content {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+.phone-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.phone-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px 4px 12px;
+}
+.phone-arrow {
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+.phone-arrow:hover {
+  background: var(--accent);
+  color: #000;
+}
+.phone-dots {
+  display: flex;
+  gap: 6px;
+}
+.phone-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #444;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.phone-dot.active {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+/* ==============================
+  Client Logos Bar
+  ============================== */
+.client-logos-bar {
+  padding: 30px 0;
+  background: var(--bg);
+  border-bottom: 1px solid #eee;
+}
+.client-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+}
+.client-logos .trust-text {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+}
+.client-logos .logo-item {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--muted);
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+.client-logos .logo-item:hover {
+  opacity: 1;
+}
+
+/* ==============================
+  PORTFÓLIO (com 9:16)
+  ============================== */
+.work-card{
+  border:0; 
+  border-radius: 1rem; 
+  overflow: hidden; 
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.work-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+.work-card .card-body{display:flex; flex-direction:column; gap:.5rem}
+.chip{background:var(--chip); padding:.35rem .7rem; border-radius:999px; font-size:.85rem}
+.work-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.work-card:hover .work-video {
+  transform: scale(1.05);
+}
+
+/* ==============================
+  Seções (Serviços, Planos, etc)
+  ============================== */
+
+/* Serviços */
+.service{
+  background:#fff; border:1px solid #eee; border-radius:1rem; padding:1.5rem;
+  transition:.25s ease; text-align:left; box-shadow: var(--shadow-sm);
+}
+.service i{font-size:1.4rem; color: var(--accent-2);}
+.service:hover{transform:translateY(-6px); box-shadow:var(--shadow)}
+
+/* Planos */
+.pricing.card{
+  border:1px solid #eee; border-radius:1rem; box-shadow:var(--shadow-sm); 
+  overflow:hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pricing.card:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow);
+}
+.pricing .card-header{background:linear-gradient(180deg,#fff, #fafafa); padding: 1.25rem 1rem;}
+.pricing .price{font-size:1.1rem; color:#333}
+.pricing .price b{font-size:1.8rem}
+.pricing .flag{
+  background: linear-gradient(90deg,var(--accent),var(--accent-2)); color:#000;
+  padding:.25rem .5rem; border-radius:.5rem; font-size:.75rem; display:inline-block; margin-top:.4rem
+}
+.pricing.featured{
+  transform:scale(1.03); 
+  border-width: 2px;
+  border-color:var(--accent-2);
+}
+.pricing.featured:hover {
+  transform: scale(1.05); /* Efeito de hover mais forte */
+}
+.pricing .list-group-item {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.pricing .list-group-item i { color: #10b981; }
+.pricing .list-group-item.disabled { color: #aaa; }
+.pricing .list-group-item.disabled i { color: #aaa; }
+
+/* Processo */
+.step{
+  background:#fff; border:1px dashed #e7e7e7; border-radius:1rem; padding:1.25rem; text-align:center;
+  box-shadow: var(--shadow-sm);
+}
+.step span{
+  display:inline-grid; place-content:center; width:36px; height:36px; border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#000; font-weight:800; margin-bottom:.5rem
+}
+
+/* Depoimentos */
+.review-card {
+  background: #fff; border: 1px solid #eee; border-radius: 1rem;
+  padding: 1.5rem; height: 100%; display:flex; flex-direction:column; box-shadow: var(--shadow-sm);
+}
+.review-stars { color: var(--accent); margin-bottom:.75rem }
+.review-text { font-size:1rem; font-style:italic; color:var(--muted); flex-grow:1; margin-bottom:1rem }
+.review-author { display:flex; align-items:center; gap:.75rem }
+.review-author img { width:48px; height:48px; border-radius:50%; object-fit:cover }
+
+/* FAQ */
+.accordion-item{border:1px solid #eee; border-radius:.8rem !important; overflow:hidden; margin-bottom:.75rem}
+.accordion-button{font-weight:600; color:var(--ink)}
+.accordion-button:not(.collapsed){background: var(--soft); color:var(--ink); box-shadow:none}
+.accordion-button:focus{box-shadow:0 0 0 .25rem rgba(247,181,0,.25)}
+.accordion-body{color:var(--muted); text-align: left;}
+
+/* ==============================
+  Contato (Glass Form)
+  ============================== */
+.contact-cta{
+  background: radial-gradient(800px 300px at 10% 0%, rgba(123,92,255,.25), transparent 60%),
+            linear-gradient(160deg,#141414 0%, #1a1a1a 100%);
+}
+.glass-form{
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:1rem; padding:1.5rem; /* Mais padding */
+  backdrop-filter: blur(8px);
+}
+#contato .form-control{
+  border-radius:.8rem; background:rgba(0,0,0,.2); border-color:rgba(255,255,255,.2); color:#fff;
+  padding: .75rem 1rem;
+}
+#contato .form-control::placeholder { color: #aaa; }
+#contato .form-control:focus{
+  background:rgba(0,0,0,.3); border-color:var(--accent); color:#fff;
+  box-shadow:0 0 0 .25rem rgba(247,181,0,.25);
+}
+#contato .form-label{color:#d7d7d7}
+
+/* Footer */
+footer{background:var(--bg); border-top:1px solid #eee}
+.footer-socials a{transition: color .2s ease, transform .2s ease}
+.footer-socials a:hover{color:var(--accent) !important; transform:scale(1.1)}
+
+/* Floating WhatsApp */
+.wa-float{position:fixed; right:16px; bottom:16px; z-index:50}
+.wa-float .btn{
+  border-radius:999px; box-shadow:0 8px 24px rgba(0,0,0,.12);
+  transition: transform 0.2s ease;
+}
+.wa-float .btn:hover {
+  transform: scale(1.05);
+}
+

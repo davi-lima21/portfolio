@@ -1,0 +1,216 @@
+/* Importando fontes e variáveis do site principal */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --bg: #0c0f14;
+  --bg-darker: #080a0e;
+  --accent: #f7a824;
+  --accent-hover: #ffb740;
+  --accent-light: rgba(247, 168, 36, 0.1);
+  --ink: #ffffff;
+  --muted: #adb5bd;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --sidebar-width: 260px;
+}
+
+body {
+  background: var(--bg-darker);
+  color: var(--ink);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* Layout Principal */
+.sidebar {
+  width: var(--sidebar-width);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: var(--bg);
+  border-right: 1px solid var(--border-color);
+  z-index: 100;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  padding: 2rem;
+  width: calc(100% - var(--sidebar-width));
+}
+
+/* Botão Mobile */
+.mobile-menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1040;
+}
+
+/* Offcanvas (Menu Mobile) */
+.offcanvas {
+  background: var(--bg);
+  max-width: var(--sidebar-width);
+}
+.offcanvas .nav-link {
+  color: var(--muted);
+}
+.offcanvas .nav-link.active {
+  color: var(--bg);
+  background-color: var(--accent);
+}
+
+/* Estilos do Sidebar */
+.sidebar-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.brand-circle {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+.brand-subtitle {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: -5px;
+}
+
+.sidebar .nav-link {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.5rem;
+}
+.sidebar .nav-link:hover {
+  color: var(--ink);
+  background-color: var(--bg-darker);
+}
+.sidebar .nav-link.active {
+  color: var(--bg);
+  background: var(--accent);
+}
+.sidebar .nav-link.active i,
+.sidebar .nav-link:hover i {
+  color: inherit;
+}
+.sidebar .nav-link i {
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+/* Conteúdo Principal */
+.page-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Cards */
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+}
+.card-header {
+  background-color: rgba(0,0,0,0.1);
+  border-bottom: 1px solid var(--border-color);
+}
+.card-filters .form-control,
+.card-filters .form-select {
+  background: var(--bg-darker);
+  border-color: var(--border-color);
+}
+.card-filters .form-control:focus,
+.card-filters .form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.25rem var(--accent-light);
+}
+
+/* Tabela */
+.table thead th {
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  border-bottom-width: 2px;
+}
+.table td {
+  vertical-align: middle;
+}
+.table-hover tbody tr:hover {
+  background-color: var(--bg-darker);
+}
+
+.contact-info {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.contact-info strong {
+  color: var(--ink);
+}
+
+.btn-action {
+  width: 38px;
+  height: 38px;
+  display: inline-grid;
+  place-items: center;
+  font-size: 1rem;
+}
+
+/* Botões */
+.btn-accent {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+  border: none;
+}
+.btn-accent:hover {
+  background: var(--accent-hover);
+  color: var(--bg);
+}
+.pagination .page-item.active .page-link {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+.pagination .page-link {
+  background-color: var(--bg-darker);
+  border-color: var(--border-color);
+  color: var(--muted);
+}
+.pagination .page-link:hover {
+  background-color: #1a1f29;
+  color: var(--ink);
+}
+.pagination .page-item.disabled .page-link {
+  background-color: var(--bg);
+  border-color: var(--border-color);
+  color: #6c757d;
+}
+
+
+/* Responsividade */
+@media (max-width: 991.98px) {
+  .sidebar {
+    display: none; /* Esconde no mobile */
+  }
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    padding-top: 6rem; /* Espaço para o botão de menu */
+  }
+}

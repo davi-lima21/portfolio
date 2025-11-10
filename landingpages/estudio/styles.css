@@ -288,7 +288,7 @@ a, .btn, .accordion-button, .gallery-item {
 .plan-popular .badge {
   background: var(--brand);
   color: #020617;
-  top: -18px;
+  top: -1px;
 }
 
 /* =========================================================
@@ -739,4 +739,21 @@ footer {
 .footer-bottom .link-secondary:hover {
     color: var(--brand);
     text-decoration: underline;
+}
+
+/* Ajuste do selo "Mais escolhido" para mobile */
+@media (max-width: 767.98px) {
+  #planos .plan-popular {
+    position: relative;
+  }
+
+  #planos .plan-popular .badge {
+    top: 0;
+    right: 14px;
+    left: auto;
+    transform: none;
+    font-size: .65rem;
+    padding: .35rem .6rem;
+    border-radius: 999px;
+  }
 }

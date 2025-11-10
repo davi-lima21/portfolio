@@ -1,64 +1,81 @@
 /* =========================================================
-   TOKENS E PALETA — versão baseada na arte
+   TOKENS E PALETA
    ========================================================= */
 :root {
-  --brand: #f6c453;          /* dourado principal */
-  --brand-dark: #c38c2c;     /* dourado mais escuro */
-  --ink: #e2e8f0;            /* texto claro */
-  --muted: #94a3b8;          /* texto secundário */
-  --bg: #060a12;             /* fundo geral */
-  --bg-soft: rgba(10, 14, 24, 0.8);
-  --border: rgba(248, 250, 252, .04);
+  --brand: #f6c453;        /* dourado principal */
+  --brand-soft: rgba(246, 196, 83, 0.12);
+  --ink: #e2e8f0;          /* texto claro */
+  --muted: rgba(226, 232, 240, 0.6);
+  --bg: radial-gradient(circle at top, #0f172a 0%, #020617 60%, #000 100%);
+  --panel: rgba(2, 6, 23, 0.55);
+  --border: rgba(246, 196, 83, 0.08);
+  --radius-lg: 1.2rem;
 
-  /* para o Bootstrap */
   --bs-primary: var(--brand);
   --bs-primary-rgb: 246, 196, 83;
 }
 
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
+
 body {
-  background: radial-gradient(circle at top, #0f172a 0%, #020617 65%, #000 100%);
+  background: var(--bg);
   color: var(--ink);
-  overflow-x: hidden;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Acessibilidade */
+:focus-visible {
+  outline: 3px solid rgba(246, 196, 83, .55);
+  outline-offset: 2px;
+}
+
+/* Transições suaves para links e botões */
+a, .btn, .accordion-button, .gallery-item {
+  transition: all .25s ease-in-out;
 }
 
 /* =========================================================
    NAVBAR
    ========================================================= */
 .navbar {
-  background: rgba(2, 6, 23, .85);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(246, 196, 83, .08);
+  background: rgba(2, 6, 23, .65);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(246, 196, 83, .04);
+  transition: .25s ease;
 }
 .navbar.stuck {
-  box-shadow: 0 6px 24px rgba(0, 0, 0, .45);
-  background: rgba(2, 6, 23, .92);
+  background: rgba(2, 6, 23, .96);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, .35);
 }
 .navbar-brand {
   font-family: "Segoe Script", "Brush Script MT", cursive;
   font-weight: 600;
   color: var(--brand);
 }
-.navbar-brand:hover {
-  color: #fff;
-}
+.navbar-brand:hover { color: #fff; }
 .nav-link {
-  color: rgba(226, 232, 240, .7);
+  color: rgba(226, 232, 240, .65);
   font-weight: 500;
 }
 .nav-link:hover,
-.nav-link:focus {
+.nav-link:focus,
+.nav-link.active {
   color: var(--brand);
 }
 .navbar-toggler {
-  border: 1px solid rgba(248, 250, 252, .18);
+  border: 1px solid rgba(248, 250, 252, .35);
 }
-
-/* bolinha dourada como na arte */
+.navbar-toggler-icon {
+  filter: invert(1);
+}
 .brand-dot {
   width: .5rem;
   height: .5rem;
@@ -70,16 +87,16 @@ body {
 }
 
 /* =========================================================
-   HERO — escuro com glow
+   HERO
    ========================================================= */
 .hero {
-  min-height: 90vh;
+  min-height: 95vh;
   display: flex;
   align-items: center;
+  padding-top: 6rem;
   background:
-    radial-gradient(28rem 28rem at 80% 10%, rgba(233, 102, 102, .35), transparent 60%),
-    radial-gradient(36rem 36rem at 35% -10%, rgba(246, 196, 83, .18), transparent 65%),
-    linear-gradient(160deg, #020617 0%, #030712 100%);
+    radial-gradient(32rem 32rem at 90% 0%, rgba(246, 196, 83, .04), transparent 70%),
+    linear-gradient(160deg, rgba(2, 6, 23, 1) 0%, rgba(2, 6, 23, .1) 100%);
 }
 .hero .badge-soft {
   background: rgba(246, 196, 83, .08);
@@ -87,75 +104,121 @@ body {
   border: 1px solid rgba(246, 196, 83, .35);
 }
 .hero h1 {
-  text-shadow: 0 10px 40px rgba(0, 0, 0, .6);
+  text-shadow: 0 10px 40px rgba(0, 0, 0, .45);
 }
-.hero .lead {
-  color: rgba(226, 232, 240, .75);
+.hero p.lead {
+  color: rgba(226, 232, 240, .8);
 }
 .hero-img {
-  max-height: 480px;
   border-radius: 1.25rem;
   border: 1px solid rgba(246, 196, 83, .3);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, .55);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, .8);
   object-fit: cover;
+  max-height: 460px;
 }
-
-/* mobile hero */
 @media (max-width: 991.98px) {
   .hero {
-    padding-top: 110px;
     text-align: center;
+    padding-top: 110px;
   }
-  .hero-img {
-    margin-inline: auto;
-    max-height: 360px;
+  .hero-img { margin-inline: auto; max-height: 360px; }
+}
+/* Melhoria responsiva para telas pequenas */
+@media (max-width: 576px) {
+  .hero {
+    padding-top: 90px;
+    min-height: 90vh;
+  }
+  .hero h1 {
+    font-size: 2.1rem; /* Reduz um pouco o display-5 */
   }
 }
 
 /* =========================================================
-   BOTÕES — botão amarelo da arte
+   BOTÕES
    ========================================================= */
+.btn {
+  transition: all .25s ease;
+}
 .btn-brand {
   background: linear-gradient(90deg, #f7cc68 0%, #f6b833 100%);
   border: 1px solid rgba(247, 203, 104, .5);
-  color: #0f172a;
+  color: #020617;
   border-radius: .9rem;
   font-weight: 600;
-  box-shadow: 0 12px 30px rgba(246, 196, 83, .35);
+  box-shadow: 0 12px 30px rgba(246, 196, 83, .25);
 }
-.btn-brand:hover {
-  filter: brightness(.96);
-  color: #020617;
+.btn-brand:hover { 
+  filter: brightness(.96); 
+  color: #020617; 
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(246, 196, 83, .3);
 }
 .btn-soft {
   background: rgba(248, 250, 252, .04);
   border: 1px solid rgba(248, 250, 252, .05);
   color: #e2e8f0;
+  border-radius: .9rem;
+}
+/* Melhoria: Adiciona hover ao btn-soft */
+.btn-soft:hover {
+  background: rgba(248, 250, 252, .08);
+  border-color: rgba(248, 250, 252, .1);
+  color: #fff;
 }
 
 /* =========================================================
    SEÇÕES
    ========================================================= */
 .section {
-  padding: 72px 0;
+  padding: 60px 0;
 }
+@media (min-width: 992px) {
+  .section {
+    padding: 90px 0; /* Mais respiro em telas maiores */
+  }
+}
+
 .bg-soft {
-  background: rgba(2, 6, 23, .35);
+  background: radial-gradient(circle at top, rgba(3, 7, 18, .35) 0, rgba(2, 6, 23, .85) 70%);
   backdrop-filter: blur(4px);
 }
+.text-secondary,
+.text-muted {
+  color: var(--muted) !important; /* força pra ficar visível no dark */
+}
+.section-title {
+  margin-bottom: .4rem;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
 .card {
-  background: radial-gradient(circle at top, rgba(248, 250, 252, .02) 0, rgba(2, 6, 23, .9) 75%);
-  border: 1px solid rgba(246, 196, 83, .05);
-  border-radius: 1.25rem;
+  background: radial-gradient(circle at top, rgba(248, 250, 252, .02) 0, rgba(3, 7, 18, .9) 75%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   box-shadow: 0 10px 25px rgba(0, 0, 0, .35);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s;
+}
+/* Melhoria: Adiciona hover sutil nos cards de serviço */
+#servicos .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, .45);
+  border-color: rgba(246, 196, 83, .12);
+}
+
+.card h3,
+.card .h5 {
+  color: #fff;
 }
 .card p {
   color: rgba(226, 232, 240, .65);
 }
 .icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
   display: inline-grid;
   place-items: center;
   background: radial-gradient(circle at 40% 40%, rgba(247, 238, 218, 1) 0, rgba(247, 190, 92, .4) 70%);
@@ -163,29 +226,41 @@ body {
 }
 
 /* =========================================================
+   ESTRUTURA LIST
+   ========================================================= */
+.list-group {
+  background: rgba(2, 6, 23, .15);
+}
+.list-group-item {
+  background: rgba(2, 6, 23, .15);
+  border: 1px solid rgba(246, 196, 83, .03);
+  color: rgba(226, 232, 240, .9);
+}
+
+/* =========================================================
    GALERIA
    ========================================================= */
-.gallery-item {
+#galeria .gallery-item {
   display: block;
   overflow: hidden;
   border-radius: 1rem;
   border: 1px solid rgba(246, 196, 83, .14);
-  background: radial-gradient(circle at top, rgba(248, 250, 252, .02) 0, rgba(2, 6, 23, 1) 75%);
+  background: radial-gradient(circle at top, rgba(248, 250, 252, .02) 0, rgba(2, 6, 23, 1) 80%);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s;
   box-shadow: 0 6px 16px rgba(0, 0, 0, .35);
 }
-.gallery-item img {
+#galeria .gallery-item img {
   width: 100%;
   height: 240px;
   object-fit: cover;
   transition: transform .35s ease;
 }
-.gallery-item:hover {
+#galeria .gallery-item:hover {
   transform: translateY(-3px);
-  border-color: rgba(246, 196, 83, .35);
+  border-color: rgba(246, 196, 83, .6);
   box-shadow: 0 20px 40px rgba(0, 0, 0, .45);
 }
-.gallery-item:hover img {
+#galeria .gallery-item:hover img {
   transform: scale(1.04);
 }
 #galeria video {
@@ -193,79 +268,475 @@ body {
   border: 1px solid rgba(246, 196, 83, .12);
   background: #000;
 }
+@media (max-width: 767.98px) {
+  #galeria .gallery-item img { height: 210px; }
+}
 
 /* =========================================================
-   PREÇOS
+   PLANOS
    ========================================================= */
 .price {
-  font-size: 2.25rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: 2.1rem;
+  font-weight: 700;
   color: #fff;
+}
+.plan-popular {
+  border: 1px solid rgba(246, 196, 83, .55);
+  background: radial-gradient(circle at 10% 0, rgba(246, 196, 83, .10), rgba(2, 6, 23, 1) 75%);
+  position: relative;
+}
+.plan-popular .badge {
+  background: var(--brand);
+  color: #020617;
+  top: -18px;
 }
 
 /* =========================================================
-   FAQ
+   FAQ (MELHORIA SIGNIFICATIVA)
    ========================================================= */
-.accordion-item {
-  background: rgba(2, 6, 23, .01);
-  border: 1px solid rgba(246, 196, 83, .06);
+.accordion {
+  border-radius: var(--radius-lg);
+  overflow: hidden; /* Garante que os filhos respeitem o radius */
+  border: 1px solid var(--border);
 }
+.accordion-item {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+}
+.accordion-item:last-of-type {
+  border-bottom: 0;
+}
+
 .accordion-button {
   background: transparent;
-  color: #e2e8f0;
+  color: var(--ink);
+  font-weight: 500;
+  border-radius: 0 !important;
 }
+/* Remove o box-shadow feio do focus do Bootstrap */
+.accordion-button:focus {
+  box-shadow: none;
+}
+
 .accordion-button:not(.collapsed) {
-  background: rgba(246, 196, 83, .05);
+  background: var(--brand-soft);
+  color: var(--brand);
+  box-shadow: none;
+}
+
+.accordion-body {
+  color: var(--muted);
+}
+
+/* Aqui está a mágica:
+  Substituímos o ícone SVG feio e azul do Bootstrap por um
+  ícone customizado que usa nossas variáveis de cor.
+*/
+.accordion-button::after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  /* Ícone "seta para baixo" na cor --ink */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23e2e8f0'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform .2s ease-in-out;
+}
+
+.accordion-button:not(.collapsed)::after {
+  /* Ícone "seta para baixo" (girado) na cor --brand */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f6c453'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  transform: rotate(-180deg);
+}
+
+
+/* =========================================================
+   CONTATO
+   ========================================================= */
+#contato a {
+  color: rgba(226, 232, 240, .85);
+}
+#contato a:hover {
   color: #fff;
 }
 
 /* =========================================================
-   WHATSAPP FLUTUANTE
+   WHATSAPP FLOAT
    ========================================================= */
 .whatsapp-float {
   position: fixed;
   right: 18px;
   bottom: 18px;
-  z-index: 1050;
+  z-index: 999;
 }
 .whatsapp-float .whatsapp-btn {
-  width: 62px;
-  height: 62px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: linear-gradient(120deg, #f6c453 0%, #f4a921 90%);
   color: #020617;
   display: grid;
   place-items: center;
   box-shadow: 0 20px 40px rgba(246, 196, 83, .35);
+  transition: all .25s ease; /* Adicionado */
 }
-.whatsapp-float .whatsapp-btn i {
-  font-size: 1.4rem;
+.whatsapp-float .whatsapp-btn:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 25px 45px rgba(246, 196, 83, .4);
 }
+.whatsapp-float .whatsapp-btn i { font-size: 1.4rem; }
 
 /* =========================================================
    FOOTER
    ========================================================= */
 footer {
-  border-top: 1px solid rgba(246, 196, 83, .08);
+  border-top: 1px solid var(--border);
   background: rgba(2, 6, 23, .85);
   color: rgba(226, 232, 240, .55);
 }
 
 /* =========================================================
-   FOCUS
+   CUSTOM NAVBAR TOGGLER (Hamburger-to-X)
+   ADICIONE ISTO AO FINAL DO SEU styles.css
    ========================================================= */
-:focus-visible {
-  outline: 3px solid rgba(246, 196, 83, .55);
-  outline-offset: 2px;
+
+/* Remove o estilo padrão do botão toggler do Bootstrap */
+.navbar-toggler {
+    border: none !important; /* Remove a borda */
+    padding: 0 !important; /* Remove o padding */
+    font-size: 1.5rem; /* Ajuste o tamanho se necessário */
+}
+.navbar-toggler:focus {
+    box-shadow: none !important; /* Remove o anel de foco azul */
 }
 
-/* responsivo */
-@media (max-width: 767.98px) {
-  .section {
-    padding: 56px 0;
+/* Container do ícone */
+.hamburger-icon {
+    width: 28px;
+    height: 22px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+/* As 3 barras do ícone */
+.hamburger-icon span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    /* Cor das barras (usa a variável --ink do seu CSS) */
+    background: var(--ink, #e2e8f0); 
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+/* Posição da barra de cima */
+.hamburger-icon span:nth-child(1) {
+    top: 0px;
+}
+
+/* Posição da barra do meio */
+.hamburger-icon span:nth-child(2) {
+    top: 9px; /* 9px abaixo (meio) */
+}
+
+/* Posição da barra de baixo */
+.hamburger-icon span:nth-child(3) {
+    top: 18px; /* 18px abaixo (base) */
+}
+
+/* --- ESTADO ABERTO (X) --- */
+/* O Bootstrap adiciona aria-expanded="true" ao botão quando o menu está aberto */
+/* Aqui, nós animamos as barras com base nesse atributo */
+
+/* Gira a barra de cima */
+.navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 9px;
+    /* Muda a cor para o dourado da marca */
+    background: var(--brand, #f6c453);
+}
+
+/* Esconde a barra do meio */
+.navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+
+/* Gira a barra de baixo */
+.navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 9px;
+    /* Muda a cor para o dourado da marca */
+    background: var(--brand, #f6c453);
+}
+
+/* =========================================================
+   HERO SECTION - ATUALIZAÇÕES DE DESIGN
+   ADICIONE ISTO AO FINAL DO SEU styles.css
+   ========================================================= */
+
+/* --- 1. MELHORIA DE DESIGN E TAMANHO (COMPUTADOR) --- */
+
+/* Aumenta o 'respiro' da seção hero */
+.hero {
+    padding-top: 8rem; /* Mais espaço em cima */
+    padding-bottom: 4rem; /* Adiciona espaço embaixo */
+    min-height: 100vh; /* Ocupa a tela inteira */
+}
+
+/* Animação sutil de entrada para o texto */
+.hero .col-lg-7 {
+    animation: fadeInText 1s ease-out 0.2s forwards;
+    opacity: 0; /* Começa invisível para animar */
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media query para telas grandes (LG e acima) */
+@media (min-width: 992px) {
+    /* Aumenta o H1 (de display-5 para display-4) */
+    .hero h1 {
+        font-size: 3.5rem; /* Tamanho do display-4 */
+        line-height: 1.15;
+    }
+
+    /* Aumenta o parágrafo lead */
+    .hero p.lead {
+        font-size: 1.3rem; /* Um pouco maior que o padrão */
+    }
+}
+
+/* Media query para telas extra-grandes (XL e acima) */
+@media (min-width: 1200px) {
+    /* Aumenta ainda mais o H1 (para display-3) */
+    .hero h1 {
+        font-size: 4.2rem; /* Tamanho próximo do display-3 */
+    }
+}
+
+/* --- 2. MELHORIA DE ALINHAMENTO (MOBILE) --- */
+
+/* Estas regras vão SOBRESCREVER o 'text-align: center' 
+  que existia no seu CSS original para telas menores E
+  aplicar a imagem como fundo.
+*/
+@media (max-width: 991.98px) {
+    .hero {
+        /* FOI REMOVIDO: text-align: center; */
+        text-align: left !important; /* FORÇADO: Alinhamento à esquerda */
+        
+        /* --- NOVAS REGRAS DE BACKGROUND PARA MOBILE --- */
+        /* Sobrepõe o 'background' gradiente do desktop */
+        background: 
+            /* 1. Dark overlay para legibilidade */
+            linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+            /* 2. Imagem de fundo */
+            url('mesa.jpeg') center center / cover no-repeat;
+        
+        /* Ajusta a altura e alinhamento para o novo fundo */
+        min-height: 90vh; /* 90% da altura da tela */
+        display: flex;
+        align-items: center; /* Centraliza o conteúdo verticalmente */
+        padding-top: 110px; /* Mantém espaço para o navbar */
+        padding-bottom: 6rem; /* Mais respiro embaixo */
+    }
+    
+    /* Esconde a coluna da imagem no mobile, pois agora é um bg */
+    .hero .col-lg-5 { 
+        display: none;
+    }
+
+    /* Faz a coluna de texto ocupar 100% da largura */
+    .hero .col-lg-7 {
+        width: 100%;
+        flex: 0 0 auto;
+    }
+}
+
+/* =========================================================
+   PLANOS SECTION - ATUALIZAÇÕES DE ESTILO
+   ADICIONE ISTO AO FINAL DO SEU styles.css
+   ========================================================= */
+
+/* Transição suave para todos os cards na seção planos */
+#planos .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efeito de HOVER para os cards NORMAIS */
+#planos .card:not(.plan-popular):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(246, 196, 83, 0.2);
+}
+
+/* Botão "Solicitar" (btn-soft) nos cards normais
+   Fica dourado ao passar o mouse */
+#planos .card:not(.plan-popular) .btn-soft:hover {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #020617; /* Cor do texto do 'btn-brand' */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(246, 196, 83, 0.2);
+}
+
+
+/* Estilo PADRÃO do card POPULAR (sem hover) */
+#planos .plan-popular {
+    transform: scale(1.03); /* Ligeiramente maior */
+    z-index: 10;
+    /* Sombra dourada sutil por padrão */
+    box-shadow: 0 25px 50px rgba(246, 196, 83, 0.15), 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Efeito de HOVER para o card POPULAR */
+#planos .plan-popular:hover {
+    transform: scale(1.05) translateY(-5px); /* Aumenta e sobe mais */
+    box-shadow: 0 30px 60px rgba(246, 196, 83, 0.25), 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Ajusta o texto "Sob consulta" */
+#planos .price {
+    font-size: 1.8rem; /* Um pouco menor que o original */
+    font-weight: 600;
+    color: var(--brand); /* Cor dourada */
+}
+
+/* Alinha a lista de features (ícone e texto) */
+#planos .list-unstyled li {
+    display: flex;
+    align-items: flex-start;
+    color: var(--muted);
+}
+
+#planos .list-unstyled i {
+    margin-right: 0.6rem;
+    transform: translateY(3px); /* Alinha o ícone verticalmente */
+}
+
+/* =========================================================
+   CONTATO SECTION - CORREÇÃO DE ESTILO
+   ADICIONE ISTO AO FINAL DO SEU styles.css
+   ========================================================= */
+
+/* O seletor '#contato a' no seu CSS original era muito geral 
+  e estava quebrando o botão (deixando o texto branco). 
+  Vamos substituí-lo por regras mais específicas.
+*/
+
+/* PASSO 1: Se você encontrar estas regras no seu styles.css, REMOVA-AS:
+  
+  #contato a {
+    color: rgba(226, 232, 240, .85);
   }
-  .gallery-item img {
-    height: 210px;
+  #contato a:hover {
+    color: #fff;
   }
+*/
+
+
+/* PASSO 2: ADICIONE AS REGRAS ABAIXO no lugar.
+*/
+
+/* 1. Garante que o texto do botão principal seja escuro */
+#contato .btn-brand,
+#contato .btn-brand:hover {
+    color: #020617; /* Força o texto escuro */
+}
+
+/* 2. Estiliza o novo link de telefone (que substituiu a lista) */
+#contato .link-secondary {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+#contato .link-secondary:hover {
+    color: var(--brand); /* Fica dourado no hover */
+    text-decoration: underline;
+}
+
+/* =========================================================
+   FOOTER COMPLETO - ESTILOS
+   ADICIONE ISTO AO FINAL DO SEU styles.css
+   ========================================================= */
+
+/* Título das colunas do rodapé */
+.footer-title {
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Links do rodapé */
+.footer-links li {
+    padding: 0.35rem 0;
+}
+.footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.footer-links a:hover {
+    color: var(--brand); /* Dourado no hover */
+}
+
+/* Ícones de Rede Social */
+.social-links {
+    display: flex;
+    gap: 0.75rem;
+}
+.social-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--muted);
+    font-size: 1.1rem;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+}
+.social-icon:hover {
+    background: var(--brand);
+    color: #020617; /* Cor escura do texto */
+    border-color: var(--brand);
+    transform: translateY(-3px);
+}
+
+/* Linha do sub-footer (copyright) */
+.footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-bottom: 1.5rem; /* Ajusta o padding do <footer> original */
+}
+
+/* Link de crédito no sub-footer */
+.footer-bottom .link-secondary {
+    color: var(--muted);
+    text-decoration: none;
+}
+.footer-bottom .link-secondary:hover {
+    color: var(--brand);
+    text-decoration: underline;
 }

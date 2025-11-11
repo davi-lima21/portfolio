@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AMR Brasil – Corretora de Seguros</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --panel: #111827;
+      --panel-soft: rgba(17, 24, 39, .55);
+      --gold: #d6a545;
+      --gold-soft: #f7d188;
+      --text: #ffffff;
+      --text-soft: rgba(255, 255, 255, .7);
+      --muted: rgba(255, 255, 255, .6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      /* Adiciona padding para o scroll não cobrir o título com o navbar fixo */
+      scroll-padding-top: 100px; 
+    }
+
+    body {
+      background: radial-gradient(circle at top, #131a2a 0%, #0b0f19 45%, #05070b 100%);
+      color: var(--text);
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+      overflow-x: hidden; /* Evita scroll horizontal */
+    }
+
+    a {
+      text-decoration: none;
+      transition: .2s;
+    }
+
+    /* --- ANIMAÇÕES --- */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp .6s ease-out backwards;
+    }
+
+    /* --- NAVBAR --- */
+    .navbar {
+      background: rgba(5, 7, 11, .85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, .03);
+      transition: .3s;
+    }
+
+    .navbar.scrolled {
+      background: rgba(5, 7, 11, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+    }
+
+    .navbar-brand img {
+      height: 45px;
+    }
+
+    .nav-link {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold);
+    }
+
+    /* Botão Dourado */
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 35%, #925e0a 100%);
+      border: none;
+      color: #130e06;
+      font-weight: 600;
+      box-shadow: 0 0 14px rgba(214, 165, 69, .35);
+      transition: .2s;
+    }
+
+    .btn-gold:hover {
+      filter: brightness(1.05);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(214, 165, 69, .25);
+    }
+
+    /* --- HERO --- */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding-top: 5.5rem;
+      padding-bottom: 3rem;
+    }
+    
+    .hero-content {
+      max-width: 760px; /* Limita a largura do texto para melhor leitura */
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      background: rgba(214, 165, 69, .12);
+      border: 1px solid rgba(214, 165, 69, .35);
+      display: inline-flex;
+      gap: .5rem;
+      align-items: center;
+      border-radius: 999px;
+      padding: .4rem 1.1rem .4rem .4rem;
+      margin-bottom: 1rem;
+      animation-delay: .2s;
+    }
+
+    .hero-badge-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 90%);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #1b1b1b;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 4.2vw, 3.5rem); /* Título maior */
+      font-weight: 700;
+      animation-delay: .4s;
+    }
+
+    .hero-subtitle {
+      color: var(--text-soft);
+      max-width: 600px; /* Alinhado com o hero-content */
+      margin: 1rem auto 1.5rem;
+      font-size: 1.1rem;
+      animation-delay: .6s;
+    }
+    
+    .hero .d-flex {
+      justify-content: center;
+      animation-delay: .8s;
+    }
+
+    .hero-meta {
+      color: rgba(255, 255, 255, .4);
+      animation-delay: 1s;
+    }
+    
+    /* --- SEÇÕES --- */
+    .section-title {
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      color: rgba(255, 255, 255, .55);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* --- CARDS DE SERVIÇOS (Claros) --- */
+    .service-card {
+      background: #f5f5f5;
+      color: #111827;
+      border-radius: 1rem;
+      border: 1px solid transparent;
+      transition: .25s;
+      min-height: 220px;
+    }
+
+    .service-card p {
+      color: #4b5563;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, .12);
+      border-color: var(--gold-soft);
+    }
+    
+    .service-card .fade-in-up { animation-delay: .2s; }
+    .service-card:nth-child(2) .fade-in-up { animation-delay: .4s; }
+    .service-card:nth-child(3) .fade-in-up { animation-delay: .6s; }
+
+    .icon-pill {
+      width: 46px;
+      height: 46px;
+      border-radius: .9rem;
+      background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 100%);
+      display: grid;
+      place-items: center;
+      color: #111827;
+    }
+
+    /* --- PAINEL ESCURO (sobre, cta, etc) --- */
+    .dark-panel {
+      background: rgba(17, 24, 39, .85);
+      border: 1px solid rgba(255, 255, 255, .02);
+      border-radius: 1.2rem;
+    }
+
+    .dark-panel p,
+    .dark-panel small,
+    .dark-panel li {
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .list-check {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .list-check li {
+      display: flex;
+      gap: .75rem; /* Mais espaço */
+      margin-bottom: .75rem;
+      align-items: center;
+    }
+
+    .badge-check {
+      width: 26px;
+      height: 26px;
+      background: rgba(214, 165, 69, .12);
+      border: 1px solid rgba(214, 165, 69, .4);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fbe0a8;
+      flex: 0 0 26px;
+    }
+    
+    .badge-check .material-icons {
+      font-size: 1rem;
+    }
+
+    /* --- SEGMENTOS --- */
+    .segment-box {
+      background: rgba(255, 255, 255, .02);
+      border: 1px solid rgba(255, 255, 255, .03);
+      border-bottom: 3px solid transparent;
+      border-radius: .9rem;
+      color: #fff;
+      transition: .2s;
+    }
+
+    .segment-box small {
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .segment-box:hover {
+      background: rgba(214, 165, 69, .05);
+      border-color: rgba(214, 165, 69, .1);
+      border-bottom-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    /* --- CONTATO (Formulário) --- */
+    #contato {
+      background: linear-gradient(180deg, rgba(11, 15, 25, 0) 0%, rgba(17, 24, 39, .6) 100%);
+    }
+
+    .form-card {
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, .05);
+      border-radius: 1.25rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .28);
+    }
+
+    /* FORM DARK */
+    .form-control,
+    .form-select {
+      background: rgba(5, 7, 11, .3);
+      border: 1px solid rgba(255, 255, 255, .08);
+      color: #fff;
+      padding: .8rem 1rem;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, .4);
+    }
+    
+    .form-control:focus,
+    .form-select:focus {
+      background: rgba(5, 7, 11, .7);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 .15rem rgba(214, 165, 69, .25);
+      color: #fff;
+    }
+    
+    .form-select option {
+      background: var(--panel);
+      color: var(--text);
+    }
+
+
+    /* --- NOVO FOOTER INSTITUCIONAL --- */
+    footer {
+      background: #05070b;
+      border-top: 1px solid rgba(255, 255, 255, .05);
+      padding: 4rem 0 2rem;
+      font-size: .9rem;
+    }
+    
+    .footer-logo {
+      height: 45px;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-about {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      max-width: 300px;
+    }
+    
+    .social-links a {
+      color: var(--muted);
+      font-size: 1.2rem;
+      margin-right: .8rem;
+      display: inline-block;
+    }
+    
+    .social-links a:hover {
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+    
+    .footer-title {
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      font-size: .9rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: .8rem;
+    }
+    
+    .footer-links a {
+      color: var(--muted);
+    }
+    
+    .footer-links a:hover {
+      color: var(--gold);
+      padding-left: 5px;
+    }
+    
+    .footer-contact li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      color: var(--muted);
+      margin-bottom: .8rem;
+    }
+    
+    .footer-contact i {
+      color: var(--gold);
+      margin-top: 4px;
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .05);
+      padding-top: 1.5rem;
+      margin-top: 2.5rem;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+
+    /* --- WHATSAPP --- */
+    .floating-whatsapp {
+      position: fixed;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      width: 52px;
+      height: 52px;
+      background: #25d366;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, .4);
+      z-index: 999;
+      transition: .2s;
+    }
+    .floating-whatsapp:hover {
+      transform: scale(1.08);
+    }
+
+    /* --- RESPONSIVO --- */
+    @media (max-width: 992px) {
+      .navbar-collapse {
+        background: rgba(5, 7, 11, .98);
+        border-radius: 0 0 1rem 1rem;
+        padding: .5rem 1rem 1rem;
+        border: 1px solid rgba(255,255,255,.03);
+      }
+      .footer-logo, .footer-about {
+        max-width: 100%;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .footer-title {
+        margin-top: 2rem; /* Espaço entre colunas no mobile */
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: .5rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#top">
+        <!-- Placeholder para o logo. Substitua 'src' pelo seu arquivo -->
+        <img src="https://placehold.co/150x45/0b0f19/d6a545?text=AMR+Brasil&font=montserrat" 
+             onerror="this.onerror=null; this.src='https://placehold.co/150x45/0b0f19/d6a545?text=AMR+Brasil&font=montserrat';" 
+             alt="AMR Brasil Logo">
+      </a>
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto me-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#servicos">Seguros</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#segmentos">Segmentos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        </ul>
+        <a href="#contato" class="btn btn-gold btn-sm rounded-pill px-4">Solicitar cotação</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge fade-in-up">
+          <div class="hero-badge-icon">18+</div>
+          <div>
+            <small class="text-uppercase fw-semibold" style="letter-spacing:.08em;">Experiência em seguros</small><br>
+            <small class="">Atendimento em todo o Brasil</small>
+          </div>
+        </div>
+        <h1 class="hero-title mb-3 fade-in-up">Proteção sob medida para o seu patrimônio.</h1>
+        <p class="hero-subtitle mb-4 fade-in-up">
+          Corretora especializada em transporte, turismo, frotas e empresas que precisam de cobertura correta para operar sem riscos.
+        </p>
+        <div class="d-flex flex-wrap gap-3 fade-in-up">
+          <a href="#contato" class="btn btn-gold rounded-pill px-4 py-2">Quero falar com um consultor</a>
+          <a href="#servicos" class="btn btn-outline-light rounded-pill px-4 py-2">Ver seguros disponíveis</a>
+        </div>
+        <p class="mt-4 small hero-meta fade-in-up">• Seguradoras parceiras • Emissão rápida • Suporte em sinistro</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVIÇOS -->
+  <section class="py-5" id="servicos">
+    <div class="container py-3">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Soluções em seguros</h2>
+        <p class="section-subtitle">Produtos para quem precisa rodar com segurança e conformidade.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="service-card h-100 p-4">
+            <div class="icon-pill mb-3">
+              <span class="material-icons">directions_bus</span>
+            </div>
+            <h5 class="mb-2">Transporte e Turismo</h5>
+            <p>Seguro sob medida para empresas de fretamento, turismo e linhas regulares, alinhado à ANTT, DAER e SIE/SC.</p>
+            <a href="#contato" class="small fw-semibold text-dark mt-auto">Falar com especialista →</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card h-100 p-4">
+            <div class="icon-pill mb-3">
+              <span class="material-icons">local_shipping</span>
+            </div>
+            <h5 class="mb-2">Frotas empresariais</h5>
+            <p>Gestão de apólices para vários veículos, condições diferenciadas e suporte recorrente.</p>
+            <a href="#contato" class="small fw-semibold text-dark mt-auto">Solicitar tabela →</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card h-100 p-4">
+            <div class="icon-pill mb-3">
+              <span class="material-icons">shield</span>
+            </div>
+            <h5 class="mb-2">Seguro empresarial</h5>
+            <p>Proteção para sede, filiais, equipamentos, responsabilidade civil e muito mais.</p>
+            <a href="#contato" class="small fw-semibold text-dark mt-auto">Quero cotar →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="py-5" id="sobre">
+    <div class="container py-3">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <div class="dark-panel p-4 p-lg-5">
+            <h2 class="section-title mb-3">Quem é a AMR Brasil</h2>
+            <p class="mb-3">Corretora com atuação nacional, criada para atender empresas que precisam de agilidade e visão consultiva de seguros.</p>
+            <ul class="list-check">
+              <li><span class="badge-check"><span class="material-icons">check</span></span> Atendimento humanizado e próximo</li>
+              <li><span class="badge-check"><span class="material-icons">check</span></span> Relacionamento com grandes seguradoras</li>
+              <li><span class="badge-check"><span class="material-icons">check</span></span> Foco em transporte, turismo e frotas</li>
+              <li><span class="badge-check"><span class="material-icons">check</span></span> Suporte em renovações e sinistros</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-5 ms-lg-auto">
+          <div class="dark-panel p-4">
+            <h5 class="text-uppercase small mb-2" style="color:rgba(255,255,255,.6);">Por que escolher a AMR?</h5>
+            <h4 class="mb-3">Especialização + proximidade</h4>
+            <p>Entendemos o seu dia a dia: emissão não pode atrasar, fiscalização exige cobertura e você precisa de alguém que resolva.</p>
+            <a href="#contato" class="btn btn-gold rounded-pill px-4 mt-2">Agendar uma conversa</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGMENTOS -->
+  <section class="py-5" id="segmentos">
+    <div class="container py-3">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Segmentos atendidos</h2>
+        <p class="section-subtitle">Se a sua operação precisa de seguro para rodar, nós viabilizamos.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-3 col-6">
+          <div class="segment-box text-center p-3">
+            <p class="mb-1 fw-semibold">Fretamento</p>
+            <small>urbano e rodoviário</small>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="segment-box text-center p-3">
+            <p class="mb-1 fw-semibold">Turismo</p>
+            <small>viagens nacionais</small>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="segment-box text-center p-3">
+            <p class="mb-1 fw-semibold">Transporte de colaboradores</p>
+            <small>empresas privadas</small>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="segment-box text-center p-3">
+            <p class="mb-1 fw-semibold">Frotas mistas</p>
+            <small>empresariais</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="py-5" id="contato">
+    <div class="container py-4">
+      <div class="row g-4 g-lg-5 align-items-center">
+        <div class="col-lg-6">
+          <h2 class="section-title mb-3">Peça sua cotação agora mesmo</h2>
+          <p class="text-muted mb-4" style="color:rgba(255,255,255,.75)!important; font-size: 1.1rem;">
+            Envie seus dados que um consultor entra em contato para indicar a melhor cobertura para sua operação.
+          </p>
+          <ul class="list-check">
+            <li><span class="badge-check"><span class="material-icons">check</span></span> Resposta rápida por WhatsApp</li>
+            <li><span class="badge-check"><span class="material-icons">check</span></span> Análise de risco gratuita</li>
+            <li><span class="badge-check"><span class="material-icons">check</span></span> Cotação nas melhores seguradoras</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-card p-4 p-lg-5">
+            <h5 class="mb-4">Preencha o formulário</h5>
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Nome completo</label>
+                <input type="text" class="form-control" placeholder="Digite seu nome">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">E-mail</label>
+                <input type="email" class="form-control" placeholder="seuemail@empresa.com">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">WhatsApp</label>
+                <input type="tel" class="form-control" placeholder="(00) 00000-0000">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Tipo de seguro</label>
+                <select class="form-select">
+                  <option value="">Selecione o interesse</option>
+                  <option>Transporte de passageiros</option>
+                  <option>Frota empresarial</option>
+                  <option>Veículo individual</option>
+                  <option>Empresarial</option>
+                  <option>Vida / Acidentes pessoais</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-gold w-100 py-2">Solicitar cotação</button>
+              <p class="small text-muted mt-3 mb-0">Seus dados estão seguros conosco.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Coluna 1: Sobre -->
+        <div class="col-lg-4 col-md-6">
+          <img src="https://placehold.co/150x45/0b0f19/d6a545?text=AMR+Brasil&font=montserrat" 
+               onerror="this.onerror=null; this.src='https://placehold.co/150x45/0b0f19/d6a545?text=AMR+Brasil&font=montserrat';" 
+               alt="AMR Brasil Logo" class="footer-logo">
+          <p class="footer-about">
+            Especialistas em seguros para transporte, turismo e frotas, com atendimento consultivo em todo o Brasil.
+          </p>
+          <div class="social-links">
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <!-- Coluna 2: Mapa do Site -->
+        <div class="col-lg-2 col-md-6">
+          <h6 class="footer-title">Mapa do Site</h6>
+          <ul class="footer-links">
+            <li><a href="#top">Início</a></li>
+            <li><a href="#servicos">Seguros</a></li>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#segmentos">Segmentos</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        
+        <!-- Coluna 3: Soluções -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-title">Principais Seguros</h6>
+          <ul class="footer-links">
+            <li><a href="#servicos">Transporte e Turismo</a></li>
+            <li><a href="#servicos">Frotas Empresariais</a></li>
+            <li><a href="#servicos">Seguro Empresarial</a></li>
+            <li><a href="#servicos">Responsabilidade Civil</a></li>
+            <li><a href="#servicos">Vida e Acidentes</a></li>
+          </ul>
+        </div>
+        
+        <!-- Coluna 4: Contato -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-title">Informações</h6>
+          <ul class="footer-links footer-contact">
+            <li><i class="fas fa-phone-alt"></i> (00) 0000-0000</li>
+            <li><i class="fab fa-whatsapp"></i> (00) 00000-0000</li>
+            <li><i class="fas fa-envelope"></i> contato@amrbrasil.com</li>
+            <li><i class="fas fa-map-marker-alt"></i> Escritório em SP (Atendimento nacional)</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <p class="mb-0">© <span id="year"></span> AMR Brasil – Corretora de Seguros. Todos os direitos reservados.</p>
+        <p class="mb-0">Desenvolvido por DLR Web Studio.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/5500000000000" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M13.601 2.326A7.854 7.854 0 0 0 8.003 0C3.584 0 .178 3.407.175 7.826c0 1.377.36 2.721 1.047 3.907L0 16l4.36-1.142a7.85 7.85 0 0 0 3.636.926h.003c4.418 0 7.824-3.406 7.827-7.825a7.78 7.78 0 0 0-2.225-5.633m-5.598 12.46a6.52 6.52 0 0 1-3.33-.914l-.239-.144-2.585.677.691-2.52-.155-.259a6.52 6.52 0 0 1-1.002-3.47c0-3.6 2.926-6.527 6.53-6.527a6.49 6.49 0 0 1 4.62 1.915 6.47 6.47 0 0 1 1.91 4.614c-.003 3.601-2.93 6.528-6.53 6.528m3.58-4.885c-.196-.098-1.17-.578-1.353-.643-.182-.067-.315-.099-.446.098-.132.196-.512.643-.628.776-.115.13-.232.148-.428.049-.196-.098-.827-.305-1.576-.974-.583-.52-.974-1.163-1.089-1.36-.115-.196-.012-.302.086-.399.088-.088.196-.23.293-.345.098-.115.13-.196.196-.327.065-.131.033-.245-.017-.344-.05-.098-.446-1.076-.612-1.473-.16-.383-.323-.331-.446-.337-.115-.006-.246-.007-.377-.007s-.346.049-.527.245c-.182.196-.691.676-.691 1.65s.708 1.916.807 2.049c.098.131 1.39 2.124 3.356 2.978.469.202.835.322 1.12.412.47.149.898.128 1.235.078.377-.056 1.17-.479 1.338-.941.164-.462.164-.857.115-.941-.049-.084-.182-.13-.377-.228"/>
+    </svg>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Script da Navbar
+    const nav = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Script do Ano
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Script de Scroll Suave (fallback caso o CSS falhe)
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

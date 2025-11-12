@@ -1,16 +1,30 @@
+/* =========================================================
+   Flow Mobility Express — app.js
+   Interações, CTA fixa e melhorias de UX
+   ========================================================= */
+
+// -----------------------------
 // Suaviza âncoras (scroll)
-document.addEventListener('click', function(e){
+// -----------------------------
+document.addEventListener('click', function (e) {
   const a = e.target.closest('a[href^="#"]');
-  if(!a) return;
+  if (!a) return;
+
   const id = a.getAttribute('href');
+  if (!id || id === '#') return;
+
   const el = document.querySelector(id);
-  if(el){
+  if (el) {
     e.preventDefault();
-    // Ajuste para mobile considerando a barra fixa
-    const offset = window.innerWidth < 992 ? 80 : 0;
+
+    // Usa a altura real da CTA fixa (quando existir), senão 0
+    const fixedCtaH = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue('--fixed-cta-h')
+    ) || 0;
+
     const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-    const offsetPosition = elementPosition - offset;
-    
+    const offsetPosition = elementPosition - (window.innerWidth < 992 ? fixedCtaH + 8 : 0);
+
     window.scrollTo({
       top: offsetPosition,
       behavior: 'smooth'
@@ -18,98 +32,118 @@ document.addEventListener('click', function(e){
   }
 });
 
-// Pequeno brilho no hover dos botões terracota
-document.querySelectorAll('.btn-terra').forEach(btn=>{
-  btn.addEventListener('mouseenter', ()=> btn.classList.add('hovering'));
-  btn.addEventListener('mouseleave', ()=> btn.classList.remove('hovering'));
-});
-
-// Opcional: pausa/resume do carrossel ao focar
-const quotesCarousel = document.querySelector('#quotesCarousel');
-if (quotesCarousel){
-  quotesCarousel.addEventListener('mouseenter', ()=> {
-    const carousel = bootstrap.Carousel.getOrCreateInstance(quotesCarousel);
-    carousel.pause();
+// ---------------------------------------------
+// Pequeno “brilho” no hover dos botões terracota
+// (classe .hovering já tratada no CSS, se desejar)
+// ---------------------------------------------
+(function () {
+  const terracotas = document.querySelectorAll('.btn-terra');
+  terracotas.forEach(btn => {
+    btn.addEventListener('mouseenter', () => btn.classList.add('hovering'));
+    btn.addEventListener('mouseleave', () => btn.classList.remove('hovering'));
   });
-  quotesCarousel.addEventListener('mouseleave', ()=> {
-    const carousel = bootstrap.Carousel.getOrCreateInstance(quotesCarousel);
-    carousel.cycle();
+})();
+
+// ---------------------------------------------------
+// Pausa/resume do carrossel de depoimentos no hover
+// ---------------------------------------------------
+(function () {
+  const quotesCarousel = document.querySelector('#quotesCarousel');
+  if (!quotesCarousel || typeof bootstrap === 'undefined') return;
+
+  const instance = bootstrap.Carousel.getOrCreateInstance(quotesCarousel, {
+    interval: 5000,
+    ride: false,
+    pause: false,
+    touch: true,
+    wrap: true
   });
-}
 
-// Adicionar classe para animação de entrada dos elementos
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
+  quotesCarousel.addEventListener('mouseenter', () => instance.pause());
+  quotesCarousel.addEventListener('mouseleave', () => instance.cycle());
+})();
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('animate-in');
-    }
+// ----------------------------------------------------------
+// Animação de entrada suave para elementos ao entrar na tela
+// ----------------------------------------------------------
+(function () {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const elementsToAnimate = document.querySelectorAll(
+      '.card-minimal, .method-graphic, .price-chip, .hero-figure, .product-mockups, .plan-card'
+    );
+    elementsToAnimate.forEach(el => observer.observe(el));
   });
-}, observerOptions);
+})();
 
-// Observar elementos para animação
-document.addEventListener('DOMContentLoaded', function() {
-  const elementsToAnimate = document.querySelectorAll('.card-minimal, .method-graphic, .price-chip, .hero-figure');
-  elementsToAnimate.forEach(el => {
-    observer.observe(el);
-  });
-});
-
-// CTA fixo: aparece depois do hero e some perto do checkout/rodapé
+// ------------------------------------------------------------------
+// CTA fixo (mobile): aparece no bottom e some perto do checkout/rodapé
+// ------------------------------------------------------------------
 (function () {
   const cta = document.querySelector('.fixed-cta');
-  const hero = document.querySelector('.hero');
   const checkout = document.querySelector('#checkout');
   const footer = document.querySelector('footer.footer-minimal');
 
-  if (!cta || !hero) return;
+  if (!cta) return;
 
   const getStopY = () => {
-    // pega o primeiro que existir: checkout > footer
-    if (checkout) {
-      return checkout.getBoundingClientRect().top + window.scrollY;
-    } else if (footer) {
-      return footer.getBoundingClientRect().top + window.scrollY;
-    }
+    // Ponto onde a CTA deve sumir (começo do checkout; se não houver, o footer)
+    if (checkout) return checkout.getBoundingClientRect().top + window.scrollY;
+    if (footer) return footer.getBoundingClientRect().top + window.scrollY;
     return Infinity;
   };
 
-  const updateCta = () => {
-    const heroHeight = hero.offsetHeight || 0;
-    const triggerShow = heroHeight - 120;          // depois do hero
-    const stopY = getStopY();                      // onde começa checkout/rodapé
-    const viewportBottom = window.scrollY + window.innerHeight;
-    const distanceToStop = stopY - viewportBottom; // se for pequeno, estamos embaixo
-
-    // se estamos antes do hero -> não mostra
-    if (window.scrollY <= triggerShow) {
-      cta.classList.remove('is-visible');
-      document.documentElement.style.setProperty('--fixed-cta-h', '0px');
-      return;
-    }
-
-    // se estamos MUITO perto do checkout/rodapé -> não mostra
-    // 80px = respiro para não encobrir CTA do checkout
-    if (distanceToStop <= 80) {
-      cta.classList.remove('is-visible');
-      document.documentElement.style.setProperty('--fixed-cta-h', '0px');
-      return;
-    }
-
-    // caso normal -> mostra
+  const showCTA = () => {
     cta.classList.add('is-visible');
+    // Reserva espaço inferior para não esconder conteúdo
     document.documentElement.style.setProperty('--fixed-cta-h', cta.offsetHeight + 'px');
   };
 
-  updateCta();
-  window.addEventListener('scroll', updateCta, { passive: true });
-  window.addEventListener('resize', updateCta);
+  const hideCTA = () => {
+    cta.classList.remove('is-visible');
+    document.documentElement.style.setProperty('--fixed-cta-h', '0px');
+  };
+
+  const shouldHide = () => {
+    // Desktop nunca mostra (o CSS já esconde), só tratamos mobile
+    if (window.innerWidth >= 992) return true;
+
+    const stopY = getStopY();
+    const viewportBottom = window.scrollY + window.innerHeight;
+    const distanceToStop = stopY - viewportBottom;
+
+    // Quando a borda inferior da viewport chega perto do checkout/rodapé,
+    // escondemos a CTA para não cobrir o botão final (80px de respiro).
+    return distanceToStop <= 80;
+  };
+
+  const update = () => {
+    if (shouldHide()) {
+      hideCTA();
+    } else {
+      showCTA();
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', update);
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
 })();
 
-
-// Melhorar a experiência de toque em dispositivos móveis
-document.addEventListener('touchstart', function() {}, {passive: true});
+// -------------------------------------------------------
+// Melhor UX de toque em dispositivos móveis (passive)
+// -------------------------------------------------------
+document.addEventListener('touchstart', function () { }, { passive: true });

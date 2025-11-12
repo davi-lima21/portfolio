@@ -391,3 +391,27 @@ a{ text-decoration: none; }
 }
 .text-center .btn-terra,
 .text-center .btn-lilas { margin-left:auto; margin-right:auto; }
+
+/* Dobra 5 – Para Quem É */
+#paraquem{ min-height: 520px; }
+
+.who-cards .card-minimal{
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.who-cards .card-minimal:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.06);
+  border-color: rgba(0,0,0,.08);
+}
+
+.who-cards .icon-soft{
+  color:#A48E7B; /* fino, de linha, combinando com a paleta */
+  line-height: 1;
+}
+
+/* mobile: respiro e leitura confortável */
+@media (max-width: 575.98px){
+  #paraquem{ min-height: unset; }
+  .who-cards .card-minimal{ padding: 1.25rem; }
+}
+

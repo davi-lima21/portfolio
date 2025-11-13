@@ -415,3 +415,24 @@ a{ text-decoration: none; }
   .who-cards .card-minimal{ padding: 1.25rem; }
 }
 
+/* Força a imagem do "Sobre" a aparecer corretamente */
+.hero-photo{
+  width: 100%;
+  height: 100%;
+  min-height: 520px;       /* altura mínima pro container */
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 1rem;
+}
+@media (max-width: 991.98px){
+  .hero-photo{ min-height: 420px; }
+}

@@ -1,0 +1,1385 @@
+:root {
+  --color-bg: #f4f6fb;
+  --color-bg-light: #ffffff;
+  --color-bg-dark: #020617;
+  --color-primary: #111827;
+  --color-primary-soft: #0b1120;
+  --color-gold: #d4af37;
+  --color-gold-soft: #f7e4b3;
+  --color-text-main: #020617;
+  --color-text-muted: #6b7280;
+  --color-border-soft: #e5e7eb;
+}
+
+/* RESET BÁSICO */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body, html{
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: var(--color-text-main);
+  background-color: var(--color-bg);
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* BARRA PROGRESSO SCROLL */
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background-image: linear-gradient(90deg, #d4af37, #f97316, #f97316);
+  z-index: 1200;
+  transition: width 0.12s linear;
+}
+
+/* NAVBAR */
+.main-navbar {
+  backdrop-filter: blur(14px);
+  background-color: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  transition: all 0.2s ease;
+}
+
+.main-navbar.scrolled {
+  background-color: rgba(15, 23, 42, 0.98);
+  border-bottom-color: rgba(15, 23, 42, 0.98);
+}
+
+.main-navbar.scrolled .navbar-brand,
+.main-navbar.scrolled .nav-link {
+  color: #e5e7eb !important;
+}
+
+.main-navbar.scrolled .nav-link:hover {
+  color: var(--color-gold-soft) !important;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary-soft);
+}
+
+.brand-mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background-image: conic-gradient(from 180deg, #d4af37, #f97316, #111827, #d4af37);
+  position: relative;
+}
+
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 20% 20%, #f9fafb, #111827);
+}
+
+.brand-text small {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-text-muted);
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--color-primary);
+}
+
+/* HERO */
+.hero-section {
+  padding-top: 120px;
+  padding-bottom: 90px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at top left, #fbe4ff 0, #f4f6fb 40%, #ffffff 100%);
+}
+
+.hero-bg-shape {
+  position: absolute;
+  width: 460px;
+  height: 460px;
+  border-radius: 999px;
+  background: radial-gradient(circle at center, #f7e4b3 0, transparent 60%);
+  top: -100px;
+  right: -120px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.hero-label {
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.hero-label i {
+  color: var(--color-gold);
+}
+
+.hero-title {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.12;
+  color: var(--color-primary);
+}
+
+.hero-subtitle {
+  font-size: 0.98rem;
+  color: var(--color-text-muted);
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.hero-badges span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.hero-badges i {
+  color: var(--color-gold);
+}
+
+.hero-note {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.hero-image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 5;
+  border-radius: 1.6rem;
+  padding: 4px;
+  background: conic-gradient(from 180deg, #d4af37, #f97316, #111827, #d4af37);
+  box-shadow: 0 26px 80px rgba(15, 23, 42, 0.6);
+  animation: floatY 9s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 10% 0, #f9fafb, #020617);
+  opacity: 0.18;
+}
+
+.hero-image span {
+  position: relative;
+  z-index: 1;
+  color: #f9fafb;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.hero-floating-card {
+  position: absolute;
+  left: 12%;
+  bottom: 8%;
+  background-color: rgba(15, 23, 42, 0.94);
+  color: #f9fafb;
+  border-radius: 1.1rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.8rem;
+  min-width: 190px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+.hero-floating-card strong {
+  font-size: 1.05rem;
+}
+
+.hero-floating-chip {
+  position: absolute;
+  top: 13%;
+  right: 10%;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background-color: rgba(15, 23, 42, 0.93);
+  color: #e5e7eb;
+  font-size: 0.75rem;
+  border: 1px solid rgba(248, 250, 252, 0.18);
+}
+
+/* ETAPAS / JOURNEY */
+.journey-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.journey-step {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.step-number {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background-color: var(--color-gold);
+  color: #020617;
+  font-size: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.journey-divider {
+  width: 22px;
+  height: 1px;
+  background-image: linear-gradient(90deg, #d4af37, #111827);
+  opacity: 0.7;
+}
+
+/* SEÇÕES GERAIS */
+.section {
+  padding: 80px 0;
+}
+
+.section-light {
+  background-color: #ffffff;
+}
+
+.section-highlight {
+  background: radial-gradient(circle at top, #facc15 0, #eab308 18%, #111827 100%);
+  color: #f9fafb;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: rgba(212, 175, 55, 0.09);
+  color: var(--color-gold);
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.section-text {
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
+}
+
+/* --- BOTÃO WHATSAPP PREMIUM (Novo) --- */
+.btn-whatsapp {
+  /* Gradiente Suave: Dourado Claro -> Bronze Rico */
+  background: linear-gradient(135deg, #e3c46a 0%, #b38b26 100%);
+  
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em; /* Espaçamento leve para elegância */
+  text-transform: uppercase;
+  
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  border: none;
+  
+  /* Sombra colorida difusa (Glow Dourado) em vez de sombra preta dura */
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+  
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+/* Efeito de brilho ao passar o mouse */
+.btn-whatsapp:hover {
+  /* Inverte levemente e clareia o gradiente */
+  background: linear-gradient(135deg, #ebd28b 0%, #c49d38 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+  color: #ffffff;
+}
+
+/* Efeito de clique */
+.btn-whatsapp:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Opcional: Um brilho sutil interno na borda superior */
+.btn-whatsapp::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25); /* Borda de vidro */
+  pointer-events: none;
+}
+
+.btn-outline-soft {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  font-size: 0.9rem;
+  color: var(--color-text-main);
+  padding: 0.7rem 1.4rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.main-navbar.scrolled .btn-outline-soft {
+  background-color: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+}
+
+/* CARDS / INFOS */
+.info-card {
+  background-image: radial-gradient(circle at top left, #f9fafb, #ffffff);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  border: 1px solid var(--color-border-soft);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
+  font-size: 0.95rem;
+}
+
+.info-card i {
+  color: var(--color-gold);
+}
+
+/* BENEFÍCIOS */
+.benefit-card {
+  background-color: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1.2rem 1.3rem;
+  border: 1px solid var(--color-border-soft);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+}
+
+.benefit-icon {
+  font-size: 1.4rem;
+  color: var(--color-gold);
+}
+
+/* TRATAMENTOS (PILLS) */
+.treatment-pill {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(255, 255, 255, 0.96);
+  font-size: 0.9rem;
+  color: var(--color-text-main);
+}
+
+/* DEPOIMENTOS */
+.testimonial-card {
+  background-color: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1.5rem 1.6rem;
+  border: 1px solid var(--color-border-soft);
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
+  height: 100%;
+}
+
+.testimonial-rating i {
+  color: #facc15;
+  font-size: 0.9rem;
+}
+
+.testimonial-text {
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  margin-bottom: 0.75rem;
+}
+
+.testimonial-name {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* ANTES E DEPOIS */
+.before-after-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 1.1rem;
+  border: 1px dashed rgba(148, 163, 184, 0.7);
+  background: repeating-linear-gradient(
+      45deg,
+      #f9fafb,
+      #f9fafb 8px,
+      #e5e7eb 8px,
+      #e5e7eb 16px
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 0.8rem;
+}
+
+/* DIFERENCIAIS */
+.feature-card {
+  background-color: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1.6rem 1.5rem;
+  border: 1px solid var(--color-border-soft);
+  box-shadow: 0 16px 42px rgba(15, 23, 42, 0.05);
+  text-align: left;
+  font-size: 0.95rem;
+  height: 100%;
+}
+
+.feature-icon {
+  font-size: 1.7rem;
+  color: var(--color-gold);
+  margin-bottom: 0.6rem;
+}
+
+/* OFERTA */
+.offer-item {
+  font-size: 0.95rem;
+}
+
+/* FAQ */
+.accordion-button {
+  font-size: 0.9rem;
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--color-primary);
+  background-color: #fefce8;
+}
+
+/* FOOTER */
+.footer {
+  background-color: #020617;
+  color: #e5e7eb;
+  padding: 32px 0 20px 0;
+}
+
+.footer a {
+  color: #e5e7eb;
+}
+
+.footer a:hover {
+  color: var(--color-gold-soft);
+}
+
+/* BOTÃO FLUTUANTE WHATSAPP */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  padding: 0;
+  z-index: 1100;
+}
+
+/* BOTÃO VOLTAR AO TOPO */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 86px;
+  right: 20px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: none;
+  background-color: rgba(15, 23, 42, 0.92);
+  color: #f9fafb;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 1090;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.6);
+}
+
+.scroll-top-btn.show {
+  display: flex;
+}
+
+/* ANIMAÇÕES / SCROLL */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-on-scroll.fade-right {
+  transform: translateX(-24px);
+}
+
+.animate-on-scroll.fade-left {
+  transform: translateX(24px);
+}
+
+.animate-on-scroll.fade-right.in-view,
+.animate-on-scroll.fade-left.in-view {
+  transform: translateX(0);
+}
+
+/* FLOAT HERO */
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* RESPONSIVO */
+@media (max-width: 991.98px) {
+  .hero-section {
+    padding-top: 100px;
+  }
+
+  .hero-image {
+    max-width: 340px;
+  }
+
+  .journey-steps {
+    border-radius: 1rem;
+  }
+
+  .main-navbar {
+    background-color: rgba(255, 255, 255, 0.98);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .journey-steps {
+    flex-direction: column;
+  }
+
+  .journey-divider {
+    display: none;
+  }
+
+  .scroll-top-btn {
+    bottom: 78px;
+    right: 16px;
+  }
+
+  .floating-whatsapp {
+    bottom: 14px;
+    right: 14px;
+  }
+}
+
+/* HERO – moldura + foto */
+.hero-image {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 5;
+  border-radius: 1.6rem;
+  padding: 4px;
+  background: conic-gradient(from 180deg, #d4af37, #f97316, #111827, #d4af37);
+  box-shadow: 0 26px 80px rgba(15, 23, 42, 0.6);
+  animation: floatY 9s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; /* garante cantos arredondados na foto */
+}
+
+/* tira o overlay escuro quando tem foto real */
+.hero-image::after {
+  content: none;
+}
+
+/* foto dentro do hero */
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: calc(1.6rem - 4px);
+  object-fit: cover;
+  display: block;
+}
+
+/* CARD FLOANTE – texto claro */
+.hero-floating-card {
+  position: absolute;
+  left: 12%;
+  bottom: 8%;
+  background-color: rgba(15, 23, 42, 0.96);
+  color: #f9fafb;
+  border-radius: 1.1rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.8rem;
+  min-width: 190px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  backdrop-filter: blur(12px);
+}
+
+/* força o texto a ficar claro, mesmo com .text-muted do Bootstrap */
+.hero-floating-card .small,
+.hero-floating-card small,
+.hero-floating-card .text-muted {
+  color: #e5e7eb !important;
+  opacity: 0.95;
+}
+
+.hero-floating-card strong {
+  color: #fefce8;
+}
+
+/* CHIP de “Resultados naturais” – também claro */
+.hero-floating-chip {
+  position: absolute;
+  top: 13%;
+  right: 10%;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background-color: rgba(15, 23, 42, 0.96);
+  color: #e5e7eb;
+  font-size: 0.75rem;
+  border: 1px solid rgba(248, 250, 252, 0.18);
+}
+
+/* --- SEÇÃO OFERTA (Novo Design) --- */
+
+.section-offer {
+  background-color: var(--color-bg); /* Mantém a cor do fundo do site */
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fundo decorativo sutil atrás do card */
+.section-offer::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(255,255,255,0) 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* O Card Principal */
+.offer-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 2rem;
+  padding: 3rem 2rem;
+  /* Borda dourada sutil */
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  /* Sombra elegante dourada */
+  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+  z-index: 1;
+}
+
+/* Efeito de borda dupla interna (opcional, dá um toque clássico) */
+.offer-card::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: calc(2rem - 6px);
+  border: 1px dashed rgba(212, 175, 55, 0.25);
+  pointer-events: none;
+}
+
+.offer-content {
+  position: relative;
+  z-index: 2; /* Fica acima da borda dashed */
+}
+
+/* Tag no topo */
+.offer-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #fefce8, #fffbeb);
+  color: #b45309; /* Tom dourado escuro */
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+/* Título e Texto */
+.text-gold {
+  color: #b45309; /* Um dourado mais legível que o amarelo puro */
+  background: -webkit-linear-gradient(45deg, #d4af37, #b45309);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grid de Benefícios */
+.offer-benefits-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #f9fafb;
+  padding: 0.8rem 1.2rem;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.benefit-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border-color: var(--color-gold-soft);
+}
+
+.check-icon {
+  width: 32px;            /* Tamanho fixo essencial para círculo perfeito */
+  height: 32px;           /* Altura igual a largura */
+  border-radius: 50%;     /* Deixa 100% redondo */
+  
+  /* Gradiente Dourado Premium */
+  background: linear-gradient(135deg, #d4af37, #b45309);
+  
+  color: #ffffff;         /* Cor do ícone branco */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;      /* Tamanho do ícone interno */
+  flex-shrink: 0;         /* Impede que o ícone amasse no mobile */
+  
+  /* Sombra suave dourada para destacar do fundo branco */
+  /* box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4); */
+}
+
+/* Ajuste fino para o ícone ficar visualmente centralizado */
+.check-icon i {
+  line-height: 0;
+  transform: translateY(1px); /* Pequeno ajuste ótico se necessário */
+}
+
+/* Disclaimer */
+.offer-disclaimer {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Animação de "Pulso" no botão para chamar atenção */
+@keyframes pulse-gold {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.btn-pulse {
+  animation: pulse-gold 2s infinite;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .offer-benefits-grid {
+    flex-direction: column;
+    align-items: stretch; /* Cards ocupam largura total no mobile */
+    gap: 1rem;
+  }
+  
+  .offer-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* --- FOOTER ESTILIZADO --- */
+.footer {
+  background-color: #020617; /* Fundo bem escuro/elegante */
+  color: #f8f9fa;
+  padding: 60px 0 30px 0;
+  font-size: 0.9rem;
+}
+
+.footer-brand {
+  font-family: "Inter", sans-serif; /* Ou sua fonte de títulos */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+/* Texto suavizado (não branco puro, para não cansar a vista) */
+.text-light-50 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Links do footer */
+.footer-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--color-gold); /* Seu dourado padrão */
+}
+
+/* Ícones dourados */
+.text-gold {
+  color: #d4af37;
+}
+
+/* Linha divisória sutil */
+.footer-divider {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Texto extra pequeno para dados legais */
+.x-small {
+  font-size: 0.75rem;
+}
+
+
+
+/* --- NAVBAR PADRÃO (Topo da página) --- */
+.main-navbar {
+  padding: 1.2rem 0; /* Mais espaçado no topo para elegância */
+  background-color: transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- NAVBAR QUANDO ROLA (Scrolled) --- */
+.main-navbar.scrolled {
+  padding: 0.8rem 0; /* Fica mais compacto ao rolar */
+  
+  /* Efeito Vidro Escuro Premium */
+  background-color: rgba(2, 6, 23, 0.85); /* Azul quase preto, translúcido */
+  backdrop-filter: blur(12px);            /* Desfoque do fundo */
+  -webkit-backdrop-filter: blur(12px);
+  
+  /* Linha fina dourada embaixo para acabamento */
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajustes de Cor do Texto no Scroll */
+.main-navbar.scrolled .nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.main-navbar.scrolled .nav-link:hover {
+  color: var(--color-gold) !important;
+}
+
+.main-navbar.scrolled .brand-text {
+  color: #ffffff;
+}
+
+.main-navbar.scrolled .brand-text small {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- LOGO --- */
+.brand-text {
+  line-height: 1.1;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.brand-text small {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Ajuste específico para o botão mobile ficar alinhado */
+@media (max-width: 991px) {
+  .navbar-brand {
+    font-size: 0.9rem; /* Logo um pouco menor no mobile */
+  }
+  
+  /* Ajuste fino do botão mobile */
+  .d-lg-none .btn-whatsapp {
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Se for o botão flutuante do WhatsApp */
+.floating-whatsapp {
+  /* Garante que o container seja um círculo perfeito */
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  
+  /* Centralização Matemática */
+  display: flex;       /* Use flex em vez de inline-flex para formas fixas */
+  align-items: center;
+  justify-content: center;
+  
+  padding: 0;          /* Remove qualquer enchimento padrão do botão */
+  line-height: 0;      /* Remove altura de linha fantasma */
+}
+
+
+
+/* --- DOBRA 2: VÍDEO PRINCIPAL --- */
+
+.video-wrapper {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+  background-color: #020617;
+}
+
+.video-wrapper iframe {
+  border: none;
+  border-radius: inherit;
+}
+
+
+/* --- DOBRA 2: FOTOS COMPLEMENTARES (SOCIAL) --- */
+
+.social-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+  border: 1px dashed rgba(148, 163, 184, 0.8);
+  background: repeating-linear-gradient(
+    135deg,
+    #f9fafb,
+    #f9fafb 10px,
+    #e5e7eb 10px,
+    #e5e7eb 20px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 0.6rem;
+}
+
+
+/* --- DOBRA 3: BENEFÍCIOS EM GRID COM FOTO EMBAIXO --- */
+
+.benefit-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+  color: var(--color-primary);
+}
+
+.benefit-photo-placeholder {
+  width: 100%;
+
+  border-radius: 1rem;
+  border: 1px dashed rgba(148, 163, 184, 0.8);
+  background: repeating-linear-gradient(
+    135deg,
+    #f9fafb,
+    #f9fafb 10px,
+    #e5e7eb 10px,
+    #e5e7eb 20px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 0.8rem;
+}
+
+
+/* --- DOBRA 4: FOTOS DA OFERTA (COM PREÇO/PROCEDIMENTO) --- */
+
+.offer-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 1.1rem;
+  border: 1px dashed rgba(212, 175, 55, 0.8);
+  background: radial-gradient(circle at top, #fffbeb 0, #fefce8 30%, #f9fafb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #a16207; /* dourado mais escuro, legível */
+  padding: 0.8rem;
+}
+
+
+/* --- DOBRA 6: FOTO DA DOUTORA NA CLÍNICA --- */
+
+.doctor-photo-card {
+  background: radial-gradient(circle at top, #f9fafb 0, #ffffff 40%, #e5e7eb 100%);
+  border-radius: 1.75rem;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+}
+
+.doctor-photo-card img {
+  width: 100%;
+  display: block;
+  border-radius: 1.4rem;
+  object-fit: cover;
+}
+
+.doctor-caption {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+/* ============================
+   AJUSTES GERAIS DE MÍDIA
+   (fotos de resultados, antes/depois, ofertas, clínica)
+   ============================ */
+
+/* Video vertical mais elegante */
+.video-wrapper video {
+  border-radius: 1.2rem;
+  background: #000;
+  object-fit: cover;
+}
+
+/* Cards de foto padrão (prova social, antes/depois, benefícios, ofertas, clínica) */
+.social-photo-placeholder,
+.before-after-placeholder,
+.benefit-photo-placeholder,
+.offer-photo-placeholder,
+.clinic-photo-card {
+  position: relative;
+  width: 100%;
+  border-radius: 1.25rem;
+  padding: 6px;
+  background: #ffffff;
+  border: 1px solid var(--color-border-soft);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Remove o fundo listrado antigo, caso ainda exista */
+.before-after-placeholder,
+.benefit-photo-placeholder,
+.social-photo-placeholder {
+  background: #ffffff;
+  border-style: solid;
+}
+
+/* Imagens internas sempre preenchendo o card */
+.social-photo-placeholder img,
+.before-after-placeholder img,
+.benefit-photo-placeholder img,
+.offer-photo-placeholder img,
+.clinic-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(1.25rem - 6px);
+  display: block;
+}
+
+/* Caso ainda exista texto de placeholder dentro, deixa discreto */
+.social-photo-placeholder span,
+.before-after-placeholder span,
+.benefit-photo-placeholder span,
+.offer-photo-placeholder span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* ============================
+   BENEFÍCIOS – card com título + foto
+   ============================ */
+
+.benefit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+.benefit-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: var(--color-primary);
+}
+
+/* tira qualquer padding extra de dentro, porque o card já tem */
+.benefit-card .w-100 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ============================
+   DOBRA 6 – clínica + doutora
+   ============================ */
+
+/* Foto principal da fundadora (se ainda não estiver) */
+.doctor-main-photo {
+  width: 100%;
+  max-width: 420px;
+  height: 430px;
+  object-fit: cover;
+  border-radius: 1.4rem;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Card da fundadora mais robusto */
+.doctor-photo-card {
+  background: #ffffff;
+  border-radius: 1.75rem;
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  box-shadow: 0 20px 55px rgba(15, 23, 42, 0.16);
+  padding: 1rem;
+}
+
+.doctor-caption {
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: center;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+}
+
+/* Linha de fotos da fachada mais alinhada e responsiva */
+.clinic-photos-row {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 767.98px) {
+  .clinic-photos-row {
+    flex-direction: row;
+  }
+
+  .doctor-main-photo {
+    height: 360px;
+  }
+}
+
+/* ============================
+   OFERTA – cards de criativos
+   ============================ */
+
+.offer-photo-placeholder {
+  background: #fff7e6; /* leve tom puxando pro dourado */
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+/* pequena responsividade extra pro grid de benefícios/prova social */
+@media (max-width: 575.98px) {
+  .social-photo-placeholder,
+  .before-after-placeholder,
+  .benefit-photo-placeholder,
+  .offer-photo-placeholder,
+  .clinic-photo-card {
+
+  }
+}
+
+/* ============================
+   QUADRADO PARA MOBILE — ANTES/DEPOIS ESPECÍFICOS
+   ============================ */
+
+/* Aplica apenas nas duas imagens desejadas */
+.before-after-placeholder img[src="antes-depois-harmonizacao-facial.jpeg"],
+.before-after-placeholder img[src="antes-depois-harmonizacao2.jpeg"] {
+  aspect-ratio: 4 / 5; /* padrão desktop */
+  object-fit: cover;
+}
+
+/* NO MOBILE: vira quadrado */
+@media (max-width: 575.98px) {
+
+  .before-after-placeholder img[src="antes-depois-harmonizacao-facial.jpeg"],
+  .before-after-placeholder img[src="antes-depois-harmonizacao2.jpeg"] {
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+  }
+
+  /* Ajusta também o wrapper, se necessário */
+  .before-after-placeholder {
+    aspect-ratio: 1 / 1 !important;
+  }
+}
+
+/* Remove o botão hamburguer no mobile */
+.navbar-toggler {
+  display: none !important;
+}
+
+/* Remove o menu colapsado também */
+@media (max-width: 991.98px) {
+  #mainNav {
+    display: none !important;
+  }
+}
+
+/* ============================
+   JOURNEY STEPS – MELHORIA MOBILE
+   ============================ */
+
+@media (max-width: 575.98px) {
+  .journey-steps {
+    /* vira card vertical, não mais “pílula” gigante */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 0.4rem;
+    border-radius: 1.25rem;
+    padding: 1rem 1.2rem;
+  }
+
+  /* cada etapa ocupa a largura toda, alinhada à esquerda */
+  .journey-step {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+    padding: 0.25rem 0;
+    position: relative;
+  }
+
+  /* linha suave entre as etapas */
+  .journey-step + .journey-step {
+    border-top: 1px dashed rgba(148, 163, 184, 0.4);
+    margin-top: 0.2rem;
+    padding-top: 0.5rem;
+  }
+
+  /* número continua dourado, mas sem “micro bolinha” perdida */
+  .step-number {
+    width: 22px;
+    height: 22px;
+    font-size: 0.78rem;
+  }
+
+  /* some com os divisores horizontais no mobile */
+  .journey-divider {
+    display: none !important;
+  }
+}

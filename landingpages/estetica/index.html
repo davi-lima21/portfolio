@@ -30,18 +30,15 @@
   <!-- BARRA PROGRESSO SCROLL -->
   <div id="scrollProgress"></div>
 
+  <!-- NAVBAR -->
   <header class="navbar navbar-expand-lg fixed-top main-navbar">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#inicio">
-        <span class="brand-mark"></span>
-        <span class="brand-text">
-          Facciale<br />
-          <small>Estética Avançada</small>
-        </span>
+        <img src="logo.png" class="logo" alt="Logo">
       </a>
 
       <div class="d-lg-none ms-auto">
-        <a class="btn btn-whatsapp btn-sm px-3" href="#">
+        <a class="btn btn-whatsapp btn-sm px-3" href="https://wa.me/5511915160334">
           <i class="bi bi-whatsapp"></i> AGENDAR
         </a>
       </div>
@@ -76,7 +73,7 @@
             <a class="nav-link" href="#quem-somos">Quem somos</a>
           </li>
           <li class="nav-item ms-3">
-            <a class="btn btn-whatsapp btn-sm px-4" href="#">
+            <a class="btn btn-whatsapp btn-sm px-4" href="https://wa.me/5511915160334">
               Agendar avaliação
             </a>
           </li>
@@ -87,173 +84,140 @@
 
   <!-- HERO / DOBRA 1 — DOR + SOLUÇÃO + AUTORIDADE + CTA -->
   <main>
-    <section id="inicio" class="hero-section">
-      <div class="hero-bg-shape"></div>
-      <div class="container">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-6 animate-on-scroll" data-animate="fade-right">
-            <div class="hero-label d-inline-flex align-items-center gap-2 mb-3">
-              <i class="bi bi-geo-alt-fill"></i>
-              <span>Tatuapé · São Paulo · Estética Avançada</span>
+<section id="inicio" class="hero-section">
+  <div class="hero-bg-shape"></div>
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- COLUNA ÚNICA NO MOBILE / DUAS NO DESKTOP -->
+      <div class="col-lg-6 animate-on-scroll" data-animate="fade-right">
+
+        <div class="hero-label d-inline-flex align-items-center gap-2 mb-3">
+          <i class="bi bi-geo-alt-fill"></i>
+          <span>Tatuapé · São Paulo · Estética Avançada</span>
+        </div>
+
+        <h1 class="hero-title mb-3">
+          Não se sentir bem com a pele ou com o corpo não precisa ser rotina.
+        </h1>
+
+        <p class="hero-subtitle mb-4">
+          A Facciale Estética Avançada transforma inseguranças em autoestima com
+          tratamentos modernos, seguros e naturais, feitos sob medida para você.
+        </p>
+
+        <!-- IMAGEM EM MOBILE (logo após título/subtítulo) -->
+        <div class="d-lg-none mb-4">
+          <div class="hero-image-wrapper">
+            <div class="hero-image">
+              <img
+                src="dobra1-1.png"
+                class="hero-photo"
+                alt="Profissional aplicando procedimento estético"
+              />
             </div>
-
-            <h1 class="hero-title mb-3">
-              Não se sentir bem com a pele ou com o corpo não precisa ser rotina.
-            </h1>
-
-            <p class="hero-subtitle mb-4">
-              A Facciale Estética Avançada transforma inseguranças em autoestima com
-              tratamentos modernos, seguros e naturais, feitos sob medida para você.
-            </p>
-
-            <div class="hero-badges mb-4">
-              <span><i class="bi bi-patch-check-fill"></i> Profissionais qualificados</span>
-              <span><i class="bi bi-cpu-fill"></i> Tecnologia de ponta</span>
-              <span><i class="bi bi-heart-pulse-fill"></i> Atendimento humanizado</span>
-            </div>
-
-            <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
-              <a class="btn btn-whatsapp btn-lg" href="#">
-                QUERO AGENDAR MINHA AVALIAÇÃO
-              </a>
-              <button class="btn btn-outline-light btn-outline-soft" data-scroll="#depoimentos">
-                Ver resultados reais
-              </button>
-            </div>
-            <p class="hero-note">
-              Atendimento com horário marcado · Avaliação personalizada · Resultados naturais
-            </p>
-          </div>
-
-          <div class="col-lg-6 animate-on-scroll" data-animate="fade-left">
-            <div class="hero-image-wrapper">
-              <div class="hero-image">
-                <!-- DOBRA 1 — FOTO DA DOUTORA APLICANDO PROCEDIMENTO -->
-                <img
-                  src="dobra1-1.png"
-                  class="hero-photo"
-                  alt="Dra. Denise aplicando procedimento estético na Facciale"
-                />
-              </div>
-
-              <div class="hero-floating-card shadow-lg">
-                <div class="small text-muted mb-1">Transformações Facciale</div>
-                <div class="d-flex align-items-center justify-content-between">
-                  <div>
-                    <strong>+120</strong>
-                    <small class="d-block text-muted">clientes atendidas</small>
-                  </div>
-                  <div>
-                    <strong>4.9★</strong>
-                    <small class="d-block text-muted">avaliação média</small>
-                  </div>
-                </div>
-              </div>
-
-              <div class="hero-floating-chip">
-                <i class="bi bi-stars me-1"></i> Resultados naturais, sem exageros
-              </div>
+            <div class="hero-floating-chip">
+              <i class="bi bi-stars me-1"></i> Resultados naturais, sem exageros
             </div>
           </div>
         </div>
 
-        <!-- Linha de “etapas” da jornada -->
-        <div class="row mt-5">
-          <div class="col-12">
-            <div class="journey-steps animate-on-scroll" data-animate="fade-up">
-              <div class="journey-step">
-                <span class="step-number">1</span>
-                <span class="step-label">Avaliação personalizada</span>
-              </div>
-              <div class="journey-divider"></div>
-              <div class="journey-step">
-                <span class="step-number">2</span>
-                <span class="step-label">Plano de tratamento ideal</span>
-              </div>
-              <div class="journey-divider"></div>
-              <div class="journey-step">
-                <span class="step-number">3</span>
-                <span class="step-label">Acompanhamento completo</span>
-              </div>
-              <div class="journey-divider"></div>
-              <div class="journey-step">
-                <span class="step-number">4</span>
-                <span class="step-label">Resultados visíveis e naturais</span>
-              </div>
-            </div>
+        <!-- BADGES E CTA – continuam logo abaixo da imagem no mobile -->
+        <div class="hero-badges mb-4">
+          <span><i class="bi bi-patch-check-fill"></i> Profissionais qualificados</span>
+          <span><i class="bi bi-cpu-fill"></i> Tecnologia de ponta</span>
+          <span><i class="bi bi-heart-pulse-fill"></i> Atendimento humanizado</span>
+        </div>
+
+        <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+          <a class="btn btn-whatsapp btn-lg" href="https://wa.me/5511915160334">
+            QUERO AGENDAR MINHA AVALIAÇÃO
+          </a>
+          <button class="btn btn-outline-light btn-outline-soft" data-scroll="#depoimentos">
+            Ver resultados reais
+          </button>
+        </div>
+
+        <p class="hero-note">
+          Atendimento com horário marcado · Avaliação personalizada · Resultados naturais
+        </p>
+      </div>
+
+      <!-- COLUNA IMAGEM NO DESKTOP -->
+      <div class="col-lg-6 d-none d-lg-block animate-on-scroll" data-animate="fade-left">
+        <div class="hero-image-wrapper">
+          <div class="hero-image">
+            <img
+              src="dobra1-1.png"
+              class="hero-photo"
+              alt="Profissional aplicando procedimento estético"
+            />
+          </div>
+          <div class="hero-floating-chip">
+            <i class="bi bi-stars me-1"></i> Resultados naturais, sem exageros
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- DOBRA 2 — PROVA SOCIAL (VÍDEO + FOTOS + DEPOIMENTOS) -->
+    </div>
+
+    <!-- ETAPAS DA JORNADA -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="journey-steps animate-on-scroll" data-animate="fade-up">
+          <div class="journey-step">
+            <span class="step-number">1</span>
+            <span class="step-label">Avaliação personalizada</span>
+          </div>
+          <div class="journey-divider"></div>
+          <div class="journey-step">
+            <span class="step-number">2</span>
+            <span class="step-label">Plano de tratamento ideal</span>
+          </div>
+          <div class="journey-divider"></div>
+          <div class="journey-step">
+            <span class="step-number">3</span>
+            <span class="step-label">Acompanhamento completo</span>
+          </div>
+          <div class="journey-divider"></div>
+          <div class="journey-step">
+            <span class="step-number">4</span>
+            <span class="step-label">Resultados visíveis e naturais</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- DOBRA 2 — RESULTADOS REAIS (VÍDEO PRINCIPAL + DEPOIMENTOS + ANTES/DEPOIS) -->
     <section id="depoimentos" class="section">
       <div class="container">
         <div class="row justify-content-center mb-4">
           <div class="col-lg-8 text-center animate-on-scroll" data-animate="fade-up">
-            <span class="section-tag">Prova social</span>
+            <span class="section-tag">Resultados reais</span>
             <h2 class="section-title mb-3">
-              Resultados reais de quem confiou na Facciale.
+              Veja na prática as transformações realizadas na Facciale.
             </h2>
             <p class="section-text">
-              Assista ao vídeo e veja depoimentos e transformações de clientes que já passaram pela clínica.
+              Assista ao vídeo com depoimentos e bastidores dos tratamentos e veja como os resultados
+              mudam a autoestima das clientes.
             </p>
           </div>
         </div>
+<div class="row justify-content-center mb-4">
+  <div class="col-lg-4 col-md-6 animate-on-scroll" data-animate="fade-up">
+    <div class="video-wrapper">
+      <video class="w-100 h-100 video" controls playsinline>
+        <source src="video.mp4" type="video/mp4" />
+        Seu navegador não suporta vídeo HTML5.
+      </video>
+    </div>
+  </div>
+</div>
 
-        <!-- VÍDEO PRINCIPAL (DOBRA 2) – MP4 VERTICAL -->
-        <div class="row justify-content-center mb-4">
-          <div class="col-lg-4 col-md-6 animate-on-scroll" data-animate="fade-up">
-            <div class="ratio ratio-9x16 video-wrapper">
-              <video
-                src="video.mp4"
-                class="w-100 h-100"
-                controls
-                playsinline
-              ></video>
-            </div>
-          </div>
-        </div>
-
-        <!-- FOTOS COMPLEMENTARES (DOBRA 2) -->
-        <!-- <div class="row g-3 mb-5 justify-content-center">
-          <div class="col-6 col-md-3 animate-on-scroll" data-animate="fade-up">
-            <div class="social-photo-placeholder">
-              <img
-                src="antes-depois.jpeg"
-                alt="Antes e depois de tratamento estético"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-          <div class="col-6 col-md-3 animate-on-scroll" data-animate="fade-up" data-delay="60">
-            <div class="social-photo-placeholder">
-              <img
-                src="antes-depois-endolift.jpeg"
-                alt="Antes e depois de tratamento Endolift"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-          <div class="col-6 col-md-3 animate-on-scroll" data-animate="fade-up" data-delay="90">
-            <div class="social-photo-placeholder">
-              <img
-                src="antes-depois-harmonizacao-facial.jpeg"
-                alt="Antes e depois de harmonização facial"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-          <div class="col-6 col-md-3 animate-on-scroll" data-animate="fade-up" data-delay="120">
-            <div class="social-photo-placeholder">
-              <img
-                src="antes-depois-harmonizacao2.jpeg"
-                alt="Antes e depois de harmonização facial"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-        </div> -->
 
         <!-- CARTÕES DE DEPOIMENTO -->
         <div class="row g-4 mb-5">
@@ -304,7 +268,7 @@
           </div>
         </div>
 
-        <!-- ANTES E DEPOIS (REFORÇO VISUAL) – PODE REUTILIZAR AS MESMAS FOTOS -->
+        <!-- ANTES E DEPOIS (REFORÇO VISUAL) -->
         <div class="row g-4 mb-4">
           <div class="col-md-4 animate-on-scroll" data-animate="fade-up">
             <div class="before-after-placeholder">
@@ -336,14 +300,14 @@
         </div>
 
         <div class="text-center animate-on-scroll" data-animate="fade-up">
-          <a class="btn btn-whatsapp" href="#">
+          <a class="btn btn-whatsapp" href="https://wa.me/5511915160334">
             QUERO RESULTADOS ASSIM TAMBÉM
           </a>
         </div>
       </div>
     </section>
 
-    <!-- DOBRA 3 — BENEFÍCIOS (GRIDS COM CABEÇALHO + FOTO) -->
+    <!-- DOBRA 3 — BENEFÍCIOS (6 GRIDS COM DESEJOS + FOTOS) -->
     <section id="beneficios" class="section">
       <div class="container">
         <div class="row justify-content-center mb-4">
@@ -358,7 +322,44 @@
           </div>
         </div>
 
-<!-- 
+        <div class="row g-4">
+          <!-- 1 -->
+          <div class="col-md-6 col-lg-4 animate-on-scroll" data-animate="fade-up">
+            <div class="benefit-card">
+              <div class="w-100">
+                <h5 class="benefit-title">
+                  Acabar com marcas, manchas ou sinais que te incomodam
+                </h5>
+                <div class="benefit-photo-placeholder">
+                  <img
+                    src="beneficio-manchas.jpeg"
+                    alt="Resultado de tratamento para manchas e sinais"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="col-md-6 col-lg-4 animate-on-scroll" data-animate="fade-up" data-delay="60">
+            <div class="benefit-card">
+              <div class="w-100">
+                <h5 class="benefit-title">
+                  Melhorar textura, brilho e firmeza da pele
+                </h5>
+                <div class="benefit-photo-placeholder">
+                  <img
+                    src="beneficio-textura.jpeg"
+                    alt="Resultado de tratamento para textura e firmeza da pele"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 -->
           <div class="col-md-6 col-lg-4 animate-on-scroll" data-animate="fade-up" data-delay="120">
             <div class="benefit-card">
               <div class="w-100">
@@ -367,24 +368,25 @@
                 </h5>
                 <div class="benefit-photo-placeholder">
                   <img
-                    src="antes-depois-endolift.jpeg"
-                    alt="Resultado em contorno corporal e flacidez"
+                    src="beneficio-corpo.jpeg"
+                    alt="Resultado de tratamento corporal e flacidez"
                     class="img-fluid"
                   />
                 </div>
               </div>
             </div>
-          </div> -->
+          </div>
 
+          <!-- 4 -->
           <div class="col-md-6 col-lg-4 animate-on-scroll" data-animate="fade-up">
             <div class="benefit-card">
               <div class="w-100">
                 <h5 class="benefit-title">
-                  Suavizar linhas de expressão e recuperar a harmonia facial
+                  Suavizar linhas de expressão e recuperar a harmonização facial
                 </h5>
                 <div class="benefit-photo-placeholder">
                   <img
-                    src="antes-depois-harmonizacao2.jpeg"
+                    src="beneficio-harmonizacao.jpeg"
                     alt="Resultado de linhas de expressão suavizadas"
                     class="img-fluid"
                   />
@@ -393,27 +395,63 @@
             </div>
           </div>
 
+          <!-- 5 -->
+          <div class="col-md-6 col-lg-4 animate-on-scroll" data-animate="fade-up" data-delay="60">
+            <div class="benefit-card">
+              <div class="w-100">
+                <h5 class="benefit-title">
+                  Ter resultados naturais, sem exageros ou exagero de volume
+                </h5>
+                <div class="benefit-photo-placeholder">
+                  <img
+                    src="beneficio-naturais.jpeg"
+                    alt="Resultado natural de procedimento estético"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6 -->
+          <div class="col-md-6 col-lg-4 animate-on-scroll" data-animate="fade-up" data-delay="120">
+            <div class="benefit-card">
+              <div class="w-100">
+                <h5 class="benefit-title">
+                  Aumentar sua autoestima e se sentir bem ao se olhar no espelho
+                </h5>
+                <div class="benefit-photo-placeholder">
+                  <img
+                    src="beneficio-autoestima.jpeg"
+                    alt="Cliente sorrindo após tratamento estético"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="text-center mt-4 animate-on-scroll" data-animate="fade-up">
           <p class="mb-3">
             A Facciale tem um tratamento que encaixa exatamente na sua necessidade.
           </p>
-          <a class="btn btn-whatsapp" href="#">
+          <a class="btn btn-whatsapp" href="https://wa.me/5511915160334">
             FALAR COM ESPECIALISTA
           </a>
         </div>
       </div>
     </section>
 
-    <!-- DOBRA 4 — OFERTA & PROMESSA (OFERTA PESADA + FOTOS COM PREÇO) -->
+    <!-- DOBRA 4 — OFERTA & PROMESSA (OFERTA + 4 CRIATIVOS) -->
     <section id="oferta" class="section section-offer">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-10 col-xl-9">
             <div class="offer-card animate-on-scroll" data-animate="fade-up">
               <div class="offer-content text-center">
-                <span class="offer-tag">Oportunidade Exclusiva</span>
+                <!-- “Botão” dourado sem interação (resolvido no CSS da .offer-tag) -->
+                <span class="offer-tag">Oportunidade exclusiva</span>
 
                 <h2 class="section-title mb-3">
                   Agende sua avaliação hoje e <br />
@@ -421,7 +459,7 @@
                 </h2>
 
                 <p class="section-text mb-4">
-                  Não é apenas uma consulta. É o primeiro passo para a sua melhor versão com benefícios inclusos:
+                  Não é apenas uma consulta. É o primeiro passo para a sua melhor versão, com benefícios inclusos:
                 </p>
 
                 <div class="offer-benefits-grid">
@@ -429,27 +467,27 @@
                     <div class="check-icon">
                       <i class="bi bi-check-lg"></i>
                     </div>
-                    <span>Diagnóstico Facial Personalizado</span>
+                    <span>Diagnóstico facial personalizado</span>
                   </div>
 
                   <div class="benefit-item">
                     <div class="check-icon">
                       <i class="bi bi-check-lg"></i>
                     </div>
-                    <span>Plano de Tratamento Exclusivo</span>
+                    <span>Plano de tratamento exclusivo</span>
                   </div>
 
                   <div class="benefit-item">
                     <div class="check-icon">
                       <i class="bi bi-check-lg"></i>
                     </div>
-                    <span>Condição Especial na 1ª Sessão</span>
+                    <span>Condição especial na 1ª sessão</span>
                   </div>
                 </div>
 
-                <!-- FOTOS DA OFERTA (COM PREÇOS E PROCEDIMENTOS) -->
+                <!-- 4 FOTOS DA OFERTA (CRIATIVOS) -->
                 <div class="row g-3 justify-content-center mt-4">
-                  <div class="col-6 col-md-4">
+                  <div class="col-6 col-md-3">
                     <div class="offer-photo-placeholder">
                       <img
                         src="ad-endolaser.jpeg"
@@ -458,7 +496,7 @@
                       />
                     </div>
                   </div>
-                  <div class="col-6 col-md-4">
+                  <div class="col-6 col-md-3">
                     <div class="offer-photo-placeholder">
                       <img
                         src="ad-gluteo.jpeg"
@@ -467,7 +505,7 @@
                       />
                     </div>
                   </div>
-                  <div class="col-6 col-md-4">
+                  <div class="col-6 col-md-3">
                     <div class="offer-photo-placeholder">
                       <img
                         src="ad-harmonizacao.jpeg"
@@ -476,10 +514,19 @@
                       />
                     </div>
                   </div>
+                  <div class="col-6 col-md-3">
+                    <div class="offer-photo-placeholder">
+                      <img
+                        src="boom.jpeg"
+                        alt="Oferta de protocolo corporal"
+                        class="img-fluid"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <div class="mt-4 pt-2">
-                  <a class="btn btn-whatsapp btn-lg btn-pulse" href="#">
+                  <a class="btn btn-whatsapp btn-lg btn-pulse" href="https://wa.me/5511915160334">
                     QUERO GARANTIR MEU BENEFÍCIO
                   </a>
                   <p class="offer-disclaimer mt-3">
@@ -548,7 +595,7 @@
         </div>
 
         <div class="text-center animate-on-scroll" data-animate="fade-up">
-          <a class="btn btn-whatsapp" href="#">
+          <a class="btn btn-whatsapp" href="https://wa.me/5511915160334">
             QUERO SABER QUAL É O IDEAL PARA MIM
           </a>
         </div>
@@ -559,7 +606,6 @@
     <section id="quem-somos" class="section section-light">
       <div class="container">
         <div class="row g-5 align-items-center">
-
           <!-- TEXTO DA HISTÓRIA -->
           <div class="col-lg-6 animate-on-scroll" data-animate="fade-right">
             <span class="section-tag">Quem somos</span>
@@ -578,8 +624,8 @@
               sempre com ética, propósito e naturalidade.
             </p>
 
-            <div class="mt-3 d-flex flex-wrap gap-2">
-              <a class="btn btn-whatsapp" href="#">
+            <div class="mt-3 d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start">
+              <a class="btn btn-whatsapp" href="https://wa.me/5511915160334">
                 CONHECER NOSSOS TRATAMENTOS
               </a>
               <button class="btn btn-outline-light btn-outline-soft" data-scroll="#tratamentos">
@@ -588,33 +634,32 @@
             </div>
           </div>
 
-          <!-- ÁREA DE FOTOS -->
-          <div class="col-lg-6 animate-on-scroll" data-animate="fade-left">
+<!-- ÁREA DE FOTOS -->
+<div class="col-lg-6 quem-somos-photos animate-on-scroll" data-animate="fade-left">
+  <!-- FOTO PRINCIPAL DA FUNDADORA (AUTORIDADE) -->
+  <div class="doctor-photo-card mb-3">
+    <img
+      src="doutora.jpeg"
+      alt="Fundadora da Facciale Estética Avançada"
+      class="doctor-main-photo"
+    />
+    <div class="doctor-caption mt-2">
+      <strong>Denise</strong><br />
+      Fundadora da Facciale Estética Avançada
+    </div>
+  </div>
 
-            <!-- FOTO PRINCIPAL DA FUNDADORA (AUTORIDADE) -->
-            <div class="doctor-photo-card mb-3">
-              <img
-                src="doutora.jpeg"
-                alt="Fundadora da Facciale Estética Avançada"
-                class="doctor-main-photo"
-              />
-              <div class="doctor-caption mt-2">
-                <strong>Denise</strong><br />
-                Fundadora da Facciale Estética Avançada
-              </div>
-            </div>
+  <!-- FOTOS DA CLÍNICA (CREDIBILIDADE) -->
+  <div class="clinic-photos-row d-flex gap-3">
+    <div class="clinic-photo-card flex-fill">
+      <img src="fachada1.jpeg" alt="Fachada da clínica Facciale" />
+    </div>
+    <div class="clinic-photo-card flex-fill">
+      <img src="fachada2.jpeg" alt="Entrada da clínica Facciale" />
+    </div>
+  </div>
+</div>
 
-            <!-- FOTOS DA CLÍNICA (CREDIBILIDADE) -->
-            <div class="clinic-photos-row d-flex gap-3">
-              <div class="clinic-photo-card flex-fill">
-                <img src="fachada1.jpeg" alt="Fachada da clínica Facciale" />
-              </div>
-              <div class="clinic-photo-card flex-fill">
-                <img src="fachada2.jpeg" alt="Entrada da clínica Facciale" />
-              </div>
-            </div>
-
-          </div>
         </div>
       </div>
     </section>
@@ -624,7 +669,7 @@
       <div class="container">
         <div class="row justify-content-center mb-4">
           <div class="col-lg-8 text-center animate-on-scroll" data-animate="fade-up">
-            <span class="section-tag">Segurança & Autoridade</span>
+            <span class="section-tag">Segurança &amp; Autoridade</span>
             <h2 class="section-title mb-3">
               Por que escolher a Facciale Estética Avançada
             </h2>
@@ -684,13 +729,23 @@
               </p>
             </div>
           </div>
+
+          <div class="col-md-6 col-lg-4 animate-on-scroll" data-animate="fade-up" data-delay="120">
+            <div class="feature-card">
+              <i class="bi bi-heart-pulse-fill feature-icon"></i>
+              <h5>Atendimento humanizado</h5>
+              <p>
+                Cada cliente é recebida com atenção, escuta e cuidado em todas as visitas à clínica.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div class="text-center mt-4 animate-on-scroll" data-animate="fade-up">
           <p class="mb-3">
             Sua transformação começa com um passo simples.
           </p>
-          <a class="btn btn-whatsapp" href="#">
+          <a class="btn btn-whatsapp" href="https://wa.me/5511915160334">
             AGENDAR COM ESPECIALISTA CERTIFICADO
           </a>
         </div>
@@ -728,7 +783,7 @@
             Quer agendar ou tirar dúvidas?<br />
             Nosso atendimento é exclusivo via WhatsApp.
           </p>
-          <a class="btn btn-whatsapp btn-sm" href="#">
+          <a class="btn btn-whatsapp btn-sm" href="https://wa.me/5511915160334">
             <i class="bi bi-whatsapp"></i> FALAR COM ESPECIALISTA
           </a>
         </div>
@@ -752,7 +807,7 @@
   </footer>
 
   <!-- BOTÃO FLUTUANTE WHATSAPP -->
-  <a href="#" class="floating-whatsapp btn-whatsapp" id="floatingWhatsApp">
+  <a href="https://wa.me/5511915160334" class="floating-whatsapp btn-whatsapp" id="floatingWhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
 

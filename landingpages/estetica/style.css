@@ -54,10 +54,12 @@ a {
   background-color: rgba(255, 255, 255, 0.92);
   border-bottom: 1px solid rgba(148, 163, 184, 0.25);
   transition: all 0.2s ease;
+
+  padding: 0 !important;
 }
 
 .main-navbar.scrolled {
-  background-color: rgba(15, 23, 42, 0.98);
+  background-color: rgba(255, 255, 255, 0.98);
   border-bottom-color: rgba(15, 23, 42, 0.98);
 }
 
@@ -394,7 +396,7 @@ a {
 }
 
 .main-navbar.scrolled .btn-outline-soft {
-  background-color: rgba(15, 23, 42, 0.9);
+  background-color: rgba(255, 255, 255, 0.98);
   color: #e5e7eb;
 }
 
@@ -472,7 +474,6 @@ a {
 /* ANTES E DEPOIS */
 .before-after-placeholder {
   width: 100%;
-  aspect-ratio: 4 / 5;
   border-radius: 1.1rem;
   border: 1px dashed rgba(148, 163, 184, 0.7);
   background: repeating-linear-gradient(
@@ -632,6 +633,18 @@ a {
   .main-navbar {
     background-color: rgba(255, 255, 255, 0.98);
   }
+
+  .hero-floating-chip {
+  position: absolute;
+  top: 13%;
+  right: -2% !important;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background-color: rgba(15, 23, 42, 0.96);
+  color: #e5e7eb;
+  font-size: 0.75rem;
+  border: 1px solid rgba(248, 250, 252, 0.18);
+}
 }
 
 @media (max-width: 575.98px) {
@@ -954,7 +967,7 @@ a {
   padding: 0.8rem 0; /* Fica mais compacto ao rolar */
   
   /* Efeito Vidro Escuro Premium */
-  background-color: rgba(2, 6, 23, 0.85); /* Azul quase preto, translúcido */
+  background-color: rgba(255, 255, 255, 0.98); /* Azul quase preto, translúcido */
   backdrop-filter: blur(12px);            /* Desfoque do fundo */
   -webkit-backdrop-filter: blur(12px);
   
@@ -1101,7 +1114,6 @@ a {
 
 .offer-photo-placeholder {
   width: 100%;
-  aspect-ratio: 4 / 5;
   border-radius: 1.1rem;
   border: 1px dashed rgba(212, 175, 55, 0.8);
   background: radial-gradient(circle at top, #fffbeb 0, #fefce8 30%, #f9fafb 100%);
@@ -1305,7 +1317,7 @@ a {
 /* Aplica apenas nas duas imagens desejadas */
 .before-after-placeholder img[src="antes-depois-harmonizacao-facial.jpeg"],
 .before-after-placeholder img[src="antes-depois-harmonizacao2.jpeg"] {
-  aspect-ratio: 4 / 5; /* padrão desktop */
+
   object-fit: cover;
 }
 
@@ -1382,4 +1394,112 @@ a {
   .journey-divider {
     display: none !important;
   }
+}
+
+
+
+/* Adicione isso ao final do seu CSS para forçar o vídeo a aparecer */
+.ratio.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover; /* Garante que preencha sem distorcer */
+    z-index: 10; /* Garante que fique acima do fundo escuro */
+}
+
+/* ============================
+   DOBRA 6 — Layout desktop refinado
+   ============================ */
+@media (min-width: 992px) {
+  /* Coluna de fotos vira horizontal */
+  .quem-somos-photos {
+    display: flex;
+    align-items: flex-start; /* agora alinha no topo corretamente */
+    gap: 1.5rem;
+  }
+
+  /* Cartão da doutora sem altura fixa */
+  .doctor-photo-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* A imagem se adapta automaticamente */
+  .doctor-main-photo {
+    width: 100%;
+    height: auto;       /* remove a altura fixa */
+    border-radius: 1.2rem;
+    object-fit: cover;
+  }
+
+  /* Coluna das fachadas empilhadas */
+  .clinic-photos-row {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .clinic-photo-card {
+    flex: 1;
+    display: flex;
+  }
+
+  .clinic-photo-card img {
+    width: 100%;
+    height: auto;       /* sem forçar nada */
+    border-radius: 1.2rem;
+    object-fit: cover;
+  }
+
+  /* Reduz levemente altura total da seção */
+  #quem-somos.section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* Centralização vertical entre texto e fotos – Desktop */
+@media (min-width: 992px) {
+  #quem-somos .row {
+    display: flex;
+    align-items: center;  /* ❤️ centraliza verticalmente */
+  }
+
+  .quem-somos-photos {
+    align-items: center;  /* garante centralização interna */
+  }
+}
+
+/* BOTÃO FLUTUANTE WHATSAPP – versão verde */
+#floatingWhatsApp {
+  background: #25D366 !important; /* Verde oficial WhatsApp */
+  color: #ffffff !important;
+  border: none;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+#floatingWhatsApp:hover {
+  background: #1ebe5d !important; /* Verde escurecido no hover */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+
+#floatingWhatsApp:active {
+  transform: translateY(0);
+}
+/* OFFER TAG – versão maior e mais destacada */
+.offer-tag {
+  padding: 0.6rem 1.6rem;          /* mais alto e mais largo */
+  font-size: 0.9rem;               /* texto maior */
+  font-weight: 700;                /* mantém premium */
+  letter-spacing: 0.12em;          /* mais presença */
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: linear-gradient(135deg, #fefce8, #fff5c7);
+}
+
+.logo{
+  max-height: 70px;
 }
